@@ -148,8 +148,7 @@ onBeforeUnmount(() => {
 });
 </script>
 <style scoped lang="scss">
-* {
-    font-family: 'Poppins';
+* {font-family: Arial, sans-serif;
 }
 
 .header {
