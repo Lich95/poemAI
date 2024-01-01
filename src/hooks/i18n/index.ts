@@ -14,9 +14,42 @@ const messages = {
   cpoyFiled:'Copy failure. Try again plz',
   networkErr:'Network error. Try again plz'
   },
-  fr:{},//法语
-  ru:{},//俄语
-  de:{},//德语
+  fr:{
+    title:'frAI Poem Generator',
+    description:'Generate a poem about...',
+    btnText:'Generate Poem',
+    btnThinking:'Thinking',
+    copy:'Copy',
+    contentTitle:'Generated Poem',
+    footer:'Powered By ChatGPT',
+    cpoySuccess:'Copied successfully',
+    cpoyFiled:'Copy failure. Try again plz',
+    networkErr:'Network error. Try again plz'
+    },//法语
+  ru:{
+    title:'ruAI Poem Generator',
+    description:'Generate a poem about...',
+    btnText:'Generate Poem',
+    btnThinking:'Thinking',
+    copy:'Copy',
+    contentTitle:'Generated Poem',
+    footer:'Powered By ChatGPT',
+    cpoySuccess:'Copied successfully',
+    cpoyFiled:'Copy failure. Try again plz',
+    networkErr:'Network error. Try again plz'
+    },//俄语
+  de:{
+    title:'deAI Poem Generator',
+    description:'Generate a poem about...',
+    btnText:'Generate Poem',
+    btnThinking:'Thinking',
+    copy:'Copy',
+    contentTitle:'Generated Poem',
+    footer:'Powered By ChatGPT',
+    cpoySuccess:'Copied successfully',
+    cpoyFiled:'Copy failure. Try again plz',
+    networkErr:'Network error. Try again plz'
+    },//德语
 }
 
 
