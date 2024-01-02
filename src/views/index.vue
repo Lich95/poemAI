@@ -5,28 +5,43 @@
             <span class="logoTxt"><span class="pp">AI</span> Poem Generator</span>
         </div>
         <div class="tools">
-            <div class="lanuage">
-                <el-dropdown trigger="click" :hide-on-click="false" @command="changeLanuage">
+            <div class="language">
+                <el-dropdown trigger="click" :hide-on-click="true">
                     <span class="el-dropdown-link">
-                        {{_thisLanuage()}}
+                        {{ _thislanguage() }}
                     </span>
                     <template #dropdown>
-                        <el-menu @select="handleSelect">
+                        <el-menu @select="handleSelect" :default-active="defaultActive">
                             <el-menu-item v-for="item in dropMenuList" :index="item.event">
-                            {{ item.text }}</el-menu-item>
+                                {{ item.text }}</el-menu-item>
                         </el-menu>
                     </template>
-                    
-                    </el-dropdown>
+
+                </el-dropdown>
             </div>
         </div>
     </div>
+
+    <TypewriterEffect class="title" :textContent="$t('title')" :speed="200" />
     <div class="inputBox">
-        <p class="title">{{ $t('title') }}</p>
-        <p class="desc">{{ $t('description') }}</p>
+
+        <!-- <p class="desc">{{ $t('description') }}</p> -->
+
+
+        <p class="secTitle">Poetry Style</p>
+        <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck" @changeCheck="changeStyle('style', $event)"></radioGroup>
+
+        <p class="secTitle">What the poem is about</p>
         <div>
             <el-input v-model="inputStr" type="textarea" :placeholder="placeholderText" rows="5" resize="none" />
         </div>
+
+        <p class="secTitle">Poetry Size</p>
+        <radioGroup :radioList="sizeList" :checkRadio="checkObj.sizeCheck" @changeCheck="changeStyle('size', $event)"></radioGroup>
+        <p class="secTitle">Poetry Language</p>
+        <radioGroup :radioList="languageList" :checkRadio="checkObj.languageCheck" @changeCheck="changeStyle('language', $event)">
+        </radioGroup>
+
         <div>
             <el-button class="handleBtn" @click="handleClick">
                 <span v-if="!thinking" class="btnTxt">
@@ -72,12 +87,16 @@
     </div>
 </template>
 <script setup>
+
+
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import { throttledApiRequest } from '@/api/index.js';
 import ClipboardJS from 'clipboard';
 import { ElMessage } from 'element-plus'
-import { useRoute,useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
+import TypewriterEffect from "@/components/TypewriterEffect/index.vue";
+import radioGroup from "@/components/radioGroup/index.vue";
 import { I18nInjectionKey } from "vue-i18n";
 const { t } = i18n.global;
 const inputStr = ref()
@@ -89,15 +108,42 @@ const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
 const placeholderText = ref('Merry Christmas')
+const defaultActive = ref()
 const dropMenuList = [
     { event: 'en', text: 'English' },
     { event: 'fr', text: 'Français' },
     { event: 'ru', text: 'Русский' },
-    { event: 'de', text: 'Italiano' },
-    // { event: '2', text: 'español' },
-    // { event: '2', text: 'Português' },
+    { event: 'ita', text: 'Italiano' },
+    { event: 'de', text: 'Deutsch' },
+    { event: 'ep', text: 'español' },
+    { event: 'pt', text: 'Português' },
 ],
-    selectedKeys = []
+    selectedKeys = [];
+
+
+const styleList = [{ text: 'Free Verse', label: "poemai_freeverse" },
+{ text: 'Haiku', label: "poemai_haiku" },
+{ text: 'Acrostic', label: "poemai_acrostic" },
+{ text: 'Sonnet', label: "poemai_sonnet" },
+{ text: 'Limerick', label: "poemai_limerick" },
+{ text: 'Love Poem', label: "poemai_lovepoem" },
+];
+const sizeList = [{ text: 'Short', label: "short" },
+{ text: 'Medium', label: "medium" },
+{ text: 'Large', label: "large" },
+];
+const languageList = dropMenuList.map(x => {
+    x.label = x.event
+    return x
+})
+const checkObj = ref({
+    styleCheck: 'poemai_freeverse',
+ sizeCheck: 'short',
+ languageCheck: 'en'
+})
+
+
+
 const handleClick = async () => {
     if (!thinking.value) {
         thinking.value = true;
@@ -133,10 +179,10 @@ const handleClick = async () => {
 
 }
 
-const _thisLanuage = ()=>{
+const _thislanguage = () => {
 
     let language = route.params.language || 'en';
-    return dropMenuList.find(x=>x.event==language).text
+    return dropMenuList.find(x => x.event == language).text
 }
 const handleCopy = () => {
     const clipboard = new ClipboardJS('.copyButton', {
@@ -164,15 +210,12 @@ const handleCopy = () => {
     })
 
 }
-const changeLanuage = (e)=>{
-    console.log(1,e)
-}
-const handleSelect = (e)=>{
-    if(e=='en'){
-        e=''
+const handleSelect = (e) => {
+    if (e == 'en') {
+        e = ''
     }
     router.push({ name: 'Home', params: { language: e } });
-   
+
     i18n.global.locale = e
 }
 
@@ -188,12 +231,16 @@ const handleScroll = () => {
     topBtnShow.value = window.scrollY > 100;
 };
 
+const changeStyle = (type, newV) => {
+    checkObj.value[type + 'Check'] = newV
+    console.log(checkObj.value);
+}   
 // 监听滚动事件
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
-    
-    const language = route.params.language || 'en';
 
+    const language = route.params.language || 'en';
+    defaultActive.value = language
     i18n.global.locale = language
     // console.log('Language:', language);
 });
@@ -217,13 +264,22 @@ onBeforeUnmount(() => {
     width: 98%;
     margin: 0 auto;
     border-radius: 99px;
-    .logoDiv{
+
+    .logoDiv {
         display: flex;
-    align-items: center;
+        align-items: center;
     }
+
     .tools {
         float: right;
     }
+
+}
+
+.title {
+    text-align: center;
+    margin-top: 20px;
+    ;
 }
 
 .logoTxt {
@@ -247,13 +303,12 @@ onBeforeUnmount(() => {
 
 .inputBox {
     max-width: 634px;
-    max-height: 424px;
     background-color: #fff;
     border-radius: 24px;
     padding: 1em;
     margin: 0 auto;
     margin-top: 25px;
-    text-align: center;
+    text-align: left;
     padding-bottom: 2em;
     ;
 
@@ -385,11 +440,23 @@ onBeforeUnmount(() => {
     color:#1d2331;
 }
 
-
+.el-dropdown {
+    vertical-align: baseline;
+    margin-right: 20px
+}
 
 @media only screen and (max-width: 767px) {
     .handleBtn {
         width: 100% !important;
     }
 }
-</style>   
+
+
+*:not(.content) {
+    user-select: none;
+}
+
+.secTitle {
+    text-align: left;
+    ;
+}</style>   
