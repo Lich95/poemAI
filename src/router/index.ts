@@ -1,6 +1,6 @@
 // router/index.js (或 router/index.ts，如果你使用 TypeScript)
 import { createRouter, createWebHashHistory } from 'vue-router';
-import Home from '@/views/index.vue';
+import Home from '@/views/homePage/index.vue';
 
 const routes = [
     {

@@ -1,46 +1,24 @@
 <template>
-    <div class="header">
-        <div class="logoDiv">
-            <img src="/public/logo.png" alt="" class="logo">
-            <span class="logoTxt"><span class="pp">AI</span> Poem Generator</span>
-        </div>
-        <div class="tools">
-            <div class="language">
-                <el-dropdown trigger="click" :hide-on-click="true">
-                    <span class="el-dropdown-link">
-                        {{ _thislanguage() }}
-                    </span>
-                    <template #dropdown>
-                        <el-menu @select="handleSelect" :default-active="defaultActive">
-                            <el-menu-item v-for="item in dropMenuList" :index="item.event">
-                                {{ item.text }}</el-menu-item>
-                        </el-menu>
-                    </template>
-
-                </el-dropdown>
-            </div>
-        </div>
-    </div>
-
+    
     <TypewriterEffect class="title" :textContent="$t('title')" :speed="200" />
     <div class="inputBox">
 
         <!-- <p class="desc">{{ $t('description') }}</p> -->
 
 
-        <p class="secTitle">Poetry Style</p>
+        <!-- <p class="secTitle">Poetry Style</p>
         <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck" @changeCheck="changeStyle('style', $event)"></radioGroup>
-
+-->
         <p class="secTitle">What the poem is about</p>
         <div>
             <el-input v-model="inputStr" type="textarea" :placeholder="placeholderText" rows="5" resize="none" />
         </div>
 
-        <p class="secTitle">Poetry Size</p>
+        <!-- <p class="secTitle">Poetry Size</p>
         <radioGroup :radioList="sizeList" :checkRadio="checkObj.sizeCheck" @changeCheck="changeStyle('size', $event)"></radioGroup>
         <p class="secTitle">Poetry Language</p>
         <radioGroup :radioList="languageList" :checkRadio="checkObj.languageCheck" @changeCheck="changeStyle('language', $event)">
-        </radioGroup>
+        </radioGroup> -->
 
         <div>
             <el-button class="handleBtn" @click="handleClick">
