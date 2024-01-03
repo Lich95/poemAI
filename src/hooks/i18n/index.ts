@@ -15,7 +15,7 @@ const messages = {
   networkErr:'Network error. Try again plz'
   },
   fr:{
-    title:'frAI Poem Generator',
+    title:'AI Poem Generator',
     description:'Generate a poem about...',
     btnText:'Generate Poem',
     btnThinking:'Thinking',
@@ -27,7 +27,7 @@ const messages = {
     networkErr:'Network error. Try again plz'
     },//法语
   ru:{
-    title:'ruAI Poem Generator',
+    title:'AI Poem Generator',
     description:'Generate a poem about...',
     btnText:'Generate Poem',
     btnThinking:'Thinking',
@@ -39,7 +39,7 @@ const messages = {
     networkErr:'Network error. Try again plz'
     },//俄语
     de:{
-      title:'deAI Poem Generator',
+      title:'AI Poem Generator',
       description:'Generate a poem about...',
       btnText:'Generate Poem',
       btnThinking:'Thinking',
@@ -51,8 +51,8 @@ const messages = {
       networkErr:'Network error. Try again plz'
       },//德语
 
-      ita:{
-    title:'itaAI Poem Generator',
+      it:{
+    title:'AI Poem Generator',
     description:'Generate a poem about...',
     btnText:'Generate Poem',
     btnThinking:'Thinking',
@@ -64,8 +64,8 @@ const messages = {
     networkErr:'Network error. Try again plz'
     },//德语
 
-    ep:{
-    title:'epAI Poem Generator',
+    es:{
+    title:'AI Poem Generator',
     description:'Generate a poem about...',
     btnText:'Generate Poem',
     btnThinking:'Thinking',
@@ -78,7 +78,7 @@ const messages = {
     },//德语
 
   pt:{
-    title:'ptAI Poem Generator',
+    title:'AI Poem Generator',
     description:'Generate a poem about...',
     btnText:'Generate Poem',
     btnThinking:'Thinking',

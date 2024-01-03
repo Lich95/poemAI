@@ -4,13 +4,15 @@ import Home from '@/views/homePage/index.vue';
 
 const routes = [
     {
-        path: '/:language?',
+        path: '/:language?/',
         name: 'Home',
         component: Home,
-        props: (route) => ({
+        props: (route:any) => ({
           language: route.params.language || 'en',
         }),
+       
       },
+      
   // 添加其他路由
 ];
 
@@ -18,5 +20,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+
+
 
 export default router;

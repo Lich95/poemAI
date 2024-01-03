@@ -1,15 +1,16 @@
 <template>
-    
-    <TypewriterEffect class="title" :textContent="$t('title')" :speed="200" />
+    <!-- <TypewriterEffect class="title" :textContent="$t('title')" :speed="200" /> -->
     <div class="inputBox">
 
-        <!-- <p class="desc">{{ $t('description') }}</p> -->
+
+        <p class="title">{{ $t('title') }}</p>
+        <p class="desc">{{ $t('description') }}</p>
 
 
         <!-- <p class="secTitle">Poetry Style</p>
         <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck" @changeCheck="changeStyle('style', $event)"></radioGroup>
 -->
-        <p class="secTitle">What the poem is about</p>
+        <!-- <p class="secTitle">What the poem is about</p> -->
         <div>
             <el-input v-model="inputStr" type="textarea" :placeholder="placeholderText" rows="5" resize="none" />
         </div>
@@ -20,7 +21,7 @@
         <radioGroup :radioList="languageList" :checkRadio="checkObj.languageCheck" @changeCheck="changeStyle('language', $event)">
         </radioGroup> -->
 
-        <div>
+        <div style="text-align:center">
             <el-button class="handleBtn" @click="handleClick">
                 <span v-if="!thinking" class="btnTxt">
                     {{ $t('btnText') }}
@@ -67,7 +68,7 @@
 <script setup>
 
 
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount,  } from "vue";
 import { throttledApiRequest } from '@/api/index.js';
 import ClipboardJS from 'clipboard';
 import { ElMessage } from 'element-plus'
@@ -91,9 +92,9 @@ const dropMenuList = [
     { event: 'en', text: 'English' },
     { event: 'fr', text: 'Français' },
     { event: 'ru', text: 'Русский' },
-    { event: 'ita', text: 'Italiano' },
+    { event: 'it', text: 'Italiano' },
     { event: 'de', text: 'Deutsch' },
-    { event: 'ep', text: 'español' },
+    { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
 ],
     selectedKeys = [];
@@ -116,8 +117,8 @@ const languageList = dropMenuList.map(x => {
 })
 const checkObj = ref({
     styleCheck: 'poemai_freeverse',
- sizeCheck: 'short',
- languageCheck: 'en'
+    sizeCheck: 'short',
+    languageCheck: 'en'
 })
 
 
@@ -212,7 +213,7 @@ const handleScroll = () => {
 const changeStyle = (type, newV) => {
     checkObj.value[type + 'Check'] = newV
     console.log(checkObj.value);
-}   
+}
 // 监听滚动事件
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
@@ -226,6 +227,8 @@ onMounted(() => {
 onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll);
 });
+
+
 </script>
 <style scoped lang="scss">
 * {
@@ -334,6 +337,7 @@ onBeforeUnmount(() => {
         font-weight: 400;
         color: #6C7078;
         margin-bottom: 20px;
+        text-align: center;
     }
 }
 
@@ -430,11 +434,9 @@ onBeforeUnmount(() => {
 }
 
 
-*:not(.content) {
-    user-select: none;
-}
 
 .secTitle {
     text-align: left;
     ;
-}</style>   
+}
+</style>   

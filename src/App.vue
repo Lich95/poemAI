@@ -1,6 +1,5 @@
 <script setup>
 
-
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import { useRoute, useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
@@ -45,9 +44,9 @@ const handleSelect = (e) => {
     <div class="header">
         <div class="logoDiv">
             <img src="/public/logo.png" alt="" class="logo">
-            <span class="logoTxt"><span class="pp">AI</span> Poem Generator</span>
+            <h1 class="logoTxt"><span class="pp">AI</span> Poem Generator</h1>
         </div>
-        <div class="tools">
+        <!-- <div class="tools">
           <div class="privacy">
             <img src="@/assets/icon/privacy_icon.png" alt="">
             <span>Privacy</span>
@@ -68,7 +67,7 @@ const handleSelect = (e) => {
 
                 </el-dropdown>
             </div>
-        </div>
+        </div> -->
     </div>
 
   <router-view></router-view>
@@ -143,3 +142,8 @@ const handleSelect = (e) => {
 }
 
 </style>   
+<style>
+
+*:not(.content) {
+    user-select: none;
+}</style>
