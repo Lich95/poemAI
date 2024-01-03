@@ -3,8 +3,8 @@
     <div class="inputBox">
 
 
-        <p class="title">{{ $t('title') }}</p>
-        <p class="desc">{{ $t('description') }}</p>
+        <p class="title">{{ $t('poemai_input_title') }}</p>
+        <p class="desc">{{ $t('poemai_input_subtitle') }}</p>
 
 
         <!-- <p class="secTitle">Poetry Style</p>
@@ -12,7 +12,7 @@
 -->
         <!-- <p class="secTitle">What the poem is about</p> -->
         <div>
-            <el-input v-model="inputStr" type="textarea" :placeholder="placeholderText" rows="5" resize="none" />
+            <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5" resize="none" />
         </div>
 
         <!-- <p class="secTitle">Poetry Size</p>
@@ -24,13 +24,13 @@
         <div style="text-align:center">
             <el-button class="handleBtn" @click="handleClick">
                 <span v-if="!thinking" class="btnTxt">
-                    {{ $t('btnText') }}
+                    {{ $t('poemai_generate_btn') }}
                     <el-icon>
                         <Right />
                     </el-icon>
                 </span>
                 <span v-else class="btnTxt">
-                    {{ $t('btnThinking') }}...
+                    {{ $t('poemai_thinking_status') }}
                     <el-icon class="is-loading">
                         <Loading />
                     </el-icon>
@@ -41,13 +41,14 @@
     </div>
     <div class="respBox" v-show="haveResp">
         <div class="title">
-            {{ $t('contentTitle') }}
+            {{ $t('poemai_generated_poem') }}
         </div>
         <div class="content" v-loading="respLoading">
             {{ respContent }}
         </div>
         <div class="copyBtn">
-            <el-button size="small" class="copyButton" @click="handleCopy" data-clipboard-target=".content">{{ $t('copy')
+            <el-button size="small" class="copyButton" @click="handleCopy" data-clipboard-target=".content">{{
+                $t('poemai_copy_btn')
             }}<el-icon>
                     <CopyDocument />
                 </el-icon></el-button>
@@ -62,13 +63,13 @@
 
 
     <div class='footer'>
-        {{ $t('footer') }}
+        {{ $t('poemai_powered_by_gpt') }}
     </div>
 </template>
 <script setup>
 
 
-import { ref, onMounted, onBeforeUnmount,  } from "vue";
+import { ref, onMounted, onBeforeUnmount, } from "vue";
 import { throttledApiRequest } from '@/api/index.js';
 import ClipboardJS from 'clipboard';
 import { ElMessage } from 'element-plus'
@@ -86,7 +87,6 @@ const router = useRouter()
 const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
-const placeholderText = ref('Merry Christmas')
 const defaultActive = ref()
 const dropMenuList = [
     { event: 'en', text: 'English' },
@@ -129,8 +129,17 @@ const handleClick = async () => {
         if (haveResp.value) {
             respLoading.value = true;
         }
+        if (!navigator.onLine) {
+            ElMessage({
+                showClose: true,
+                message: t('poemai_network_err_toast'),
+                center: true,
+                type: 'error',
+                duration: 2000
+            })
+        }
         // http://poemgenerator-ai.com
-        throttledApiRequest('/api', 'post', { "content": inputStr.value || placeholderText.value }).then(res => {
+        throttledApiRequest('http://poemgenerator-ai.com/api', 'post', { "content": inputStr.value || t('poemai_input_tips') }).then(res => {
             let reg = /(Stanza \d)*/;
             respContent.value = res.data.replaceAll('(A)', '')
                 .replaceAll('(B)', '')
@@ -143,15 +152,35 @@ const handleClick = async () => {
             thinking.value = false;
             haveResp.value = true;
             respLoading.value = false;
-        }).catch(err => {
-            console.log(err)
-            ElMessage({
-                showClose: true,
-                message: t('networkErr'),
-                center: true,
-                type: 'error',
-                duration: 2000
-            })
+        }).catch(error => {
+            if (error instanceof SyntaxError) {
+                console.error('语法错误:', error);
+                ElMessage({
+                    showClose: true,
+                    message: t('poemai_generated_failed_toast'),
+                    center: true,
+                    type: 'error',
+                    duration: 2000
+                })
+            } else if (error.response && error.response.status >= 500) {
+                ElMessage({
+                    showClose: true,
+                    message: t('poemai_server_err_toast'),
+                    center: true,
+                    type: 'error',
+                    duration: 2000
+                })
+            } else {
+                console.error('其他错误:', error);
+                ElMessage({
+                    showClose: true,
+                    message: t('poemai_generated_failed_toast'),
+                    center: true,
+                    type: 'error',
+                    duration: 2000
+                })
+            }
+
             thinking.value = false;
         })
     }
@@ -172,7 +201,7 @@ const handleCopy = () => {
     clipboard.on('success', () => {
         ElMessage({
             showClose: true,
-            message: t('cpoySuccess'),
+            message: t('poemai_copy_success_toast'),
             center: true,
             type: 'success'
         })
@@ -181,7 +210,7 @@ const handleCopy = () => {
     clipboard.on('error', () => {
         ElMessage({
             showClose: true,
-            message: t('cpoyFiled'),
+            message: 'error',
             center: true,
             type: 'success'
         })

@@ -46,11 +46,11 @@ const handleSelect = (e) => {
             <img src="/public/logo.png" alt="" class="logo">
             <h1 class="logoTxt"><span class="pp">AI</span> Poem Generator</h1>
         </div>
-        <!-- <div class="tools">
-          <div class="privacy">
+        <div class="tools">
+          <!-- <div class="privacy">
             <img src="@/assets/icon/privacy_icon.png" alt="">
             <span>Privacy</span>
-          </div>
+          </div> -->
             <div class="language">
                 <el-dropdown trigger="click" :hide-on-click="true">
                     <span class="el-dropdown-link">
@@ -67,7 +67,7 @@ const handleSelect = (e) => {
 
                 </el-dropdown>
             </div>
-        </div> -->
+        </div>
     </div>
 
   <router-view></router-view>
