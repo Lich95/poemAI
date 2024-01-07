@@ -1,12 +1,22 @@
 // router/index.js (或 router/index.ts，如果你使用 TypeScript)
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/homePage/index.vue';
+import privacy from '@/views/privacy/index.vue';
 
 const routes = [
+  {
+      path: '/:language?/',
+      name: 'Home',
+      component: Home,
+      props: (route:any) => ({
+        language: route.params.language || 'en',
+      }),
+     
+    },
     {
-        path: '/:language?/',
-        name: 'Home',
-        component: Home,
+        path: '/:language?/privacy',
+        name: 'privacy',
+        component: privacy,
         props: (route:any) => ({
           language: route.params.language || 'en',
         }),

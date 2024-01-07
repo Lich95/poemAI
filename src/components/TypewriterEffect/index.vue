@@ -49,7 +49,7 @@
     overflow: hidden;
     white-space: nowrap;
     font-size: 1.5em;
-    font-family: 'Courier New', monospace;
+    /* font-family: 'Courier New', monospace; */
     position: relative;
   }
   

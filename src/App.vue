@@ -1,5 +1,5 @@
 <script setup>
-    import headerStyle from '@/views/homePage/header/index.vue'
+    import headerStyle from '@/views/header/index.vue'
 </script>
 
 <template>

@@ -7,7 +7,6 @@
                 </div>
                 <div class="" @click="toggleMenu(false)" v-else>
                     <img src="@/assets/icon/mobileClose.png" alt="">
-
                 </div>
             </div>
 
@@ -22,16 +21,18 @@
                     </el-sub-menu>
                 </el-menu>
             </div>
-            <div class="logoDiv">
+
+
+            <div class="logoDiv" @click="logoClick">
                 <img src="/public/logo.png" alt="" class="logo">
                 <!-- <h1 class="logoTxt"><span class="pp">AI</span> Poem Generator</h1> -->
                 <h1 class="logoTxt">{{ $t('poemai_title') }}</h1>
             </div>
             <div class="tools">
-                <!-- <div class="privacy">
-            <img src="@/assets/icon/privacy_icon.png" alt="">
-            <span>Privacy</span>
-          </div> -->
+                <div class="privacy" @click="goPrivacy">
+                    <img src="@/assets/icon/privacy_icon.png" alt="">
+                    <span>Privacy</span>
+                </div>
                 <div class="language">
                     <el-dropdown trigger="click" @command="handleCommand">
                         <span class="el-dropdown-link">
@@ -86,7 +87,15 @@ const languageList = dropMenuList.map(x => {
     x.label = x.event
     return x
 })
+const goPrivacy = ()=>{
+    
+    router.push({ name: 'privacy', params: { language: i18n.global.locale } });
+}
 
+const logoClick = ()=>{
+    
+    router.push({ name: 'Home', params: { language: i18n.global.locale!='en'?i18n.global.locale:'' } });
+}
 const handleCommand = (command) => {
 
     localStorage.setItem('languageSave', command)
@@ -155,13 +164,13 @@ const toggleMenu = (bol) => {
 }
 
 onMounted(() => {
-    let saveLanguage = localStorage.getItem('languageSave')
-    if (saveLanguage) {
-        handleCommand(languages.includes(saveLanguage) ? saveLanguage : 'en')
-    } else {
-        const language = navigator.language.split('-')[0];
-        handleCommand(languages.includes(language) ? language : 'en')
-    }
+    // let saveLanguage = localStorage.getItem('languageSave')
+    // if (saveLanguage) {
+    //     handleCommand(languages.includes(saveLanguage) ? saveLanguage : 'en')
+    // } else {
+    //     const language = navigator.language.split('-')[0];
+    //     handleCommand(languages.includes(language) ? language : 'en')
+    // }
 
 })
 
@@ -170,15 +179,13 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-* {
-    font-family: Arial, sans-serif;
-}
 
 .header {
+    position: fixed;
     height: 64px;
     display: flex;
     justify-content: space-between;
-
+    z-index: 998;
     align-items: center;
     background-color: #fff;
     width: 100%;
@@ -188,6 +195,7 @@ onMounted(() => {
     .logoDiv {
         display: flex;
         align-items: center;
+        cursor: pointer;
     }
 
     .tools {
@@ -204,7 +212,8 @@ onMounted(() => {
         .privacy {
             display: flex;
             align-items: center;
-
+            margin-right: 20px;
+            cursor: pointer;
         }
     }
 

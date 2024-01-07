@@ -1,25 +1,24 @@
 <template>
-    <div style="padding:1em;">
-        <!-- <TypewriterEffect class="title" :textContent="$t('title')" :speed="200" /> -->
+    <div style="padding:1em;padding-top: 64px;">
+        <div style="text-align: center;">
+            <h2 class="h2Title">Generate</h2>
+            <!-- {{ $t('poemai_input_title') }} -->
+            <TypewriterEffect class="title" :textContent="$t('poemai_input_title')" :speed="140" />
+
+            <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck"
+                @changeCheck="changeStyle('style', $event)"></radioGroup>
+        </div>
         <div class="inputBox">
-            <p class="title">{{ $t('poemai_input_title') }}</p>
-            <p class="desc">{{ $t('poemai_input_subtitle') }}</p>
 
-
-            <!-- <p class="secTitle">Poetry Style</p>
-        <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck" @changeCheck="changeStyle('style', $event)"></radioGroup>
--->
-            <!-- <p class="secTitle">What the poem is about</p> -->
+            <p class="secTitle">What the poem is about </p>
             <div>
-                <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5"
-                    resize="none" />
+                <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5" />
+                <!-- resize="none"  -->
             </div>
 
-            <!-- <p class="secTitle">Poetry Size</p>
-        <radioGroup :radioList="sizeList" :checkRadio="checkObj.sizeCheck" @changeCheck="changeStyle('size', $event)"></radioGroup>
-        <p class="secTitle">Poetry Language</p>
-        <radioGroup :radioList="languageList" :checkRadio="checkObj.languageCheck" @changeCheck="changeStyle('language', $event)">
-        </radioGroup> -->
+            <el-select v-model="params.size" :placeholder="`page size${params.size}`"></el-select>
+            <el-select v-model="params.language"></el-select>
+
 
             <div style="text-align:center">
                 <el-button class="handleBtn" @click="handleClick">
@@ -88,6 +87,10 @@ const router = useRouter()
 const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
+const params = ref({
+    size:'large',
+    language:""
+})
 const dropMenuList = [
     { event: 'en', text: 'English' },
     { event: 'fr', text: 'Français' },
@@ -98,15 +101,16 @@ const dropMenuList = [
     { event: 'pt', text: 'Português' },
 ],
     selectedKeys = [];
-const languages = ['en', 'fr', 'ru','it', 'de','es', 'pt']
+const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
 
-const styleList = [{ text: 'Free Verse', label: "poemai_freeverse" },
-{ text: 'Haiku', label: "poemai_haiku" },
-{ text: 'Acrostic', label: "poemai_acrostic" },
-{ text: 'Sonnet', label: "poemai_sonnet" },
-{ text: 'Limerick', label: "poemai_limerick" },
-{ text: 'Love Poem', label: "poemai_lovepoem" },
+const styleList = [{ text: 'Free Verse', label: "poemai_freeverse", img: '/src/assets/icon/free_verse.png' },
+{ text: 'Haiku', label: "poemai_haiku", img: '/src/assets/icon/haiku.png' },
+{ text: 'Acrostic', label: "poemai_acrostic", img: '/src/assets/icon/acrostic.png' },
+{ text: 'Sonnet', label: "poemai_sonnet", img: '/src/assets/icon/sonnet.png' },
+{ text: 'Limerick', label: "poemai_limerick", img: '/src/assets/icon/limerick.png' },
+{ text: 'Love Poem', label: "poemai_lovepoem", img: '/src/assets/icon/love_poem.png' },
 ];
+
 const sizeList = [{ text: 'Short', label: "short" },
 { text: 'Medium', label: "medium" },
 { text: 'Large', label: "large" },
@@ -138,17 +142,17 @@ const handleClick = async () => {
                 duration: 2000
             })
         }
-        let language='';
-        if( route.params.language=='it'){
-            language='ita'
-        }else if( route.params.language=='pt'){
-            language='por'
-        }else{
-            language = route.params.language || 'en' 
+        let language = '';
+        if (route.params.language == 'it') {
+            language = 'ita'
+        } else if (route.params.language == 'pt') {
+            language = 'por'
+        } else {
+            language = route.params.language || 'en'
         }
         // http://poemgenerator-ai.com
-        throttledApiRequest('/api/v1', 'post', { "theme": 'freeverse', "content": inputStr.value || t('poemai_input_tips'),language}).then(res => {
-            res=res.data
+        throttledApiRequest('/api/v1', 'post', { "theme": 'freeverse', "content": inputStr.value || t('poemai_input_tips'), language }).then(res => {
+            res = res.data
             if (res.retCode == 'C0000') {
                 respContent.value = res.data.replaceAll('(A)', '')
                     .replaceAll('(B)', '')
@@ -161,7 +165,7 @@ const handleClick = async () => {
 
                 haveResp.value = true;
                 respLoading.value = false;
-                
+
             } else if (res.retCode == 'C001') {
                 ElMessage({
                     showClose: true,
@@ -261,10 +265,6 @@ onBeforeUnmount(() => {
 
 </script>
 <style scoped lang="scss">
-* {
-    font-family: Arial, sans-serif;
-}
-
 .header {
     height: 64px;
     display: flex;
@@ -289,8 +289,8 @@ onBeforeUnmount(() => {
 
 .title {
     text-align: center;
-    margin-top: 20px;
-    ;
+    // margin-top: 20px;
+    margin:0 0 20px
 }
 
 .logoTxt {
@@ -313,7 +313,7 @@ onBeforeUnmount(() => {
 
 
 .inputBox {
-    max-width: 634px;
+    max-width: 760px;
     background-color: #fff;
     border-radius: 24px;
     padding: 1em;
@@ -328,7 +328,7 @@ onBeforeUnmount(() => {
     }
 
     ::v-deep .el-textarea__inner {
-        background-color: #F6F7F5;
+        background-color: #fff;
         color: #1D2331;
         font-size: 18px;
         padding: 10px 13px;
@@ -336,6 +336,7 @@ onBeforeUnmount(() => {
         &:focus {
             box-shadow: 0 0 0 1px #1D2331;
         }
+        margin: 10px 0;
     }
 
     .handleBtn {
@@ -369,6 +370,10 @@ onBeforeUnmount(() => {
         margin-bottom: 20px;
         text-align: center;
     }
+}
+.h2Title{
+    font-size:44px;color:#1D2331;margin:0;
+    font-family: 'other-bold-font-family';
 }
 
 .respBox {
@@ -472,16 +477,31 @@ onBeforeUnmount(() => {
         font-size: 24px;
         ;
     }
-.respBox .content{
-    font-size: 14px;
-    line-height: 20px;
-}
-    
+
+    .respBox .content {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
 }
 
 
 
 .secTitle {
     text-align: left;
-    ;
-}</style>   
+    font-size: 18px;
+    font-family: 'other-bold-font-family';
+    margin: 0 0 5px !important;
+    position: relative;
+    padding-left: 18px;
+    &::before{
+        content: "";
+        height: 100%;
+        width: 12px; /* 定义竖条的宽度 */
+      background-color: #7730D0; /* 定义竖条的颜色 */
+      position: absolute;
+      left:0;top:0;
+      border-radius: 4px;
+    }
+}
+</style>   
