@@ -1,5 +1,5 @@
 // router/index.js (或 router/index.ts，如果你使用 TypeScript)
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/homePage/index.vue';
 
 const routes = [
@@ -17,7 +17,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 

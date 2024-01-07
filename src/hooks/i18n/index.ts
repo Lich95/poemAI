@@ -3,6 +3,8 @@ import { createI18n } from 'vue-i18n';
 
 const messages = {
   en: {
+    header_title:'AI Poem Generator - Create a rhyming poem with free AI poem generator',
+    Description:"A free AI poem generator that anyone can create a rhyming poem in seconds. Explore our AI Poem Generator: Create custom, rhyming poems on any poem theme.",
     "poemai_title": "AI Poem Generator",
     "poemai_input_title": "AI Poem Generator",
     "poemai_input_subtitle": "Generate a poem about...",
@@ -19,6 +21,8 @@ const messages = {
     "poemai_privacy": "Privacy Policy"
   },
   fr: {
+    header_title:"Générateur de poèmes - Créez un poème rimé avec l'IA gratuite",
+    Description:"Un générateur de poèmes IA gratuit permettant de créer rapidement des poèmes rimés. Explorez notre générateur pour des poèmes personnalisés sur tout thème.",
     "poemai_title": "Générateur de poème",
     "poemai_input_title": "Générateur de poème",
     "poemai_input_subtitle": "Générer un poème sur...",
@@ -35,6 +39,8 @@ const messages = {
     "poemai_privacy": "Politique de confidentialité"
   },
   ru: {
+    header_title:"Генератор стихов - создайте рифму с бесплатным AI",
+    Description:"Бесплатный генератор стихов на ИИ: создание рифмованных стихов в секунды. Откройте наш генератор и напишите красивое стихотворение.",
     "poemai_title": "Генератор Стихов",
     "poemai_input_title": "Генератор Стихов",
     "poemai_input_subtitle": "Сгенерировать стих о...",
@@ -51,6 +57,8 @@ const messages = {
     "poemai_privacy": "Политика конфиденциальности"
   },
   de: {
+    header_title:"Gedichten Generator - Kostenloses KI-Magie-Tool für Reimgedichte",
+    Description:"Kostenloser AI-Gedichten Generator: Erstellen Sie Reimgedichte in Sekundenschnelle. Entdecken Sie unseren Generator und erstellen Sie Reimgedichte zu jedem Thema.",
     "poemai_title": "Gedichten Generator",
     "poemai_input_title": "Gedichten Generator",
     "poemai_input_subtitle": "Generiere ein Gedicht über...",
@@ -67,6 +75,8 @@ const messages = {
     "poemai_privacy": "Datenschutzrichtlinie"
   },
   it: {
+    header_title:"Generatore di poesie - Crea poesie in rima con l'AI gratuito",
+    Description:"Un generatore gratuito di poesie AI per creare poesie in rima in pochi secondi. Esplora il nostro Generatore di Poesie AI: crea poesie personalizzate su qualsiasi tema.",
     "poemai_title": "Generatore di poesie",
     "poemai_input_title": "Generatore di poesie",
     "poemai_input_subtitle": "Genera una poesia su...",
@@ -83,6 +93,8 @@ const messages = {
     "poemai_privacy": "Politica sulla privacy"
   },
   pt: {
+    header_title:"Gerador de Poemas - Crie um poema rimado com a mágica AI gratuita",
+    Description:"Gerador de poemas AI gratuito: crie poemas rimados em segundos. Explore nosso Gerador de Poemas AI: Crie poemas rimados e personalizados sobre qualquer assunto.",
     "poemai_title": "Gerador de Poemas",
     "poemai_input_title": "Gerador de Poemas",
     "poemai_input_subtitle": "Gerar um poema sobre...",
@@ -99,6 +111,8 @@ const messages = {
     "poemai_privacy": "Política de privacidade",
   },
   es: {
+    header_title:"Generador de poemas - crea poemas que riman con AI Magic gratis",
+    Description:"Generador de poemas AI gratuito: crea poemas rimados en segundos. Explora nuestro Generador de Poemas AI: Crea poemas rimados y personalizados sobre cualquier tema.",
     "poemai_title": "Generador de Poemas",
     "poemai_input_title": "Generador de Poemas",
     "poemai_input_subtitle": "Generar un poema sobre...",
@@ -119,6 +133,7 @@ const messages = {
 
 const i18n = createI18n({
   locale: 'en', // 默认语言
+  fallbackLocale: 'en',
   messages,
 });
 

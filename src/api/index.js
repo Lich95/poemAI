@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  timeout: 15000, // 设置请求超时时间
+  timeout: 20000, // 设置请求超时时间
 });
 
 // 模拟节流函数

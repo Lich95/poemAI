@@ -70,7 +70,7 @@ button:focus-visible {
 #app {
   width:100%;
   background-color: rgb(243, 244, 241);
-  padding:1em;
+  /* padding:1em; */
 }
 
 @media (prefers-color-scheme: light) {

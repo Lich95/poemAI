@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://poemgenerator-ai.com/sitemap.xml

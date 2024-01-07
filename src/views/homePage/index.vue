@@ -1,75 +1,76 @@
 <template>
-    <!-- <TypewriterEffect class="title" :textContent="$t('title')" :speed="200" /> -->
-    <div class="inputBox">
+    <div style="padding:1em;">
+        <!-- <TypewriterEffect class="title" :textContent="$t('title')" :speed="200" /> -->
+        <div class="inputBox">
+            <p class="title">{{ $t('poemai_input_title') }}</p>
+            <p class="desc">{{ $t('poemai_input_subtitle') }}</p>
 
 
-        <p class="title">{{ $t('poemai_input_title') }}</p>
-        <p class="desc">{{ $t('poemai_input_subtitle') }}</p>
-
-
-        <!-- <p class="secTitle">Poetry Style</p>
+            <!-- <p class="secTitle">Poetry Style</p>
         <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck" @changeCheck="changeStyle('style', $event)"></radioGroup>
 -->
-        <!-- <p class="secTitle">What the poem is about</p> -->
-        <div>
-            <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5" resize="none" />
-        </div>
+            <!-- <p class="secTitle">What the poem is about</p> -->
+            <div>
+                <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5"
+                    resize="none" />
+            </div>
 
-        <!-- <p class="secTitle">Poetry Size</p>
+            <!-- <p class="secTitle">Poetry Size</p>
         <radioGroup :radioList="sizeList" :checkRadio="checkObj.sizeCheck" @changeCheck="changeStyle('size', $event)"></radioGroup>
         <p class="secTitle">Poetry Language</p>
         <radioGroup :radioList="languageList" :checkRadio="checkObj.languageCheck" @changeCheck="changeStyle('language', $event)">
         </radioGroup> -->
 
-        <div style="text-align:center">
-            <el-button class="handleBtn" @click="handleClick">
-                <span v-if="!thinking" class="btnTxt">
-                    {{ $t('poemai_generate_btn') }}
-                    <el-icon>
-                        <Right />
-                    </el-icon>
-                </span>
-                <span v-else class="btnTxt">
-                    {{ $t('poemai_thinking_status') }}
-                    <el-icon class="is-loading">
-                        <Loading />
-                    </el-icon>
-                </span>
+            <div style="text-align:center">
+                <el-button class="handleBtn" @click="handleClick">
+                    <span v-if="!thinking" class="btnTxt">
+                        {{ $t('poemai_generate_btn') }}
+                        <el-icon>
+                            <Right />
+                        </el-icon>
+                    </span>
+                    <span v-else class="btnTxt">
+                        {{ $t('poemai_thinking_status') }}
+                        <el-icon class="is-loading">
+                            <Loading />
+                        </el-icon>
+                    </span>
 
-            </el-button>
+                </el-button>
+            </div>
         </div>
-    </div>
-    <div class="respBox" v-show="haveResp">
-        <div class="title">
-            {{ $t('poemai_generated_poem') }}
+        <div class="respBox" v-show="haveResp">
+            <div class="title">
+                {{ $t('poemai_generated_poem') }}
+            </div>
+            <div class="content" v-loading="respLoading">
+                {{ respContent }}
+            </div>
+            <div class="copyBtn">
+                <el-button size="small" class="copyButton" @click="handleCopy" data-clipboard-target=".content">{{
+                    $t('poemai_copy_btn')
+                }}<el-icon>
+                        <CopyDocument />
+                    </el-icon></el-button>
+            </div>
         </div>
-        <div class="content" v-loading="respLoading">
-            {{ respContent }}
-        </div>
-        <div class="copyBtn">
-            <el-button size="small" class="copyButton" @click="handleCopy" data-clipboard-target=".content">{{
-                $t('poemai_copy_btn')
-            }}<el-icon>
-                    <CopyDocument />
-                </el-icon></el-button>
-        </div>
-    </div>
 
-    <button @click="scrollToTop" class="toTopBtn" v-show="topBtnShow">
-        <el-icon>
-            <ArrowUpBold />
-        </el-icon>
-    </button>
+        <button @click="scrollToTop" class="toTopBtn" v-show="topBtnShow">
+            <el-icon>
+                <ArrowUpBold />
+            </el-icon>
+        </button>
 
 
-    <div class='footer'>
-        {{ $t('poemai_powered_by_gpt') }}
+        <div class='footer'>
+            {{ $t('poemai_powered_by_gpt') }}
+        </div>
     </div>
 </template>
 <script setup>
 
 
-import { ref, onMounted, onBeforeUnmount, } from "vue";
+import { ref, onMounted, onBeforeUnmount, watch } from "vue";
 import { throttledApiRequest } from '@/api/index.js';
 import ClipboardJS from 'clipboard';
 import { ElMessage } from 'element-plus'
@@ -87,7 +88,6 @@ const router = useRouter()
 const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
-const defaultActive = ref()
 const dropMenuList = [
     { event: 'en', text: 'English' },
     { event: 'fr', text: 'Français' },
@@ -98,7 +98,7 @@ const dropMenuList = [
     { event: 'pt', text: 'Português' },
 ],
     selectedKeys = [];
-
+const languages = ['en', 'fr', 'ru','it', 'de','es', 'pt']
 
 const styleList = [{ text: 'Free Verse', label: "poemai_freeverse" },
 { text: 'Haiku', label: "poemai_haiku" },
@@ -138,31 +138,31 @@ const handleClick = async () => {
                 duration: 2000
             })
         }
+        let language='';
+        if( route.params.language=='it'){
+            language='ita'
+        }else if( route.params.language=='pt'){
+            language='por'
+        }else{
+            language = route.params.language || 'en' 
+        }
         // http://poemgenerator-ai.com
-        throttledApiRequest('http://poemgenerator-ai.com/api', 'post', { "content": inputStr.value || t('poemai_input_tips') }).then(res => {
-            let reg = /(Stanza \d)*/;
-            respContent.value = res.data.replaceAll('(A)', '')
-                .replaceAll('(B)', '')
-                .replaceAll('(a)', '')
-                .replaceAll('(b)', '')
-                .replaceAll('Blank Line', '')
-                .replace(/Stanza\s+\d+\s*-?[^]*?(\n|$)/g, '')
-                .replace(/- Line \d+-[a-z]:/g, "")
-                .replaceAll("- ", '')
-            thinking.value = false;
-            haveResp.value = true;
-            respLoading.value = false;
-        }).catch(error => {
-            if (error instanceof SyntaxError) {
-                console.error('语法错误:', error);
-                ElMessage({
-                    showClose: true,
-                    message: t('poemai_generated_failed_toast'),
-                    center: true,
-                    type: 'error',
-                    duration: 2000
-                })
-            } else if (error.response && error.response.status >= 500) {
+        throttledApiRequest('/api/v1', 'post', { "theme": 'freeverse', "content": inputStr.value || t('poemai_input_tips'),language}).then(res => {
+            res=res.data
+            if (res.retCode == 'C0000') {
+                respContent.value = res.data.replaceAll('(A)', '')
+                    .replaceAll('(B)', '')
+                    .replaceAll('(a)', '')
+                    .replaceAll('(b)', '')
+                    .replaceAll('Blank Line', '')
+                    .replace(/Stanza\s+\d+\s*-?[^]*?(\n|$)/g, '')
+                    .replace(/- Line \d+-[a-z]:/g, "")
+                    .replaceAll("- ", '')
+
+                haveResp.value = true;
+                respLoading.value = false;
+                
+            } else if (res.retCode == 'C001') {
                 ElMessage({
                     showClose: true,
                     message: t('poemai_server_err_toast'),
@@ -170,8 +170,8 @@ const handleClick = async () => {
                     type: 'error',
                     duration: 2000
                 })
-            } else {
-                console.error('其他错误:', error);
+            } else if (res.retCode == 'C002' || res.retCode == 'C004') {
+                console.error('其他错误:参数缺失|解析失败');
                 ElMessage({
                     showClose: true,
                     message: t('poemai_generated_failed_toast'),
@@ -180,6 +180,17 @@ const handleClick = async () => {
                     duration: 2000
                 })
             }
+            thinking.value = false;
+
+        }).catch(error => {
+            console.error('其他错误:', error);
+            ElMessage({
+                showClose: true,
+                message: t('poemai_generated_failed_toast'),
+                center: true,
+                type: 'error',
+                duration: 2000
+            })
 
             thinking.value = false;
         })
@@ -188,7 +199,6 @@ const handleClick = async () => {
 }
 
 const _thislanguage = () => {
-
     let language = route.params.language || 'en';
     return dropMenuList.find(x => x.event == language).text
 }
@@ -218,14 +228,6 @@ const handleCopy = () => {
     })
 
 }
-const handleSelect = (e) => {
-    if (e == 'en') {
-        e = ''
-    }
-    router.push({ name: 'Home', params: { language: e } });
-
-    i18n.global.locale = e
-}
 
 const scrollToTop = () => {
     window.scrollTo({
@@ -246,11 +248,10 @@ const changeStyle = (type, newV) => {
 // 监听滚动事件
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
+    console.log(i18n.global.locale)
+    // const language = navigator.language.split('-')[0];
+    // i18n.global.locale =languages.includes(language)?language:'en'
 
-    const language = route.params.language || 'en';
-    defaultActive.value = language
-    i18n.global.locale = language
-    // console.log('Language:', language);
 });
 // 在组件销毁前移除滚动事件监听
 onBeforeUnmount(() => {
@@ -396,6 +397,7 @@ onBeforeUnmount(() => {
     }
 
     .content {
+        text-align: center;
         border-radius: 8px;
         background: #7730D01A;
         padding: 12px 20px;
@@ -460,6 +462,21 @@ onBeforeUnmount(() => {
     .handleBtn {
         width: 100% !important;
     }
+
+    .inputBox .desc {
+        font-size: 14px;
+        ;
+    }
+
+    .inputBox .title {
+        font-size: 24px;
+        ;
+    }
+.respBox .content{
+    font-size: 14px;
+    line-height: 20px;
+}
+    
 }
 
 
@@ -467,5 +484,4 @@ onBeforeUnmount(() => {
 .secTitle {
     text-align: left;
     ;
-}
-</style>   
+}</style>   
