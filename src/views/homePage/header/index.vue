@@ -155,13 +155,20 @@ const toggleMenu = (bol) => {
 }
 
 onMounted(() => {
-    let saveLanguage = localStorage.getItem('languageSave')
-    if (saveLanguage) {
-        handleCommand(languages.includes(saveLanguage) ? saveLanguage : 'en')
-    } else {
-        const language = navigator.language.split('-')[0];
-        handleCommand(languages.includes(language) ? language : 'en')
-    }
+    // let saveLanguage = localStorage.getItem('languageSave')
+    // if (saveLanguage) {
+    //     handleCommand(languages.includes(saveLanguage) ? saveLanguage : 'en')
+    // } else {
+    //     const language = navigator.language.split('-')[0];
+    //     handleCommand(languages.includes(language) ? language : 'en')
+    // }
+    setTimeout(() => {
+        i18n.global.locale = route.params.language
+        
+    const linkTag = document.querySelector('link[rel="canonical"]');
+    linkTag.setAttribute('href','https://poemgenerator-ai.com/'+route.params.language+(route.params.language==''?'':'/'))
+
+    }, 0)
 
 })
 
