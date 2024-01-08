@@ -1,16 +1,16 @@
 <template>
     <div style="padding:1em;padding-top: 64px;">
         <div style="text-align: center;">
-            <h2 class="h2Title">{{ $t('poemai_title_generate') }}</h2>
-            <!-- {{ $t('poemai_input_title') }} -->
-            <TypewriterEffect class="title" :textContent="$t('poemai_input_title')" :speed="140" :delay="5" />
+            <h2 class="h2Title">{{ $t('poemai_input_title') }}</h2>
+            <!-- {{ $t('poemai_title_generate') }} -->
+            <!-- <TypewriterEffect class="title" :textContent="$t('poemai_input_title')" :speed="140" :delay="5" /> -->
 
             <!-- <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck"
                 @changeCheck="changeStyle('style', $event)"></radioGroup> -->
         </div>
         <div class="inputBox">
 
-            <p class="secTitle">What the poem is about </p>
+            <p class="secTitle">{{ $t('poemai_fv_theme') }}</p>
             <div>
                 <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5" resize="none"/>
                 <!-- resize="none"  -->
@@ -290,7 +290,9 @@ onBeforeUnmount(() => {
 .title {
     text-align: center;
     // margin-top: 20px;
-    margin:0 0 20px
+    margin:0 0 20px;
+    
+    color:#1D2331;
 }
 
 .logoTxt {
@@ -372,12 +374,13 @@ onBeforeUnmount(() => {
     }
 }
 .h2Title{
+    padding-top: 20px;
     font-size:44px;color:#1D2331;margin:0;
     font-family: 'other-bold-font-family';
 }
 
 .respBox {
-    max-width: 634px;
+    max-width: 760px;
     background-color: #fff;
     border-radius: 24px;
     padding: 1em;
@@ -488,6 +491,8 @@ onBeforeUnmount(() => {
 
 
 .secTitle {
+    
+    color:#1D2331;
     text-align: left;
     font-size: 18px;
     font-family: 'other-bold-font-family';
@@ -504,4 +509,5 @@ onBeforeUnmount(() => {
       border-radius: 4px;
     }
 }
+
 </style>   

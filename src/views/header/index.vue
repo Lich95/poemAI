@@ -29,10 +29,10 @@
                 <h1 class="logoTxt">{{ $t('poemai_title') }}</h1>
             </div>
             <div class="tools">
-                <!-- <div class="privacy" @click="goPrivacy">
+                <div class="privacy" @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>Privacy</span>
-                </div> -->
+                </div>
                 <div class="language">
                     <el-dropdown trigger="click" @command="handleCommand">
                         <span class="el-dropdown-link">
@@ -87,14 +87,14 @@ const languageList = dropMenuList.map(x => {
     x.label = x.event
     return x
 })
-const goPrivacy = ()=>{
-    
+const goPrivacy = () => {
+
     router.push({ name: 'privacy', params: { language: i18n.global.locale } });
 }
 
-const logoClick = ()=>{
-    
-    router.push({ name: 'Home', params: { language: i18n.global.locale!='en'?i18n.global.locale:'' } });
+const logoClick = () => {
+
+    router.push({ name: 'Home', params: { language: i18n.global.locale != 'en' ? i18n.global.locale : '' } });
 }
 const handleCommand = (command) => {
 
@@ -111,9 +111,9 @@ const handleCommand = (command) => {
     const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
     document.title = pageTitle;
 
-    
+
     const linkTag = document.querySelector('link[rel="canonical"]');
-    linkTag.setAttribute('href','https://poemgenerator-ai.com/'+command+(command==''?'':'/'))
+    linkTag.setAttribute('href', 'https://poemgenerator-ai.com/' + command + (command == '' ? '' : '/'))
 
     const metaDescriptionTag = document.querySelector('meta[name="description"]');
     if (metaDescriptionTag) {
@@ -144,9 +144,9 @@ const handleSelect = (e) => {
     const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
     const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
     document.title = pageTitle;
-    
+
     const linkTag = document.querySelector('link[rel="canonical"]');
-    linkTag.setAttribute('href','https://poemgenerator-ai.com/'+e+ (e==''?'':'/'))
+    linkTag.setAttribute('href', 'https://poemgenerator-ai.com/' + e + (e == '' ? '' : '/'))
 
     const metaDescriptionTag = document.querySelector('meta[name="description"]');
     if (metaDescriptionTag) {
@@ -163,14 +163,10 @@ const toggleMenu = (bol) => {
     mobileNav.value = bol
 }
 
-onMounted(() => {
-    // let saveLanguage = localStorage.getItem('languageSave')
-    // if (saveLanguage) {
-    //     handleCommand(languages.includes(saveLanguage) ? saveLanguage : 'en')
-    // } else {
-    //     const language = navigator.language.split('-')[0];
-    //     handleCommand(languages.includes(language) ? language : 'en')
-    // }
+onMounted(async () => {
+    setTimeout(() => {
+        i18n.global.locale = route.params.language
+    }, 0)
 
 })
 
@@ -179,7 +175,6 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-
 .header {
     position: fixed;
     height: 64px;
@@ -310,4 +305,5 @@ onMounted(() => {
     box-shadow: 2px 0px 8px 0px #0000001A;
     z-index: 9;
 
-}</style>   
+}
+</style>   

@@ -1,5 +1,7 @@
 <template>
     <div  style="padding:1em;padding-top: 64px;">
+
+        <div v-html="$t('privacyContent')"></div>
         
         <button @click="scrollToTop" class="toTopBtn" v-show="topBtnShow">
             <el-icon>
