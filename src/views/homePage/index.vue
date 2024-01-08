@@ -5,21 +5,11 @@
             <p class="title">{{ $t('poemai_input_title') }}</p>
             <p class="desc">{{ $t('poemai_input_subtitle') }}</p>
 
-
-            <!-- <p class="secTitle">Poetry Style</p>
-        <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck" @changeCheck="changeStyle('style', $event)"></radioGroup>
--->
-            <!-- <p class="secTitle">What the poem is about</p> -->
+   
             <div>
                 <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5"
                     resize="none" />
             </div>
-
-            <!-- <p class="secTitle">Poetry Size</p>
-        <radioGroup :radioList="sizeList" :checkRadio="checkObj.sizeCheck" @changeCheck="changeStyle('size', $event)"></radioGroup>
-        <p class="secTitle">Poetry Language</p>
-        <radioGroup :radioList="languageList" :checkRadio="checkObj.languageCheck" @changeCheck="changeStyle('language', $event)">
-        </radioGroup> -->
 
             <div style="text-align:center">
                 <el-button class="handleBtn" @click="handleClick">
