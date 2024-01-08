@@ -14,21 +14,35 @@
       speed: {
         type: Number,
         default: 50
+      },
+      delay: {
+        type: Number,
+        default: 5
       }
     },
     data() {
       return {
-        currentIndex: 0
+        currentIndex: 0,
       };
     },
     methods: {
       typeWriter() {
+
         if (this.currentIndex < this.textContent.length) {
           this.$refs.typewriterText.innerHTML += this.textContent.charAt(this.currentIndex);
           this.currentIndex++;
           setTimeout(this.typeWriter, this.speed);
+        } else {
+          // 打字机效果结束后，设置定时器延迟重新显示
+          setTimeout(this.restartTypewriter, this.delay*1000);
         }
-      }
+      },
+      restartTypewriter() {
+      // 重置打字机效果
+      this.currentIndex = 0;
+      this.$refs.typewriterText.innerHTML = '';
+      this.typeWriter();
+    } 
     },
     watch: {
       textContent: function() {

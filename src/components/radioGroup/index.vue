@@ -85,6 +85,7 @@
 .radioBtnDiv img{
   width: 92px;
   height: 72px;
+  -webkit-user-drag:none
 }
 
 
@@ -92,6 +93,7 @@
 @media only screen and (max-width: 767px) {
    .radioBtnDiv img{
     display: none;
+
    }
 }
 

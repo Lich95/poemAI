@@ -29,10 +29,10 @@
                 <h1 class="logoTxt">{{ $t('poemai_title') }}</h1>
             </div>
             <div class="tools">
-                <div class="privacy" @click="goPrivacy">
+                <!-- <div class="privacy" @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>Privacy</span>
-                </div>
+                </div> -->
                 <div class="language">
                     <el-dropdown trigger="click" @command="handleCommand">
                         <span class="el-dropdown-link">

@@ -1,23 +1,23 @@
 <template>
     <div style="padding:1em;padding-top: 64px;">
         <div style="text-align: center;">
-            <h2 class="h2Title">Generate</h2>
+            <h2 class="h2Title">{{ $t('poemai_title_generate') }}</h2>
             <!-- {{ $t('poemai_input_title') }} -->
-            <TypewriterEffect class="title" :textContent="$t('poemai_input_title')" :speed="140" />
+            <TypewriterEffect class="title" :textContent="$t('poemai_input_title')" :speed="140" :delay="5" />
 
-            <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck"
-                @changeCheck="changeStyle('style', $event)"></radioGroup>
+            <!-- <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck"
+                @changeCheck="changeStyle('style', $event)"></radioGroup> -->
         </div>
         <div class="inputBox">
 
             <p class="secTitle">What the poem is about </p>
             <div>
-                <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5" />
+                <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5" resize="none"/>
                 <!-- resize="none"  -->
             </div>
 
-            <el-select v-model="params.size" :placeholder="`page size${params.size}`"></el-select>
-            <el-select v-model="params.language"></el-select>
+            <!-- <el-select v-model="params.size" :placeholder="`page size${params.size}`"></el-select>
+            <el-select v-model="params.language"></el-select> -->
 
 
             <div style="text-align:center">
