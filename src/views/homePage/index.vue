@@ -238,7 +238,7 @@ const changeStyle = (type, newV) => {
 // 监听滚动事件
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
-    console.log(i18n.global.locale)
+    
     // const language = navigator.language.split('-')[0];
     // i18n.global.locale =languages.includes(language)?language:'en'
 

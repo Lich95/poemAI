@@ -102,7 +102,7 @@ const handleCommand = (command) => {
     const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
     document.title = pageTitle;
 
-    
+     
     const linkTag = document.querySelector('link[rel="canonical"]');
     linkTag.setAttribute('href','https://poemgenerator-ai.com/'+command+(command==''?'':'/'))
 
@@ -130,15 +130,16 @@ const handleSelect = (e) => {
     router.push({ name: 'Home', params: { language: e } });
 
     i18n.global.locale = e;
+ 
+    const linkTag = document.querySelector('link[rel="canonical"]');
+    linkTag.setAttribute('href','https://poemgenerator-ai.com/'+e+(e==''?'':'/'))
+
 
     // 更新文档标题和meta标签
     const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
     const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
     document.title = pageTitle;
     
-    const linkTag = document.querySelector('link[rel="canonical"]');
-    linkTag.setAttribute('href','https://poemgenerator-ai.com/'+e+ (e==''?'':'/'))
-
     const metaDescriptionTag = document.querySelector('meta[name="description"]');
     if (metaDescriptionTag) {
         metaDescriptionTag.setAttribute('content', metaDescription);
@@ -164,11 +165,18 @@ onMounted(() => {
     // }
     setTimeout(() => {
         i18n.global.locale = route.params.language
-        
-    const linkTag = document.querySelector('link[rel="canonical"]');
-    linkTag.setAttribute('href','https://poemgenerator-ai.com/'+route.params.language+(route.params.language==''?'':'/'))
-
     }, 0)
+
+        // 获取当前页面的规范URL
+    var canonicalURL = window.location.href
+
+    // 动态生成canonical标签
+    var canonicalTag = document.createElement('link');
+    canonicalTag.rel = 'canonical';
+    canonicalTag.href = canonicalURL;
+
+    // 将生成的canonical标签添加到head中
+    document.head.appendChild(canonicalTag);
 
 })
 
