@@ -16,8 +16,12 @@
                 <!-- resize="none"  -->
             </div>
 
-            <el-select v-model="params.size"></el-select>
-            <el-select v-model="params.language"></el-select>
+            <el-select v-model="params.size" placeholder="Poem Size">
+                <el-option v-for="item in sizes"></el-option>
+            </el-select>
+            <el-select v-model="params.language" placeholder="Poem Language">
+                <el-option v-for="item in dropMenuList" :key="item.event" :value="item.event" :label="item.text"></el-option>
+            </el-select>
 
 
             <div style="text-align:center">
@@ -88,9 +92,13 @@ const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
 const params = ref({
-    size:'large',
+    size:'',
     language:""
 })
+const size = ref([
+    {val:'short',label:'Short'},
+])
+
 const dropMenuList = [
     { event: 'en', text: 'English' },
     { event: 'fr', text: 'Français' },

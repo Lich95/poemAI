@@ -168,6 +168,17 @@ onMounted(async () => {
         i18n.global.locale = route.params.language
     }, 0)
 
+
+    // // 获取当前页面的规范URL
+    // var canonicalURL = window.location.href
+
+    // // 动态生成canonical标签
+    // var canonicalTag = document.createElement('link');
+    // canonicalTag.rel = 'canonical';
+    // canonicalTag.href = canonicalURL;
+
+    // // 将生成的canonical标签添加到head中
+    // document.head.appendChild(canonicalTag);
 })
 
 
