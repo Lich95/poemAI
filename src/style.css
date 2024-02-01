@@ -73,6 +73,7 @@ button:focus-visible {
 
 #app {
   width:100%;
+  color:#333;
   background-color: #f6f6f6;
   /* padding:1em; */
   font-family:'other-font-family', Avenir,Helvetica,Arial,sans-serif;

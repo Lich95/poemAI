@@ -9,18 +9,68 @@
                 @changeCheck="changeStyle('style', $event)"></radioGroup>
         </div>
         <div class="inputBox">
-
-            <p class="secTitle">{{ $t('poemai_fv_theme') }}</p>
+            <div v-show="checkObj.styleCheck=='acrostic'">
+            <p class="secTitle">{{ $t('poemai_acrostic_keyword') }}</p>
             <div>
-                <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5" resize="none"/>
+                <el-input v-model="inputStrA" type="textarea" :placeholder="$t('poemai_acrostic_kw_input_tips')" rows="1" resize="none"/>
                 <!-- resize="none"  -->
             </div>
+        </div>
 
-            <el-select v-model="params.size" placeholder="Poem Size">
-                <el-option v-for="item in sizes"></el-option>
+        <div v-if="checkObj.styleCheck=='freeverse'">
+            <p class="secTitle">{{ $t('poemai_fv_theme') }}</p>
+            <div>
+                <el-input v-model="inputStr1" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5" resize="none"/>
+                <!-- resize="none"  -->
+            </div>
+        </div>
+        <div v-else-if="checkObj.styleCheck=='haiku'">
+            <p class="secTitle">{{ $t('poemai_haiku_theme') }}</p>
+            <div>
+                <el-input v-model="inputStr2" type="textarea" :placeholder="$t('poemai_haiku_input_tips')" rows="5" resize="none"/>
+                <!-- resize="none"  -->
+            </div>
+        </div>
+        <div v-else-if="checkObj.styleCheck=='acrostic'">
+            <p class="secTitle">{{ $t('poemai_acrostic_theme') }}</p>
+            <div>
+                <el-input v-model="inputStr3" type="textarea" :placeholder="$t('poemai_acrostic_input_tips')" rows="5" resize="none"/>
+                <!-- resize="none"  -->
+            </div>
+        </div>
+        <div v-else-if="checkObj.styleCheck=='sonnet'">
+            <p class="secTitle">{{ $t('poemai_sonnet_theme') }}</p>
+            <div>
+                <el-input v-model="inputStr4" type="textarea" :placeholder="$t('poemai_sonnet_input_tips')" rows="5" resize="none"/>
+                <!-- resize="none"  -->
+            </div>
+        </div>
+        <div v-else-if="checkObj.styleCheck=='limerick'">
+            <p class="secTitle">{{ $t('poemai_limerick_theme') }}</p>
+            <div>
+                <el-input v-model="inputStr5" type="textarea" :placeholder="$t('poemai_limerick_input_tips')" rows="5" resize="none"/>
+                <!-- resize="none"  -->
+            </div>
+        </div>
+        <div v-else-if="checkObj.styleCheck=='lovepoem'">
+            <p class="secTitle">{{ $t('poemai_love_theme') }}</p>
+            <div>
+                <el-input v-model="inputStr6" type="textarea" :placeholder="$t('poemai_love_input_tips')" rows="5" resize="none"/>
+                <!-- resize="none"  -->
+            </div>
+        </div>
+
+
+
+
+
+
+            <el-select v-model="checkObj.sizeCheck" placeholder="Poem Size" class="sizeSelect" v-show="checkObj.styleCheck=='freeverse'||checkObj.styleCheck=='lovepoem'">
+                <el-option v-for="item in sizes" :key="item.val" :label="item.label" :value="item.val"></el-option>
             </el-select>
-            <el-select v-model="params.language" placeholder="Poem Language">
+            <el-select v-model="checkObj.languageCheck" placeholder="Poem Language" v-show="checkObj.styleCheck!='acrostic'">
                 <el-option v-for="item in dropMenuList" :key="item.event" :value="item.event" :label="item.text"></el-option>
+
             </el-select>
 
 
@@ -42,7 +92,7 @@
                 </el-button>
             </div>
         </div>
-        <div class="respBox" v-show="haveResp">
+        <div class="respBox" v-show="haveResp" ref="respBox">
             <div class="title">
                 {{ $t('poemai_generated_poem') }}
             </div>
@@ -57,17 +107,17 @@
                     </el-icon></el-button>
             </div>
         </div>
+        <div class='footer'>
+            {{ $t('poemai_powered_by_gpt') }}
+        </div>
+
+        <quesAndAnsw style="margin-top: 50px;" ></quesAndAnsw>
 
         <button @click="scrollToTop" class="toTopBtn" v-show="topBtnShow">
             <el-icon>
                 <ArrowUpBold />
             </el-icon>
         </button>
-
-
-        <div class='footer'>
-            {{ $t('poemai_powered_by_gpt') }}
-        </div>
     </div>
 </template>
 <script setup>
@@ -82,8 +132,15 @@ import i18n from '@/hooks/i18n'
 import TypewriterEffect from "@/components/TypewriterEffect/index.vue";
 import radioGroup from "@/components/radioGroup/index.vue";
 import { I18nInjectionKey } from "vue-i18n";
+import quesAndAnsw from '@/views/questionAndAnswer/index.vue'
 const { t } = i18n.global;
-const inputStr = ref()
+const inputStrA = ref()
+const inputStr1 = ref()
+const inputStr2 = ref()
+const inputStr3 = ref()
+const inputStr4 = ref()
+const inputStr5 = ref()
+const inputStr6 = ref()
 const respContent = ref()
 const thinking = ref(false)
 const haveResp = ref(false)
@@ -91,13 +148,14 @@ const router = useRouter()
 const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
-const params = ref({
-    size:'',
-    language:""
-})
-const size = ref([
-    {val:'short',label:'Short'},
+
+const sizes = ref([
+    {val:'Medium',label:t('poem_size_m')},
+    {val:'Short',label:t('poem_size_s')},
+    {val:'Large',label:t('poem_size_l')},
 ])
+
+const respBox = ref()
 
 const dropMenuList = [
     { event: 'en', text: 'English' },
@@ -111,31 +169,41 @@ const dropMenuList = [
     selectedKeys = [];
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
 
-const styleList = [{ text: 'Free Verse', label: "poemai_freeverse", img: '/src/assets/icon/free_verse.png' },
-{ text: 'Haiku', label: "poemai_haiku", img: '/src/assets/icon/haiku.png' },
-{ text: 'Acrostic', label: "poemai_acrostic", img: '/src/assets/icon/acrostic.png' },
-{ text: 'Sonnet', label: "poemai_sonnet", img: '/src/assets/icon/sonnet.png' },
-{ text: 'Limerick', label: "poemai_limerick", img: '/src/assets/icon/limerick.png' },
-{ text: 'Love Poem', label: "poemai_lovepoem", img: '/src/assets/icon/love_poem.png' },
-];
+import free_verseImg from "@/assets/icon/free_verse.png";
+import haikuImg from "@/assets/icon/haiku.png";
+import acrosticImg from "@/assets/icon/acrostic.png";
+import sonnetImg from "@/assets/icon/sonnet.png";
+import limerickImg from "@/assets/icon/limerick.png";
+import love_poemImg from "@/assets/icon/love_poem.png";
 
-const sizeList = [{ text: 'Short', label: "short" },
-{ text: 'Medium', label: "medium" },
-{ text: 'Large', label: "large" },
+const styleList = ref([{ text: 'poemai_free_verse', label: "freeverse", img:free_verseImg },
+{ text: 'poemai_haiku', label: "haiku", img:haikuImg  },
+{ text: 'poemai_acrostic', label: "acrostic", img: acrosticImg },
+{ text: 'poemai_sonnet', label: "sonnet", img: sonnetImg },
+{ text: 'poemai_limerick', label: "limerick", img: limerickImg },
+{ text:'poemai_love_poem', label: "lovepoem", img: love_poemImg },
+]);
+
+
+
+const sizeList = [{ text: 'short', label: "short" },
+{ text: 'mMedium', label: "medium" },
+{ text: 'large', label: "large" },
 ];
 const languageList = dropMenuList.map(x => {
     x.label = x.event
     return x
 })
 const checkObj = ref({
-    styleCheck: 'poemai_freeverse',
-    sizeCheck: 'short',
-    languageCheck: 'en'
+    styleCheck: 'freeverse',
+    sizeCheck: 'Short',
+    languageCheck: ''
 })
 
 
 
 const handleClick = async () => {
+    // return;
     if (!thinking.value) {
         thinking.value = true;
         if (haveResp.value) {
@@ -158,8 +226,33 @@ const handleClick = async () => {
         } else {
             language = route.params.language || 'en'
         }
+        let placeholderText = '',inputStr='',content="";
+
+        
+        
+        if(checkObj.value.styleCheck=='freeverse'){
+                inputStr=inputStr1.value
+                placeholderText =t('poemai_input_tips')
+        }else if(checkObj.value.styleCheck=='haiku'){
+                    inputStr=inputStr2.value
+                    placeholderText =t('poemai_haiku_input_tips')
+        }else if(checkObj.value.styleCheck=='acrostic'){
+                    inputStr=JSON.stringify({keyword:inputStrA.value||t('poemai_acrostic_kw_input_tips'),content:inputStr3.value||t('poemai_acrostic_input_tips')})
+                    placeholderText =t('poemai_acrostic_input_tips')
+        }else if(checkObj.value.styleCheck=='sonnet'){
+                    inputStr=inputStr4.value
+                    placeholderText =t('poemai_sonnet_input_tips')
+        }else if(checkObj.value.styleCheck=='limerick'){
+                    inputStr=inputStr5.value
+                    placeholderText =t('poemai_limerick_input_tips')
+        }else if(checkObj.value.styleCheck=='lovepoem'){
+                    inputStr=inputStr6.value
+                    placeholderText =t('poemai_lovepoem_input_tips')
+        }
+
+
         // http://poemgenerator-ai.com
-        throttledApiRequest('/api/v1', 'post', { "theme": 'freeverse', "content": inputStr.value || t('poemai_input_tips'), language }).then(res => {
+        throttledApiRequest('/api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr ||placeholderText, size:checkObj.value.sizeCheck,language:checkObj.value.languageCheck }).then(res => {
             res = res.data
             if (res.retCode == 'C0000') {
                 respContent.value = res.data.replaceAll('(A)', '')
@@ -173,6 +266,11 @@ const handleClick = async () => {
 
                 haveResp.value = true;
                 respLoading.value = false;
+
+                setTimeout(() => {
+                    
+                respBox.value.scrollIntoView({ behavior: 'smooth', block: 'start'})
+                }, 100);
 
             } else if (res.retCode == 'C001') {
                 ElMessage({
@@ -260,7 +358,10 @@ const changeStyle = (type, newV) => {
 // 监听滚动事件
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
-    console.log(i18n.global.locale)
+    setTimeout(()=>{
+    checkObj.value.languageCheck = i18n.global.locale?i18n.global.locale:'en'
+
+    },0)
     // const language = navigator.language.split('-')[0];
     // i18n.global.locale =languages.includes(language)?language:'en'
 
@@ -269,7 +370,10 @@ onMounted(() => {
 onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll);
 });
-
+watch(() => route.params.language, (newRoute, oldRoute) => {
+  // Perform actions when the route changes
+  checkObj.value.languageCheck = newRoute?newRoute:'en'
+})
 
 </script>
 <style scoped lang="scss">
@@ -300,7 +404,7 @@ onBeforeUnmount(() => {
     // margin-top: 20px;
     margin:0 0 20px;
     
-    color:#1D2331;
+    color:#FF7FA0;
 }
 
 .logoTxt {
@@ -493,6 +597,9 @@ onBeforeUnmount(() => {
         font-size: 14px;
         line-height: 20px;
     }
+    .sizeSelect{
+        margin-bottom: 10px;
+    }
 
 }
 
@@ -516,6 +623,9 @@ onBeforeUnmount(() => {
       left:0;top:0;
       border-radius: 4px;
     }
+}
+.el-select{
+    margin-right: 15px;
 }
 
 </style>   

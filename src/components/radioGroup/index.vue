@@ -5,7 +5,7 @@
         <el-radio-button v-for="item in radioList" :label="item.label" :key="item.label">
           <div class="radioBtnDiv">
             <img :src="item.img" alt="">
-          <span>{{ item.text }}</span>
+          <span>{{ $t(item.text) }}</span>
         </div>
         </el-radio-button>
       </el-radio-group>
@@ -93,7 +93,17 @@
 @media only screen and (max-width: 767px) {
    .radioBtnDiv img{
     display: none;
+   }
+   .radioBtnDiv{
 
+    justify-content: center;
+    align-items: center;
+   }
+   ::v-deep .el-radio-button__inner{
+   white-space: pre-wrap;
+    width: 100px !important;
+    text-align: center;
+    padding:10px;
    }
 }
 

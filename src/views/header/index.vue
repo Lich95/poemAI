@@ -61,11 +61,13 @@
 <script setup>
 
 import { onClickOutside } from '@vueuse/core'
-import { ref, onMounted, onBeforeUnmount, computed, nextTick } from "vue";
+import { ref, onMounted, onBeforeUnmount, computed, nextTick,watch } from "vue";
 import { useRoute, useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
 const router = useRouter()
 const route = useRoute();
+
+const currentRoute = ref(route)
 const mobileNav = ref(false);
 const defaultOpeneds = ref([])
 const dropMenuList = [
@@ -180,8 +182,6 @@ onMounted(async () => {
     // // 将生成的canonical标签添加到head中
     // document.head.appendChild(canonicalTag);
 })
-
-
 
 </script>
 
