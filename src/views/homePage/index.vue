@@ -111,6 +111,8 @@
             {{ $t('poemai_powered_by_gpt') }}
         </div>
 
+        <waterfall></waterfall>
+
         <quesAndAnsw style="margin-top: 50px;" ></quesAndAnsw>
 
         <button @click="scrollToTop" class="toTopBtn" v-show="topBtnShow">
@@ -131,6 +133,7 @@ import { useRoute, useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
 import TypewriterEffect from "@/components/TypewriterEffect/index.vue";
 import radioGroup from "@/components/radioGroup/index.vue";
+import waterfall from "@/components/waterfall/index.vue";
 import { I18nInjectionKey } from "vue-i18n";
 import quesAndAnsw from '@/views/questionAndAnswer/index.vue'
 const { t } = i18n.global;
