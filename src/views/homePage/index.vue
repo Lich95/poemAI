@@ -111,7 +111,7 @@
             {{ $t('poemai_powered_by_gpt') }}
         </div>
 
-        <waterfall></waterfall>
+        <waterfall class="wfDv"></waterfall>
 
         <quesAndAnsw style="margin-top: 50px;" ></quesAndAnsw>
 
@@ -631,4 +631,8 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
     margin-right: 15px;
 }
 
+
+.wfDv{
+    text-align: center;
+}
 </style>   
