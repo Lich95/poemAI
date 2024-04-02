@@ -82,6 +82,10 @@ export default {
   },
   mounted() {
     this.splitText();
+  },
+  beforeRouteLeave(to,from,next){
+    clearTimeout(this.typeTimer);
+    next();
   }
 };
 </script>

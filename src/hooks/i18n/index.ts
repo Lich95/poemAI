@@ -3,6 +3,7 @@ import { createI18n } from 'vue-i18n';
 
 const messages = {
   en: {
+    poemai_view_all:'View All',
     header_title: 'AI Poem Generator - Create a rhyming poem with free AI poem generator',
     Description: "A free AI poem generator that anyone can create a rhyming poem in seconds. Explore our AI Poem Generator: Create custom, rhyming poems on any poem theme.",
     "poemai_title": "AI Poem Generator",

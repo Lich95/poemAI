@@ -29,6 +29,10 @@
                 <h1 class="logoTxt">{{ $t('poemai_title') }}</h1>
             </div>
             <div class="tools">
+                <div class="Generated" @click="goGenerated">
+                    <img src="@/assets/icon/Lamp.png" alt="">
+                    <span>Generated Example</span>
+                </div>
                 <div class="privacy" @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>Privacy</span>
@@ -90,8 +94,11 @@ const languageList = dropMenuList.map(x => {
     return x
 })
 const goPrivacy = () => {
-
     router.push({ name: 'privacy', params: { language: i18n.global.locale } });
+}
+const goGenerated = () => {
+    console.log(123,i18n.global.locale);
+    router.push({ name: 'generatedPoems', params: { language: i18n.global.locale ||'en' } });
 }
 
 const logoClick = () => {
@@ -187,7 +194,7 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .header {
-    position: fixed;
+    position: relative;
     height: 64px;
     display: flex;
     justify-content: space-between;
@@ -215,7 +222,7 @@ onMounted(async () => {
             border-radius: 20px;
         }
 
-        .privacy {
+        .privacy,.Generated {
             display: flex;
             align-items: center;
             margin-right: 20px;

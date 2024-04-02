@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="water wf1">
-            <div v-for="item in wfl[0]">
+            <div v-for="item in wfl[0]" @click="goDetail(item.id)">
                 <span>{{ item.title }}</span>
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="water wf2">
-            <div v-for="item in wfl[1]">
+            <div v-for="item in wfl[1]" @click="goDetail(item.id)">
                 <span>{{ item.title }}</span>
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="water wf3">
-            <div v-for="item in wfl[2]">
+            <div v-for="item in wfl[2]" @click="goDetail(item.id)">
                 <span>{{ item.title }}</span>
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
@@ -29,7 +29,6 @@
 
 <script>
 import { computed } from 'vue';
-
 export default {
     props: {
         typeIcon: {
@@ -43,7 +42,7 @@ export default {
         waterfallList: {
             type: Array,
             default: [{
-                title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+                id: '111', title: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -59,6 +58,7 @@ To bring some relief from summer's sway
 When leaves will fall, and skies will gray
 And bring back balance to each day`, type: 'Haiku'
             }, {
+                id: '112',
                 title: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
@@ -86,6 +86,7 @@ To bring some relief from summer's sway
 When leaves will fall, and skies will gray
 And bring back balance to each day`, type: 'FreeVerse'
             }, {
+                id: '113',
                 title: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
@@ -102,6 +103,7 @@ To bring some relief from summer's sway
 When leaves will fall, and skies will gray
 And bring back balance to each day`,
             }, {
+                id: '114',
                 title: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
@@ -140,6 +142,10 @@ And bring back balance to each day`, type: 'Sonnet'
                 }, 0);
             }
         },
+        goDetail(id) {
+
+            this.$router.push({ name: 'generatedPoemId', params: { id:id } });
+        }
     },
     mounted() {
         this.init()
@@ -151,7 +157,7 @@ And bring back balance to each day`, type: 'Sonnet'
 <style scoped lang="scss">
 div.water {
     display: inline-flex;
-    width: 422px;
+    width: 390px;
     flex-direction: column;
     gap: 12px;
     text-align: left;
@@ -162,6 +168,7 @@ div.water {
         color: #525B71;
         border-radius: 16px;
         padding: 24px;
+        cursor: pointer;
 
         span {
             font-size: 20px;
@@ -193,7 +200,7 @@ div.water {
             padding: 7px 16px 7px 16px;
             border-radius: 16px;
             border: 1px solid #1D2331;
-            color:#1D2331;
+            color: #1D2331;
             float: right;
         }
     }

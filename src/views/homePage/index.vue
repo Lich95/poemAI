@@ -60,11 +60,6 @@
             </div>
         </div>
 
-
-
-
-
-
             <el-select v-model="checkObj.sizeCheck" placeholder="Poem Size" class="sizeSelect" v-show="checkObj.styleCheck=='freeverse'||checkObj.styleCheck=='lovepoem'">
                 <el-option v-for="item in sizes" :key="item.val" :label="item.label" :value="item.val"></el-option>
             </el-select>
@@ -112,6 +107,7 @@
         </div>
 
         <waterfall class="wfDv"></waterfall>
+        <!-- <el-button style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;">{{ $t('poemai_view_all') }}</el-button> -->
 
         <quesAndAnsw style="margin-top: 50px;" ></quesAndAnsw>
 
@@ -119,7 +115,7 @@
             <el-icon>
                 <ArrowUpBold />
             </el-icon>
-        </button>
+        </button> 
     </div>
 </template>
 <script setup>
