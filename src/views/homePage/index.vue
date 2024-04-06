@@ -5,66 +5,76 @@
             <!-- {{ $t('poemai_title_generate') }} -->
             <TypewriterEffect class="title" :textContent="$t('poemai_input_title')" :speed="140" :delay="5" />
 
-           <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck"
+            <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck"
                 @changeCheck="changeStyle('style', $event)"></radioGroup>
         </div>
         <div class="inputBox">
-            <div v-show="checkObj.styleCheck=='acrostic'">
-            <p class="secTitle">{{ $t('poemai_acrostic_keyword') }}</p>
-            <div>
-                <el-input v-model="inputStrA" type="textarea" :placeholder="$t('poemai_acrostic_kw_input_tips')" rows="1" resize="none"/>
-                <!-- resize="none"  -->
+            <div v-show="checkObj.styleCheck == 'acrostic'">
+                <p class="secTitle">{{ $t('poemai_acrostic_keyword') }}</p>
+                <div>
+                    <el-input v-model="inputStrA" type="textarea" :placeholder="$t('poemai_acrostic_kw_input_tips')"
+                        rows="1" resize="none" />
+                    <!-- resize="none"  -->
+                </div>
             </div>
-        </div>
 
-        <div v-if="checkObj.styleCheck=='freeverse'">
-            <p class="secTitle">{{ $t('poemai_fv_theme') }}</p>
-            <div>
-                <el-input v-model="inputStr1" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5" resize="none"/>
-                <!-- resize="none"  -->
+            <div v-if="checkObj.styleCheck == 'freeverse'">
+                <p class="secTitle">{{ $t('poemai_fv_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr1" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5"
+                        resize="none" />
+                    <!-- resize="none"  -->
+                </div>
             </div>
-        </div>
-        <div v-else-if="checkObj.styleCheck=='haiku'">
-            <p class="secTitle">{{ $t('poemai_haiku_theme') }}</p>
-            <div>
-                <el-input v-model="inputStr2" type="textarea" :placeholder="$t('poemai_haiku_input_tips')" rows="5" resize="none"/>
-                <!-- resize="none"  -->
+            <div v-else-if="checkObj.styleCheck == 'haiku'">
+                <p class="secTitle">{{ $t('poemai_haiku_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr2" type="textarea" :placeholder="$t('poemai_haiku_input_tips')" rows="5"
+                        resize="none" />
+                    <!-- resize="none"  -->
+                </div>
             </div>
-        </div>
-        <div v-else-if="checkObj.styleCheck=='acrostic'">
-            <p class="secTitle">{{ $t('poemai_acrostic_theme') }}</p>
-            <div>
-                <el-input v-model="inputStr3" type="textarea" :placeholder="$t('poemai_acrostic_input_tips')" rows="5" resize="none"/>
-                <!-- resize="none"  -->
+            <div v-else-if="checkObj.styleCheck == 'acrostic'">
+                <p class="secTitle">{{ $t('poemai_acrostic_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr3" type="textarea" :placeholder="$t('poemai_acrostic_input_tips')"
+                        rows="5" resize="none" />
+                    <!-- resize="none"  -->
+                </div>
             </div>
-        </div>
-        <div v-else-if="checkObj.styleCheck=='sonnet'">
-            <p class="secTitle">{{ $t('poemai_sonnet_theme') }}</p>
-            <div>
-                <el-input v-model="inputStr4" type="textarea" :placeholder="$t('poemai_sonnet_input_tips')" rows="5" resize="none"/>
-                <!-- resize="none"  -->
+            <div v-else-if="checkObj.styleCheck == 'sonnet'">
+                <p class="secTitle">{{ $t('poemai_sonnet_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr4" type="textarea" :placeholder="$t('poemai_sonnet_input_tips')" rows="5"
+                        resize="none" />
+                    <!-- resize="none"  -->
+                </div>
             </div>
-        </div>
-        <div v-else-if="checkObj.styleCheck=='limerick'">
-            <p class="secTitle">{{ $t('poemai_limerick_theme') }}</p>
-            <div>
-                <el-input v-model="inputStr5" type="textarea" :placeholder="$t('poemai_limerick_input_tips')" rows="5" resize="none"/>
-                <!-- resize="none"  -->
+            <div v-else-if="checkObj.styleCheck == 'limerick'">
+                <p class="secTitle">{{ $t('poemai_limerick_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr5" type="textarea" :placeholder="$t('poemai_limerick_input_tips')"
+                        rows="5" resize="none" />
+                    <!-- resize="none"  -->
+                </div>
             </div>
-        </div>
-        <div v-else-if="checkObj.styleCheck=='lovepoem'">
-            <p class="secTitle">{{ $t('poemai_love_theme') }}</p>
-            <div>
-                <el-input v-model="inputStr6" type="textarea" :placeholder="$t('poemai_love_input_tips')" rows="5" resize="none"/>
-                <!-- resize="none"  -->
+            <div v-else-if="checkObj.styleCheck == 'lovepoem'">
+                <p class="secTitle">{{ $t('poemai_love_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr6" type="textarea" :placeholder="$t('poemai_love_input_tips')" rows="5"
+                        resize="none" />
+                    <!-- resize="none"  -->
+                </div>
             </div>
-        </div>
 
-            <el-select v-model="checkObj.sizeCheck" placeholder="Poem Size" class="sizeSelect" v-show="checkObj.styleCheck=='freeverse'||checkObj.styleCheck=='lovepoem'">
+            <el-select v-model="checkObj.sizeCheck" placeholder="Poem Size" class="sizeSelect"
+                v-show="checkObj.styleCheck == 'freeverse' || checkObj.styleCheck == 'lovepoem'">
                 <el-option v-for="item in sizes" :key="item.val" :label="item.label" :value="item.val"></el-option>
             </el-select>
-            <el-select v-model="checkObj.languageCheck" placeholder="Poem Language" v-show="checkObj.styleCheck!='acrostic'">
-                <el-option v-for="item in dropMenuList" :key="item.event" :value="item.event" :label="item.text"></el-option>
+            <el-select v-model="checkObj.languageCheck" placeholder="Poem Language"
+                v-show="checkObj.styleCheck != 'acrostic'">
+                <el-option v-for="item in dropMenuList" :key="item.event" :value="item.event"
+                    :label="item.text"></el-option>
 
             </el-select>
 
@@ -96,8 +106,8 @@
             </div>
             <div class="copyBtn">
                 <el-button size="small" class="copyButton" @click="handleCopy" data-clipboard-target=".content">{{
-                    $t('poemai_copy_btn')
-                }}<el-icon>
+                $t('poemai_copy_btn')
+            }}<el-icon>
                         <CopyDocument />
                     </el-icon></el-button>
             </div>
@@ -107,15 +117,17 @@
         </div>
 
         <waterfall class="wfDv"></waterfall>
-        <!-- <el-button style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;">{{ $t('poemai_view_all') }}</el-button> -->
+        <!-- <el-button
+            style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;"
+            @click="goviewAll">{{ $t('poemai_view_all') }}</el-button> -->
 
-        <quesAndAnsw style="margin-top: 50px;" ></quesAndAnsw>
+        <quesAndAnsw style="margin-top: 50px;"></quesAndAnsw>
 
         <button @click="scrollToTop" class="toTopBtn" v-show="topBtnShow">
             <el-icon>
                 <ArrowUpBold />
             </el-icon>
-        </button> 
+        </button>
     </div>
 </template>
 <script setup>
@@ -148,10 +160,14 @@ const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
 
+const goviewAll = () => {
+
+    router.push({ name: 'generatedPoems', params: { language: i18n.global.locale || 'en' } });
+}
 const sizes = ref([
-    {val:'Medium',label:t('poem_size_m')},
-    {val:'Short',label:t('poem_size_s')},
-    {val:'Large',label:t('poem_size_l')},
+    { val: 'Medium', label: t('poem_size_m') },
+    { val: 'Short', label: t('poem_size_s') },
+    { val: 'Large', label: t('poem_size_l') },
 ])
 
 const respBox = ref()
@@ -175,12 +191,12 @@ import sonnetImg from "@/assets/icon/sonnet.png";
 import limerickImg from "@/assets/icon/limerick.png";
 import love_poemImg from "@/assets/icon/love_poem.png";
 
-const styleList = ref([{ text: 'poemai_free_verse', label: "freeverse", img:free_verseImg },
-{ text: 'poemai_haiku', label: "haiku", img:haikuImg  },
+const styleList = ref([{ text: 'poemai_free_verse', label: "freeverse", img: free_verseImg },
+{ text: 'poemai_haiku', label: "haiku", img: haikuImg },
 { text: 'poemai_acrostic', label: "acrostic", img: acrosticImg },
 { text: 'poemai_sonnet', label: "sonnet", img: sonnetImg },
 { text: 'poemai_limerick', label: "limerick", img: limerickImg },
-{ text:'poemai_love_poem', label: "lovepoem", img: love_poemImg },
+{ text: 'poemai_love_poem', label: "lovepoem", img: love_poemImg },
 ]);
 
 
@@ -200,7 +216,12 @@ const checkObj = ref({
 })
 
 
-
+const loadDemo = ()=>{
+    throttledApiRequest('http://poemgenerator-ai.com/api/v1/demo', 'post', { "language":i18n.global.locale ? i18n.global.locale : 'en'}).then(res=>{
+        console.log(7777,res);
+    })
+}
+loadDemo();
 const handleClick = async () => {
     // return;
     if (!thinking.value) {
@@ -225,33 +246,33 @@ const handleClick = async () => {
         } else {
             language = route.params.language || 'en'
         }
-        let placeholderText = '',inputStr='',content="";
+        let placeholderText = '', inputStr = '', content = "";
 
-        
-        
-        if(checkObj.value.styleCheck=='freeverse'){
-                inputStr=inputStr1.value
-                placeholderText =t('poemai_input_tips')
-        }else if(checkObj.value.styleCheck=='haiku'){
-                    inputStr=inputStr2.value
-                    placeholderText =t('poemai_haiku_input_tips')
-        }else if(checkObj.value.styleCheck=='acrostic'){
-                    inputStr=JSON.stringify({keyword:inputStrA.value||t('poemai_acrostic_kw_input_tips'),content:inputStr3.value||t('poemai_acrostic_input_tips')})
-                    placeholderText =t('poemai_acrostic_input_tips')
-        }else if(checkObj.value.styleCheck=='sonnet'){
-                    inputStr=inputStr4.value
-                    placeholderText =t('poemai_sonnet_input_tips')
-        }else if(checkObj.value.styleCheck=='limerick'){
-                    inputStr=inputStr5.value
-                    placeholderText =t('poemai_limerick_input_tips')
-        }else if(checkObj.value.styleCheck=='lovepoem'){
-                    inputStr=inputStr6.value
-                    placeholderText =t('poemai_lovepoem_input_tips')
+
+
+        if (checkObj.value.styleCheck == 'freeverse') {
+            inputStr = inputStr1.value
+            placeholderText = t('poemai_input_tips')
+        } else if (checkObj.value.styleCheck == 'haiku') {
+            inputStr = inputStr2.value
+            placeholderText = t('poemai_haiku_input_tips')
+        } else if (checkObj.value.styleCheck == 'acrostic') {
+            inputStr = JSON.stringify({ keyword: inputStrA.value || t('poemai_acrostic_kw_input_tips'), content: inputStr3.value || t('poemai_acrostic_input_tips') })
+            placeholderText = t('poemai_acrostic_input_tips')
+        } else if (checkObj.value.styleCheck == 'sonnet') {
+            inputStr = inputStr4.value
+            placeholderText = t('poemai_sonnet_input_tips')
+        } else if (checkObj.value.styleCheck == 'limerick') {
+            inputStr = inputStr5.value
+            placeholderText = t('poemai_limerick_input_tips')
+        } else if (checkObj.value.styleCheck == 'lovepoem') {
+            inputStr = inputStr6.value
+            placeholderText = t('poemai_lovepoem_input_tips')
         }
 
 
         // http://poemgenerator-ai.com
-        throttledApiRequest('/api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr ||placeholderText, size:checkObj.value.sizeCheck,language:checkObj.value.languageCheck }).then(res => {
+        throttledApiRequest('http://poemgenerator-ai.com/api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
             res = res.data
             if (res.retCode == 'C0000') {
                 respContent.value = res.data.replaceAll('(A)', '')
@@ -267,8 +288,8 @@ const handleClick = async () => {
                 respLoading.value = false;
 
                 setTimeout(() => {
-                    
-                respBox.value.scrollIntoView({ behavior: 'smooth', block: 'start'})
+
+                    respBox.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }, 100);
 
             } else if (res.retCode == 'C001') {
@@ -357,10 +378,10 @@ const changeStyle = (type, newV) => {
 // 监听滚动事件
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
-    setTimeout(()=>{
-    checkObj.value.languageCheck = i18n.global.locale?i18n.global.locale:'en'
+    setTimeout(() => {
+        checkObj.value.languageCheck = i18n.global.locale ? i18n.global.locale : 'en'
 
-    },0)
+    }, 0)
     // const language = navigator.language.split('-')[0];
     // i18n.global.locale =languages.includes(language)?language:'en'
 
@@ -370,8 +391,8 @@ onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll);
 });
 watch(() => route.params.language, (newRoute, oldRoute) => {
-  // Perform actions when the route changes
-  checkObj.value.languageCheck = newRoute?newRoute:'en'
+    // Perform actions when the route changes
+    checkObj.value.languageCheck = newRoute ? newRoute : 'en'
 })
 
 </script>
@@ -401,9 +422,9 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
 .title {
     text-align: center;
     // margin-top: 20px;
-    margin:0 0 20px;
-    
-    color:#FF7FA0;
+    margin: 0 0 20px;
+
+    color: #FF7FA0;
 }
 
 .logoTxt {
@@ -449,6 +470,7 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
         &:focus {
             box-shadow: 0 0 0 1px #1D2331;
         }
+
         margin: 10px 0;
     }
 
@@ -484,9 +506,12 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
         text-align: center;
     }
 }
-.h2Title{
+
+.h2Title {
     padding-top: 20px;
-    font-size:44px;color:#1D2331;margin:0;
+    font-size: 44px;
+    color: #1D2331;
+    margin: 0;
     font-family: 'other-bold-font-family';
 }
 
@@ -596,7 +621,8 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
         font-size: 14px;
         line-height: 20px;
     }
-    .sizeSelect{
+
+    .sizeSelect {
         margin-bottom: 10px;
     }
 
@@ -605,30 +631,37 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
 
 
 .secTitle {
-    
-    color:#1D2331;
+
+    color: #1D2331;
     text-align: left;
     font-size: 18px;
     font-family: 'other-bold-font-family';
     margin: 0 0 5px !important;
     position: relative;
     padding-left: 18px;
-    &::before{
+
+    &::before {
         content: "";
         height: 100%;
-        width: 12px; /* 定义竖条的宽度 */
-      background-color: #7730D0; /* 定义竖条的颜色 */
-      position: absolute;
-      left:0;top:0;
-      border-radius: 4px;
+        width: 12px;
+        /* 定义竖条的宽度 */
+        background-color: #7730D0;
+        /* 定义竖条的颜色 */
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 4px;
     }
 }
-.el-select{
+
+.el-select {
     margin-right: 15px;
 }
 
 
-.wfDv{
+.wfDv {
+    width: 1240px;
+    margin:30px auto 0;
     text-align: center;
 }
-</style>   
+</style>

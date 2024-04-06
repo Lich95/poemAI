@@ -97,8 +97,7 @@ const goPrivacy = () => {
     router.push({ name: 'privacy', params: { language: i18n.global.locale } });
 }
 const goGenerated = () => {
-    console.log(123,i18n.global.locale);
-    router.push({ name: 'generatedPoems', params: { language: i18n.global.locale ||'en' } });
+    router.push({ name: 'generatedPoems', params: { language: i18n.global.locale || 'en' } });
 }
 
 const logoClick = () => {

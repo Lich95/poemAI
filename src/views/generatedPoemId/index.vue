@@ -6,7 +6,33 @@
                     {{ $t('poemai_generated_poem') }}
                 </div>
                 <div class="content" v-loading="respLoading">
-                    {{ ` In summer's heat, I find no solace
+                    {{ respTxt }}
+                </div>
+                <div class="copyBtn">
+                    <el-button size="small" class="copyButton" @click="handleCopy" data-clipboard-target=".content">{{
+                $t('poemai_copy_btn')
+            }}<el-icon>
+                            <CopyDocument />
+                        </el-icon></el-button>
+                </div>
+            </div>
+
+        </div>
+        <div style="margin:0 auto;width:1240px;text-align: center">
+            <p>Poem for anniversary</p>
+            <waterfall class="wfDv"></waterfall>
+        </div>
+    </div>
+</template>
+<script setup>
+import waterfall from "@/components/waterfall/index.vue";
+import { ref } from "vue";
+import ClipboardJS from 'clipboard';
+import { ElMessage } from 'element-plus'
+import i18n from '@/hooks/i18n'
+const { t } = i18n.global;
+
+let respTxt = ref(` In summer's heat, I find no solace
                     A time for sun and fun, it's all a facade
                     The warmth that's supposed to bring us joy
                     Only brings me chills, and makes me annoyed
@@ -24,27 +50,35 @@
                     Oh, how I wish for autumn's breeze
                     To bring some relief from summer's sway
                     When leaves will fall, and skies will gray
-                    And bring back balance to each day` }}
-                </div>
-                <div class="copyBtn">
-                    <el-button size="small" class="copyButton" @click="handleCopy" data-clipboard-target=".content">{{
-                        $t('poemai_copy_btn')
-                        }}<el-icon>
-                            <CopyDocument />
-                        </el-icon></el-button>
-                </div>
-            </div>
+                    And bring back balance to each day`)
 
-        </div>
-        <div style="margin:0 auto;width:1200px;text-align: center">
-            <p>Poem for anniversary</p>
-            <waterfall class="wfDv"></waterfall>
-        </div>
-    </div>
-</template>
-<script setup>
-import waterfall from "@/components/waterfall/index.vue";
 
+const handleCopy = () => {
+    const clipboard = new ClipboardJS('.copyButton', {
+        text() {
+            return respTxt.value
+        }
+    })
+    clipboard.on('success', () => {
+        ElMessage({
+            showClose: true,
+            message: t('poemai_copy_success_toast'),
+            center: true,
+            type: 'success'
+        })
+        clipboard.destroy();
+    })
+    clipboard.on('error', () => {
+        ElMessage({
+            showClose: true,
+            message: 'error',
+            center: true,
+            type: 'success'
+        })
+        clipboard.destroy();
+    })
+
+}
 
 </script>
 <style scoped lang="scss">
@@ -59,18 +93,22 @@ import waterfall from "@/components/waterfall/index.vue";
     color: #1d2331;
 
     .title {
-        display: inline-flex;
+        display: block;
         font-weight: bold;
-
-        &::before {
-            content: '';
-            display: inline-block;
-            width: 12px;
-            height: 24px;
-            border-radius: 4px;
-            background: #7730D0;
-            margin-right: 5px;
-        }
+        text-align: center;
+        color: #1D2331;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        // &::before {
+        //     content: '';
+        //     display: inline-block;
+        //     width: 12px;
+        //     height: 24px;
+        //     border-radius: 4px;
+        //     background: #7730D0;
+        //     margin-right: 5px;
+        // }
     }
 
     .content {
@@ -81,6 +119,7 @@ import waterfall from "@/components/waterfall/index.vue";
         margin-top: 12px;
         white-space: pre-wrap;
         font-size: 18px;
+        color: #1D2331;
     }
 
     .copyBtn {

@@ -16,6 +16,8 @@
         <div class="allPoems">
 
             <waterfall class="wfDv" :waterfallList="waterfallList"></waterfall>
+            <el-pagination background layout="prev, pager, next" :total="1000"
+                style="margin:40px 0;justify-content: center;" />
         </div>
     </div>
 </template>
@@ -26,7 +28,7 @@ import { useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
 const router = useRouter()
 const waterfallList = ref([{
-                id: '111', title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+    id: '111', title: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -41,9 +43,9 @@ Oh, how I wish for autumn's breeze
 To bring some relief from summer's sway
 When leaves will fall, and skies will gray
 And bring back balance to each day`
-            }, {
-                id: '112',
-                title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+}, {
+    id: '112',
+    title: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -69,9 +71,9 @@ Oh, how I wish for autumn's breeze
 To bring some relief from summer's sway
 When leaves will fall, and skies will gray
 And bring back balance to each day`
-            }, {
-                id: '113',
-                title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+}, {
+    id: '113',
+    title: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -86,9 +88,9 @@ Oh, how I wish for autumn's breeze
 To bring some relief from summer's sway
 When leaves will fall, and skies will gray
 And bring back balance to each day`,
-            }, {
-                id: '114',
-                title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+}, {
+    id: '114',
+    title: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -103,17 +105,23 @@ Oh, how I wish for autumn's breeze
 To bring some relief from summer's sway
 When leaves will fall, and skies will gray
 And bring back balance to each day`
-            }])
-const types = ref(['Free Verse Poem Example', 'Haiku Poem Example','Acrostic Poem Example','Sonnet Poem Example','Limerick Poem Example','Love Poem Example','Poem for wedding','Poem for anniversary','Poem for anniversary'])
+}])
+const types = ref(['Free Verse Poem Example', 'Haiku Poem Example', 'Acrostic Poem Example', 'Sonnet Poem Example', 'Limerick Poem Example', 'Love Poem Example', 'Poem for wedding', 'Poem for anniversary', 'Poem for anniversary', 'All'])
 
-const goTypes = (type)=>{
+const goTypes = (type) => {
     // 
-    router.push({ name: 'generatedPoemType', params: { language: i18n.global.locale ||'en' ,GeneratedPoemType:type} });
+    if (type != 'All') {
+        router.push({ name: 'generatedPoemType', params: { language: i18n.global.locale || 'en', GeneratedPoemType: type } });
+    } else {
+        router.push({ name: 'generatedPoemCategory', params: { language: i18n.global.locale || 'en'} });
+        
+    }
 }
+
 </script>
 <style scoped lang="scss">
 #poems {
-    width: 1200px;
+    width: 1240px;
     text-align: center;
     margin: 0 auto;
 }

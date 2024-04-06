@@ -1,11 +1,12 @@
 <template>
-    <div>
+    <div style="display: flex;flex-direction: row;
+    flex-wrap: nowrap;justify-content: space-between;">
         <div class="water wf1">
             <div v-for="item in wfl[0]" @click="goDetail(item.id)">
                 <span>{{ item.title }}</span>
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
-                <el-button class="copyBtn" v-else>Copy</el-button>
+                <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
         <div class="water wf2">
@@ -13,7 +14,7 @@
                 <span>{{ item.title }}</span>
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
-                <el-button class="copyBtn" v-else>Copy</el-button>
+                <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
         <div class="water wf3">
@@ -21,7 +22,7 @@
                 <span>{{ item.title }}</span>
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
-                <el-button class="copyBtn" v-else>Copy</el-button>
+                <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
     </div>
@@ -29,6 +30,12 @@
 
 <script>
 import { computed } from 'vue';
+
+import ClipboardJS from 'clipboard';
+import { ElMessage } from 'element-plus'
+import i18n from '@/hooks/i18n'
+const { t } = i18n.global;
+
 export default {
     props: {
         typeIcon: {
@@ -59,7 +66,7 @@ When leaves will fall, and skies will gray
 And bring back balance to each day`, type: 'Haiku'
             }, {
                 id: '112',
-                title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+                title: 'Love Poem for husband', content: `In summer's heat2222, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -87,7 +94,7 @@ When leaves will fall, and skies will gray
 And bring back balance to each day`, type: 'FreeVerse'
             }, {
                 id: '113',
-                title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+                title: 'Love Poem for husband', content: `In summer's he33at, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -144,7 +151,33 @@ And bring back balance to each day`, type: 'Sonnet'
         },
         goDetail(id) {
 
-            this.$router.push({ name: 'generatedPoemId', params: { id:id } });
+            this.$router.push({ name: 'generatedPoemId', params: { id: id } });
+        },
+        copyContent(txt) {
+            const clipboard = new ClipboardJS('.copyBtn', {
+                text() {
+                    return txt
+                }
+            })
+            clipboard.on('success', () => {
+                ElMessage({
+                    showClose: true,
+                    message: t('poemai_copy_success_toast'),
+                    center: true,
+                    type: 'success'
+                })
+                clipboard.destroy();
+            })
+            clipboard.on('error', () => {
+                ElMessage({
+                    showClose: true,
+                    message: 'error',
+                    center: true,
+                    type: 'success'
+                })
+                clipboard.destroy();
+            })
+
         }
     },
     mounted() {
@@ -157,9 +190,9 @@ And bring back balance to each day`, type: 'Sonnet'
 <style scoped lang="scss">
 div.water {
     display: inline-flex;
-    width: 390px;
+    width: 400px;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
     text-align: left;
 
     &>div {
@@ -167,7 +200,7 @@ div.water {
         background-color: #fff;
         color: #525B71;
         border-radius: 16px;
-        padding: 24px;
+        padding: 22px 20px;
         cursor: pointer;
 
         span {
@@ -192,23 +225,28 @@ div.water {
             border: 0;
             padding: 4px 6px 4px 6px;
             gap: 10px;
+            height: 20px;
             border-radius: 4px;
             color: #fff;
+            font-size: 12px;
+            line-height: 12px;
+            font-weight: 400;
+            ;
         }
 
         .copyBtn {
-            padding: 7px 16px 7px 16px;
+            padding: 12px 16px;
             border-radius: 16px;
+            gap: 4px;
             border: 1px solid #1D2331;
             color: #1D2331;
             float: right;
+            font-size: 12px;
+            ;
         }
     }
 }
 
-.wf2 {
-    margin: 0 12px;
-}
 
 .Haiku {
     background-color: #FF856B
