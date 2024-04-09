@@ -27,7 +27,7 @@ const routes = [
 
   },
   {
-    path: '/:language?/generated-poems',
+    path: '/:language?/poem',
     name: 'generatedPoems',
     component: generatedPoems,
     props: (route: any) => ({
@@ -36,7 +36,7 @@ const routes = [
 
   },
   {
-    path: '/:language?/generated-poem/:id',
+    path: '/:language?/poem/:id',
     name: 'generatedPoemId',
     component: generatedPoemId,
     props: (route: any) => ({

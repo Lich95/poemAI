@@ -1,16 +1,17 @@
 <template>
     <div id="poems">
         <span class="catalogTitle">
-            Generated Poem Catogaries
+           {{ $t('poemai_category') }}
         </span>
 
         <div class="allTypes">
             <div v-for="item in types" @click="goTypes(item)">{{ item }}</div>
+            <div @click="goTypes('All')">{{ $t('poemai_more') }}</div>
         </div>
 
 
         <span class="allPoemsTitle">
-            All Generated Poems
+            {{ $t('poemai_all_poems') }}
         </span>
 
         <div class="allPoems">
@@ -106,7 +107,7 @@ To bring some relief from summer's sway
 When leaves will fall, and skies will gray
 And bring back balance to each day`
 }])
-const types = ref(['Free Verse Poem Example', 'Haiku Poem Example', 'Acrostic Poem Example', 'Sonnet Poem Example', 'Limerick Poem Example', 'Love Poem Example', 'Poem for wedding', 'Poem for anniversary', 'Poem for anniversary', 'All'])
+const types = ref(['Free Verse Poem Example', 'Haiku Poem Example', 'Acrostic Poem Example', 'Sonnet Poem Example', 'Limerick Poem Example', 'Love Poem Example', 'Poem for wedding', 'Poem for anniversary', 'Poem for anniversary'])
 
 const goTypes = (type) => {
     // 

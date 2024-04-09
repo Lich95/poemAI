@@ -12,6 +12,12 @@
 
             <div v-show="mobileNav" class="mobileMenuPop" ref="target">
                 <el-menu @select="handleSelect" :default-active="selectedKeys">
+                    <el-menu-item  @click="goGenerated"> 
+                    <img src="@/assets/icon/Lamp.png" alt="">
+                    <span>{{ $t('poemai_example') }}</span></el-menu-item>
+                    <el-menu-item @click="goPrivacy">
+                    <img src="@/assets/icon/privacy_icon.png" alt="">
+                    <span>{{ $t('poemai_privacy') }}</span> </el-menu-item>
                     <el-sub-menu index="1">
                         <template #title>
                             <img src="@/assets/icon/language.png" alt="">
@@ -31,11 +37,11 @@
             <div class="tools">
                 <div class="Generated" @click="goGenerated">
                     <img src="@/assets/icon/Lamp.png" alt="">
-                    <span>Generated Example</span>
+                    <span>{{ $t('poemai_example') }}</span>
                 </div>
                 <div class="privacy" @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
-                    <span>Privacy</span>
+                    <span>{{ $t('poemai_privacy') }}</span>
                 </div>
                 <div class="language">
                     <el-dropdown trigger="click" @command="handleCommand">
@@ -82,6 +88,15 @@ const dropMenuList = [
     { event: 'de', text: 'Deutsch' },
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
+    
+    { event: 'ja', text: '日本語にほんご' },
+    { event: 'ko', text: '한국어' },
+    { event: 'th', text: 'ภาษาไทย' },
+    { event: 'id', text: 'IndonesiaName' },
+    { event: 'vi', text: 'Tiếng Việt' },
+    { event: 'ar', text: 'اللغة العربية' },
+    { event: 'rt', text: 'Malay' },
+
 ]
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
 const selectedKeys = computed(() => {
@@ -94,9 +109,15 @@ const languageList = dropMenuList.map(x => {
     return x
 })
 const goPrivacy = () => {
+    if(mobileNav.value){
+        mobileNav.value=false
+    }
     router.push({ name: 'privacy', params: { language: i18n.global.locale } });
 }
 const goGenerated = () => {
+    if(mobileNav.value){
+        mobileNav.value=false
+    }
     router.push({ name: 'generatedPoems', params: { language: i18n.global.locale || 'en' } });
 }
 

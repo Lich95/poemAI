@@ -1,5 +1,5 @@
 <template>
-    <div style="padding:1em;padding-top: 64px;">
+    <div style="padding:1em;padding-top: 20px;">
         <div style="text-align: center;">
             <h2 class="h2Title">{{ $t('poemai_title_generate') }}</h2>
             <!-- {{ $t('poemai_title_generate') }} -->
@@ -180,6 +180,14 @@ const dropMenuList = [
     { event: 'de', text: 'Deutsch' },
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
+    
+    { event: 'ja', text: '日本語にほんご' },
+    { event: 'ko', text: '한국어' },
+    { event: 'th', text: 'ภาษาไทย' },
+    { event: 'id', text: 'IndonesiaName' },
+    { event: 'vi', text: 'Tiếng Việt' },
+    { event: 'ar', text: 'اللغة العربية' },
+    { event: 'rt', text: 'Malay' },
 ],
     selectedKeys = [];
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
@@ -217,7 +225,7 @@ const checkObj = ref({
 
 
 const loadDemo = ()=>{
-    throttledApiRequest('http://poemgenerator-ai.com/api/v1/demo', 'post', { "language":i18n.global.locale ? i18n.global.locale : 'en'}).then(res=>{
+    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language":i18n.global.locale ? i18n.global.locale : 'en'}).then(res=>{
         console.log(7777,res);
     })
 }

@@ -1,5 +1,5 @@
 <template>
-    <div  style="padding:1em;padding-top: 64px;">
+    <div  style="padding:1em;padding-top: 20px;">
 
         <div v-html="$t('privacyContent')"></div>
         

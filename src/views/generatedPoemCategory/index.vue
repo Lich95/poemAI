@@ -1,6 +1,6 @@
 <template>
     <div style="text-align: center;" class="alb">
-        <div class="title">All Generated Poem Categories </div>
+        <div class="title">{{ $t('poemai_all_categories') }}</div>
         <div class="types">
             <div v-for="item in types" @click="goTypes(item)">
                 <span class="typeName">{{ item }}</span>
