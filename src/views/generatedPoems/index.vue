@@ -1,7 +1,7 @@
 <template>
     <div id="poems">
         <span class="catalogTitle">
-           {{ $t('poemai_category') }}
+            {{ $t('poemai_category') }}
         </span>
 
         <div class="allTypes">
@@ -114,17 +114,18 @@ const goTypes = (type) => {
     if (type != 'All') {
         router.push({ name: 'generatedPoemType', params: { language: i18n.global.locale || 'en', GeneratedPoemType: type } });
     } else {
-        router.push({ name: 'generatedPoemCategory', params: { language: i18n.global.locale || 'en'} });
-        
+        router.push({ name: 'generatedPoemCategory', params: { language: i18n.global.locale || 'en' } });
+
     }
 }
 
 </script>
 <style scoped lang="scss">
 #poems {
-    width: 1240px;
+    // width: 1240px;
     text-align: center;
     margin: 0 auto;
+    padding: 0px 4em;
 }
 
 .catalogTitle,
@@ -142,6 +143,7 @@ const goTypes = (type) => {
     flex-direction: row;
     gap: 10px;
     flex-wrap: wrap;
+    padding: 0 4em;
 
     &>div {
         padding: 12px 16px 12px 16px;
@@ -150,5 +152,27 @@ const goTypes = (type) => {
         background: #FFFFFF;
 
     }
+}
+
+.allPoems {
+    display: grid;
+    justify-content: center;
+
+}
+
+
+@media only screen and (max-width: 767px) {
+    #poems {
+        padding: 0 1em;
+    }
+    
+.allTypes {
+    padding:0
+}
+
+    .allPoems {
+        display: block;
+    }
+
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="    padding: 0 1em;">
         <div style="margin:20px 0 30px">
             <div class="respBox" v-show="true" ref="respBox">
                 <div class="title">
@@ -18,7 +18,7 @@
             </div>
 
         </div>
-        <div style="margin:0 auto;width:1240px;text-align: center">
+        <div style="margin:0 auto;text-align: center">
             <p>{{ $t('poemai_related_poem') }}</p>
             <waterfall class="wfDv"></waterfall>
         </div>

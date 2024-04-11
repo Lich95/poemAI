@@ -23,7 +23,8 @@ const goTypes = (type) => {
 </script>
 <style scoped lang="scss">
 .alb {
-    width: 1240px;
+    // width: 1240px;
+    padding:20px 4em 0;
     margin: 0 auto;
 }
 
@@ -65,6 +66,20 @@ const goTypes = (type) => {
         .numbers {
             color: #7730D0;
             font-weight: 500;
+        }
+    }
+
+}
+
+
+@media only screen and (max-width: 767px) {
+    .alb {
+        padding:20px 1em 0;
+    }
+    .types {
+        &>div{
+            width: 80%;
+    margin: 0 auto;
         }
     }
 

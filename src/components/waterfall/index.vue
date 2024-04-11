@@ -1,6 +1,5 @@
 <template>
-    <div style="display: flex;flex-direction: row;
-    flex-wrap: nowrap;justify-content: space-between;">
+    <div >
         <div class="water wf1">
             <div v-for="item in wfl[0]" @click="goDetail(item.id)">
                 <span>{{ item.title }}</span>
@@ -190,9 +189,9 @@ And bring back balance to each day`, type: 'Sonnet'
 <style scoped lang="scss">
 div.water {
     display: inline-flex;
-    width: 400px;
+    width: 100%;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
     text-align: left;
 
     &>div {
@@ -246,6 +245,13 @@ div.water {
         }
     }
 }
+
+
+// @media only screen and (max-width: 767px) {
+    
+// div.water {
+//     width: 100%;}
+// }
 
 
 .Haiku {

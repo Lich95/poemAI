@@ -1,14 +1,13 @@
 <template>
-    <div>
+    <div style="padding:1em;padding-top: 20px;">
         <p class="typeTitle">
             <span class="numbers">12412 </span>
             <span class="typeName"> {{ route.params.GeneratedPoemType }}</span>
         </p>
 
-        <div style="margin:0 auto;width:1240px;text-align: center">
+        <div class="wfdiv">
 
             <waterfall class="wfDv"></waterfall>
-
             <el-pagination background layout="prev, pager, next" :total="1000" style="margin:40px 0;justify-content: center;"/>
         </div>
 
@@ -37,5 +36,16 @@ const route = useRoute();
     .numbers{
         color:#7730D0;
     }
+}
+.wfdiv{
+    display: grid;
+    justify-content: center;
+}
+
+
+@media only screen and (max-width: 767px) {
+    
+.wfdiv{
+    display: block;}
 }
 </style>

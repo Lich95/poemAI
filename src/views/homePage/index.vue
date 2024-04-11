@@ -180,7 +180,7 @@ const dropMenuList = [
     { event: 'de', text: 'Deutsch' },
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
-    
+
     { event: 'ja', text: '日本語にほんご' },
     { event: 'ko', text: '한국어' },
     { event: 'th', text: 'ภาษาไทย' },
@@ -224,9 +224,9 @@ const checkObj = ref({
 })
 
 
-const loadDemo = ()=>{
-    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language":i18n.global.locale ? i18n.global.locale : 'en'}).then(res=>{
-        console.log(7777,res);
+const loadDemo = () => {
+    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        console.log(7777, res);
     })
 }
 loadDemo();
@@ -610,32 +610,6 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
     margin-right: 20px
 }
 
-@media only screen and (max-width: 767px) {
-    .handleBtn {
-        width: 100% !important;
-    }
-
-    .inputBox .desc {
-        font-size: 14px;
-        ;
-    }
-
-    .inputBox .title {
-        font-size: 24px;
-        ;
-    }
-
-    .respBox .content {
-        font-size: 14px;
-        line-height: 20px;
-    }
-
-    .sizeSelect {
-        margin-bottom: 10px;
-    }
-
-}
-
 
 
 .secTitle {
@@ -667,9 +641,52 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
 }
 
 
+@media only screen and (max-width: 767px) {
+    .handleBtn {
+        width: 100% !important;
+    }
+
+    .inputBox .desc {
+        font-size: 14px;
+        ;
+    }
+
+    .inputBox .title {
+        font-size: 24px;
+        ;
+    }
+
+    .respBox .content {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .sizeSelect {
+        margin-bottom: 10px;
+    }
+
+}
+</style>
+
+<style>
 .wfDv {
-    width: 1240px;
-    margin:30px auto 0;
+    /* width: 1240px; */
+    gap: 25px;
     text-align: center;
+    display: flex;
+    padding: 0 4em;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 767px) {
+
+
+    .wfDv {
+        padding:0;
+        flex-direction: column !important;
+        width:100%;
+    }
 }
 </style>
