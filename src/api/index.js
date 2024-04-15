@@ -36,4 +36,4 @@ const apiRequest = (url, method = 'get', data = {}) => {
 };
 
 // 导出节流后的 API 请求函数
-export const throttledApiRequest = throttle(apiRequest, 1000); // 1秒内只允许发起一次请求
+export const throttledApiRequest = throttle(apiRequest, 0); // 1秒内只允许发起一次请求

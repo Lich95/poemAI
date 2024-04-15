@@ -3,7 +3,7 @@
         <div style="text-align: center;">
             <h2 class="h2Title">{{ $t('poemai_title_generate') }}</h2>
             <!-- {{ $t('poemai_title_generate') }} -->
-            <TypewriterEffect class="title" :textContent="$t('poemai_input_title')" :speed="140" :delay="5" />
+            <TypewriterEffect class="title" :textContent="$t('poem_carousel_word')" :speed="140" :delay="5" />
 
             <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck"
                 @changeCheck="changeStyle('style', $event)"></radioGroup>
@@ -225,11 +225,27 @@ const checkObj = ref({
 
 
 const loadDemo = () => {
-    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
-        console.log(7777, res);
+    console.log(i18n.global)
+    throttledApiRequest('http://54.255.174.111:8087/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        console.log(7777,JSON.parse(res.data.data))
+    })
+
+    
+    throttledApiRequest('http://54.255.174.111:8087/api/v1/detail_by_id', 'post', { "id": 'bccebe59af3348a2a8d64097cd8dc20e' }).then(res => {
+        console.log(8888, res);
+    })
+
+    
+    throttledApiRequest('http://54.255.174.111:8087/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        console.log(9999, res);
+    })
+
+    
+    throttledApiRequest('http://54.255.174.111:8087/api/v1/detail_by_type', 'post', { "type": 'freeverse' }).then(res => {
+        console.log(1000, res);
     })
 }
-loadDemo();
+
 const handleClick = async () => {
     // return;
     if (!thinking.value) {
@@ -388,11 +404,11 @@ onMounted(() => {
     window.addEventListener('scroll', handleScroll);
     setTimeout(() => {
         checkObj.value.languageCheck = i18n.global.locale ? i18n.global.locale : 'en'
-
+        loadDemo();
     }, 0)
     // const language = navigator.language.split('-')[0];
     // i18n.global.locale =languages.includes(language)?language:'en'
-
+    
 });
 // 在组件销毁前移除滚动事件监听
 onBeforeUnmount(() => {
