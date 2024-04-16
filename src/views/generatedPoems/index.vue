@@ -17,19 +17,20 @@
         <div class="allPoems">
 
             <waterfall class="wfDv" :waterfallList="waterfallList"></waterfall>
-            <el-pagination background layout="prev, pager, next" :total="1000"
-                style="margin:40px 0;justify-content: center;" />
+            <el-pagination background layout="prev, pager, next" style="margin:40px 0;justify-content: center;" v-model:current-page="currentPage"
+            :page-size="pageSize" :total="totals" />
         </div>
     </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import waterfall from "@/components/waterfall/index.vue";
 import { useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
+import { throttledApiRequest } from '@/api/index.js';
 const router = useRouter()
 const waterfallList = ref([{
-    id: '111', title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+    id: '111', theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -46,7 +47,7 @@ When leaves will fall, and skies will gray
 And bring back balance to each day`
 }, {
     id: '112',
-    title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+    theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -74,7 +75,7 @@ When leaves will fall, and skies will gray
 And bring back balance to each day`
 }, {
     id: '113',
-    title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+    theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -91,7 +92,7 @@ When leaves will fall, and skies will gray
 And bring back balance to each day`,
 }, {
     id: '114',
-    title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+    theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -109,6 +110,10 @@ And bring back balance to each day`
 }])
 const types = ref(['Free Verse Poem Example', 'Haiku Poem Example', 'Acrostic Poem Example', 'Sonnet Poem Example', 'Limerick Poem Example', 'Love Poem Example', 'Poem for wedding', 'Poem for anniversary', 'Poem for anniversary'])
 
+const currentPage = ref(1)
+const totals = ref(100)
+const pageSize = ref(20)
+
 const goTypes = (type) => {
     // 
     if (type != 'All') {
@@ -118,6 +123,19 @@ const goTypes = (type) => {
 
     }
 }
+onMounted(() => {
+    setTimeout(() => {
+        throttledApiRequest('http://54.255.174.111:8087/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+            types.value = JSON.parse(res.data.data).map(x => x.name)
+            console.log(types.value);
+        })
+
+        throttledApiRequest('http://54.255.174.111:8087/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+            waterfallList.value = JSON.parse(res.data.data)
+        })
+
+    }, 0);
+})
 
 </script>
 <style scoped lang="scss">
@@ -165,10 +183,10 @@ const goTypes = (type) => {
     #poems {
         padding: 0 1em;
     }
-    
-.allTypes {
-    padding:0
-}
+
+    .allTypes {
+        padding: 0
+    }
 
     .allPoems {
         display: block;

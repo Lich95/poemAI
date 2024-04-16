@@ -3,23 +3,34 @@
         <div class="title">{{ $t('poemai_all_categories') }}</div>
         <div class="types">
             <div v-for="item in types" @click="goTypes(item)">
-                <span class="typeName">{{ item }}</span>
-                <span class="numbers">1267</span>
+                <span class="typeName">{{ item.name }}</span>
+                <span class="numbers">{{item.count}}</span>
             </div>
         </div>
     </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref,onMounted } from "vue";
 import { useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
+import { throttledApiRequest } from '@/api/index.js';
 const router = useRouter()
-const types = ref(['Free Verse Poem Example', 'Haiku Poem Example', 'Limerick Poem Example', 'Love Poem Example', 'Poem for wedding', 'Sonnet Poem Example', 'Poem for anniversary'])
+const types = ref([])
 
 const goTypes = (type) => {
     // 
-    router.push({ name: 'generatedPoemType', params: { language: i18n.global.locale || 'en', GeneratedPoemType: type } });
+    router.push({ name: 'generatedPoemType', params: { language: i18n.global.locale || 'en', GeneratedPoemType: type.name } });
 }
+
+onMounted(() => {
+    setTimeout(() => {
+        throttledApiRequest('http://54.255.174.111:8087/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+            types.value = JSON.parse(res.data.data)
+            console.log(types.value);
+        })
+    }, 0);
+})
+
 </script>
 <style scoped lang="scss">
 .alb {

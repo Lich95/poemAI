@@ -116,7 +116,7 @@
             {{ $t('poemai_powered_by_gpt') }}
         </div>
 
-        <waterfall class="wfDv"></waterfall>
+        <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
         <!-- <el-button
             style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;"
             @click="goviewAll">{{ $t('poemai_view_all') }}</el-button> -->
@@ -159,6 +159,7 @@ const router = useRouter()
 const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
+const waterfallList = ref([])
 
 const goviewAll = () => {
 
@@ -225,25 +226,16 @@ const checkObj = ref({
 
 
 const loadDemo = () => {
-    console.log(i18n.global)
     throttledApiRequest('http://54.255.174.111:8087/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
-        console.log(7777,JSON.parse(res.data.data))
+        waterfallList.value = JSON.parse(res.data.data)
     })
 
-    
+
     throttledApiRequest('http://54.255.174.111:8087/api/v1/detail_by_id', 'post', { "id": 'bccebe59af3348a2a8d64097cd8dc20e' }).then(res => {
         console.log(8888, res);
     })
 
-    
-    throttledApiRequest('http://54.255.174.111:8087/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
-        console.log(9999, res);
-    })
 
-    
-    throttledApiRequest('http://54.255.174.111:8087/api/v1/detail_by_type', 'post', { "type": 'freeverse' }).then(res => {
-        console.log(1000, res);
-    })
 }
 
 const handleClick = async () => {
@@ -404,11 +396,12 @@ onMounted(() => {
     window.addEventListener('scroll', handleScroll);
     setTimeout(() => {
         checkObj.value.languageCheck = i18n.global.locale ? i18n.global.locale : 'en'
+
         loadDemo();
     }, 0)
     // const language = navigator.language.split('-')[0];
     // i18n.global.locale =languages.includes(language)?language:'en'
-    
+
 });
 // 在组件销毁前移除滚动事件监听
 onBeforeUnmount(() => {
@@ -700,9 +693,9 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
 
 
     .wfDv {
-        padding:0;
+        padding: 0;
         flex-direction: column !important;
-        width:100%;
+        width: 100%;
     }
 }
 </style>

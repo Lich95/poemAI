@@ -1,24 +1,24 @@
 <template>
-    <div >
-        <div class="water wf1">
+    <div>
+        <div class="water wf1" v-if="wfl[0].length">
             <div v-for="item in wfl[0]" @click="goDetail(item.id)">
-                <span>{{ item.title }}</span>
+                <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
                 <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
-        <div class="water wf2">
+        <div class="water wf2" v-if="wfl[1].length">
             <div v-for="item in wfl[1]" @click="goDetail(item.id)">
-                <span>{{ item.title }}</span>
+                <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
                 <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
-        <div class="water wf3">
+        <div class="water wf3" v-if="wfl[2].length">
             <div v-for="item in wfl[2]" @click="goDetail(item.id)">
-                <span>{{ item.title }}</span>
+                <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
                 <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
@@ -48,7 +48,7 @@ export default {
         waterfallList: {
             type: Array,
             default: [{
-                id: '111', title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+                id: '111', theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -65,7 +65,7 @@ When leaves will fall, and skies will gray
 And bring back balance to each day`, type: 'Haiku'
             }, {
                 id: '112',
-                title: 'Love Poem for husband', content: `In summer's heat2222, I find no solace
+                theme: 'Love Poem for husband', content: `In summer's heat2222, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -93,7 +93,7 @@ When leaves will fall, and skies will gray
 And bring back balance to each day`, type: 'FreeVerse'
             }, {
                 id: '113',
-                title: 'Love Poem for husband', content: `In summer's he33at, I find no solace
+                theme: 'Love Poem for husband', content: `In summer's he33at, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -110,7 +110,7 @@ When leaves will fall, and skies will gray
 And bring back balance to each day`,
             }, {
                 id: '114',
-                title: 'Love Poem for husband', content: `In summer's heat, I find no solace
+                theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
 A time for sun and fun, it's all a facade
 The warmth that's supposed to bring us joy
 Only brings me chills, and makes me annoyed
@@ -136,17 +136,25 @@ And bring back balance to each day`, type: 'Sonnet'
     },
     methods: {
         init() {
-            this.wfl[0].push(this.waterfallList[0])
-            this.wfl[1].push(this.waterfallList[1])
-            this.wfl[2].push(this.waterfallList[2])
-            for (let i = 3; i < this.waterfallList.length; i++) {
-                setTimeout(() => {
-                    let heights = [document.getElementsByClassName('wf1')[0].offsetHeight, document.getElementsByClassName('wf2')[0].offsetHeight, document.getElementsByClassName('wf3')[0].offsetHeight]
-                    console.log(heights);
-                    let numIndex = heights.findIndex(x => x == Math.min(...heights));
-                    this.wfl[numIndex].push(this.waterfallList[i])
-                }, 0);
+            if (this.waterfallList.length > 3) {
+                this.wfl[0].push(this.waterfallList[0])
+                this.wfl[1].push(this.waterfallList[1])
+                this.wfl[2].push(this.waterfallList[2])
+                for (let i = 3; i < this.waterfallList.length; i++) {
+                    setTimeout(() => {
+                        let heights = [document.getElementsByClassName('wf1')[0].offsetHeight, document.getElementsByClassName('wf2')[0].offsetHeight, document.getElementsByClassName('wf3')[0].offsetHeight]
+                        console.log(heights);
+                        let numIndex = heights.findIndex(x => x == Math.min(...heights));
+                        this.wfl[numIndex].push(this.waterfallList[i])
+                    }, 0);
+                }
+            }else{
+                this.waterfallList.forEach((item,index)=>{
+                    this.wfl[index]=[item]
+                })
             }
+
+
         },
         goDetail(id) {
 
@@ -248,7 +256,7 @@ div.water {
 
 
 // @media only screen and (max-width: 767px) {
-    
+
 // div.water {
 //     width: 100%;}
 // }
