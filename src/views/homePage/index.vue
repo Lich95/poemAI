@@ -182,13 +182,13 @@ const dropMenuList = [
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
 
-    // { event: 'ja', text: '日本語にほんご' },
-    // { event: 'ko', text: '한국어' },
-    // { event: 'th', text: 'ภาษาไทย' },
-    // { event: 'id', text: 'IndonesiaName' },
-    // { event: 'vi', text: 'Tiếng Việt' },
-    // { event: 'ar', text: 'اللغة العربية' },
-    // { event: 'rt', text: 'Malay' },
+    { event: 'ja', text: '日本語にほんご' },
+    { event: 'ko', text: '한국어' },
+    { event: 'th', text: 'ภาษาไทย' },
+    { event: 'id', text: 'IndonesiaName' },
+    { event: 'vi', text: 'Tiếng Việt' },
+    { event: 'ar', text: 'اللغة العربية' },
+    { event: 'rt', text: 'Malay' },
 ],
     selectedKeys = [];
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
