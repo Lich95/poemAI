@@ -24,7 +24,7 @@ const goTypes = (type) => {
 
 onMounted(() => {
     setTimeout(() => {
-        throttledApiRequest('http://54.255.174.111:8087/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        throttledApiRequest('/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
             types.value = JSON.parse(res.data.data)
             console.log(types.value);
         })

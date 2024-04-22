@@ -226,15 +226,9 @@ const checkObj = ref({
 
 
 const loadDemo = () => {
-    // throttledApiRequest('http://54.255.174.111:8087/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
-    //     waterfallList.value = JSON.parse(res.data.data).data
-    // })
-
-
-    // throttledApiRequest('http://54.255.174.111:8087/api/v1/detail_by_id', 'post', { "id": 'bccebe59af3348a2a8d64097cd8dc20e' }).then(res => {
-    //     console.log(8888, res);
-    // })
-
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' ,nums:10}).then(res => {
+        waterfallList.value = JSON.parse(res.data.data).data
+    })
 
 }
 
@@ -445,6 +439,10 @@ onBeforeUnmount(() => {
 watch(() => route.params.language, (newRoute, oldRoute) => {
     // Perform actions when the route changes
     checkObj.value.languageCheck = newRoute ? newRoute : 'en'
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en',nums:10 }).then(res => {
+        waterfallList.value = JSON.parse(res.data.data).data
+    })
+    
 })
 
 </script>

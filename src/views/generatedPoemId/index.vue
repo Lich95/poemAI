@@ -20,17 +20,23 @@
         </div>
         <div style="margin:0 auto;text-align: center">
             <p>{{ $t('poemai_related_poem') }}</p>
-            <waterfall class="wfDv"></waterfall>
+            <waterfall class="wfDv"  :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
         </div>
     </div>
 </template>
 <script setup>
 import waterfall from "@/components/waterfall/index.vue";
-import { ref } from "vue";
+import { ref ,onMounted} from "vue";
 import ClipboardJS from 'clipboard';
 import { ElMessage } from 'element-plus'
 import i18n from '@/hooks/i18n'
+import { useRoute } from 'vue-router';
+import { throttledApiRequest } from '@/api/index.js';
+const route = useRoute();
 const { t } = i18n.global;
+const waterfallList = ref([])
+
+
 
 let respTxt = ref(` In summer's heat, I find no solace
                     A time for sun and fun, it's all a facade
@@ -79,6 +85,22 @@ const handleCopy = () => {
     })
 
 }
+
+
+onMounted(() => {
+    setTimeout(() => {
+        throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', type: route.params.GeneratedPoemType ,nums:3,pages:1}).then(res => {
+            waterfallList.value = JSON.parse(res.data.data).data
+        })
+
+        throttledApiRequest('/api/v1/detail_by_id', 'post', { "id": route.params.id}).then(res => {
+            respTxt.value=JSON.parse(res.data.data).poem_info.poemContent
+        })
+
+
+    }, 0);
+})
+
 
 </script>
 <style scoped lang="scss">

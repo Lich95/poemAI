@@ -16,7 +16,7 @@
 
         <div class="allPoems">
 
-            <waterfall class="wfDv" :waterfallList="waterfallList"></waterfall>
+            <waterfall class="wfDv"  :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
             <el-pagination background layout="prev, pager, next" style="margin:40px 0;justify-content: center;" v-model:current-page="currentPage"
             :page-size="pageSize" :total="totals" />
         </div>
@@ -29,85 +29,7 @@ import { useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
 import { throttledApiRequest } from '@/api/index.js';
 const router = useRouter()
-const waterfallList = ref([{
-    id: '111', theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-The days are long, the nights are short
-I crave the coolness of the morning dew
-But even then, the sun rises high
-And steals away my peaceful mood anewThe world is bright, but not so warm
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day`
-}, {
-    id: '112',
-    theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-The days are long, the nights are short
-I crave the coolness of the morning dew
-But even then, the sun rises high
-And steals away my peaceful mood anewThe world is bright, but not so warm
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day
-In summer's heat, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day`
-}, {
-    id: '113',
-    theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-The days are long, the nights are short
-I crave the coolness of the morning dew
-But even then, the sun rises high
-And steals away my peaceful mood anewThe world is bright, but not so warm
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day`,
-}, {
-    id: '114',
-    theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-The days are long, the nights are short
-I crave the coolness of the morning dew
-But even then, the sun rises high
-And steals away my peaceful mood anewThe world is bright, but not so warm
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day`
-}])
+const waterfallList = ref([])
 const types = ref(['Free Verse Poem Example', 'Haiku Poem Example', 'Acrostic Poem Example', 'Sonnet Poem Example', 'Limerick Poem Example', 'Love Poem Example', 'Poem for wedding', 'Poem for anniversary', 'Poem for anniversary'])
 
 const currentPage = ref(1)
@@ -125,12 +47,12 @@ const goTypes = (type) => {
 }
 onMounted(() => {
     setTimeout(() => {
-        throttledApiRequest('http://54.255.174.111:8087/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        throttledApiRequest('/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
             types.value = JSON.parse(res.data.data).map(x => x.name)
             console.log(types.value);
         })
 
-        throttledApiRequest('http://54.255.174.111:8087/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
             waterfallList.value = JSON.parse(res.data.data).data
         })
 
