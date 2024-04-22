@@ -1,15 +1,83 @@
 <template>
-    <div style="padding:1em;">
-        <!-- <TypewriterEffect class="title" :textContent="$t('title')" :speed="200" /> -->
-        <div class="inputBox">
-            <p class="title">{{ $t('poemai_input_title') }}</p>
-            <p class="desc">{{ $t('poemai_input_subtitle') }}</p>
+    <div style="padding:1em;padding-top: 20px;">
+        <div style="text-align: center;">
+            <h2 class="h2Title">{{ $t('poemai_title_generate') }}</h2>
+            <!-- {{ $t('poemai_title_generate') }} -->
+            <TypewriterEffect class="title" :textContent="$t('poem_carousel_word')" :speed="140" :delay="5" />
 
-   
-            <div>
-                <el-input v-model="inputStr" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5"
-                    resize="none" />
+            <radioGroup :radioList="styleList" :checkRadio="checkObj.styleCheck"
+                @changeCheck="changeStyle('style', $event)"></radioGroup>
+        </div>
+        <div class="inputBox">
+            <div v-show="checkObj.styleCheck == 'acrostic'">
+                <p class="secTitle">{{ $t('poemai_acrostic_keyword') }}</p>
+                <div>
+                    <el-input v-model="inputStrA" type="textarea" :placeholder="$t('poemai_acrostic_kw_input_tips')"
+                        rows="1" resize="none" />
+                    <!-- resize="none"  -->
+                </div>
             </div>
+
+            <div v-if="checkObj.styleCheck == 'freeverse'">
+                <p class="secTitle">{{ $t('poemai_fv_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr1" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5"
+                        resize="none" />
+                    <!-- resize="none"  -->
+                </div>
+            </div>
+            <div v-else-if="checkObj.styleCheck == 'haiku'">
+                <p class="secTitle">{{ $t('poemai_haiku_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr2" type="textarea" :placeholder="$t('poemai_haiku_input_tips')" rows="5"
+                        resize="none" />
+                    <!-- resize="none"  -->
+                </div>
+            </div>
+            <div v-else-if="checkObj.styleCheck == 'acrostic'">
+                <p class="secTitle">{{ $t('poemai_acrostic_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr3" type="textarea" :placeholder="$t('poemai_acrostic_input_tips')"
+                        rows="5" resize="none" />
+                    <!-- resize="none"  -->
+                </div>
+            </div>
+            <div v-else-if="checkObj.styleCheck == 'sonnet'">
+                <p class="secTitle">{{ $t('poemai_sonnet_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr4" type="textarea" :placeholder="$t('poemai_sonnet_input_tips')" rows="5"
+                        resize="none" />
+                    <!-- resize="none"  -->
+                </div>
+            </div>
+            <div v-else-if="checkObj.styleCheck == 'limerick'">
+                <p class="secTitle">{{ $t('poemai_limerick_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr5" type="textarea" :placeholder="$t('poemai_limerick_input_tips')"
+                        rows="5" resize="none" />
+                    <!-- resize="none"  -->
+                </div>
+            </div>
+            <div v-else-if="checkObj.styleCheck == 'lovepoem'">
+                <p class="secTitle">{{ $t('poemai_love_theme') }}</p>
+                <div>
+                    <el-input v-model="inputStr6" type="textarea" :placeholder="$t('poemai_love_input_tips')" rows="5"
+                        resize="none" />
+                    <!-- resize="none"  -->
+                </div>
+            </div>
+
+            <el-select v-model="checkObj.sizeCheck" placeholder="Poem Size" class="sizeSelect"
+                v-show="checkObj.styleCheck == 'freeverse' || checkObj.styleCheck == 'lovepoem'">
+                <el-option v-for="item in sizes" :key="item.val" :label="$t(item.label)" :value="item.val"></el-option>
+            </el-select>
+            <el-select v-model="checkObj.languageCheck" placeholder="Poem Language"
+                v-show="checkObj.styleCheck != 'acrostic'">
+                <el-option v-for="item in dropMenuList" :key="item.event" :value="item.event"
+                    :label="item.text"></el-option>
+
+            </el-select>
+
 
             <div style="text-align:center">
                 <el-button class="handleBtn" @click="handleClick">
@@ -29,7 +97,7 @@
                 </el-button>
             </div>
         </div>
-        <div class="respBox" v-show="haveResp">
+        <div class="respBox" v-show="haveResp" ref="respBox">
             <div class="title">
                 {{ $t('poemai_generated_poem') }}
             </div>
@@ -38,23 +106,28 @@
             </div>
             <div class="copyBtn">
                 <el-button size="small" class="copyButton" @click="handleCopy" data-clipboard-target=".content">{{
-                    $t('poemai_copy_btn')
-                }}<el-icon>
+                $t('poemai_copy_btn')
+            }}<el-icon>
                         <CopyDocument />
                     </el-icon></el-button>
             </div>
         </div>
+        <div class='footer'>
+            {{ $t('poemai_powered_by_gpt') }}
+        </div>
+
+        <!-- <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall> -->
+        <!-- <el-button
+            style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;"
+            @click="goviewAll">{{ $t('poemai_view_all') }}</el-button> -->
+
+        <quesAndAnsw style="margin-top: 50px;"></quesAndAnsw>
 
         <button @click="scrollToTop" class="toTopBtn" v-show="topBtnShow">
             <el-icon>
                 <ArrowUpBold />
             </el-icon>
         </button>
-
-
-        <div class='footer'>
-            {{ $t('poemai_powered_by_gpt') }}
-        </div>
     </div>
 </template>
 <script setup>
@@ -68,9 +141,17 @@ import { useRoute, useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
 import TypewriterEffect from "@/components/TypewriterEffect/index.vue";
 import radioGroup from "@/components/radioGroup/index.vue";
+import waterfall from "@/components/waterfall/index.vue";
 import { I18nInjectionKey } from "vue-i18n";
+import quesAndAnsw from '@/views/questionAndAnswer/index.vue'
 const { t } = i18n.global;
-const inputStr = ref()
+const inputStrA = ref()
+const inputStr1 = ref()
+const inputStr2 = ref()
+const inputStr3 = ref()
+const inputStr4 = ref()
+const inputStr5 = ref()
+const inputStr6 = ref()
 const respContent = ref()
 const thinking = ref(false)
 const haveResp = ref(false)
@@ -78,6 +159,20 @@ const router = useRouter()
 const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
+const waterfallList = ref([])
+
+const goviewAll = () => {
+
+    router.push({ name: 'generatedPoems', params: { language: i18n.global.locale || 'en' } });
+}
+const sizes = ref([
+    { val: 'Medium', label: 'poem_size_m' },
+    { val: 'Short', label: 'poem_size_s' },
+    { val: 'Large', label: 'poem_size_l' },
+])
+
+const respBox = ref()
+
 const dropMenuList = [
     { event: 'en', text: 'English' },
     { event: 'fr', text: 'Français' },
@@ -86,34 +181,59 @@ const dropMenuList = [
     { event: 'de', text: 'Deutsch' },
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
+
+    // { event: 'ja', text: '日本語にほんご' },
+    // { event: 'ko', text: '한국어' },
+    // { event: 'th', text: 'ภาษาไทย' },
+    // { event: 'id', text: 'IndonesiaName' },
+    // { event: 'vi', text: 'Tiếng Việt' },
+    // { event: 'ar', text: 'اللغة العربية' },
+    // { event: 'rt', text: 'Malay' },
 ],
     selectedKeys = [];
-const languages = ['en', 'fr', 'ru','it', 'de','es', 'pt']
+const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
 
-const styleList = [{ text: 'Free Verse', label: "poemai_freeverse" },
-{ text: 'Haiku', label: "poemai_haiku" },
-{ text: 'Acrostic', label: "poemai_acrostic" },
-{ text: 'Sonnet', label: "poemai_sonnet" },
-{ text: 'Limerick', label: "poemai_limerick" },
-{ text: 'Love Poem', label: "poemai_lovepoem" },
-];
-const sizeList = [{ text: 'Short', label: "short" },
-{ text: 'Medium', label: "medium" },
-{ text: 'Large', label: "large" },
+import free_verseImg from "@/assets/icon/free_verse.png";
+import haikuImg from "@/assets/icon/haiku.png";
+import acrosticImg from "@/assets/icon/acrostic.png";
+import sonnetImg from "@/assets/icon/sonnet.png";
+import limerickImg from "@/assets/icon/limerick.png";
+import love_poemImg from "@/assets/icon/love_poem.png";
+
+const styleList = ref([{ text: 'poemai_free_verse', label: "freeverse", img: free_verseImg },
+{ text: 'poemai_haiku', label: "haiku", img: haikuImg },
+{ text: 'poemai_acrostic', label: "acrostic", img: acrosticImg },
+{ text: 'poemai_sonnet', label: "sonnet", img: sonnetImg },
+{ text: 'poemai_limerick', label: "limerick", img: limerickImg },
+{ text: 'poemai_love_poem', label: "lovepoem", img: love_poemImg },
+]);
+
+
+
+const sizeList = [{ text: 'short', label: "short" },
+{ text: 'mMedium', label: "medium" },
+{ text: 'large', label: "large" },
 ];
 const languageList = dropMenuList.map(x => {
     x.label = x.event
     return x
 })
 const checkObj = ref({
-    styleCheck: 'poemai_freeverse',
-    sizeCheck: 'short',
-    languageCheck: 'en'
+    styleCheck: 'freeverse',
+    sizeCheck: 'Short',
+    languageCheck: ''
 })
 
 
+const loadDemo = () => {
+    // throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' ,nums:10}).then(res => {
+    //     waterfallList.value = JSON.parse(res.data.data).data
+    // })
+
+}
 
 const handleClick = async () => {
+    // return;
     if (!thinking.value) {
         thinking.value = true;
         if (haveResp.value) {
@@ -128,17 +248,42 @@ const handleClick = async () => {
                 duration: 2000
             })
         }
-        let language='';
-        if( route.params.language=='it'){
-            language='ita'
-        }else if( route.params.language=='pt'){
-            language='por'
-        }else{
-            language = route.params.language || 'en' 
+        let language = '';
+        if (route.params.language == 'it') {
+            language = 'ita'
+        } else if (route.params.language == 'pt') {
+            language = 'por'
+        } else {
+            language = route.params.language || 'en'
         }
+        let placeholderText = '', inputStr = '', content = "";
+
+
+
+        if (checkObj.value.styleCheck == 'freeverse') {
+            inputStr = inputStr1.value
+            placeholderText = t('poemai_input_tips')
+        } else if (checkObj.value.styleCheck == 'haiku') {
+            inputStr = inputStr2.value
+            placeholderText = t('poemai_haiku_input_tips')
+        } else if (checkObj.value.styleCheck == 'acrostic') {
+            inputStr = JSON.stringify({ keyword: inputStrA.value || t('poemai_acrostic_kw_input_tips'), content: inputStr3.value || t('poemai_acrostic_input_tips') })
+            placeholderText = t('poemai_acrostic_input_tips')
+        } else if (checkObj.value.styleCheck == 'sonnet') {
+            inputStr = inputStr4.value
+            placeholderText = t('poemai_sonnet_input_tips')
+        } else if (checkObj.value.styleCheck == 'limerick') {
+            inputStr = inputStr5.value
+            placeholderText = t('poemai_limerick_input_tips')
+        } else if (checkObj.value.styleCheck == 'lovepoem') {
+            inputStr = inputStr6.value
+            placeholderText = t('poemai_lovepoem_input_tips')
+        }
+
+
         // http://poemgenerator-ai.com
-        throttledApiRequest('/api/v1', 'post', { "theme": 'freeverse', "content": inputStr.value || t('poemai_input_tips'),language}).then(res => {
-            res=res.data
+        throttledApiRequest('/api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
+            res = res.data
             if (res.retCode == 'C0000') {
                 respContent.value = res.data.replaceAll('(A)', '')
                     .replaceAll('(B)', '')
@@ -151,7 +296,12 @@ const handleClick = async () => {
 
                 haveResp.value = true;
                 respLoading.value = false;
-                
+
+                setTimeout(() => {
+
+                    respBox.value.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }, 100);
+
             } else if (res.retCode == 'C001') {
                 ElMessage({
                     showClose: true,
@@ -193,29 +343,64 @@ const _thislanguage = () => {
     return dropMenuList.find(x => x.event == language).text
 }
 const handleCopy = () => {
-    const clipboard = new ClipboardJS('.copyButton', {
-        text() {
-            return respContent.value
+    // const clipboard = new ClipboardJS('.copyButton', {
+    //     text() {
+    //         return respContent.value
+    //     }
+    // })
+    // clipboard.on('success', () => {
+    //     ElMessage({
+    //         showClose: true,
+    //         message: t('poemai_copy_success_toast'),
+    //         center: true,
+    //         type: 'success'
+    //     })
+    //     clipboard.destroy();
+    // })
+    // clipboard.on('error', () => {
+    //     ElMessage({
+    //         showClose: true,
+    //         message: 'error',
+    //         center: true,
+    //         type: 'success'
+    //     })
+    //     clipboard.destroy();
+    // })
+
+    const textarea = document.createElement('textarea');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.value = respContent.value;
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+        const success = document.execCommand('copy');
+        if (success) {
+            ElMessage({
+                showClose: true,
+                message: t('poemai_copy_success_toast'),
+                center: true,
+                type: 'success'
+            })
+        } else {
+            ElMessage({
+                showClose: true,
+                message: 'error',
+                center: true,
+                type: 'success'
+            })
         }
-    })
-    clipboard.on('success', () => {
-        ElMessage({
-            showClose: true,
-            message: t('poemai_copy_success_toast'),
-            center: true,
-            type: 'success'
-        })
-        clipboard.destroy();
-    })
-    clipboard.on('error', () => {
+    } catch (err) {
         ElMessage({
             showClose: true,
             message: 'error',
             center: true,
             type: 'success'
         })
-        clipboard.destroy();
-    })
+    } finally {
+        document.body.removeChild(textarea);
+    }
 
 }
 
@@ -238,7 +423,11 @@ const changeStyle = (type, newV) => {
 // 监听滚动事件
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
-    
+    setTimeout(() => {
+        checkObj.value.languageCheck = i18n.global.locale ? i18n.global.locale : 'en'
+
+        loadDemo();
+    }, 0)
     // const language = navigator.language.split('-')[0];
     // i18n.global.locale =languages.includes(language)?language:'en'
 
@@ -247,14 +436,17 @@ onMounted(() => {
 onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll);
 });
-
+watch(() => route.params.language, (newRoute, oldRoute) => {
+    // Perform actions when the route changes
+    checkObj.value.languageCheck = newRoute ? newRoute : 'en'
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en',nums:10 }).then(res => {
+        waterfallList.value = JSON.parse(res.data.data).data
+    })
+    
+})
 
 </script>
 <style scoped lang="scss">
-* {
-    font-family: Arial, sans-serif;
-}
-
 .header {
     height: 64px;
     display: flex;
@@ -279,8 +471,10 @@ onBeforeUnmount(() => {
 
 .title {
     text-align: center;
-    margin-top: 20px;
-    ;
+    // margin-top: 20px;
+    margin: 0 0 20px;
+
+    color: #FF7FA0;
 }
 
 .logoTxt {
@@ -303,7 +497,7 @@ onBeforeUnmount(() => {
 
 
 .inputBox {
-    max-width: 634px;
+    max-width: 760px;
     background-color: #fff;
     border-radius: 24px;
     padding: 1em;
@@ -318,7 +512,7 @@ onBeforeUnmount(() => {
     }
 
     ::v-deep .el-textarea__inner {
-        background-color: #F6F7F5;
+        background-color: #fff;
         color: #1D2331;
         font-size: 18px;
         padding: 10px 13px;
@@ -326,6 +520,8 @@ onBeforeUnmount(() => {
         &:focus {
             box-shadow: 0 0 0 1px #1D2331;
         }
+
+        margin: 10px 0;
     }
 
     .handleBtn {
@@ -361,8 +557,16 @@ onBeforeUnmount(() => {
     }
 }
 
+.h2Title {
+    padding-top: 20px;
+    font-size: 44px;
+    color: #1D2331;
+    margin: 0;
+    font-family: 'other-bold-font-family';
+}
+
 .respBox {
-    max-width: 634px;
+    max-width: 760px;
     background-color: #fff;
     border-radius: 24px;
     padding: 1em;
@@ -422,6 +626,8 @@ onBeforeUnmount(() => {
     font-size: 14px;
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 20px;
+    ;
 }
 
 .toTopBtn {
@@ -448,6 +654,37 @@ onBeforeUnmount(() => {
     margin-right: 20px
 }
 
+
+
+.secTitle {
+
+    color: #1D2331;
+    text-align: left;
+    font-size: 18px;
+    font-family: 'other-bold-font-family';
+    margin: 0 0 5px !important;
+    position: relative;
+    padding-left: 18px;
+
+    &::before {
+        content: "";
+        height: 100%;
+        width: 12px;
+        /* 定义竖条的宽度 */
+        background-color: #7730D0;
+        /* 定义竖条的颜色 */
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 4px;
+    }
+}
+
+.el-select {
+    margin-right: 15px;
+}
+
+
 @media only screen and (max-width: 767px) {
     .handleBtn {
         width: 100% !important;
@@ -462,16 +699,38 @@ onBeforeUnmount(() => {
         font-size: 24px;
         ;
     }
-.respBox .content{
-    font-size: 14px;
-    line-height: 20px;
+
+    .respBox .content {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .sizeSelect {
+        margin-bottom: 10px;
+    }
+
 }
-    
+</style>
+
+<style>
+.wfDv {
+    /* width: 1240px; */
+    gap: 25px;
+    text-align: center;
+    display: flex;
+    padding: 0 4em;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
+@media only screen and (max-width: 767px) {
 
 
-.secTitle {
-    text-align: left;
-    ;
-}</style>   
+    .wfDv {
+        padding: 0;
+        flex-direction: column !important;
+        width: 100%;
+    }
+}
+</style>

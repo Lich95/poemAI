@@ -7,12 +7,17 @@
                 </div>
                 <div class="" @click="toggleMenu(false)" v-else>
                     <img src="@/assets/icon/mobileClose.png" alt="">
-
                 </div>
             </div>
 
             <div v-show="mobileNav" class="mobileMenuPop" ref="target">
                 <el-menu @select="handleSelect" :default-active="selectedKeys">
+                    <el-menu-item  @click="goGenerated"> 
+                    <img src="@/assets/icon/Lamp.png" alt="">
+                    <span>{{ $t('poemai_example') }}</span></el-menu-item>
+                    <el-menu-item @click="goPrivacy">
+                    <img src="@/assets/icon/privacy_icon.png" alt="">
+                    <span>{{ $t('poemai_privacy') }}</span> </el-menu-item>
                     <el-sub-menu index="1">
                         <template #title>
                             <img src="@/assets/icon/language.png" alt="">
@@ -22,16 +27,22 @@
                     </el-sub-menu>
                 </el-menu>
             </div>
-            <div class="logoDiv">
+
+
+            <div class="logoDiv" @click="logoClick">
                 <img src="/public/logo.png" alt="" class="logo">
                 <!-- <h1 class="logoTxt"><span class="pp">AI</span> Poem Generator</h1> -->
                 <h1 class="logoTxt">{{ $t('poemai_title') }}</h1>
             </div>
             <div class="tools">
-                <!-- <div class="privacy">
-            <img src="@/assets/icon/privacy_icon.png" alt="">
-            <span>Privacy</span>
-          </div> -->
+                <!-- <div class="Generated" @click="goGenerated">
+                    <img src="@/assets/icon/Lamp.png" alt="">
+                    <span>{{ $t('poemai_example') }}</span>
+                </div> -->
+                <div class="privacy" @click="goPrivacy">
+                    <img src="@/assets/icon/privacy_icon.png" alt="">
+                    <span>{{ $t('poemai_privacy') }}</span>
+                </div>
                 <div class="language">
                     <el-dropdown trigger="click" @command="handleCommand">
                         <span class="el-dropdown-link">
@@ -60,11 +71,13 @@
 <script setup>
 
 import { onClickOutside } from '@vueuse/core'
-import { ref, onMounted, onBeforeUnmount, computed, nextTick } from "vue";
+import { ref, onMounted, onBeforeUnmount, computed, nextTick,watch } from "vue";
 import { useRoute, useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
 const router = useRouter()
 const route = useRoute();
+
+const currentRoute = ref(route)
 const mobileNav = ref(false);
 const defaultOpeneds = ref([])
 const dropMenuList = [
@@ -75,6 +88,15 @@ const dropMenuList = [
     { event: 'de', text: 'Deutsch' },
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
+    
+    //{ event: 'ja', text: '日本語にほんご' },
+   // { event: 'ko', text: '한국어' },
+    //{ event: 'th', text: 'ภาษาไทย' },
+    //{ event: 'id', text: 'IndonesiaName' },
+    //{ event: 'vi', text: 'Tiếng Việt' },
+    //{ event: 'ar', text: 'اللغة العربية' },
+    //{ event: 'rt', text: 'Malay' },
+
 ]
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
 const selectedKeys = computed(() => {
@@ -86,7 +108,23 @@ const languageList = dropMenuList.map(x => {
     x.label = x.event
     return x
 })
+const goPrivacy = () => {
+    if(mobileNav.value){
+        mobileNav.value=false
+    }
+    router.push({ name: 'privacy', params: { language: i18n.global.locale } });
+}
+const goGenerated = () => {
+    if(mobileNav.value){
+        mobileNav.value=false
+    }
+    router.push({ name: 'generatedPoems', params: { language: i18n.global.locale || 'en' } });
+}
 
+const logoClick = () => {
+
+    router.push({ name: 'Home', params: { language: i18n.global.locale != 'en' ? i18n.global.locale : '' } });
+}
 const handleCommand = (command) => {
 
     localStorage.setItem('languageSave', command)
@@ -102,9 +140,8 @@ const handleCommand = (command) => {
     const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
     document.title = pageTitle;
 
-     
     const linkTag = document.querySelector('link[rel="canonical"]');
-    linkTag.setAttribute('href','https://poemgenerator-ai.com/'+command+(command==''?'':'/'))
+    linkTag.setAttribute('href', 'https://poemgenerator-ai.com/' + command + (command == '' ? '' : '/'))
 
     const metaDescriptionTag = document.querySelector('meta[name="description"]');
     if (metaDescriptionTag) {
@@ -139,7 +176,8 @@ const handleSelect = (e) => {
     const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
     const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
     document.title = pageTitle;
-    
+
+
     const metaDescriptionTag = document.querySelector('meta[name="description"]');
     if (metaDescriptionTag) {
         metaDescriptionTag.setAttribute('content', metaDescription);
@@ -178,22 +216,28 @@ onMounted(() => {
     // 将生成的canonical标签添加到head中
     document.head.appendChild(canonicalTag);
 
+
+    // // 获取当前页面的规范URL
+    // var canonicalURL = window.location.href
+
+    // // 动态生成canonical标签
+    // var canonicalTag = document.createElement('link');
+    // canonicalTag.rel = 'canonical';
+    // canonicalTag.href = canonicalURL;
+
+    // // 将生成的canonical标签添加到head中
+    // document.head.appendChild(canonicalTag);
 })
-
-
 
 </script>
 
 <style scoped lang="scss">
-* {
-    font-family: Arial, sans-serif;
-}
-
 .header {
+    position: relative;
     height: 64px;
     display: flex;
     justify-content: space-between;
-
+    z-index: 998;
     align-items: center;
     background-color: #fff;
     width: 100%;
@@ -203,6 +247,7 @@ onMounted(() => {
     .logoDiv {
         display: flex;
         align-items: center;
+        cursor: pointer;
     }
 
     .tools {
@@ -216,10 +261,11 @@ onMounted(() => {
             border-radius: 20px;
         }
 
-        .privacy {
+        .privacy,.Generated {
             display: flex;
             align-items: center;
-
+            margin-right: 20px;
+            cursor: pointer;
         }
     }
 
@@ -316,4 +362,5 @@ onMounted(() => {
     box-shadow: 2px 0px 8px 0px #0000001A;
     z-index: 9;
 
-}</style>   
+}
+</style>   

@@ -1,16 +1,16 @@
 <script setup>
-    import headerStyle from '@/views/homePage/header/index.vue'
+import headerStyle from '@/views/header/index.vue'
 </script>
 
 <template>
   <div>
     <headerStyle></headerStyle>
-  <router-view></router-view>
-</div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <style>
-
 *:not(.content) {
-    user-select: none;
-}</style>
+  user-select: none;
+}
+</style>

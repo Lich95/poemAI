@@ -2,10 +2,14 @@
   font-family: 'logo-font-family';
   src: url(./assets/fonts/packard-antique.regular.ttf);
 }
-/* @font-face {
+@font-face {
   font-family: 'other-font-family';
-  src: url(./assets/fonts/packard-antique.regular.ttf);
-} */
+  src: url(./assets/fonts/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: 'other-bold-font-family';
+  src: url(./assets/fonts/Poppins-SemiBold.ttf);
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -69,8 +73,10 @@ button:focus-visible {
 
 #app {
   width:100%;
-  background-color: rgb(243, 244, 241);
+  color:#333;
+  background-color: #f6f6f6;
   /* padding:1em; */
+  font-family:'other-font-family', Avenir,Helvetica,Arial,sans-serif;
 }
 
 @media (prefers-color-scheme: light) {
