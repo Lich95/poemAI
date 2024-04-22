@@ -131,7 +131,7 @@ onMounted(() => {
         })
 
         throttledApiRequest('http://54.255.174.111:8087/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
-            waterfallList.value = JSON.parse(res.data.data)
+            waterfallList.value = JSON.parse(res.data.data).data
         })
 
     }, 0);

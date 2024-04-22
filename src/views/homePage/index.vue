@@ -69,7 +69,7 @@
 
             <el-select v-model="checkObj.sizeCheck" placeholder="Poem Size" class="sizeSelect"
                 v-show="checkObj.styleCheck == 'freeverse' || checkObj.styleCheck == 'lovepoem'">
-                <el-option v-for="item in sizes" :key="item.val" :label="item.label" :value="item.val"></el-option>
+                <el-option v-for="item in sizes" :key="item.val" :label="$t(item.label)" :value="item.val"></el-option>
             </el-select>
             <el-select v-model="checkObj.languageCheck" placeholder="Poem Language"
                 v-show="checkObj.styleCheck != 'acrostic'">
@@ -116,7 +116,7 @@
             {{ $t('poemai_powered_by_gpt') }}
         </div>
 
-        <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
+        <!-- <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall> -->
         <!-- <el-button
             style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;"
             @click="goviewAll">{{ $t('poemai_view_all') }}</el-button> -->
@@ -166,9 +166,9 @@ const goviewAll = () => {
     router.push({ name: 'generatedPoems', params: { language: i18n.global.locale || 'en' } });
 }
 const sizes = ref([
-    { val: 'Medium', label: t('poem_size_m') },
-    { val: 'Short', label: t('poem_size_s') },
-    { val: 'Large', label: t('poem_size_l') },
+    { val: 'Medium', label: 'poem_size_m' },
+    { val: 'Short', label: 'poem_size_s' },
+    { val: 'Large', label: 'poem_size_l' },
 ])
 
 const respBox = ref()
@@ -182,13 +182,13 @@ const dropMenuList = [
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
 
-    { event: 'ja', text: '日本語にほんご' },
-    { event: 'ko', text: '한국어' },
-    { event: 'th', text: 'ภาษาไทย' },
-    { event: 'id', text: 'IndonesiaName' },
-    { event: 'vi', text: 'Tiếng Việt' },
-    { event: 'ar', text: 'اللغة العربية' },
-    { event: 'rt', text: 'Malay' },
+    // { event: 'ja', text: '日本語にほんご' },
+    // { event: 'ko', text: '한국어' },
+    // { event: 'th', text: 'ภาษาไทย' },
+    // { event: 'id', text: 'IndonesiaName' },
+    // { event: 'vi', text: 'Tiếng Việt' },
+    // { event: 'ar', text: 'اللغة العربية' },
+    // { event: 'rt', text: 'Malay' },
 ],
     selectedKeys = [];
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
@@ -226,14 +226,14 @@ const checkObj = ref({
 
 
 const loadDemo = () => {
-    throttledApiRequest('http://54.255.174.111:8087/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
-        waterfallList.value = JSON.parse(res.data.data)
-    })
+    // throttledApiRequest('http://54.255.174.111:8087/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+    //     waterfallList.value = JSON.parse(res.data.data).data
+    // })
 
 
-    throttledApiRequest('http://54.255.174.111:8087/api/v1/detail_by_id', 'post', { "id": 'bccebe59af3348a2a8d64097cd8dc20e' }).then(res => {
-        console.log(8888, res);
-    })
+    // throttledApiRequest('http://54.255.174.111:8087/api/v1/detail_by_id', 'post', { "id": 'bccebe59af3348a2a8d64097cd8dc20e' }).then(res => {
+    //     console.log(8888, res);
+    // })
 
 
 }
@@ -288,7 +288,7 @@ const handleClick = async () => {
 
 
         // http://poemgenerator-ai.com
-        throttledApiRequest('http://poemgenerator-ai.com/api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
+        throttledApiRequest('/api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
             res = res.data
             if (res.retCode == 'C0000') {
                 respContent.value = res.data.replaceAll('(A)', '')
@@ -349,29 +349,64 @@ const _thislanguage = () => {
     return dropMenuList.find(x => x.event == language).text
 }
 const handleCopy = () => {
-    const clipboard = new ClipboardJS('.copyButton', {
-        text() {
-            return respContent.value
+    // const clipboard = new ClipboardJS('.copyButton', {
+    //     text() {
+    //         return respContent.value
+    //     }
+    // })
+    // clipboard.on('success', () => {
+    //     ElMessage({
+    //         showClose: true,
+    //         message: t('poemai_copy_success_toast'),
+    //         center: true,
+    //         type: 'success'
+    //     })
+    //     clipboard.destroy();
+    // })
+    // clipboard.on('error', () => {
+    //     ElMessage({
+    //         showClose: true,
+    //         message: 'error',
+    //         center: true,
+    //         type: 'success'
+    //     })
+    //     clipboard.destroy();
+    // })
+
+    const textarea = document.createElement('textarea');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.value = respContent.value;
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+        const success = document.execCommand('copy');
+        if (success) {
+            ElMessage({
+                showClose: true,
+                message: t('poemai_copy_success_toast'),
+                center: true,
+                type: 'success'
+            })
+        } else {
+            ElMessage({
+                showClose: true,
+                message: 'error',
+                center: true,
+                type: 'success'
+            })
         }
-    })
-    clipboard.on('success', () => {
-        ElMessage({
-            showClose: true,
-            message: t('poemai_copy_success_toast'),
-            center: true,
-            type: 'success'
-        })
-        clipboard.destroy();
-    })
-    clipboard.on('error', () => {
+    } catch (err) {
         ElMessage({
             showClose: true,
             message: 'error',
             center: true,
             type: 'success'
         })
-        clipboard.destroy();
-    })
+    } finally {
+        document.body.removeChild(textarea);
+    }
 
 }
 
@@ -593,6 +628,8 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
     font-size: 14px;
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 20px;
+    ;
 }
 
 .toTopBtn {
