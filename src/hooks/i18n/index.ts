@@ -3,7 +3,7 @@ import { createI18n } from 'vue-i18n';
 
 const messages = {
   en: {
-    poem_carousel_word:"A touching love poem,A funny limerick,A Sonnet like Shakespeare,An acrostic of any word,A Haiku about nature,An amazing free verse",
+    poem_carousel_word: "A touching love poem,A funny limerick,A Sonnet like Shakespeare,An acrostic of any word,A Haiku about nature,An amazing free verse",
     header_title: 'AI Poem Generator - Create a rhyming poem with free AI poem generator',
     Description: "A free AI poem generator that anyone can create a rhyming poem in seconds. Explore our AI Poem Generator: Create custom, rhyming poems on any poem theme.",
     poemai_example: "Generated Poems",
@@ -229,8 +229,8 @@ const messages = {
 
   },
   fr: {
-    
-    poem_carousel_word:"Poèmes d'amour touchants,Un vers libre,Un Sonnet touchant,Un poème acrostiche nommé,Un Haïku sur le printemps,Un limerick intéressant",
+
+    poem_carousel_word: "Poèmes d'amour touchants,Un vers libre,Un Sonnet touchant,Un poème acrostiche nommé,Un Haïku sur le printemps,Un limerick intéressant",
     header_title: "Générateur de poèmes - Créez un poème rimé avec l'IA gratuite",
     Description: "Un générateur de poèmes IA gratuit permettant de créer rapidement des poèmes rimés. Explorez notre générateur pour des poèmes personnalisés sur tout thème.",
     poemai_example: "Poèmes générés",
@@ -419,7 +419,7 @@ const messages = {
 <p>Entrez n'importe quel thème de poésie, cliquez sur « Générer », et créez immédiatement votre poème.</p>`,
   },
   ru: {
-    poem_carousel_word:"Любовный стих,Забавный лимерик,Сонет. подобный Шекспиру,Акростих любого слова,Хайку о весне,Творческий свободный стих",
+    poem_carousel_word: "Любовный стих,Забавный лимерик,Сонет. подобный Шекспиру,Акростих любого слова,Хайку о весне,Творческий свободный стих",
     header_title: "Генератор стихов - создайте рифму с бесплатным AI",
     Description: "Бесплатный генератор стихов на ИИ: создание рифмованных стихов в секунды. Откройте наш генератор и напишите красивое стихотворение.",
     poemai_example: "Сгенерированные стихи",
@@ -637,8 +637,8 @@ const messages = {
 
   },
   de: {
-    
-    poem_carousel_word:"Ein romantisches gedicht,Ein lustiger Limerick,Ein Sonett wie Shakespeare,Ein Akrostichon des Namens,Ein Haiku über die Natur,Ein erstaunlicher freier Vers",
+
+    poem_carousel_word: "Ein romantisches gedicht,Ein lustiger Limerick,Ein Sonett wie Shakespeare,Ein Akrostichon des Namens,Ein Haiku über die Natur,Ein erstaunlicher freier Vers",
     header_title: "Gedichten Generator - Kostenloses KI-Magie-Tool für Reimgedichte",
     Description: "Kostenloser AI-Gedichten Generator: Erstellen Sie Reimgedichte in Sekundenschnelle. Entdecken Sie unseren Generator und erstellen Sie Reimgedichte zu jedem Thema.",
     poemai_example: "Generierte Gedichte",
@@ -829,7 +829,7 @@ const messages = {
 
   },
   it: {
-    poem_carousel_word:"una poesia romantica,Un limerick divertente,Un sonetto come Shakespeare,Un acrostico di nome,Un Haiku sulla natura,Uno straordinario verso libero",
+    poem_carousel_word: "una poesia romantica,Un limerick divertente,Un sonetto come Shakespeare,Un acrostico di nome,Un Haiku sulla natura,Uno straordinario verso libero",
     header_title: "Generatore di poesie - Crea poesie in rima con l'AI gratuito",
     Description: "Un generatore gratuito di poesie AI per creare poesie in rima in pochi secondi. Esplora il nostro Generatore di Poesie AI: crea poesie personalizzate su qualsiasi tema.",
     poemai_example: "Poesie generate",
@@ -1017,7 +1017,7 @@ const messages = {
 
   },
   pt: {
-    poem_carousel_word:"um poema romântico,Uma limerique engraçada,Um soneto como Shakespeare,Um acróstico de nome,Um Haiku sobre a natureza,Um incrível verso gratuito",
+    poem_carousel_word: "um poema romântico,Uma limerique engraçada,Um soneto como Shakespeare,Um acróstico de nome,Um Haiku sobre a natureza,Um incrível verso gratuito",
     header_title: "Gerador de Poemas - Crie um poema rimado com a mágica AI gratuita",
     Description: "Gerador de poemas AI gratuito: crie poemas rimados em segundos. Explore nosso Gerador de Poemas AI: Crie poemas rimados e personalizados sobre qualquer assunto.",
     poemai_example: "Poemas Gerados",
@@ -1208,7 +1208,7 @@ const messages = {
 
   },
   es: {
-    poem_carousel_word:"un poema romantico,Una quintilla divertida,Un soneto como Shakespeare,Un acróstico de nombre,Un haiku sobre la primavera,Un verso libre increíble",
+    poem_carousel_word: "un poema romantico,Una quintilla divertida,Un soneto como Shakespeare,Un acróstico de nombre,Un haiku sobre la primavera,Un verso libre increíble",
     header_title: "Generador de poemas - crea poemas que riman con AI Magic gratis",
     Description: "Generador de poemas AI gratuito: crea poemas rimados en segundos. Explora nuestro Generador de Poemas AI: Crea poemas rimados y personalizados sobre cualquier tema.",
     poemai_example: "Poemas generados",
@@ -1399,7 +1399,7 @@ const messages = {
   },
 
   ja: {
-    poem_carousel_word:"ロマンチックな詩,興味深いリメリック,深遠なソネット詩,アクロスティックな詩,自然についての俳句,素晴らしい自由詩",
+    poem_carousel_word: "ロマンチックな詩,興味深いリメリック,深遠なソネット詩,アクロスティックな詩,自然についての俳句,素晴らしい自由詩",
     poemai_example: "生成された詩",
     poemai_latest_poems: "最新の詩",
     poemai_view_all: "すべて見る",
@@ -1450,8 +1450,8 @@ const messages = {
     poemai_privacy: "プライバシーポリシー",
   },
   ko: {
-    
-    poem_carousel_word:"낭만적인 시,흥미로운 라임릭,심오한 소네트 시,삼행시,자연에 관한 하이쿠,놀라운 자유 구절",
+
+    poem_carousel_word: "낭만적인 시,흥미로운 라임릭,심오한 소네트 시,삼행시,자연에 관한 하이쿠,놀라운 자유 구절",
     poemai_example: "생성된 시",
     poemai_latest_poems: "최신 시",
     poemai_view_all: "모두보기",
@@ -1502,7 +1502,7 @@ const messages = {
     poemai_privacy: "개인정보 처리방침",
   },
   th: {
-    poem_carousel_word:"บทกวีโรแมนติก,โคลงที่น่าสนใจ,บทกวีโคลงที่ลึกซึ้ง,บทกวีโคลงเคลง,ไฮกุเกี่ยวกับธรรมชาติ,บทกวีฟรีที่น่าทึ่ง",
+    poem_carousel_word: "บทกวีโรแมนติก,โคลงที่น่าสนใจ,บทกวีโคลงที่ลึกซึ้ง,บทกวีโคลงเคลง,ไฮกุเกี่ยวกับธรรมชาติ,บทกวีฟรีที่น่าทึ่ง",
     poemai_example: "บทกวีที่สร้างขึ้น",
     poemai_latest_poems: "บทกวีล่าสุด",
     poemai_view_all: "ดูทั้งหมด",
@@ -1553,7 +1553,7 @@ const messages = {
     poemai_privacy: "นโยบายความเป็นส่วนตัว",
   },
   id: {
-    poem_carousel_word:"sebuah puisi romantis,sebuah pantun yang lucu,soneta yang mendalam,sebuah puisi akrostik,Haiku tentang alam,puisi sajak bebas",
+    poem_carousel_word: "sebuah puisi romantis,sebuah pantun yang lucu,soneta yang mendalam,sebuah puisi akrostik,Haiku tentang alam,puisi sajak bebas",
     poemai_example: "Puisi yang Dihasilkan",
     poemai_latest_poems: "Puisi Terbaru",
     poemai_view_all: "Lihat semua",
@@ -1604,7 +1604,7 @@ const messages = {
     poemai_privacy: "Kebijakan Privasi",
   },
   vi: {
-    poem_carousel_word:"một bài thơ lãng mạn,một lời nói tục ngữ,một bài sonnet sâu sắc,một bài thơ châm biếm,Haiku tuyệt vời,một bài thơ tự do",
+    poem_carousel_word: "một bài thơ lãng mạn,một lời nói tục ngữ,một bài sonnet sâu sắc,một bài thơ châm biếm,Haiku tuyệt vời,một bài thơ tự do",
     poemai_example: "Bài thơ được tạo",
     poemai_latest_poems: "Bài thơ mới nhất",
     poemai_view_all: "Xem tất cả",
@@ -1655,7 +1655,7 @@ const messages = {
     poemai_privacy: "Chính sách Bảo mật",
   },
   ar: {
-    poem_carousel_word:"قصيدة حب مؤثرة,ليمريك مضحك,السوناتة مثل شكسبير,أبجدية لأي كلمة,هايكو عن الطبيعة,آية حرة مذهلة",
+    poem_carousel_word: "قصيدة حب مؤثرة,ليمريك مضحك,السوناتة مثل شكسبير,أبجدية لأي كلمة,هايكو عن الطبيعة,آية حرة مذهلة",
     poemai_example: "القصائد المولدة",
     poemai_latest_poems: "أحدث القصائد",
     poemai_view_all: "عرض الكل",
@@ -1706,7 +1706,7 @@ const messages = {
     poemai_privacy: "سياسة الخصوصية",
   },
   tr: {
-    poem_carousel_word:"Dokunaklı bir aşk şiiri,Komik bir limerick,Güzel bir Sonnet,Akrostiş bir şiir,Doğa hakkında bir Haiku,Harika bir serbest ayet",
+    poem_carousel_word: "Dokunaklı bir aşk şiiri,Komik bir limerick,Güzel bir Sonnet,Akrostiş bir şiir,Doğa hakkında bir Haiku,Harika bir serbest ayet",
     poemai_example: "Oluşturulan Şiirler",
     poemai_latest_poems: "Son Şiirler",
     poemai_view_all: "Hepsini gör",

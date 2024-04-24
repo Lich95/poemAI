@@ -10,7 +10,7 @@
         </div>
         <div class="inputBox">
             <div v-show="checkObj.styleCheck == 'acrostic'">
-                <p class="secTitle">{{ $t('poemai_acrostic_keyword') }}</p>
+                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_acrostic_keyword') }}</p>
                 <div>
                     <el-input v-model="inputStrA" type="textarea" :placeholder="$t('poemai_acrostic_kw_input_tips')"
                         rows="1" resize="none" />
@@ -19,7 +19,7 @@
             </div>
 
             <div v-if="checkObj.styleCheck == 'freeverse'">
-                <p class="secTitle">{{ $t('poemai_fv_theme') }}</p>
+                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_fv_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr1" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5"
                         resize="none" />
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'haiku'">
-                <p class="secTitle">{{ $t('poemai_haiku_theme') }}</p>
+                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_haiku_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr2" type="textarea" :placeholder="$t('poemai_haiku_input_tips')" rows="5"
                         resize="none" />
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'acrostic'">
-                <p class="secTitle">{{ $t('poemai_acrostic_theme') }}</p>
+                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_acrostic_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr3" type="textarea" :placeholder="$t('poemai_acrostic_input_tips')"
                         rows="5" resize="none" />
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'sonnet'">
-                <p class="secTitle">{{ $t('poemai_sonnet_theme') }}</p>
+                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_sonnet_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr4" type="textarea" :placeholder="$t('poemai_sonnet_input_tips')" rows="5"
                         resize="none" />
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'limerick'">
-                <p class="secTitle">{{ $t('poemai_limerick_theme') }}</p>
+                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_limerick_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr5" type="textarea" :placeholder="$t('poemai_limerick_input_tips')"
                         rows="5" resize="none" />
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'lovepoem'">
-                <p class="secTitle">{{ $t('poemai_love_theme') }}</p>
+                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_love_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr6" type="textarea" :placeholder="$t('poemai_love_input_tips')" rows="5"
                         resize="none" />
@@ -68,11 +68,12 @@
             </div>
 
             <el-select v-model="checkObj.sizeCheck" placeholder="Poem Size" class="sizeSelect"
-                v-show="checkObj.styleCheck == 'freeverse' || checkObj.styleCheck == 'lovepoem'">
+                v-show="checkObj.styleCheck == 'freeverse' || checkObj.styleCheck == 'lovepoem'"
+                :class="arType ? 'arRightType' : ''">
                 <el-option v-for="item in sizes" :key="item.val" :label="item.label" :value="item.val"></el-option>
             </el-select>
             <el-select v-model="checkObj.languageCheck" placeholder="Poem Language"
-                v-show="checkObj.styleCheck != 'acrostic'">
+                v-show="checkObj.styleCheck != 'acrostic'" :class="arType ? 'arRightType' : ''">
                 <el-option v-for="item in dropMenuList" :key="item.event" :value="item.event"
                     :label="item.text"></el-option>
 
@@ -160,6 +161,7 @@ const route = useRoute();
 const respLoading = ref(false)
 const topBtnShow = ref(false)
 const waterfallList = ref([])
+const arType = ref(false)
 
 const goviewAll = () => {
 
@@ -226,7 +228,7 @@ const checkObj = ref({
 
 
 const loadDemo = () => {
-    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' ,nums:10}).then(res => {
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
         waterfallList.value = JSON.parse(res.data.data).data
     })
 
@@ -282,7 +284,7 @@ const handleClick = async () => {
 
 
         // http://poemgenerator-ai.com
-        throttledApiRequest('/api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
+        throttledApiRequest(' /api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
             res = res.data
             if (res.retCode == 'C0000') {
                 respContent.value = res.data.replaceAll('(A)', '')
@@ -343,29 +345,68 @@ const _thislanguage = () => {
     return dropMenuList.find(x => x.event == language).text
 }
 const handleCopy = () => {
-    const clipboard = new ClipboardJS('.copyButton', {
-        text() {
-            return respContent.value
-        }
-    })
-    clipboard.on('success', () => {
+    // const clipboard = new ClipboardJS('.copyButton', {
+    //     text() {
+    //         return respContent.value
+    //     }
+    // })
+    // clipboard.on('success', () => {
+    //     ElMessage({
+    //         showClose: true,
+    //         message: t('poemai_copy_success_toast'),
+    //         center: true,
+    //         type: 'success'
+    //     })
+    //     clipboard.destroy();
+    // })
+    // clipboard.on('error', () =>/api/v1 {
+    //     ElMessage({
+    //         showClose: true,
+    //         message: 'error',
+    //         center: true,
+    //         type: 'success'
+    //     })
+    //     clipboard.destroy();
+    // })
+
+
+
+
+    const textArea = document.createElement("textarea");
+    textArea.style.position = 'fixed';
+    textArea.style.top = 0;
+    textArea.style.left = 0;
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = 0;
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.value = respContent.value;
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+        var successful = document.execCommand('copy');
         ElMessage({
             showClose: true,
             message: t('poemai_copy_success_toast'),
             center: true,
             type: 'success'
         })
-        clipboard.destroy();
-    })
-    clipboard.on('error', () => {
+    } catch (err) {
         ElMessage({
             showClose: true,
             message: 'error',
             center: true,
             type: 'success'
         })
-        clipboard.destroy();
-    })
+    }
+
+    document.body.removeChild(textArea);
 
 }
 
@@ -390,9 +431,21 @@ onMounted(() => {
     window.addEventListener('scroll', handleScroll);
     setTimeout(() => {
         checkObj.value.languageCheck = i18n.global.locale ? i18n.global.locale : 'en'
+        if (i18n.global.locale == 'ar') {
+            arType.value = true;
+            var htmlElement = document.getElementsByTagName('html')[0];
+            // 修改样式
+            htmlElement.style.direction = 'rtl';
+        } else {
+            arType.value = false
 
+            var htmlElement = document.getElementsByTagName('html')[0];
+            // 修改样式
+            htmlElement.style.direction = '';
+        }
         loadDemo();
     }, 0)
+
     // const language = navigator.language.split('-')[0];
     // i18n.global.locale =languages.includes(language)?language:'en'
 
@@ -404,10 +457,15 @@ onBeforeUnmount(() => {
 watch(() => route.params.language, (newRoute, oldRoute) => {
     // Perform actions when the route changes
     checkObj.value.languageCheck = newRoute ? newRoute : 'en'
-    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en',nums:10 }).then(res => {
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
         waterfallList.value = JSON.parse(res.data.data).data
     })
-    
+    if (newRoute == 'ar') {
+        arType.value = true;
+    } else {
+        arType.value = false
+    }
+
 })
 
 </script>
@@ -678,13 +736,13 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
 <style>
 .wfDv {
     /* width: 1240px; */
-    gap: 25px;
+    /* gap: 25px; */
     text-align: center;
-    display: flex;
+    /* display: flex;
     padding: 0 4em;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: space-between; */
 }
 
 @media only screen and (max-width: 767px) {

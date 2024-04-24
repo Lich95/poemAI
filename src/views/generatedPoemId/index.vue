@@ -60,29 +60,66 @@ let respTxt = ref(` In summer's heat, I find no solace
 
 
 const handleCopy = () => {
-    const clipboard = new ClipboardJS('.copyButton', {
-        text() {
-            return respTxt.value
-        }
-    })
-    clipboard.on('success', () => {
+    // const clipboard = new ClipboardJS('.copyButton', {
+    //     text() {
+    //         return respTxt.value
+    //     }
+    // })
+    // clipboard.on('success', () => {
+    //     ElMessage({
+    //         showClose: true,
+    //         message: t('poemai_copy_success_toast'),
+    //         center: true,
+    //         type: 'success'
+    //     })
+    //     clipboard.destroy();
+    // })
+    // clipboard.on('error', () => {
+    //     ElMessage({
+    //         showClose: true,
+    //         message: 'error',
+    //         center: true,
+    //         type: 'success'
+    //     })
+    //     clipboard.destroy();
+    // })
+
+    
+    const textArea = document.createElement("textarea");
+    textArea.style.position = 'fixed';
+    textArea.style.top = 0;
+    textArea.style.left = 0;
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = 0;
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.value = respTxt.value
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+        var successful = document.execCommand('copy');
         ElMessage({
             showClose: true,
             message: t('poemai_copy_success_toast'),
             center: true,
             type: 'success'
         })
-        clipboard.destroy();
-    })
-    clipboard.on('error', () => {
+    } catch (err) {
         ElMessage({
             showClose: true,
             message: 'error',
             center: true,
             type: 'success'
         })
-        clipboard.destroy();
-    })
+    }
+
+    document.body.removeChild(textArea);
 
 }
 

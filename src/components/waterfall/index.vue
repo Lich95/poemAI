@@ -1,26 +1,26 @@
 <template>
     <div>
-        <div class="water wf1" v-if="wfl[0].length">
+        <div class="water wf1" v-if="wfl[0].length" ref="wf1">
             <div v-for="item in wfl[0]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
-                <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
+                <el-button :class="item.type" v-if="this.$route.name=='Home'">{{ item.type }}</el-button>
                 <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
-        <div class="water wf2" v-if="wfl[1].length">
+        <div class="water wf2" v-if="wfl[1].length" ref="wf2">
             <div v-for="item in wfl[1]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
-                <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
+                <el-button :class="item.type" v-if="this.$route.name=='Home'">{{ item.type }}</el-button>
                 <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
-        <div class="water wf3" v-if="wfl[2].length">
+        <div class="water wf3" v-if="wfl[2].length" ref="wf3">
             <div v-for="item in wfl[2]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
-                <el-button :class="item.type" v-if="item.type">{{ item.type }}</el-button>
+                <el-button :class="item.type" v-if="this.$route.name=='Home'">{{ item.type }}</el-button>
                 <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
@@ -29,7 +29,6 @@
 
 <script>
 import { computed } from 'vue';
-
 import ClipboardJS from 'clipboard';
 import { ElMessage } from 'element-plus'
 import i18n from '@/hooks/i18n'
@@ -47,85 +46,7 @@ export default {
         },
         waterfallList: {
             type: Array,
-            default: [{
-                id: '111', theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-The days are long, the nights are short
-I crave the coolness of the morning dew
-But even then, the sun rises high
-And steals away my peaceful mood anewThe world is bright, but not so warm
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day`, type: 'Haiku'
-            }, {
-                id: '112',
-                theme: 'Love Poem for husband', content: `In summer's heat2222, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-The days are long, the nights are short
-I crave the coolness of the morning dew
-But even then, the sun rises high
-And steals away my peaceful mood anewThe world is bright, but not so warm
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day
-In summer's heat, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day`, type: 'FreeVerse'
-            }, {
-                id: '113',
-                theme: 'Love Poem for husband', content: `In summer's he33at, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-The days are long, the nights are short
-I crave the coolness of the morning dew
-But even then, the sun rises high
-And steals away my peaceful mood anewThe world is bright, but not so warm
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day`,
-            }, {
-                id: '114',
-                theme: 'Love Poem for husband', content: `In summer's heat, I find no solace
-A time for sun and fun, it's all a facade
-The warmth that's supposed to bring us joy
-Only brings me chills, and makes me annoyed
-The days are long, the nights are short
-I crave the coolness of the morning dew
-But even then, the sun rises high
-And steals away my peaceful mood anewThe world is bright, but not so warm
-shade, where I can rest
-From the harsh rays that burn like storms
-And make my heart feel oppressed
-Oh, how I wish for autumn's breeze
-To bring some relief from summer's sway
-When leaves will fall, and skies will gray
-And bring back balance to each day`, type: 'Sonnet'
-            }]
+            default: []
         }
     },
     data() {
@@ -136,23 +57,27 @@ And bring back balance to each day`, type: 'Sonnet'
     },
     methods: {
         init() {
+            console.log(123,this.waterfallList.length);
             if (this.waterfallList.length > 3) {
                 this.wfl[0].push(this.waterfallList[0])
                 this.wfl[1].push(this.waterfallList[1])
                 this.wfl[2].push(this.waterfallList[2])
                 for (let i = 3; i < this.waterfallList.length; i++) {
                     setTimeout(() => {
-                        let heights = [document.getElementsByClassName('wf1')[0].offsetHeight, document.getElementsByClassName('wf2')[0].offsetHeight, document.getElementsByClassName('wf3')[0].offsetHeight]
-                        console.log(heights);
+                        let heights = [
+                        this.$refs.wf1.offsetHeight,
+                        this.$refs.wf2.offsetHeight,
+                        this.$refs.wf3.offsetHeight]
                         let numIndex = heights.findIndex(x => x == Math.min(...heights));
                         this.wfl[numIndex].push(this.waterfallList[i])
+                  
                     }, 0);
                 }
             }else{
                 this.waterfallList.forEach((item,index)=>{
                     this.wfl[index]=[item]
                 })
-            }
+            } 
 
 
         },
@@ -161,30 +86,68 @@ And bring back balance to each day`, type: 'Sonnet'
             this.$router.push({ name: 'generatedPoemId', params: { id: id } });
         },
         copyContent(txt) {
-            const clipboard = new ClipboardJS('.copyBtn', {
-                text() {
-                    return txt
-                }
-            })
-            clipboard.on('success', () => {
-                ElMessage({
-                    showClose: true,
-                    message: t('poemai_copy_success_toast'),
-                    center: true,
-                    type: 'success'
-                })
-                clipboard.destroy();
-            })
-            clipboard.on('error', () => {
-                ElMessage({
-                    showClose: true,
-                    message: 'error',
-                    center: true,
-                    type: 'success'
-                })
-                clipboard.destroy();
-            })
+            // const clipboard = new ClipboardJS('.copyBtn', {
+            //     text() {
+            //         return txt
+            //     }
+            // })
+            // clipboard.on('success', () => {
+            //     ElMessage({
+            //         showClose: true,
+            //         message: t('poemai_copy_success_toast'),
+            //         center: true,
+            //         type: 'success'
+            //     })
+            //     clipboard.destroy();
+            // })
+            // clipboard.on('error', () => {
+            //     ElMessage({
+            //         showClose: true,
+            //         message: 'error',
+            //         center: true,
+            //         type: 'success'
+            //     })
+            //     clipboard.destroy();
+            // })
 
+
+            
+    
+    const textArea = document.createElement("textarea");
+    textArea.style.position = 'fixed';
+    textArea.style.top = 0;
+    textArea.style.left = 0;
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = 0;
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.value = txt
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+        var successful = document.execCommand('copy');
+        ElMessage({
+            showClose: true,
+            message: t('poemai_copy_success_toast'),
+            center: true,
+            type: 'success'
+        })
+    } catch (err) {
+        ElMessage({
+            showClose: true,
+            message: 'error',
+            center: true,
+            type: 'success'
+        })
+    }
+
+    document.body.removeChild(textArea);
         }
     },
     mounted() {
@@ -197,10 +160,11 @@ And bring back balance to each day`, type: 'Sonnet'
 <style scoped lang="scss">
 div.water {
     display: inline-flex;
-    width: 100%;
+    width: 30%;
     flex-direction: column;
     gap: 25px;
     text-align: left;
+
 
     &>div {
         border: 1px solid #e5e5e5;
@@ -253,13 +217,19 @@ div.water {
         }
     }
 }
+.wf2{
+    margin:0 25px
+}
 
+@media only screen and (max-width: 767px) {
+    
+div.water {width:100%;}
 
-// @media only screen and (max-width: 767px) {
+.wf2{
+    margin:25px 0;
+}
 
-// div.water {
-//     width: 100%;}
-// }
+}
 
 
 .Haiku {

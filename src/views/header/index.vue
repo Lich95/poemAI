@@ -131,6 +131,20 @@ const handleCommand = (command) => {
     if (command == 'en') {
         command = ''
     }
+    if(command=='ar'){
+        
+        var htmlElement = document.getElementsByTagName('html')[0];        
+        // 修改样式
+        htmlElement.style.direction = 'rtl';
+
+        
+    }else{
+
+        
+        var htmlElement = document.getElementsByTagName('html')[0];        
+        // 修改样式
+        htmlElement.style.direction = '';
+    }
     router.push({ name: 'Home', params: { language: command } });
 
     i18n.global.locale = command;

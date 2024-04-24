@@ -9,8 +9,17 @@ import headerStyle from '@/views/header/index.vue'
   </div>
 </template>
 
-<style>
+<style lang="scss">
 *:not(.content) {
   user-select: none;
+}
+
+.arRightType {
+  float: right;
+  text-align: right;
+
+  &::before {
+    right: 0;
+  }
 }
 </style>
