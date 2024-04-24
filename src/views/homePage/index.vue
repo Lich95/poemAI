@@ -117,7 +117,7 @@
             {{ $t('poemai_powered_by_gpt') }}
         </div>
 
-        <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
+        <!-- <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall> -->
         <!-- <el-button
             style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;"
             @click="goviewAll">{{ $t('poemai_view_all') }}</el-button> -->
@@ -168,9 +168,9 @@ const goviewAll = () => {
     router.push({ name: 'generatedPoems', params: { language: i18n.global.locale || 'en' } });
 }
 const sizes = ref([
-    { val: 'Medium', label: t('poem_size_m') },
-    { val: 'Short', label: t('poem_size_s') },
-    { val: 'Large', label: t('poem_size_l') },
+    { val: 'Medium', label: 'poem_size_m' },
+    { val: 'Short', label: 'poem_size_s' },
+    { val: 'Large', label: 'poem_size_l' },
 ])
 
 const respBox = ref()
@@ -649,6 +649,8 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
     font-size: 14px;
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 20px;
+    ;
 }
 
 .toTopBtn {
