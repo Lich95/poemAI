@@ -18,7 +18,7 @@
                     <el-menu-item @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>{{ $t('poemai_privacy') }}</span> </el-menu-item>
-                    <el-sub-menu index="1">
+                    <el-sub-menu index="1" >
                         <template #title>
                             <img src="@/assets/icon/language.png" alt="">
                             <span style="margin-left:10px"> {{ _thislanguage() }}</span>
@@ -89,13 +89,13 @@ const dropMenuList = [
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
     
-    { event: 'ja', text: '日本語にほんご' },
-   { event: 'ko', text: '한국어' },
-    { event: 'th', text: 'ภาษาไทย' },
-    { event: 'id', text: 'IndonesiaName' },
-    { event: 'vi', text: 'Tiếng Việt' },
-    { event: 'ar', text: 'اللغة العربية' },
-    { event: 'rt', text: 'Malay' },
+    { event: 'ja', text: '日本語' },
+   { event: 'ko', text: '한국인' },
+    { event: 'th', text: 'แบบไทย' },
+    { event: 'id', text: 'bahasa Indonesia' },
+    { event: 'vi', text: 'Türk Dili' },
+    { event: 'ar', text: ' عربي' },
+    // { event: 'rt', text: 'Malay' },
 
 ]
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
@@ -223,7 +223,9 @@ onMounted(async () => {
     // // 将生成的canonical标签添加到head中
     // document.head.appendChild(canonicalTag);
 })
-
+watch(() => route, (newRoute, oldRoute) => {
+    console.log(222,newRoute);
+})
 </script>
 
 <style scoped lang="scss">

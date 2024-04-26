@@ -4,7 +4,8 @@
             <div v-for="item in wfl[0]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
-                <el-button :class="item.type" v-if="this.$route.name=='Home'">{{ item.type }}</el-button>
+                <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{ $t(typeinit(item.type))
+                    }}</el-button>
                 <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
@@ -12,7 +13,8 @@
             <div v-for="item in wfl[1]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
-                <el-button :class="item.type" v-if="this.$route.name=='Home'">{{ item.type }}</el-button>
+                <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{ $t(typeinit(item.type))
+                    }}</el-button>
                 <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
@@ -20,7 +22,8 @@
             <div v-for="item in wfl[2]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
-                <el-button :class="item.type" v-if="this.$route.name=='Home'">{{ item.type }}</el-button>
+                <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{ $t(typeinit(item.type))
+                    }}</el-button>
                 <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
@@ -57,7 +60,7 @@ export default {
     },
     methods: {
         init() {
-            console.log(123,this.waterfallList.length);
+            console.log(123, this.waterfallList.length);
             if (this.waterfallList.length > 3) {
                 this.wfl[0].push(this.waterfallList[0])
                 this.wfl[1].push(this.waterfallList[1])
@@ -65,19 +68,19 @@ export default {
                 for (let i = 3; i < this.waterfallList.length; i++) {
                     setTimeout(() => {
                         let heights = [
-                        this.$refs.wf1.offsetHeight,
-                        this.$refs.wf2.offsetHeight,
-                        this.$refs.wf3.offsetHeight]
+                            this.$refs.wf1.offsetHeight,
+                            this.$refs.wf2.offsetHeight,
+                            this.$refs.wf3.offsetHeight]
                         let numIndex = heights.findIndex(x => x == Math.min(...heights));
                         this.wfl[numIndex].push(this.waterfallList[i])
-                  
+
                     }, 0);
                 }
-            }else{
-                this.waterfallList.forEach((item,index)=>{
-                    this.wfl[index]=[item]
+            } else {
+                this.waterfallList.forEach((item, index) => {
+                    this.wfl[index] = [item]
                 })
-            } 
+            }
 
 
         },
@@ -111,43 +114,66 @@ export default {
             // })
 
 
-            
-    
-    const textArea = document.createElement("textarea");
-    textArea.style.position = 'fixed';
-    textArea.style.top = 0;
-    textArea.style.left = 0;
-    textArea.style.width = '2em';
-    textArea.style.height = '2em';
-    textArea.style.padding = 0;
-    textArea.style.border = 'none';
-    textArea.style.outline = 'none';
-    textArea.style.boxShadow = 'none';
-    textArea.style.background = 'transparent';
-    textArea.value = txt
 
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
 
-    try {
-        var successful = document.execCommand('copy');
-        ElMessage({
-            showClose: true,
-            message: t('poemai_copy_success_toast'),
-            center: true,
-            type: 'success'
-        })
-    } catch (err) {
-        ElMessage({
-            showClose: true,
-            message: 'error',
-            center: true,
-            type: 'success'
-        })
-    }
+            const textArea = document.createElement("textarea");
+            textArea.style.position = 'fixed';
+            textArea.style.top = 0;
+            textArea.style.left = 0;
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            textArea.style.padding = 0;
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            textArea.style.background = 'transparent';
+            textArea.value = txt
 
-    document.body.removeChild(textArea);
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                ElMessage({
+                    showClose: true,
+                    message: t('poemai_copy_success_toast'),
+                    center: true,
+                    type: 'success'
+                })
+            } catch (err) {
+                ElMessage({
+                    showClose: true,
+                    message: 'error',
+                    center: true,
+                    type: 'success'
+                })
+            }
+
+            document.body.removeChild(textArea);
+        },
+        typeinit(txt) {
+            switch (txt) {
+                case 'haiku':
+                    return 'poemai_haiku';
+                case 'freeverse':
+                    return 'poemai_free_verse';
+                case 'acrostic':
+                    return 'poemai_acrostic';
+                case 'sonnet':
+                    return 'poemai_sonnet';
+                case 'limerick':
+                    return 'poemai_limerick';
+                case 'lovepoem':
+                    return 'poemai_love_poem';
+
+            }
+
+            // 
+            // 
+            // 
+            // 
+            // 
         }
     },
     mounted() {
@@ -217,42 +243,45 @@ div.water {
         }
     }
 }
-.wf2{
-    margin:0 25px
+
+.wf2 {
+    margin: 0 25px
 }
 
 @media only screen and (max-width: 767px) {
-    
-div.water {width:100%;}
 
-.wf2{
-    margin:25px 0;
+    div.water {
+        width: 100%;
+    }
+
+    .wf2 {
+        margin: 25px 0;
+    }
+
 }
 
-}
 
-
-.Haiku {
+.haiku {
     background-color: #FF856B
 }
 
-.FreeVerse {
+.freeverse {
     background-color: #43DFA8
 }
 
-.Acrostic {
+.acrostic {
     background-color: #5B60FD
 }
 
-.Sonnet {
+.sonnet {
     background-color: #FF565E
 }
 
-.Limerick {
+.limerick {
     background-color: #64D7FC
 }
 
-.LovePoem {
+.lovepoem {
     background-color: #FF7FA0
 }
 </style>

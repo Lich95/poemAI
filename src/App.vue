@@ -17,7 +17,7 @@ import headerStyle from '@/views/header/index.vue'
 .arRightType {
   float: right;
   text-align: right;
-
+    padding-right: 20px;
   &::before {
     right: 0;
   }

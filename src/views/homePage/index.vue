@@ -70,7 +70,7 @@
             <el-select v-model="checkObj.sizeCheck" placeholder="Poem Size" class="sizeSelect"
                 v-show="checkObj.styleCheck == 'freeverse' || checkObj.styleCheck == 'lovepoem'"
                 :class="arType ? 'arRightType' : ''">
-                <el-option v-for="item in sizes" :key="item.val" :label="item.label" :value="item.val"></el-option>
+                <el-option v-for="item in sizes" :key="item.val" :label="$t(item.label)" :value="item.val"></el-option>
             </el-select>
             <el-select v-model="checkObj.languageCheck" placeholder="Poem Language"
                 v-show="checkObj.styleCheck != 'acrostic'" :class="arType ? 'arRightType' : ''">
@@ -113,15 +113,16 @@
                     </el-icon></el-button>
             </div>
         </div>
-        <div class='footer'>
-            {{ $t('poemai_powered_by_gpt') }}
-        </div>
 
-        <!-- <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall> -->
+        <div style="text-align: center;margin: 30px 0 20px;font-size: 22px;font-weight:700 ;">{{ $t('poemai_latest_poems') }}</div>
+        <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
         <!-- <el-button
             style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;"
             @click="goviewAll">{{ $t('poemai_view_all') }}</el-button> -->
 
+        <div class='footer'>
+            {{ $t('poemai_powered_by_gpt') }}
+        </div>
         <quesAndAnsw style="margin-top: 50px;"></quesAndAnsw>
 
         <button @click="scrollToTop" class="toTopBtn" v-show="topBtnShow">
@@ -184,13 +185,13 @@ const dropMenuList = [
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
 
-    { event: 'ja', text: '日本語にほんご' },
-    { event: 'ko', text: '한국어' },
-    { event: 'th', text: 'ภาษาไทย' },
-    { event: 'id', text: 'IndonesiaName' },
-    { event: 'vi', text: 'Tiếng Việt' },
-    { event: 'ar', text: 'اللغة العربية' },
-    { event: 'rt', text: 'Malay' },
+    { event: 'ja', text: '日本語' },
+    { event: 'ko', text: '한국인' },
+    { event: 'th', text: 'แบบไทย' },
+    { event: 'id', text: 'bahasa Indonesia' },
+    { event: 'vi', text: 'Türk Dili' },
+    { event: 'ar', text: ' عربي' },
+    // { event: 'rt', text: 'Malay' },
 ],
     selectedKeys = [];
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
@@ -228,7 +229,7 @@ const checkObj = ref({
 
 
 const loadDemo = () => {
-    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
+    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
         waterfallList.value = JSON.parse(res.data.data).data
     })
 
@@ -284,7 +285,7 @@ const handleClick = async () => {
 
 
         // http://poemgenerator-ai.com
-        throttledApiRequest(' /api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
+        throttledApiRequest(' http://poemgenerator-ai.com:8093/api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
             res = res.data
             if (res.retCode == 'C0000') {
                 respContent.value = res.data.replaceAll('(A)', '')
@@ -359,7 +360,7 @@ const handleCopy = () => {
     //     })
     //     clipboard.destroy();
     // })
-    // clipboard.on('error', () =>/api/v1 {
+    // clipboard.on('error', () =>http://poemgenerator-ai.com:8093/api/v1 {
     //     ElMessage({
     //         showClose: true,
     //         message: 'error',
@@ -457,8 +458,11 @@ onBeforeUnmount(() => {
 watch(() => route.params.language, (newRoute, oldRoute) => {
     // Perform actions when the route changes
     checkObj.value.languageCheck = newRoute ? newRoute : 'en'
-    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
+    waterfallList.value = [];
+    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
+        console.log('change');
         waterfallList.value = JSON.parse(res.data.data).data
+        console.log(waterfallList.value);
     })
     if (newRoute == 'ar') {
         arType.value = true;
