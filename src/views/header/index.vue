@@ -12,13 +12,13 @@
 
             <div v-show="mobileNav" class="mobileMenuPop" ref="target">
                 <el-menu @select="handleSelect" :default-active="selectedKeys">
-                    <el-menu-item  @click="goGenerated"> 
-                    <img src="@/assets/icon/Lamp.png" alt="">
-                    <span>{{ $t('poemai_example') }}</span></el-menu-item>
+                    <el-menu-item @click="goGenerated">
+                        <img src="@/assets/icon/Lamp.png" alt="">
+                        <span>{{ $t('poemai_example') }}</span></el-menu-item>
                     <el-menu-item @click="goPrivacy">
-                    <img src="@/assets/icon/privacy_icon.png" alt="">
-                    <span>{{ $t('poemai_privacy') }}</span> </el-menu-item>
-                    <el-sub-menu index="1" >
+                        <img src="@/assets/icon/privacy_icon.png" alt="">
+                        <span>{{ $t('poemai_privacy') }}</span> </el-menu-item>
+                    <el-sub-menu index="1" v-if="changeLocal">
                         <template #title>
                             <img src="@/assets/icon/language.png" alt="">
                             <span style="margin-left:10px"> {{ _thislanguage() }}</span>
@@ -43,7 +43,7 @@
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>{{ $t('poemai_privacy') }}</span>
                 </div>
-                <div class="language">
+                <div class="language" v-if="changeLocal">
                     <el-dropdown trigger="click" @command="handleCommand">
                         <span class="el-dropdown-link">
                             {{ _thislanguage() }}
@@ -58,7 +58,7 @@
                                    
                                     </el-menu> -->
                                 <el-dropdown-item v-for="item in dropMenuList" :command="item.event">{{ item.text
-                                }}</el-dropdown-item>
+                                    }}</el-dropdown-item>
                             </el-dropdown-menu>
                         </template>
 
@@ -71,7 +71,7 @@
 <script setup>
 
 import { onClickOutside } from '@vueuse/core'
-import { ref, onMounted, onBeforeUnmount, computed, nextTick,watch } from "vue";
+import { ref, onMounted, onBeforeUnmount, computed, nextTick, watch } from "vue";
 import { useRoute, useRouter } from 'vue-router';
 import i18n from '@/hooks/i18n'
 const router = useRouter()
@@ -88,9 +88,9 @@ const dropMenuList = [
     { event: 'de', text: 'Deutsch' },
     { event: 'es', text: 'español' },
     { event: 'pt', text: 'Português' },
-    
+
     { event: 'ja', text: '日本語' },
-   { event: 'ko', text: '한국인' },
+    { event: 'ko', text: '한국인' },
     { event: 'th', text: 'แบบไทย' },
     { event: 'id', text: 'bahasa Indonesia' },
     { event: 'vi', text: 'Türk Dili' },
@@ -99,6 +99,7 @@ const dropMenuList = [
 
 ]
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
+const changeLocal = ref(true)
 const selectedKeys = computed(() => {
     return route.params.language || 'en';
 })
@@ -109,14 +110,14 @@ const languageList = dropMenuList.map(x => {
     return x
 })
 const goPrivacy = () => {
-    if(mobileNav.value){
-        mobileNav.value=false
+    if (mobileNav.value) {
+        mobileNav.value = false
     }
     router.push({ name: 'privacy', params: { language: i18n.global.locale } });
 }
 const goGenerated = () => {
-    if(mobileNav.value){
-        mobileNav.value=false
+    if (mobileNav.value) {
+        mobileNav.value = false
     }
     router.push({ name: 'generatedPoems', params: { language: i18n.global.locale || 'en' } });
 }
@@ -131,17 +132,17 @@ const handleCommand = (command) => {
     if (command == 'en') {
         command = ''
     }
-    if(command=='ar'){
-        
-        var htmlElement = document.getElementsByTagName('html')[0];        
+    if (command == 'ar') {
+
+        var htmlElement = document.getElementsByTagName('html')[0];
         // 修改样式
         htmlElement.style.direction = 'rtl';
 
-        
-    }else{
 
-        
-        var htmlElement = document.getElementsByTagName('html')[0];        
+    } else {
+
+
+        var htmlElement = document.getElementsByTagName('html')[0];
         // 修改样式
         htmlElement.style.direction = '';
     }
@@ -223,8 +224,20 @@ onMounted(async () => {
     // // 将生成的canonical标签添加到head中
     // document.head.appendChild(canonicalTag);
 })
-watch(() => route, (newRoute, oldRoute) => {
-    console.log(222,newRoute);
+watch(() => route.name, (newRoute, oldRoute) => {
+    if (newRoute == 'generatedPoemId') {
+        changeLocal.value = false;
+    } else {
+        changeLocal.value = true;
+    }
+})
+watch(() => route.params.language, (newRoute, oldRoute) => {
+    if (newRoute == 'vi') {
+        document.getElementById('app').style.fontFamily = 'revert'
+    } else {
+        document.getElementById('app').style.fontFamily = 'other-font-family'
+    }
+
 })
 </script>
 
@@ -258,11 +271,17 @@ watch(() => route, (newRoute, oldRoute) => {
             border-radius: 20px;
         }
 
-        .privacy,.Generated {
+        .privacy,
+        .Generated {
             display: flex;
             align-items: center;
             margin-right: 20px;
+            margin-left: 20px;
             cursor: pointer;
+        }
+
+        .Generated {
+            margin-right: 0;
         }
     }
 
@@ -360,4 +379,4 @@ watch(() => route, (newRoute, oldRoute) => {
     z-index: 9;
 
 }
-</style>   
+</style>

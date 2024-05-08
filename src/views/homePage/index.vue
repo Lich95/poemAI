@@ -1,7 +1,7 @@
 <template>
     <div style="padding:1em;padding-top: 20px;">
         <div style="text-align: center;">
-            <h2 class="h2Title">{{ $t('poemai_title_generate') }}</h2>
+            <h2 class="h2Title" :class="i18n.global.locale">{{ $t('poemai_title_generate') }}</h2>
             <!-- {{ $t('poemai_title_generate') }} -->
             <TypewriterEffect class="title" :textContent="$t('poem_carousel_word')" :speed="140" :delay="5" />
 
@@ -10,7 +10,7 @@
         </div>
         <div class="inputBox">
             <div v-show="checkObj.styleCheck == 'acrostic'">
-                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_acrostic_keyword') }}</p>
+                <p class="secTitle" :class="{'arRightType':arType}">{{ $t('poemai_acrostic_keyword') }}</p>
                 <div>
                     <el-input v-model="inputStrA" type="textarea" :placeholder="$t('poemai_acrostic_kw_input_tips')"
                         rows="1" resize="none" />
@@ -19,7 +19,7 @@
             </div>
 
             <div v-if="checkObj.styleCheck == 'freeverse'">
-                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_fv_theme') }}</p>
+                <p class="secTitle" :class="{'arRightType':arType}">{{ $t('poemai_fv_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr1" type="textarea" :placeholder="$t('poemai_input_tips')" rows="5"
                         resize="none" />
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'haiku'">
-                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_haiku_theme') }}</p>
+                <p class="secTitle" :class="{'arRightType':arType}">{{ $t('poemai_haiku_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr2" type="textarea" :placeholder="$t('poemai_haiku_input_tips')" rows="5"
                         resize="none" />
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'acrostic'">
-                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_acrostic_theme') }}</p>
+                <p class="secTitle" :class="{'arRightType':arType}">{{ $t('poemai_acrostic_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr3" type="textarea" :placeholder="$t('poemai_acrostic_input_tips')"
                         rows="5" resize="none" />
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'sonnet'">
-                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_sonnet_theme') }}</p>
+                <p class="secTitle" :class="{'arRightType':arType}">{{ $t('poemai_sonnet_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr4" type="textarea" :placeholder="$t('poemai_sonnet_input_tips')" rows="5"
                         resize="none" />
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'limerick'">
-                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_limerick_theme') }}</p>
+                <p class="secTitle" :class="{'arRightType':arType}">{{ $t('poemai_limerick_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr5" type="textarea" :placeholder="$t('poemai_limerick_input_tips')"
                         rows="5" resize="none" />
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div v-else-if="checkObj.styleCheck == 'lovepoem'">
-                <p class="secTitle" :class="arType ? 'arRightType' : ''">{{ $t('poemai_love_theme') }}</p>
+                <p class="secTitle" :class="{'arRightType':arType}">{{ $t('poemai_love_theme') }}</p>
                 <div>
                     <el-input v-model="inputStr6" type="textarea" :placeholder="$t('poemai_love_input_tips')" rows="5"
                         resize="none" />
@@ -69,18 +69,18 @@
 
             <el-select v-model="checkObj.sizeCheck" placeholder="Poem Size" class="sizeSelect"
                 v-show="checkObj.styleCheck == 'freeverse' || checkObj.styleCheck == 'lovepoem'"
-                :class="arType ? 'arRightType' : ''">
+                :class="{'arRightType':arType}">
                 <el-option v-for="item in sizes" :key="item.val" :label="$t(item.label)" :value="item.val"></el-option>
             </el-select>
             <el-select v-model="checkObj.languageCheck" placeholder="Poem Language"
-                v-show="checkObj.styleCheck != 'acrostic'" :class="arType ? 'arRightType' : ''">
+                v-show="checkObj.styleCheck != 'acrostic'" :class="{'arRightType':arType}">
                 <el-option v-for="item in dropMenuList" :key="item.event" :value="item.event"
                     :label="item.text"></el-option>
 
             </el-select>
 
 
-            <div style="text-align:center">
+            <div style="text-align:center;clear: both;">
                 <el-button class="handleBtn" @click="handleClick">
                     <span v-if="!thinking" class="btnTxt">
                         {{ $t('poemai_generate_btn') }}
@@ -99,7 +99,7 @@
             </div>
         </div>
         <div class="respBox" v-show="haveResp" ref="respBox">
-            <div class="title">
+            <div class="title" :class="{'fkAr':arType}">
                 {{ $t('poemai_generated_poem') }}
             </div>
             <div class="content" v-loading="respLoading">
@@ -736,6 +736,10 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
         margin-bottom: 10px;
     }
 
+}
+
+.fkAr::before{
+    margin-left: 10px;
 }
 </style>
 

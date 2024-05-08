@@ -6,7 +6,7 @@
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{ $t(typeinit(item.type))
                     }}</el-button>
-                <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
+                <el-button class="copyBtn" v-else @click.stop="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
         <div class="water wf2" v-if="wfl[1].length" ref="wf2">
@@ -15,7 +15,7 @@
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{ $t(typeinit(item.type))
                     }}</el-button>
-                <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
+                <el-button class="copyBtn" v-else @click.stop="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
         <div class="water wf3" v-if="wfl[2].length" ref="wf3">
@@ -24,7 +24,7 @@
                 <div>{{ item.content }}</div>
                 <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{ $t(typeinit(item.type))
                     }}</el-button>
-                <el-button class="copyBtn" v-else @click="copyContent(item.content)">Copy</el-button>
+                <el-button class="copyBtn" v-else @click.stop="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
     </div>
@@ -60,7 +60,13 @@ export default {
     },
     methods: {
         init() {
-            console.log(123, this.waterfallList.length);
+            this.waterfallList.map(x=>{
+                if(x.theme.includes('{"keyword":"')){
+                    x.theme = JSON.parse(x.theme).keyword
+                }
+                return x
+            })
+            
             if (this.waterfallList.length > 3) {
                 this.wfl[0].push(this.waterfallList[0])
                 this.wfl[1].push(this.waterfallList[1])
@@ -210,7 +216,7 @@ div.water {
 
         div {
             margin: 12px 0;
-            word-break: break-all;
+            word-break:  break-word;
             font-weight: 400;
             font-size: 16px;
             line-height: 26px;

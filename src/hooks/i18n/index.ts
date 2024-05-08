@@ -253,7 +253,7 @@ const messages = {
     poemai_size: "Longueur",
     poem_size_m: "Moyen",
     poem_size_s: "Court",
-    poem_size_l: "Grand",
+    poem_size_l: "Long",
     poemai_generate_language: "Sortie en %s",
     poemai_haiku_theme: "De quoi parle le poème?",
     poemai_haiku_input_tips: "Lever de soleil sur la Seine",
@@ -442,7 +442,7 @@ const messages = {
     poemai_size: "Длина",
     poem_size_m: "Средний",
     poem_size_s: "Короткий",
-    poem_size_l: "Большой",
+    poem_size_l: "длинный",
     poemai_generate_language: "Вывод на",
     poemai_haiku_theme: "О чем этот стих?",
     poemai_haiku_input_tips: "Белые ночи Петербурга",
@@ -661,7 +661,7 @@ const messages = {
     poemai_size: "Länge",
     poem_size_m: "Mittel",
     poem_size_s: "Kurz",
-    poem_size_l: "Groß",
+    poem_size_l: "Lang",
     poemai_generate_language: "Ausgabe auf %s",
     poemai_haiku_theme: "Worum geht es in dem Gedicht?",
     poemai_haiku_input_tips: "Herbstwind in den Wäldern",
@@ -852,7 +852,7 @@ const messages = {
     poemai_size: "Lunghezza",
     poem_size_m: "Medio",
     poem_size_s: "Corto",
-    poem_size_l: "Grande",
+    poem_size_l: "Lungo",
     poemai_generate_language: "Output in %s",
     poemai_haiku_theme: "Di cosa parla la poesia?",
     poemai_haiku_input_tips: "Notte stellata a Venezia",
@@ -1040,7 +1040,7 @@ const messages = {
     poemai_size: "Comprimento",
     poem_size_m: "Médio",
     poem_size_s: "Curto",
-    poem_size_l: "Grande",
+    poem_size_l: "longo",
     poemai_generate_language: "Saída em %s",
     poemai_haiku_theme: "Sobre o que é o poema?",
     poemai_haiku_input_tips: "Amanhecer no Douro",
@@ -1229,9 +1229,9 @@ const messages = {
     poemai_fv_theme: "¿De qué trata el poema?",
     poemai_fv_input_tips: "Voces del bosque antiguo",
     poemai_size: "Longitud",
-    poem_size_m: "Mediano",
+    poem_size_m: "Medio",
     poem_size_s: "Corto",
-    poem_size_l: "Grande",
+    poem_size_l: "Largo",
     poemai_generate_language: "Salida en %s",
     poemai_haiku_theme: "¿De qué trata el poema?",
     poemai_haiku_input_tips: "Olas en las Islas Canarias",
@@ -1258,7 +1258,8 @@ const messages = {
     poemai_generated_poem: "Poema Generado",
     poemai_copy_btn: "Copiar",
     poemai_copy_success_toast: "Copiado con éxito",
-    poemai_privacy: "Política de privacidad", privacyContent: `<h1>Política de privacidad</h1>
+    poemai_privacy: "Política de privacidad", 
+    privacyContent: `<h1>Política de privacidad</h1>
     <p>Última actualización: 5 de enero de 2024</p>
     <p>Esta Política de Privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el Servicio e informa sobre sus derechos de privacidad y cómo la ley lo protege.</p>
     <p>Utilizamos sus datos personales para proporcionar y mejorar el Servicio. Al usar el Servicio, usted acepta la recopilación y el uso de información de acuerdo con esta Política de Privacidad.</p>
@@ -1398,6 +1399,7 @@ const messages = {
 
   },
 
+
   ja: {
     poem_carousel_word: "ロマンチックな詩,興味深いリメリック,深遠なソネット詩,アクロスティックな詩,自然についての俳句,素晴らしい自由詩",
     poemai_example: "生成された詩",
@@ -1418,9 +1420,9 @@ const messages = {
     poemai_fv_theme: "その詩は何についてですか？",
     poemai_fv_input_tips: "彷徨う雲の旅",
     poemai_size: "詩のサイズ",
-    poem_size_m: "媒体",
+    poem_size_m: "中くらい",
     poem_size_s: "短い",
-    poem_size_l: "大きい",
+    poem_size_l: "長さ",
     poemai_generate_language: "出力言語",
     poemai_haiku_theme: "その詩は何についてですか？",
     poemai_haiku_input_tips: "夜の桜",
@@ -1448,6 +1450,48 @@ const messages = {
     poemai_copy_btn: "コピー",
     poemai_copy_success_toast: "正常にコピーされました",
     poemai_privacy: "プライバシーポリシー",
+    questionAndAnswer: `<h1>AI詩ジェネレーターとは何ですか?</h1>
+    <p>AI詩ジェネレーターは、無料のオンライン詩ジェネレーターです。 AI の魔法を使えば、誰でも美しく、ユニークで意味のある詩をすぐに作成できます。 AI詩ジェネレーターは今後も無料であり、このツールが世界を詩で満たすことができることを願っています。</p>
+    
+    <h1>AI詩ジェネレーターで何ができるの？</h1>
+    <h2>1. 教育と学習</h2>
+    <p>学校や作文コースでは、教師がAI詩ジェネレーターを使用して生徒の詩への関心を高めることができます。 学生は、AI が生成した詩を通じてさまざまな詩の構造やスタイルについて学ぶことができ、学習と実践の一環として AI が生成した詩を修正または改善することもできます。</p>
+    <h2>2. 創造性を刺激する</h2>
+    <p>創造的なブロックに直面している作家や詩人は、AI 詩ジェネレーターを使用してインスピレーションを得ることができ、AI が生成したさまざまな種類の詩を閲覧することで、新しいテーマ、構造、リズムを発見し、創作の火花を散らすことができます。</p>
+    <h2>3. 愛を表現する</h2>
+    <p>AI詩ジェネレーターを使用して、愛する人のためにロマンチックでエレガントなパーソナライズされた詩を作成します。 特定の詩の種類とテーマを選択することで、愛する人へのユニークで感情豊かな詩のギフトを準備できます。</p>
+    <h2>4. あらゆるイベントや儀式に祝福の言葉を書く</h2>
+    <p>特別なイベントやお祝い (結婚式、祝勝会、卒業式、誕生日パーティー、葬儀など) の場合、AI 詩ジェネレーターを使用してイベントのテーマに関連した詩を作成し、文化的および芸術的な雰囲気を加えることができます。 たとえば、お母さんのための母の日の詩、おじいちゃんの葬儀のための追悼の詩、娘の卒業を祝う詩、または息子のためのアクロスティック詩を作成します。</p>
+    <h2>5. ソーシャルメディアコンテンツの作成</h2>
+    <p>AI詩ジェネレーターを使用して、オリジナルで目を引くコンテンツを作成します。 たとえば、俳句を使用して日常生活の美しさを表現したり、自由詩を使用して個人的な感情や考えを表現したりして、美しい日常の詩をすぐに作成できます。</p>
+    <h2>6. 心理的治癒</h2>
+    <p>心理療法士やカウンセラーはAI詩ジェネレーターを使用して、クライアントが感情を表現できるように支援できます。 詩、特に自由詩の創作を通じて、人々はより簡単に自分の内なる世界を探求し、表現することができます。</p>
+    
+    <h1>AI詩ジェネレーターにはどのような種類の詩ジェネレーターが含まれていますか?</h1>
+    <h2>1. 無料の詩ジェネレーター</h2>
+    <p>自由詩は、伝統的な韻やリズムのルールに制約されない詩の形式です。 詩人の感情や思考を自由に表現できる柔軟なフォルムが特徴です。</p>
+    <p>無料の詩ジェネレーターを使用すると、誰でも自分のテーマや感情に基づいて、個人のスタイルを完璧に体現した創造的で深みのある自由詩をすばやく生成できます。</p>
+    <h2>2. 俳句ジェネレーター</h2>
+    <p>俳句は日本発祥の短い詩で、通常は 3 行、合計 17 音節で構成され、5-7-5 の構造で配置されています。多くの場合、自然の風景を描写し、瞬間の美しさを捉えています。</p>
+    <p>俳句ジェネレーターを使用すると、コンテンツのテーマに基づいて伝統的な俳句を簡単に生成でき、その簡潔で奥深い特徴を維持し、自然の美しさであろうと日常の出来事であろうと、美しく意味のある俳句に変換できます。</p>
+    <h2>3. アクロスティックジェネレーター</h2>
+    <p>アクロスティックは、各行または段落の最初の文字が単語またはフレーズを綴る遊び心のある詩の形式です。</p>
+    <p>アクロスティック ジェネレーターを使用すると、パーソナライズされたアクロスティック詩を作成できます。名前またはキーワードを入力するだけで、ギフトや特別な機会に適した創造的かつ個人的なアクロスティック詩が生成されます。</p>
+    <h2>4. ソネットジェネレーター</h2>
+    <p>ソネットは 14 行の詩形式であり、通常は厳密な韻体系に従っています。 ヨーロッパで生まれ、愛、自然の美しさ、深い感情を表現するための古典的な形式です。</p>
+    <p>ソネットジェネレーターを使用すると、従来の形式に従ったソネットを迅速に生成できます。 コンテンツのテーマを指定して、深い感情や哲学的な考えを表現するのに適した、伝統的かつ現代的なソネットをすばやく作成します。</p>
+    <h2>5. リムリックジェネレーター</h2>
+    <p>リムリックは英国発祥のユーモラスな詩形式で、通常は AABBA の韻体系を持つ 5 行から成ります。 この詩はユーモアと軽快なリズムで知られています。</p>
+    <p>リムリック ジェネレーターを使用すると、機知に富んだユーモラスなリムリックを簡単に作成できます。 いくつかのキーワードを入力するだけで、面白くてリズミカルに富んだ詩がすぐに生成され、日常生活に喜びが加わります。</p>
+    <h2>6. 愛の詩ジェネレーター</h2>
+    <p>愛の詩は、特に愛、感情、親密な関係を表現する詩の形式です。 ロマンチックで優しいものから情熱的で激しいものまでさまざまな構造があり、愛のさまざまな側面を表現します。</p>
+    <p>愛の詩ジェネレーターは、感情的なニーズに基づいて、さまざまなスタイルの愛の詩を生成できます。深い告白でも、恋人との別れでも、特別な記念日や愛を表現するのに適した、感動的でエレガントな愛の詩を作成いたします。</p>
+    
+    <h1>AI詩ジェネレーターで詩を生成するにはどうすればよいですか?</h1>
+    <p>ステップ 1: 詩の種類を選択する</p>
+    <p>作成したい詩のタイプを選択します。 現在サポートされている詩のタイプには、自由詩、俳句、アクロスティック、ソネット、リムリック、愛の詩が含まれます。</p>
+    <p>ステップ 2: 詩の内容テーマをカスタマイズする</p>
+    <p>詩のテーマを入力し、「生成」をクリックすると、すぐに詩が生成されます。</p>`
   },
   ko: {
 
@@ -1470,9 +1514,9 @@ const messages = {
     poemai_fv_theme: "이 시는 무엇에 관한 것입니까?",
     poemai_fv_input_tips: "방랑하는 구름의 여정",
     poemai_size: "시의 크기",
-    poem_size_m: " 매체",
-    poem_size_s: " 짧은",
-    poem_size_l: "큰",
+    poem_size_m: "중간",
+    poem_size_s: "짧은",
+    poem_size_l: "긴",
     poemai_generate_language: "출력 언어",
     poemai_haiku_theme: "이 시는 무엇에 관한 것입니까?",
     poemai_haiku_input_tips: "밤에 벚꽃",
@@ -1500,6 +1544,48 @@ const messages = {
     poemai_copy_btn: "복사",
     poemai_copy_success_toast: "성공적으로 복사됨",
     poemai_privacy: "개인정보 처리방침",
+    questionAndAnswer:`<h1>AI 시 생성기란 무엇인가요?</h1>
+    <p>AI 시 생성기는 무료 온라인 시 생성기입니다. AI의 마법을 활용하면 누구나 아름답고 독특하며 의미 있는 시를 빠르게 만들 수 있습니다. AI 시 생성기는 이 도구가 세상을 시로 채울 수 있기를 바라는 마음으로 항상 무료입니다.</p>
+    
+    <h1>AI 시 생성기로 무엇을 할 수 있나요?</h1>
+    <h2>1. 교육 및 학습</h2>
+    <p>학교나 작문 과정에서 교사는 AI 시 생성기를 사용하여 시에 대한 학생들의 관심을 불러일으킬 수 있습니다. 학생들은 AI가 생성한 시를 통해 다양한 시 구조와 스타일에 대해 배울 수 있으며 학습과 연습의 일환으로 AI가 생성한 시를 수정하거나 개선하려고 시도할 수도 있습니다.</p>
+    <h2>2. 영감을 주는 글쓰기 영감</h2>
+    <p>창의적인 블록에 직면한 작가나 시인은 AI Poem Generator를 사용하여 영감을 얻을 수 있습니다. AI가 생성한 다양한 유형의 시를 탐색하여 새로운 주제, 구조 또는 리듬을 발견하여 창의적인 불꽃을 점화할 수 있습니다.</p>
+    <h2>3. 사랑을 표현하다</h2>
+    <p>AI 시 생성기를 사용하여 사랑하는 사람을 위한 낭만적이고 우아한 맞춤형 시를 만들어 보세요. 특정 시 유형과 주제를 선택하면 사랑하는 사람을 위한 독특하고 감성이 풍부한 시 선물을 준비할 수 있습니다.</p>
+    <h2>4. 모든 행사나 행사</h2>에 대한 축복문 작성
+    <p>특별한 행사나 축하 행사(예: 결혼식, 승리 파티, 졸업식, 생일 파티, 장례식 등)의 경우 AI 시 생성기를 사용하여 행사 주제와 관련된 시를 만들어 문화적, 예술적 분위기를 더할 수 있습니다. 예를 들어, 엄마를 위한 어버이날 시, 할아버지의 장례식을 위한 애도시, 딸의 졸업을 축하하는 시, 아들을 위한 삼행시를 만들어 보세요.</p>
+    <h2>5. 소셜미디어 콘텐츠 제작</h2>
+    <p>AI 시 생성기를 사용하여 독창적이고 눈길을 끄는 콘텐츠를 만드세요. 예를 들어, 하이쿠를 사용하여 일상의 아름다움을 표현하거나 자유시를 사용하여 개인의 감정과 생각을 표현하여 아름다운 일상 시를 빠르게 생성합니다.</p>
+    <h2>6. 심리적 치유</h2>
+    <p>심리치료사 또는 상담사는 AI 시 생성기를 사용하여 고객이 감정을 표현하도록 도울 수 있습니다. 시 창작, 특히 자유시를 통해 사람들은 자신의 내면 세계를 더욱 쉽게 탐색하고 표현할 수 있습니다.</p>
+    
+    <h1>AI 시 생성기에는 어떤 유형의 시 생성기가 포함되어 있나요?</h1>
+    <h2>1. 무료 구절 생성기</h2>
+    <p>자유시(Free Verse)는 전통적인 운율과 리듬 규칙에 얽매이지 않는 시의 한 형태입니다. 시인의 감정과 생각을 자유롭게 표현할 수 있는 유연한 형태가 특징이다.</p>
+    <p>자유 구절 생성기를 사용하면 누구나 자신의 주제와 감정을 기반으로 개인 스타일을 완벽하게 구현하는 창의적이고 깊은 자유시를 빠르게 생성할 수 있습니다.</p>
+    <h2>2. 하이쿠 발전기</h2>
+    <p>하이쿠는 일본에서 유래한 짧은 형식의 시로, 일반적으로 5-7-5 구조로 배열된 총 17음절의 세 줄로 구성되어 있습니다. 하이쿠는 종종 자연스러운 장면을 묘사하여 순간의 아름다움을 포착합니다.</p>
+    <p>하이쿠 생성기를 사용하면 콘텐츠 테마를 기반으로 간결하고 심오한 특성을 유지하면서 전통적인 하이쿠를 빠르게 생성할 수 있습니다. 자연의 아름다움이든 일상의 일이든 아름답고 의미 있는 하이쿠로 변신할 수 있습니다.</p>
+    <h2>3. 아크로스틱 제너레이터</h2>
+    <p>삼행시은 각 줄이나 단락의 첫 글자가 단어나 문구를 나타내는 재미있는 형태의 시입니다.</p>
+    <p>아크로스틱 생성기를 사용하면 나만의 아크로스틱 시를 만들 수 있습니다. 이름이나 키워드만 입력하면 선물이나 특별한 날에 적합한 창의적이면서도 개인적인 삼행시가 생성됩니다.</p>
+    <h2>4. 소네트 생성기</h2>
+    <p>소네트(Sonnet)는 일반적으로 엄격한 운율 체계를 따르는 14줄의 시 형식입니다. 유럽에서 유래되었으며 사랑, 자연의 아름다움, 심오한 감정을 표현하는 고전적인 형태입니다.</p>
+    <p>소네트 생성기를 사용하면 기존 형식을 따르는 Sonnet을 빠르게 생성할 수 있습니다. 콘텐츠 주제를 지정하고 전통적이면서 현대적이며 깊은 감정과 철학적 사고를 표현하는 데 적합한 소네트를 빠르게 생성하세요.</p>
+    <h2>5. 리머릭 생성기</h2>
+    <p>리머릭(Limerick)은 일반적으로 AABBA 운율 체계를 사용하는 5행의 영국 시 형식입니다. 이 시는 유머와 쉬운 리듬으로 유명합니다.</p>
+    <p>리머릭 생성기를 사용하면 재치있고 유머러스한 리머릭을 쉽게 만들 수 있습니다. 몇 가지 키워드만 입력하면 재미있고 리듬감이 풍부한 시가 빠르게 생성되어 일상에 즐거움을 더해줍니다.</p>
+    <h2>6. 사랑의 시 생성기</h2>
+    <p>사랑시는 사랑, 감정, 친밀한 관계를 구체적으로 표현하는 시의 한 형태입니다. 낭만적이고 온화한 것부터 열정적이고 강렬한 것까지 다양한 구조를 취할 수 있으며 사랑의 다양한 측면을 표현합니다.</p>
+    <p>사랑의 시 생성기는 감정적 필요에 따라 다양한 스타일의 사랑의 시를 생성할 수 있습니다. 깊은 고백이든, 연인에 대한 그리움이든, 특별한 기념일이나 사랑을 표현하는 데 적합한 감동적이고 우아한 사랑의 시를 만들어 드릴 수 있습니다.</p>
+    
+    <h1>AI 시 생성기로 시를 생성하는 방법</h1>
+    <p>1단계: 시 유형 선택</p>
+    <p>만들고 싶은 시의 유형을 선택하세요. 현재 지원되는 시 유형에는 자유시, 하이쿠, 삼행시, 소네트, 리머릭 및 사랑의 시가 있습니다.</p>
+    <p>2단계: 시의 콘텐츠 테마 사용자 정의</p>
+    <p>시 테마를 입력하고 "생성"을 클릭하면 즉시 시가 생성됩니다.</p>`
   },
   th: {
     poem_carousel_word: "บทกวีโรแมนติก,โคลงที่น่าสนใจ,บทกวีโคลงที่ลึกซึ้ง,บทกวีโคลงเคลง,ไฮกุเกี่ยวกับธรรมชาติ,บทกวีฟรีที่น่าทึ่ง",
@@ -1521,9 +1607,9 @@ const messages = {
     poemai_fv_theme: "บทกวีเกี่ยวกับอะไร",
     poemai_fv_input_tips: "การเดินทางของเมฆที่เร่ร่อน",
     poemai_size: "ขนาดของบทกวี",
-    poem_size_m: "สื่อ",
+    poem_size_m: "ปานกลาง",
     poem_size_s: "สั้น",
-    poem_size_l: "ใหญ่",
+    poem_size_l: "ยาว",
     poemai_generate_language: "ภาษาเอาต์พุต",
     poemai_haiku_theme: "บทกวีเกี่ยวกับอะไร",
     poemai_haiku_input_tips: "ดอกซากุระยามค่ำคืน",
@@ -1551,6 +1637,48 @@ const messages = {
     poemai_copy_btn: "คัดลอก",
     poemai_copy_success_toast: "คัดลอกสำเร็จ",
     poemai_privacy: "นโยบายความเป็นส่วนตัว",
+    questionAndAnswer:`<h1>ตัวสร้างบทกวี AI คืออะไร</h1>
+    <p>ตัวสร้างบทกวี AI เป็นโปรแกรมสร้างบทกวีออนไลน์ฟรี ด้วยความมหัศจรรย์ของ AI ช่วยให้ทุกคนสามารถสร้างบทกวีที่สวยงาม มีเอกลักษณ์ และมีความหมายได้อย่างรวดเร็ว ตัวสร้างบทกวี AI จะให้บริการฟรีเสมอ ด้วยความหวังว่าเครื่องมือนี้จะทำให้โลกเต็มไปด้วยบทกวี</p>
+    
+    <h1>ตัวสร้างบทกวี AI ทำอะไรได้บ้าง?</h1>
+    <h2>1. การศึกษาและการเรียนรู้</h2>
+    <p>ในโรงเรียนหรือหลักสูตรการเขียน ครูสามารถใช้ ตัวสร้างบทกวี AI เพื่อจุดประกายความสนใจของนักเรียนในบทกวี นักเรียนสามารถเรียนรู้เกี่ยวกับโครงสร้างและสไตล์บทกวีที่แตกต่างกันผ่านบทกวีที่สร้างโดย AI และแม้แต่ลองแก้ไขหรือปรับปรุงบทกวีที่สร้างโดย AI โดยเป็นส่วนหนึ่งของการเรียนรู้และการฝึกฝน</p>
+    <h2>2. แรงบันดาลใจในการเขียนที่สร้างแรงบันดาลใจ</h2>
+    <p>นักเขียนหรือกวีที่ต้องเผชิญกับช่วงความคิดสร้างสรรค์สามารถใช้ ตัวสร้างบทกวี AI เพื่อเป็นแรงบันดาลใจได้ ด้วยการเรียกดูบทกวีที่สร้างโดย AI ประเภทต่างๆ พวกเขาสามารถค้นพบธีม โครงสร้าง หรือจังหวะใหม่ๆ เพื่อจุดประกายความคิดสร้างสรรค์ได้</p>
+    <h2>3. การแสดงความรัก</h2>
+    <p>ใช้ ตัวสร้างบทกวี AI เพื่อสร้างบทกวีส่วนตัวที่โรแมนติกและสง่างามสำหรับคนที่คุณรัก ด้วยการเลือกประเภทและธีมบทกวีที่เฉพาะเจาะจง คุณสามารถเตรียมของขวัญบทกวีที่มีเอกลักษณ์และเต็มไปด้วยอารมณ์ให้กับคนที่คุณรักได้</p>
+    <h2>4. การเขียนคำอวยพรสำหรับกิจกรรมหรือพิธีการใด ๆ</h2>
+    <p>สำหรับกิจกรรมหรืองานเฉลิมฉลองพิเศษ (เช่น งานแต่งงาน งานปาร์ตี้แห่งชัยชนะ พิธีสำเร็จการศึกษา งานเลี้ยงวันเกิด งานศพ ฯลฯ) คุณสามารถใช้ ตัวสร้างบทกวี AI เพื่อสร้างบทกวีที่เกี่ยวข้องกับธีมของงาน โดยเพิ่มบรรยากาศทางวัฒนธรรมและศิลปะ ตัวอย่างเช่น สร้างบทกวีวันแม่สำหรับคุณแม่ บทกวีไว้ทุกข์สำหรับงานศพของคุณปู่ บทกวีเฉลิมฉลองการสำเร็จการศึกษาของลูกสาว หรือบทกวีเชิงอรรถสำหรับลูกชายของคุณ</p>
+    <h2>5. การสร้างเนื้อหาโซเชียลมีเดีย</h2>
+    <p>ใช้ ตัวสร้างบทกวี AI เพื่อสร้างเนื้อหาต้นฉบับที่สะดุดตา ตัวอย่างเช่น ใช้ไฮกุเพื่อแสดงความงดงามของชีวิตประจำวัน หรือใช้ Free Verse เพื่อแสดงความรู้สึกและความคิดส่วนตัว และสร้างบทกวีที่สวยงามในแต่ละวันได้อย่างรวดเร็ว</p>
+    <h2>6. การรักษาทางจิตวิทยา</h2>
+    <p>นักจิตอายุรเวทหรือที่ปรึกษาสามารถใช้ ตัวสร้างบทกวี AI เพื่อช่วยลูกค้าแสดงอารมณ์ได้ ด้วยการสร้างสรรค์บทกวี โดยเฉพาะบทกวีอิสระ ผู้คนสามารถสำรวจและแสดงออกถึงโลกภายในของตนได้ง่ายขึ้น</p>
+    
+    <h1>ตัวสร้างบทกวี AI รวมเครื่องกำเนิดบทกวีประเภทใดบ้าง?</h1>
+    <h2>1. ตัวสร้างกลอนฟรี</h2>
+    <p>กลอนฟรี เป็นรูปแบบหนึ่งของบทกวีที่ไม่ถูกจำกัดโดยกฎการคล้องจองและจังหวะแบบดั้งเดิม โดดเด่นด้วยรูปแบบที่ยืดหยุ่น ทำให้กวีสามารถแสดงอารมณ์และความคิดได้อย่างอิสระ</p>
+    <p>ด้วยการใช้ เครื่องกำเนิดข้อฟรี ทุกคนสามารถสร้างกลอนที่สร้างสรรค์และลึกซึ้งได้ฟรีอย่างรวดเร็วตามธีมและอารมณ์ของตนเอง ซึ่งรวบรวมสไตล์ส่วนตัวได้อย่างสมบูรณ์แบบ</p>
+    <h2>2. เครื่องกำเนิดไฮกุ</h2>
+    <p>ไฮกุเป็นรูปแบบสั้น ๆ ของบทกวีที่มีต้นกำเนิดจากประเทศญี่ปุ่น โดยทั่วไปจะมีสามบรรทัด รวมทั้งหมด 17 พยางค์ กระจายอยู่ในโครงสร้าง 5-7-5 ไฮกุมักพรรณนาถึงฉากธรรมชาติเพื่อบันทึกความงดงามของช่วงเวลาต่างๆ</p>
+    <p>การใช้ ไฮกุยีน และคณะ ช่วยให้คุณสร้าง Haikus แบบดั้งเดิมได้อย่างรวดเร็วตามธีมเนื้อหาของคุณ โดยคงไว้ซึ่งคุณลักษณะที่กระชับและลึกซึ้ง ไม่ว่าจะเป็นความงามตามธรรมชาติหรือเหตุการณ์ในชีวิตประจำวันก็สามารถแปลงเป็นไฮกุที่สวยงามและมีความหมายได้</p>
+    <h2>3. เครื่องกำเนิดไฟฟ้าแบบอะครอสติค</h2>
+    <p>บทกวีโคลงเคลง คือรูปแบบบทกวีที่สนุกสนาน โดยตัวอักษรตัวแรกของแต่ละบรรทัดหรือย่อหน้าจะสะกดคำหรือวลี</p>
+    <p>การใช้เครื่องกำเนิดโคลงเคลงคุณสามารถสร้างบทกวีโคลงเคลงส่วนตัวได้ เพียงป้อนชื่อหรือคำหลักเพื่อสร้างบทกวีโคลงสั้น ๆ ที่ทั้งสร้างสรรค์และเป็นส่วนตัว เหมาะสำหรับเป็นของขวัญหรือในโอกาสพิเศษ</p>
+    <h2>4. เครื่องกำเนิดโคลง</h2>
+    <p>โคลง คือรูปแบบบทกวี 14 บรรทัด โดยทั่วไปจะมีรูปแบบสัมผัสที่เคร่งครัด มีต้นกำเนิดในยุโรป เป็นรูปแบบคลาสสิกในการแสดงความรัก ความงามตามธรรมชาติ และอารมณ์อันลึกซึ้ง</p>
+    <p>เครื่องกำเนิดโคลง ช่วยให้คุณสร้าง Sonnet ที่เป็นไปตามรูปแบบดั้งเดิมได้อย่างรวดเร็ว ระบุธีมเนื้อหาและสร้างซอนเน็ตทั้งแบบดั้งเดิมและสมัยใหม่อย่างรวดเร็ว เหมาะสำหรับการแสดงความรู้สึกลึกซึ้งและความคิดเชิงปรัชญา</p>
+    <h2>5. เครื่องกำเนิดไฟฟ้าลิเมอริก</h2>
+    <p>โคลง คือบทกวีรูปแบบตลกขบขันจากสหราชอาณาจักร ประกอบด้วยห้าบรรทัด โดยปกติจะมีรูปแบบสัมผัส AABBA บทกวีนี้ขึ้นชื่อเรื่องอารมณ์ขันและจังหวะที่ง่ายดาย</p>
+    <p>ด้วย เครื่องกำเนิดไฟฟ้าลิเมอริก คุณสามารถสร้าง โคลง ที่มีไหวพริบและมีอารมณ์ขันได้อย่างง่ายดาย เพียงป้อนคำหลักบางคำเพื่อสร้างบทกวีที่ทั้งตลกและมีจังหวะอย่างรวดเร็ว เพิ่มความสุขให้กับชีวิตประจำวัน</p>
+    <h2>6. เครื่องกำเนิดบทกวีรัก</h2>
+    <p>บทกวีรักเป็นรูปแบบหนึ่งของบทกวีที่แสดงความรัก อารมณ์ และความสัมพันธ์ใกล้ชิดโดยเฉพาะ อาจต้องใช้โครงสร้างที่หลากหลาย ตั้งแต่โรแมนติกและอ่อนโยน ไปจนถึงความหลงใหลและเข้มข้น โดยแสดงออกถึงแง่มุมต่างๆ ของความรัก</p>
+    <p>เครื่องกำเนิดบทกวีรัก สามารถสร้างบทกวีรักหลากหลายสไตล์ตามความต้องการทางอารมณ์ของคุณ ไม่ว่าจะเป็นการสารภาพรักอย่างลึกซึ้งหรือคิดถึงคนรัก เราสามารถสร้างบทกวีรักอันไพเราะและซาบซึ้งให้กับคุณได้ เหมาะสำหรับวันครบรอบพิเศษหรือแสดงความรัก</p>
+    
+    <h1>จะสร้างบทกวีด้วย ตัวสร้างบทกวี AI ได้อย่างไร</h1>
+    <p>ขั้นตอนที่ 1: เลือกประเภทของบทกวี</p>
+    <p>เลือกประเภทของบทกวีที่คุณต้องการสร้าง ประเภทบทกวีที่ได้รับการสนับสนุนในปัจจุบัน ได้แก่ กลอนฟรี, ไฮกุ, โคลง, โคลง, โคลง และ บทกวีรัก</p>
+    <p>ขั้นตอนที่ 2: ปรับแต่งธีมเนื้อหาของบทกวี</p>
+    <p>ป้อนธีมบทกวี คลิก "สร้าง" และสร้างบทกวีทันที</p>`
   },
   id: {
     poem_carousel_word: "sebuah puisi romantis,sebuah pantun yang lucu,soneta yang mendalam,sebuah puisi akrostik,Haiku tentang alam,puisi sajak bebas",
@@ -1572,9 +1700,9 @@ const messages = {
     poemai_fv_theme: "Tentang apakah puisi itu?",
     poemai_fv_input_tips: "Perjalanan Awan yang Mengembara",
     poemai_size: "Ukuran Puisi",
-    poem_size_m: "Media",
+    poem_size_m: "Sedang",
     poem_size_s: "Pendek",
-    poem_size_l: "Besar",
+    poem_size_l: "Panjang",
     poemai_generate_language: "Bahasa Keluaran",
     poemai_haiku_theme: "Tentang apakah puisi itu?",
     poemai_haiku_input_tips: "Bunga Sakura di Malam Hari",
@@ -1602,6 +1730,48 @@ const messages = {
     poemai_copy_btn: "Salin",
     poemai_copy_success_toast: "Berhasil disalin",
     poemai_privacy: "Kebijakan Privasi",
+    questionAndAnswer:`<h1>Apa itu Generator Puisi AI?</h1>
+    <p>Generator Puisi AI adalah generator puisi online gratis. Dengan keajaiban AI, siapa pun dapat dengan cepat membuat puisi yang indah, unik, dan bermakna. Generator Puisi AI akan selalu gratis, dengan harapan alat ini dapat mengisi dunia dengan puisi.</p>
+    
+    <h1>Apa yang Dapat Kita Lakukan dengan Generator Puisi AI?</h1>
+    <h2>1. Pendidikan & Pembelajaran</h2>
+    <p>Di sekolah atau kursus menulis, guru dapat menggunakan Generator Puisi AI untuk memicu minat siswa terhadap puisi. Siswa dapat mempelajari berbagai struktur dan gaya puisi melalui puisi yang dihasilkan AI, dan bahkan mencoba memodifikasi atau menyempurnakan puisi yang dihasilkan AI sebagai bagian dari pembelajaran dan praktik mereka.</p>
+    <h2>2. Inspirasi Tulisan Inspiratif</h2>
+    <p>Penulis atau penyair yang menghadapi hambatan kreatif dapat menggunakan Generator Puisi AI sebagai inspirasi. Dengan menjelajahi berbagai jenis puisi yang dihasilkan AI, mereka dapat menemukan tema, struktur, atau ritme baru untuk memicu kreativitas mereka.</p>
+    <h2>3. Mengekspresikan Cinta</h2>
+    <p>Gunakan Generator Puisi AI untuk membuat puisi pribadi yang romantis dan elegan untuk siapa pun yang Anda cintai. Dengan memilih jenis dan tema puisi tertentu, Anda bisa menyiapkan kado puisi yang unik dan kaya emosi untuk orang tersayang.</p>
+    <h2>4. Tulisan Berkah untuk Acara atau Upacara Apapun</h2>
+    <p>Untuk acara atau perayaan khusus (seperti pernikahan, pesta kemenangan, wisuda, pesta ulang tahun, pemakaman, dll), Anda dapat menggunakan AI Poem Generator untuk membuat puisi yang berkaitan dengan tema acara, menambah suasana budaya dan seni. Misalnya, buatlah puisi Hari Ibu untuk ibu, puisi duka atas pemakaman kakek, puisi perayaan kelulusan putri Anda, atau puisi akrostik untuk putra Anda.</p>
+    <h2>5. Pembuatan Konten Media Sosial</h2>
+    <p>Gunakan Generator Puisi AI untuk membuat konten orisinal dan menarik. Misalnya, gunakan Haiku untuk mengekspresikan keindahan kehidupan sehari-hari, atau Ayat Bebas untuk mengungkapkan perasaan dan pikiran pribadi, sehingga dengan cepat menghasilkan puisi indah sehari-hari.</p>
+    <h2>6. Penyembuhan Psikologis</h2>
+    <p>Psikoterapis atau konselor dapat menggunakan Generator Puisi AI untuk membantu klien mengekspresikan emosi. Melalui penciptaan puisi, khususnya puisi bebas, masyarakat dapat lebih mudah mengeksplorasi dan mengekspresikan dunia batinnya.</p>
+    
+    <h1>Jenis Generator Puisi Apa yang Termasuk dalam Generator Puisi AI?</h1>
+    <h2>1. Generator Ayat Gratis</h2>
+    <p>Syair Bebas adalah suatu bentuk puisi yang tidak dibatasi oleh aturan rima dan ritme tradisional. Hal ini ditandai dengan bentuknya yang fleksibel, memungkinkan penyair untuk bebas mengekspresikan emosi dan pikiran.</p>
+    <p>Dengan menggunakan Generator Ayat Gratis, siapa pun dapat dengan cepat menghasilkan ayat bebas yang kreatif dan mendalam berdasarkan tema dan emosi mereka sendiri, yang secara sempurna mewujudkan gaya pribadi.</p>
+    <h2>2. Generator Haiku</h2>
+    <p>Haiku adalah puisi pendek yang berasal dari Jepang, biasanya berisi tiga baris dengan total 17 suku kata, didistribusikan dalam struktur 5-7-5. Haiku sering kali menggambarkan pemandangan alam, mengabadikan keindahan momen.</p>
+    <p>Dengan menggunakan Generator Haiku, Anda dapat dengan cepat membuat Haiku tradisional berdasarkan tema konten Anda, dengan mempertahankan karakteristiknya yang ringkas dan mendalam. Entah itu keindahan alam atau kejadian sehari-hari, semuanya bisa disulap menjadi Haiku yang indah dan penuh makna.</p>
+    <h2>3. Generator Akrostik</h2>
+    <p>Akrostik adalah bentuk puisi yang lucu di mana huruf pertama setiap baris atau paragraf menguraikan sebuah kata atau frasa.</p>
+    <p>Dengan menggunakan Acrostic Generator, Anda dapat membuat puisi akrostik yang dipersonalisasi. Cukup masukkan nama atau kata kunci untuk menghasilkan puisi akrostik yang kreatif dan personal, cocok sebagai hadiah atau acara khusus.</p>
+    <h2>4. Generator Soneta</h2>
+    <p>Soneta adalah bentuk puisi 14 baris, biasanya mengikuti skema rima yang ketat. Berasal dari Eropa, ini adalah bentuk klasik untuk mengekspresikan cinta, keindahan alam, dan emosi yang mendalam.</p>
+    <p>Generator Soneta membantu Anda dengan cepat menghasilkan Soneta yang mengikuti format tradisional. Tentukan tema konten apa pun dan segera buat Soneta yang tradisional dan modern, cocok untuk mengekspresikan perasaan mendalam dan pemikiran filosofis.</p>
+    <h2>5. Pembuat Limerik</h2>
+    <p>A Limerik adalah bentuk puisi lucu dari Inggris, berisi lima baris, biasanya dengan skema rima AABBA. Puisi ini terkenal dengan humor dan ritme yang mudah.</p>
+    <p>Dengan Limerik Generator, Anda dapat dengan mudah membuat Limerik yang jenaka dan lucu. Cukup masukkan beberapa kata kunci untuk dengan cepat menghasilkan puisi yang lucu dan kaya ritme, menambah kegembiraan dalam kehidupan sehari-hari.</p>
+    <h2>6. Pembuat Puisi Cinta</h2>
+    <p>Puisi Cinta adalah salah satu bentuk puisi yang khusus mengungkapkan cinta, emosi, dan hubungan intim. Ini dapat mengambil berbagai struktur, dari romantis dan lembut hingga penuh gairah dan intens, mengekspresikan berbagai aspek cinta.</p>
+    <p>Generator Puisi Cinta dapat menghasilkan berbagai gaya puisi cinta berdasarkan kebutuhan emosional Anda. Entah itu pengakuan mendalam atau rindu kekasih, kami bisa membuatkan puisi cinta yang menyentuh dan elegan untuk Anda, cocok untuk hari jadi spesial atau ungkapan cinta.</p>
+    
+    <h1>Bagaimana Cara Menghasilkan Puisi dengan Generator Puisi AI?</h1>
+    <p>Langkah 1: Pilih Jenis Puisi</p>
+    <p>Pilih jenis puisi yang ingin Anda buat. Jenis puisi yang didukung saat ini meliputi Ayat Bebas, Haiku, Akrostik, Soneta, Limerik, dan Puisi Cinta.</p>
+    <p>Langkah 2: Sesuaikan Tema Isi Puisi</p>
+    <p>Masukkan tema puisi apa pun, klik "Hasilkan", dan segera buat puisi.</p>`
   },
   vi: {
     poem_carousel_word: "một bài thơ lãng mạn,một lời nói tục ngữ,một bài sonnet sâu sắc,một bài thơ châm biếm,Haiku tuyệt vời,một bài thơ tự do",
@@ -1623,9 +1793,9 @@ const messages = {
     poemai_fv_theme: "Bài thơ nói về điều gì?",
     poemai_fv_input_tips: "Hành Trình của Đám Mây Lang Thang",
     poemai_size: "Kích thước Bài Thơ",
-    poem_size_m: "Phương tiện",
+    poem_size_m: "Trung bình",
     poem_size_s: "Ngắn",
-    poem_size_l: "Lớn",
+    poem_size_l: "Dài",
     poemai_generate_language: "Ngôn ngữ Đầu ra",
     poemai_haiku_theme: "Bài thơ nói về điều gì?",
     poemai_haiku_input_tips: "Hoa Anh Đào vào Ban Đêm",
@@ -1653,6 +1823,48 @@ const messages = {
     poemai_copy_btn: "Sao chép",
     poemai_copy_success_toast: "Sao chép thành công",
     poemai_privacy: "Chính sách Bảo mật",
+    questionAndAnswer:`<h1>Trình Tạo Thơ AI là gì?</h1>
+    <p>Trình Tạo Thơ AI là một công cụ tạo thơ trực tuyến miễn phí. Với sự kỳ diệu của AI, nó cho phép mọi người nhanh chóng tạo ra những bài thơ hay, độc đáo và ý nghĩa. Trình Tạo Thơ AI sẽ luôn miễn phí, với hy vọng công cụ này có thể lấp đầy thế giới bằng thơ ca.</p>
+    
+    <h1>Chúng ta có thể làm gì với Trình Tạo Thơ AI?</h1>
+    <h2>1. Giáo dục & Học tập</h2>
+    <p>Trong trường học hoặc các khóa học viết, giáo viên có thể sử dụng Trình Tạo Thơ AI để khơi dậy niềm đam mê thơ ca của học sinh. Học sinh có thể tìm hiểu về các cấu trúc và phong cách thơ khác nhau thông qua các bài thơ do AI tạo ra và thậm chí cố gắng sửa đổi hoặc cải thiện các bài thơ do AI tạo ra như một phần trong quá trình học tập và thực hành của họ.</p>
+    <h2>2. Cảm hứng viết lách</h2>
+    <p>Các nhà văn hoặc nhà thơ gặp khó khăn trong việc sáng tạo có thể sử dụng Trình Tạo Thơ AI để lấy cảm hứng. Bằng cách duyệt qua các loại bài thơ khác nhau do AI tạo ra, họ có thể khám phá các chủ đề, cấu trúc hoặc nhịp điệu mới để khơi dậy ngọn lửa sáng tạo của mình.</p>
+    <h2>3. Thể hiện tình yêu</h2>
+    <p>Sử dụng Trình Tạo Thơ AI để tạo những bài thơ cá nhân lãng mạn và trang nhã cho bất kỳ ai bạn yêu thích. Bằng cách chọn những thể loại và chủ đề thơ cụ thể, bạn có thể chuẩn bị một món quà thơ độc đáo và giàu cảm xúc cho những người thân yêu của mình.</p>
+    <h2>4. Viết lời chúc cho bất kỳ sự kiện hoặc buổi lễ nào</h2>
+    <p>Đối với các sự kiện hoặc lễ kỷ niệm đặc biệt (chẳng hạn như đám cưới, tiệc mừng chiến thắng, lễ tốt nghiệp, tiệc sinh nhật, đám tang, v.v.), bạn có thể sử dụng Trình Tạo Thơ AI để tạo những bài thơ liên quan đến chủ đề của sự kiện, tăng thêm không khí văn hóa và nghệ thuật. Ví dụ: tạo một bài thơ về Ngày của Mẹ cho mẹ, một bài thơ tang cho đám tang của ông nội, một bài thơ mừng lễ tốt nghiệp của con gái bạn hoặc một bài thơ châm biếm cho con trai bạn.</p>
+    <h2>5. Sáng tạo nội dung truyền thông xã hội</h2>
+    <p>Sử dụng Trình Tạo Thơ AI để tạo nội dung gốc, bắt mắt. Ví dụ, sử dụng Haiku để thể hiện vẻ đẹp của cuộc sống đời thường, hoặc Thơ tự do để thể hiện cảm xúc và suy nghĩ cá nhân, nhanh chóng tạo ra những bài thơ hay hàng ngày.</p>
+    <h2>6. Chữa lành tâm lý</h2>
+    <p>Các nhà trị liệu tâm lý hoặc tư vấn viên có thể sử dụng Trình Tạo Thơ AI để giúp khách hàng bày tỏ cảm xúc. Thông qua sáng tác thơ, đặc biệt là thơ tự do, con người dễ dàng khám phá và thể hiện thế giới nội tâm của mình hơn.</p>
+    
+    <h1>Trình Tạo Thơ AI bao gồm những loại máy tạo thơ nào?</h1>
+    <h2>1. Trình tạo câu thơ miễn phí</h2>
+    <p>Thơ tự do là một thể thơ không bị bó buộc bởi các quy tắc vần điệu và nhịp điệu truyền thống. Nó được đặc trưng bởi hình thức linh hoạt, cho phép nhà thơ tự do thể hiện cảm xúc và suy nghĩ.</p>
+    <p>Bằng cách sử dụng Trình tạo thơ tự do, bất kỳ ai cũng có thể nhanh chóng tạo thơ tự do sáng tạo và sâu sắc dựa trên chủ đề và cảm xúc của riêng họ, thể hiện hoàn hảo phong cách cá nhân.</p>
+    <h2>2. Máy phát điện Haiku</h2>
+    <p>Haiku là một thể thơ ngắn có nguồn gốc từ Nhật Bản, thường có ba dòng với tổng cộng 17 âm tiết, phân bố theo cấu trúc 5-7-5. Haikus thường khắc họa cảnh thiên nhiên, ghi lại vẻ đẹp của từng khoảnh khắc.</p>
+    <p>Sử dụng Trình tạo Haiku, bạn có thể nhanh chóng tạo Haikus truyền thống dựa trên chủ đề nội dung của mình, duy trì các đặc điểm ngắn gọn và sâu sắc của chúng. Cho dù đó là vẻ đẹp tự nhiên hay những điều xảy ra hàng ngày, chúng đều có thể biến thành những bài thơ Haiku đẹp đẽ và đầy ý nghĩa.</p>
+    <h2>3. Máy phát điện Thơ Đầu Câu</h2>
+    <p>Thơ Đầu Câu là một thể thơ vui tươi trong đó chữ cái đầu tiên của mỗi dòng hoặc đoạn đánh vần một từ hoặc cụm từ.</p>
+    <p>Bằng cách sử dụng Máy phát điện thơ Đầu Câu, bạn có thể tạo các bài thơ thơ có chữ đầu được cá nhân hóa. Chỉ cần nhập tên hoặc từ khóa để tạo ra một bài thơ thơ vừa sáng tạo vừa mang tính cá nhân, thích hợp làm quà tặng hoặc những dịp đặc biệt.</p>
+    <h2>4. Máy phát Sonnet</h2>
+    <p>Sonnet là một thể thơ 14 dòng, thường tuân theo một sơ đồ vần điệu nghiêm ngặt. Có nguồn gốc từ Châu Âu, đây là hình thức cổ điển để thể hiện tình yêu, vẻ đẹp tự nhiên và những cảm xúc sâu sắc.</p>
+    <p>Trình tạo Sonnet giúp bạn nhanh chóng tạo ra các bài Sonnet theo định dạng truyền thống. Chỉ định bất kỳ chủ đề nội dung nào và nhanh chóng tạo ra những bài Sonnet vừa truyền thống vừa hiện đại, phù hợp để thể hiện những cảm xúc sâu sắc và những tư tưởng triết học.</p>
+    <h2>5. Máy phát điện Limerick</h2>
+    <p>A Limerick là một thể thơ hài hước của Vương quốc Anh, gồm năm dòng, thường có sơ đồ vần AABBA. Bài thơ này được biết đến với tính hài hước và nhịp điệu dễ dàng.</p>
+    <p>Với máy phát điện vôi, bạn có thể dễ dàng tạo ra những Limerick dí dỏm và hài hước. Chỉ cần nhập một số từ khóa là có thể nhanh chóng cho ra đời những bài thơ vừa hài hước vừa giàu nhịp điệu, thêm niềm vui cho cuộc sống đời thường.</p>
+    <h2>6. Trình tạo thơ tình</h2>
+    <p>Thơ Tình là một thể thơ thể hiện cụ thể tình yêu, cảm xúc và những mối quan hệ thân thiết. Nó có thể có nhiều cấu trúc khác nhau, từ lãng mạn và nhẹ nhàng đến nồng nàn và mãnh liệt, thể hiện những khía cạnh khác nhau của tình yêu.</p>
+    <p>Trình tạo thơ tình có thể tạo ra nhiều phong cách thơ tình khác nhau dựa trên nhu cầu tình cảm của bạn. Dù đó là lời tỏ tình sâu sắc hay nỗi nhớ người yêu, chúng tôi đều có thể sáng tác cho bạn một bài thơ tình cảm động và trang nhã, phù hợp cho những ngày kỷ niệm đặc biệt hoặc bày tỏ tình yêu.</p>
+    
+    <h1>Làm cách nào để tạo bài thơ bằng Trình Tạo Thơ AI?</h1>
+    <p>Bước 1: Chọn thể loại thơ</p>
+    <p>Chọn loại thơ bạn muốn tạo. Các loại thơ hiện được hỗ trợ bao gồm Thơ tự do, Haiku, Thơ Đầu Câu, Sonnet, Limerick và Thơ tình.</p>
+    <p>Bước 2: Tùy chỉnh chủ đề nội dung của bài thơ</p>
+    <p>Nhập bất kỳ chủ đề thơ nào, nhấp vào "Tạo" và tạo ngay một bài thơ.</p>`
   },
   ar: {
     poem_carousel_word: "قصيدة حب مؤثرة,ليمريك مضحك,السوناتة مثل شكسبير,أبجدية لأي كلمة,هايكو عن الطبيعة,آية حرة مذهلة",
@@ -1674,9 +1886,9 @@ const messages = {
     poemai_fv_theme: "عن ماذا يتحدث الشعر؟",
     poemai_fv_input_tips: "رحلة السحابة الهائمة",
     poemai_size: "حجم القصيدة",
-    poem_size_m: "وسيط",
+    poem_size_m: "واسطة",
     poem_size_s: "قصير",
-    poem_size_l: " كبير",
+    poem_size_l: " طويل",
     poemai_generate_language: "لغة الإخراج",
     poemai_haiku_theme: "عن ماذا يتحدث الشعر؟",
     poemai_haiku_input_tips: " أزهار الكرز ليلاً",
@@ -1704,6 +1916,48 @@ const messages = {
     poemai_copy_btn: " نسخ",
     poemai_copy_success_toast: "تم النسخ بنجاح",
     poemai_privacy: "سياسة الخصوصية",
+    questionAndAnswer:`<h1>ما هو مولد القصائد بالذكاء الاصطناعي؟</h1>
+    <p>مولد الشعر الآلي هو مولد شعر مجاني على الإنترنت. بفضل سحر الذكاء الاصطناعي، فإنه يسمح لأي شخص بإنشاء قصائد جميلة وفريدة وذات معنى بسرعة. سيظل مولد الشعر الآلي مجانيًا دائمًا، على أمل أن تتمكن هذه الأداة من ملء العالم بالشعر.</p>
+    
+    <h1>ماذا يمكننا أن نفعل مع مولد الشعر الآلي؟</h1>
+    <h2>1. التعليم والتعلم</h2>
+    <p>في المدارس أو دورات الكتابة، يمكن للمعلمين استخدام مولد الشعر الآلي لإثارة اهتمام الطلاب بالشعر. يمكن للطلاب التعرف على هياكل وأنماط الشعر المختلفة من خلال القصائد المولدة بالذكاء الاصطناعي، وحتى محاولة تعديل أو تحسين القصائد المولدة بالذكاء الاصطناعي كجزء من تعلمهم وممارستهم.</p>
+    <h2>2. إلهام الكتابة الملهمة </h2>
+    <p>يمكن للكتاب أو الشعراء الذين يواجهون عقبات إبداعية استخدام مولد الشعر الآلي للإلهام. ومن خلال تصفح أنواع مختلفة من القصائد التي تم إنشاؤها بواسطة الذكاء الاصطناعي، يمكنهم اكتشاف موضوعات أو هياكل أو إيقاعات جديدة لإشعال شرارتهم الإبداعية.</p>
+    <h2>3. التعبير عن الحب</h2>
+    <p>استخدم مولد الشعر الآلي لإنشاء قصائد شخصية رومانسية وأنيقة لأي شخص تحبه. من خلال اختيار أنواع وموضوعات شعرية معينة، يمكنك إعداد هدية شعرية فريدة وغنية عاطفياً لأحبائك.</p>
+    <h2>4. كتابة البركات لأي حدث أو حفل</h2>
+    <p>بالنسبة للمناسبات أو الاحتفالات الخاصة (مثل حفلات الزفاف، وحفلات النصر، وحفلات التخرج، وحفلات أعياد الميلاد، والجنازات، وما إلى ذلك)، يمكنك استخدام مولد الشعر الآلي لإنشاء قصائد تتعلق بموضوع الحدث، مما يضيف إلى الجو الثقافي والفني. على سبيل المثال، قم بإنشاء قصيدة عيد الأم لأمي، أو قصيدة حداد لجنازة الجد، أو قصيدة تحتفل بتخرج ابنتك، أو قصيدة أبجدية لابنك.</p>
+    <h2>5. إنشاء محتوى الوسائط الاجتماعية</h2>
+    <p>استخدم مولد الشعر الآلي لإنشاء محتوى أصلي وملفت للنظر. على سبيل المثال، استخدم هايكو للتعبير عن جمال الحياة اليومية، أو Free Verse للتعبير عن المشاعر والأفكار الشخصية، مما يؤدي بسرعة إلى توليد شعر يومي جميل.</p>
+    <h2>6. الشفاء النفسي</h2>
+    <p>يمكن للمعالجين النفسيين أو المستشارين استخدام مولد الشعر الآلي لمساعدة العملاء على التعبير عن مشاعرهم. من خلال خلق الشعر، وخاصة الشعر الحر، يمكن للناس استكشاف عالمهم الداخلي والتعبير عنه بسهولة أكبر.</p>
+    
+    <h1>ما هي أنواع مولدات الشعر التي يتضمنها مولد قصائد الذكاء الاصطناعي؟</h1>
+    <h2>1. مولد الآية الحرة</h2>
+    <p>الشعر الحر هو شكل من أشكال الشعر غير مقيد بقواعد القافية والإيقاع التقليدية. ويتميز بشكله المرن الذي يسمح للشاعر بالتعبير عن مشاعره وأفكاره بحرية.</p>
+    <p>باستخدام مولد الآية الحرة، يمكن لأي شخص إنشاء شعر حر إبداعي وعميق بسرعة بناءً على موضوعاته وعواطفه، ويجسد الأسلوب الشخصي بشكل مثالي.</p>
+    <h2>2. مولد هايكو</h2>
+    <p>الهايكو هو شكل قصير من الشعر نشأ في اليابان، ويحتوي عادةً على ثلاثة أسطر بإجمالي 17 مقطعًا، موزعة في هيكل 5-7-5. غالبًا ما يصور الهايكو مشاهد طبيعية، ويلتقط جمال اللحظات.</p>
+    <p>باستخدام هايكو جين وآخرون.، يمكنك إنشاء هايكو التقليدية بسرعة استنادًا إلى سمات المحتوى الخاصة بك، مع الحفاظ على خصائصها المختصرة والعميقة. سواء كان ذلك جمالًا طبيعيًا أو أحداثًا يومية، فيمكن تحويلها إلى هايكو جميل وذو معنى.</p>
+    <h2>3. مولد أكروستيك</h2>
+    <p>الحروف الأبجدية هي شكل مرح من أشكال الشعر حيث يوضح الحرف الأول من كل سطر أو فقرة كلمة أو عبارة.</p>
+    <p>باستخدام مولد اكروستيك، يمكنك إنشاء قصائد أبجدية مخصصة. ما عليك سوى إدخال اسم أو كلمة رئيسية لإنشاء قصيدة ترتيبية إبداعية وشخصية، ومناسبة كهدية أو للمناسبات الخاصة.</p>
+    <h2>4. مولد السوناتة</h2>
+    <p>السوناتة عبارة عن شكل شعري مكون من 14 سطرًا، يتبع عادةً نظامًا صارمًا للقافية. نشأت في أوروبا، وهي شكل كلاسيكي للتعبير عن الحب والجمال الطبيعي والمشاعر العميقة.</p>
+    <p>يساعدك مولد السوناتة على إنشاء Sonnets التي تتبع التنسيقات التقليدية بسرعة. حدد أي موضوع محتوى وأنشئ بسرعة السوناتات التقليدية والحديثة، المناسبة للتعبير عن المشاعر العميقة والأفكار الفلسفية.</p>
+    <h2>5. مولد ليمريك</h2>
+    <p>ليميريك هو شكل من أشكال الشعر الفكاهي من المملكة المتحدة، يحتوي على خمسة أسطر، عادة مع مخطط قافية AABBA. وهذا الشعر معروف بروح الدعابة والإيقاع السهل.</p>
+    <p>باستخدام مولد ليمريك، يمكنك بسهولة إنشاء قصائد فكاهية بارعة وروح الدعابة. ما عليك سوى إدخال بعض الكلمات الرئيسية لإنشاء قصائد مضحكة وغنية إيقاعيًا بسرعة، مما يضيف البهجة إلى الحياة اليومية.</p>
+    <h2>6. مولد قصيدة الحب</h2>
+    <p>قصيدة الحب هي شكل من أشكال الشعر الذي يعبر بشكل خاص عن الحب والعواطف والعلاقات الحميمة. يمكن أن يتخذ هياكل مختلفة، من الرومانسية واللطيفة إلى العاطفية والمكثفة، للتعبير عن جوانب مختلفة من الحب.</p>
+    <p>يستطيع تطبيق مولد قصيدة الحب إنشاء أنماط مختلفة من قصائد الحب بناءً على احتياجاتك العاطفية. سواء كان ذلك اعترافًا عميقًا أو افتقاد حبيب، يمكننا إنشاء قصيدة حب مؤثرة وأنيقة لك، مناسبة للذكرى السنوية الخاصة أو للتعبير عن الحب.</p>
+    
+    <h1>كيفية إنشاء القصائد باستخدام مولد الشعر الآلي؟</h1>
+    <p>الخطوة الأولى: اختر نوع الشعر</p>
+    <p>حدد نوع الشعر الذي تريد إنشائه. تتضمن أنواع الشعر المدعومة حاليًا Free Verse وHaiku وAcrostic وSonnet وLimerick وقصيدة حب.</p>
+    <p>الخطوة 2: تخصيص موضوع محتوى القصيدة</p>
+    <p>أدخل أي موضوع شعري، وانقر فوق "إنشاء"، وقم بإنشاء قصيدة على الفور.</p>`
   },
   tr: {
     poem_carousel_word: "Dokunaklı bir aşk şiiri,Komik bir limerick,Güzel bir Sonnet,Akrostiş bir şiir,Doğa hakkında bir Haiku,Harika bir serbest ayet",
@@ -1725,9 +1979,9 @@ const messages = {
     poemai_fv_theme: "Şiir ne hakkında?",
     poemai_fv_input_tips: "Bir Gezgin Bulutun Yolculuğu",
     poemai_size: "Şiir Boyutu",
-    poem_size_m: "Medyum",
+    poem_size_m: "Orta",
     poem_size_s: "Kısa",
-    poem_size_l: " Büyük",
+    poem_size_l: "Uzun",
     poemai_generate_language: "Çıktı Dili",
     poemai_haiku_theme: "Şiir ne hakkında?",
     poemai_haiku_input_tips: "Gece Kiraz Çiçekleri",
@@ -1755,6 +2009,48 @@ const messages = {
     poemai_copy_btn: "Kopyala",
     poemai_copy_success_toast: "Başarıyla kopyalandı",
     poemai_privacy: "Gizlilik Politikası",
+    questionAndAnswer:`<h1>Yapay Zeka Şiir Üretici Nedir?</h1>
+    <p>Yapay Zeka Şiir Üretici ücretsiz bir çevrimiçi şiir oluşturucudur. Yapay zekanın büyüsü sayesinde herkesin hızla güzel, benzersiz ve anlamlı şiirler yaratmasına olanak tanır. Yapay Zeka Şiir Üretici, bu aracın dünyayı şiirle doldurması umuduyla her zaman ücretsiz olacaktır.</p>
+    
+    <h1>Yapay Zeka Şiir Üretici ile Neler Yapabiliriz?</h1>
+    <h2>1. Eğitim ve Öğrenme</h2>
+    <p>Okullarda veya yazma kurslarında öğretmenler, öğrencilerin şiire olan ilgisini artırmak için Yapay Zeka Şiir Üretici'ı kullanabilir. Öğrenciler, yapay zeka tarafından oluşturulan şiirler aracılığıyla farklı şiir yapıları ve stilleri hakkında bilgi edinebilir ve hatta öğrenimlerinin ve uygulamalarının bir parçası olarak yapay zeka tarafından oluşturulan şiirleri değiştirmeye veya iyileştirmeye çalışabilirler.</p>
+    <h2>2. İlham Verici Yazma İlhamı</h2>
+    <p>Yaratıcı engellerle karşılaşan yazarlar veya şairler ilham almak için Yapay Zeka Şiir Üretici'yu kullanabilir. Yapay zeka tarafından oluşturulan farklı şiir türlerine göz atarak yaratıcı kıvılcımlarını ateşleyecek yeni temalar, yapılar veya ritimler keşfedebilirler.</p>
+    <h2>3. Sevgiyi İfade Etmek</h2>
+    <p>Sevdiğiniz herkes için romantik ve zarif, kişiselleştirilmiş şiirler oluşturmak için Yapay Zeka Şiir Üretici'ı kullanın. Belirli şiir türlerini ve temalarını seçerek sevdiklerinize benzersiz ve duygusal açıdan zengin bir şiir hediyesi hazırlayabilirsiniz.</p>
+    <h2>4. Herhangi Bir Etkinlik veya Tören için Kutsama Yazmak</h2>
+    <p>Özel etkinlikler veya kutlamalar için (düğünler, zafer partileri, mezuniyet törenleri, doğum günü partileri, cenazeler vb.), kültürel ve sanatsal atmosfere katkıda bulunarak etkinliğin temasıyla ilgili şiirler oluşturmak için AI Poem Generator'ı kullanabilirsiniz. Örneğin, anneniz için bir Anneler Günü şiiri, büyükbabanızın cenazesi için bir yas şiiri, kızınızın mezuniyetini kutlayan bir şiir veya oğlunuz için akrostiş bir şiir oluşturun.</p>
+    <h2>5. Sosyal Medya İçeriği Oluşturma</h2>
+    <p>Orijinal, göz alıcı içerik oluşturmak için Yapay Zeka Şiir Üretici'ı kullanın. Örneğin, günlük yaşamın güzelliğini ifade etmek için Haiku'yu veya kişisel duygu ve düşünceleri ifade etmek için Serbest Şiir'i kullanarak hızla güzel günlük şiirler oluşturun.</p>
+    <h2>6. Psikolojik Şifa</h2>
+    <p>Psikoterapistler veya danışmanlar, müşterilerin duygularını ifade etmelerine yardımcı olmak için Yapay Zeka Şiir Üreticiyu kullanabilir. Şiir yaratımı, özellikle de serbest nazım yoluyla insanlar iç dünyalarını daha kolay keşfedip ifade edebilirler.</p>
+    
+    <h1>Yapay Zeka Şiir Üretici Ne Tür Şiir Oluşturucuları İçerir?</h1>
+    <h2>1. Serbest Ayet Oluşturucu</h2>
+    <p>Serbest Ayet, geleneksel kafiye ve ritim kurallarıyla sınırlandırılmayan bir şiir biçimidir. Şairin duygu ve düşüncelerini özgürce ifade etmesine olanak tanıyan esnek formuyla karakterize edilir.</p>
+    <p>Serbest Ayet Oluşturucu'yu kullanarak herkes, kendi temalarına ve duygularına dayalı olarak, kişisel tarzı mükemmel bir şekilde somutlaştıran yaratıcı ve derin serbest şiirleri hızlı bir şekilde oluşturabilir.</p>
+    <h2>2. Haiku Jeneratörü</h2>
+    <p>Haiku, Japonya kökenli, genellikle 5-7-5 şeklinde dağıtılmış, toplam 17 heceden oluşan üç satırdan oluşan kısa bir şiir biçimidir. Haiku'lar genellikle anların güzelliğini yakalayan doğal sahneleri tasvir eder.</p>
+    <p>Haiku Oluşturucu'yu kullanarak içerik temalarınıza dayalı olarak kısa ve derin özelliklerini koruyarak geleneksel Haiku'ları hızlı bir şekilde oluşturabilirsiniz. İster doğal güzellikler ister gündelik olaylar olsun, bunlar güzel, anlamlı Haiku'lara dönüştürülebilir.</p>
+    <h2>3. Akrostiş Oluşturucu</h2>
+    <p>Akrostiş, her satırın veya paragrafın ilk harfinin bir kelimeyi veya ifadeyi dile getirdiği eğlenceli bir şiir biçimidir.</p>
+    <p>Akrostiş Oluşturucuyu kullanarak kişiselleştirilmiş akrostiş şiirler oluşturabilirsiniz. Hediye olarak veya özel günlere uygun, yaratıcı ve kişisel bir akrostiş şiir oluşturmak için sadece bir isim veya anahtar kelime girin.</p>
+    <h2>4. Sone Oluşturucu</h2>
+    <p>Bir Sone, genellikle katı bir kafiye şemasını takip eden 14 satırlık bir şiir biçimidir. Avrupa kökenli olup sevgiyi, doğal güzelliği ve derin duyguları ifade etmek için kullanılan klasik bir formdur.</p>
+    <p>Sone Oluşturucu, geleneksel formatları takip eden Sone'leri hızlı bir şekilde oluşturmanıza yardımcı olur. Herhangi bir içerik temasını belirtin ve derin duyguları ve felsefi düşünceleri ifade etmeye uygun, hem geleneksel hem de modern Sonnet'leri hızla oluşturun.</p>
+    <h2>5. Limrik Jeneratörü</h2>
+    <p>Limrik, Birleşik Krallık'tan gelen, genellikle AABBA kafiye şemasına sahip, beş satırdan oluşan mizahi bir şiir biçimidir. Bu şiir mizahı ve kolay ritmiyle tanınır.</p>
+    <p>Limrik Jeneratörü ile kolayca esprili ve esprili Limrik'ler yaratabilirsiniz. Hem komik hem de ritmik açıdan zengin, günlük hayata neşe katan şiirleri hızlı bir şekilde oluşturmak için birkaç anahtar kelime girmeniz yeterli.</p>
+    <h2>6. Aşk Şiiri Oluşturucu</h2>
+    <p>Aşk Şiiri, özellikle aşkı, duyguları ve yakın ilişkileri ifade eden bir şiir biçimidir. Aşkın farklı yönlerini ifade eden, romantik ve nazikten tutkulu ve yoğuna kadar çeşitli yapılar alabilir.</p>
+    <p>Aşk Şiiri Oluşturucu, duygusal ihtiyaçlarınıza göre çeşitli tarzlarda aşk şiirleri oluşturabilir. İster derin bir itiraf, ister bir sevgiliyi özlemek olsun, özel yıldönümlerine veya sevgiyi ifade etmeye uygun, dokunaklı ve zarif bir aşk şiirini sizin için yaratabiliriz.</p>
+    
+    <h1>Yapay Zeka Şiir Üretici ile Şiirler Nasıl Oluşturulur?</h1>
+    <p>1. Adım: Şiir Türünü Seçin</p>
+    <p>Oluşturmak istediğiniz şiir türünü seçin. Şu anda desteklenen şiir türleri arasında Serbest Ayet, Haiku, Akrostik, Sone, Limrik ve Aşk Şiirleri bulunmaktadır.</p>
+    <p>Adım 2: Şiirin İçerik Temasını Özelleştirin</p>
+    <p>Herhangi bir şiir temasını girin, "Oluştur"a tıklayın ve hemen bir şiir oluşturun.</p>`
   }
 }
 
