@@ -52,6 +52,15 @@ export default {
             default: []
         }
     },
+    watch: {
+        waterfallList: {
+            immediate: true,
+            handler(newVal) {
+                // React to changes in the prop here
+                this.init();
+            }
+        }
+    },
     data() {
         return {
             waterfallCol: 3,
@@ -60,6 +69,7 @@ export default {
     },
     methods: {
         init() {
+            this.wfl=[[],[],[]];
             this.waterfallList.map(x=>{
                 if(x.theme.includes('{"keyword":"')){
                     x.theme = JSON.parse(x.theme).keyword
@@ -183,6 +193,7 @@ export default {
         }
     },
     mounted() {
+        console.log(123123,this.waterfallList);
         this.init()
     }
 };

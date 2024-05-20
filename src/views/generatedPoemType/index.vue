@@ -8,9 +8,10 @@
 
         <div class="wfdiv">
 
-            <waterfall class="wfDv"  :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
-            <el-pagination background layout="prev, pager, next" style="margin:40px 0;justify-content: center;" v-model:current-page="currentPage"
-            :page-size="pageSize" :total="totals" />
+            <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
+            <el-pagination background layout="prev, pager, next" style="margin:40px 0;justify-content: center;"
+                v-model:current-page="currentPage" :page-size="pageSize" :total="totals"
+                @current-change="handleCurrentChange" />
         </div>
 
 
@@ -30,9 +31,20 @@ const pageSize = ref(20)
 const waterfallList = ref([])
 const typeNums = ref(0)
 
+const handleCurrentChange = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth', // 可以添加平滑滚动效果
+    });
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
+        waterfallList.value = JSON.parse(res.data.data).data
+        typeNums.value = JSON.parse(res.data.data).count
+        totals.value = JSON.parse(res.data.data).count
+    })
+}
 onMounted(() => {
     setTimeout(() => {
-        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', type: route.params.GeneratedPoemType ,nums:pageSize.value,pages:currentPage.value}).then(res => {
+        throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', type: route.params.GeneratedPoemType, nums: pageSize.value, pages: currentPage.value }).then(res => {
             waterfallList.value = JSON.parse(res.data.data).data
             typeNums.value = JSON.parse(res.data.data).count
             totals.value = JSON.parse(res.data.data).count

@@ -269,6 +269,7 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
             padding: 2px 10px;
             border: 1px solid #ccc;
             border-radius: 20px;
+            cursor: pointer;
         }
 
         .privacy,

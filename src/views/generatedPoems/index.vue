@@ -5,8 +5,8 @@
         </span>
 
         <div class="allTypes">
-            <div v-for="item in types" @click="goTypes(item)">{{ item }}</div>
-            <div @click="goTypes('All')">{{ $t('poemai_more') }}</div>
+            <div v-for="item in types" @click="goTypes(item)" style="cursor:pointer">{{ item }}</div>
+            <div @click="goTypes('All')" style="cursor:pointer">{{ $t('poemai_more') }}</div>
         </div>
 
 
@@ -16,9 +16,10 @@
 
         <div class="allPoems">
 
-            <waterfall class="wfDv"  :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
-            <el-pagination background layout="prev, pager, next" style="margin:40px 0;justify-content: center;" v-model:current-page="currentPage"
-            :page-size="pageSize" :total="totals" />
+            <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
+            <el-pagination background layout="prev, pager, next" style="margin:40px 0;justify-content: center;"
+                v-model:current-page="currentPage" :page-size="pageSize" :total="totals"
+                @current-change="handleCurrentChange" />
         </div>
     </div>
 </template>
@@ -30,12 +31,21 @@ import i18n from '@/hooks/i18n'
 import { throttledApiRequest } from '@/api/index.js';
 const router = useRouter()
 const waterfallList = ref([])
-const types = ref(['Free Verse Poem Example', 'Haiku Poem Example', 'Acrostic Poem Example', 'Sonnet Poem Example', 'Limerick Poem Example', 'Love Poem Example', 'Poem for wedding', 'Poem for anniversary', 'Poem for anniversary'])
+const types = ref([])
 
 const currentPage = ref(1)
 const totals = ref(100)
 const pageSize = ref(20)
-
+const handleCurrentChange = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth', // 可以添加平滑滚动效果
+    });
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
+        waterfallList.value = JSON.parse(res.data.data).data
+        totals.value = JSON.parse(res.data.data).count
+    })
+}
 const goTypes = (type) => {
     // 
     if (type != 'All') {
@@ -47,13 +57,13 @@ const goTypes = (type) => {
 }
 onMounted(() => {
     setTimeout(() => {
-        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        throttledApiRequest('/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
             types.value = JSON.parse(res.data.data).map(x => x.name)
-            console.log(types.value);
         })
 
-        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
             waterfallList.value = JSON.parse(res.data.data).data
+            totals.value = JSON.parse(res.data.data).count
         })
 
     }, 0);
