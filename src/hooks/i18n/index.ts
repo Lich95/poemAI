@@ -5,7 +5,11 @@ const messages = {
   en: {
     poem_carousel_word: "A touching love poem,A funny limerick,A Sonnet like Shakespeare,An acrostic of any word,A Haiku about nature,An amazing free verse",
     header_title: 'AI Poem Generator - Create a rhyming poem with free AI poem generator',
+    header_title_category:"All Poem Categories - AI Poem Generator",
+    header_title_poem:"",
     Description: "A free AI poem generator that anyone can create a rhyming poem in seconds. Explore our AI Poem Generator: Create custom, rhyming poems on any poem theme.",
+    Description_category:"Explore any poem you want by category. Create unique rhyming poem with AI magic for free now!",
+    Description_poem:"",
     poemai_example: "Generated Poems",
     poemai_latest_poems: "Latest Poems",
     poemai_view_all: "View all",
@@ -232,7 +236,11 @@ const messages = {
 
     poem_carousel_word: "Poèmes d'amour touchants,Un vers libre,Un Sonnet touchant,Un poème acrostiche nommé,Un Haïku sur le printemps,Un limerick intéressant",
     header_title: "Générateur de poèmes - Créez un poème rimé avec l'IA gratuite",
+    header_title_category:"Toutes les catégories de poèmes - Générateur de poèmes",
+    header_title_poem:"",
     Description: "Un générateur de poèmes IA gratuit permettant de créer rapidement des poèmes rimés. Explorez notre générateur pour des poèmes personnalisés sur tout thème.",
+    Description_category:"Explorez n'importe quel poème de votre choix par catégorie. Créez gratuitement un poème rimé unique avec la magie de l'IA dès maintenant !",
+    Description_poem:"",
     poemai_example: "Poèmes générés",
     poemai_latest_poems: "Derniers poèmes",
     poemai_view_all: "Voir tout",
@@ -418,10 +426,210 @@ const messages = {
 <p>Étape 2 : Personnalisez le thème du poème</p>
 <p>Entrez n'importe quel thème de poésie, cliquez sur « Générer », et créez immédiatement votre poème.</p>`,
   },
+    de: {
+
+    poem_carousel_word: "Ein romantisches gedicht,Ein lustiger Limerick,Ein Sonett wie Shakespeare,Ein Akrostichon des Namens,Ein Haiku über die Natur,Ein erstaunlicher freier Vers",
+    header_title: "Gedichten Generator - Kostenloses KI-Magie-Tool für Reimgedichte",
+    header_title_category:"Alle Gedichtkategorien – Gedichten Generator",
+    header_title_poem:"",
+    Description: "Kostenloser AI-Gedichten Generator: Erstellen Sie Reimgedichte in Sekundenschnelle. Entdecken Sie unseren Generator und erstellen Sie Reimgedichte zu jedem Thema.",
+    Description_category:"Entdecken Sie jedes gewünschte Gedicht nach Kategorie. Nutzen Sie KI-Magie, um jetzt kostenlos einzigartige Reimgedichte zu erstellen!",
+    Description_poem:"",
+    poemai_example: "Generierte Gedichte",
+    poemai_latest_poems: "Neueste Gedichte",
+    poemai_view_all: "Alle ansehen",
+    poemai_category: "Heiße Kategorien",
+    poemai_more: "Mehr+",
+    poemai_all_poems: "Alle Gedichte",
+    poemai_all_categories: "Alle Gedichtkategorien",
+    poemai_related_poem: "Weitere verwandte Gedichte",
+    poemai_title_generate: "Generieren",
+    poemai_free_verse: "Freie Verse",
+    poemai_acrostic: "Akrostichon",
+    poemai_haiku: "Haiku",
+    poemai_sonnet: "Sonett Gedicht",
+    poemai_limerick: "Limerick",
+    poemai_love_poem: "Liebesgedicht",
+    poemai_fv_theme: "Worum geht es in dem Gedicht?",
+    poemai_fv_input_tips: "Herbstwind in den alten Gassen",
+    poemai_size: "Länge",
+    poem_size_m: "Mittel",
+    poem_size_s: "Kurz",
+    poem_size_l: "Lang",
+    poemai_generate_language: "Ausgabe auf %s",
+    poemai_haiku_theme: "Worum geht es in dem Gedicht?",
+    poemai_haiku_input_tips: "Herbstwind in den Wäldern",
+    poemai_acrostic_keyword: "Schlüsselwort/Phrase des Akrostichons",
+    poemai_acrostic_kw_input_tips: "Leni",
+    poemai_acrostic_theme: "Worum geht es in dem Gedicht?",
+    poemai_acrostic_input_tips: "Hochzeitsglückwünsche für Leni",
+    poemai_sonnet_theme: "Worum geht es in dem Gedicht?",
+    poemai_sonnet_input_tips: "Nacht über Berlin",
+    poemai_limerick_theme: "Worum geht es in dem Gedicht?",
+    poemai_limerick_input_tips: "Der Junge, der den Mond fangen wollte: Seine nächtlichen Expeditionen",
+    poemai_love_theme: "Worum geht es in dem Gedicht?",
+    poemai_love_input_tips: "Liebesgedicht für mein schatz",
+    poemai_title: "Gedichten Generator",
+    poemai_input_title: "Gedichten Generator",
+    poemai_input_subtitle: "Generiere ein Gedicht über...",
+    poemai_input_tips: "Herbstwind in den alten Gassen",
+    poemai_generate_btn: "Generieren",
+    poemai_powered_by_gpt: "Angetrieben von ChatGPT",
+    poemai_thinking_status: "Denken...",
+    poemai_network_err_toast: "Netzwerkfehler. Bitte versuchen Sie es erneut",
+    poemai_server_err_toast: "Serverfehler, bitte versuchen Sie es erneut",
+    poemai_generated_failed_toast: "Gedicht konnte nicht generiert werden, bitte versuchen Sie es erneut",
+    poemai_generated_poem: "Generiertes Gedicht",
+    poemai_copy_btn: "Kopieren",
+    poemai_copy_success_toast: "Erfolgreich kopiert",
+    poemai_privacy: "Datenschutzrichtlinie",
+    privacyContent: `<h1>Datenschutzrichtlinie</h1>
+    <p>Letzte Aktualisierung: 5. Januar 2024</p>
+    <p>Diese Datenschutzrichtlinie umreißt unsere Richtlinien und Verfahren zur Sammlung, Nutzung und Offenlegung Ihrer Informationen, wenn Sie den Dienst nutzen, und informiert Sie über Ihre Datenschutzrechte und wie das Gesetz Sie schützt.</p>
+    <p>Wir nutzen Ihre persönlichen Daten, um den Service bereitzustellen und zu verbessern. Durch die Nutzung des Dienstes stimmen Sie der Sammlung und Nutzung von Informationen gemäß dieser Datenschutzrichtlinie zu.</p>
+    <h1>Interpretation und Definitionen</h1>
+    <h2>Interpretation</h2>
+    <p>Wörter, deren Anfangsbuchstaben großgeschrieben sind, haben unter den folgenden Bedingungen definierte Bedeutungen. Diese Definitionen haben die gleiche Bedeutung, unabhängig davon, ob sie im Singular oder Plural erscheinen.</p>
+    <h2>Definitionen</h2>
+    <p>Zu den Zwecken dieser Datenschutzrichtlinie:</p>
+    <ul><li><b>"Konto"</b>bezieht sich auf ein einzigartiges Konto, das für Sie erstellt wurde, um auf unseren Dienst oder Teile unseres Dienstes zuzugreifen.</li>
+    <li><b>Unternehmen</b> (bezeichnet als "das Unternehmen", "Wir", "Uns" oder "Unser" in diesem Vertrag) bezieht sich auf Ai Poem Generator.</li>
+    <li><b>Cookies</b> sind kleine Dateien, die von einer Website auf Ihrem Computer, Mobilgerät oder einem anderen Gerät platziert werden und Einzelheiten zu Ihrem Browserverlauf auf dieser Website unter vielen Verwendungen enthalten.</li>
+    <li><b>Gerät</b> bedeutet jedes Gerät, das auf den Dienst zugreifen kann, wie z. B. ein Computer, ein Handy oder ein digitales Tablet.</li>
+    <li><b>Personenbezogene Daten</b>sind alle Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen.</li>
+    <li><b>Dienst</b> bezieht sich auf die Website.</li>
+    <li><b>Dienstanbieter</b> bedeutet jede natürliche oder juristische Person, die Daten im Auftrag des Unternehmens verarbeitet. Dies bezieht sich auf Drittunternehmen oder Einzelpersonen, die vom Unternehmen beschäftigt werden, um den Dienst zu erleichtern, den Dienst im Namen des Unternehmens bereitzustellen, Dienstleistungen im Zusammenhang mit dem Dienst zu erbringen oder das Unternehmen bei der Analyse der Nutzung des Dienstes zu unterstützen.</li>
+    <li><b>Nutzungsdaten</b> bezieht sich auf Daten, die automatisch gesammelt werden, entweder generiert durch die Nutzung des Dienstes oder aus der Infrastruktur des Dienstes selbst (zum Beispiel die Dauer eines Seitenbesuchs).</li>
+    <li><b>Website</b> bezieht sich auf Ai Poem Generator, zugänglich von <a link="https://poemgenerator-ai.com/">https://poemgenerator-ai.com/</a></li>
+    <li><b>Sie</b> bezieht sich auf die Einzelperson, die den Dienst nutzt oder darauf zugreift, oder das Unternehmen oder eine andere juristische Entität, in deren Auftrag die betreffende Person den Dienst nutzt oder darauf zugreift.</li></ul>
+    <h1>Erfassung und Verwendung Ihrer persönlichen Daten</h1>
+    <h2>Arten von erfassten Daten</h2>
+    <h3>Persönliche Daten</h3>
+    <p>Bei der Nutzung unseres Dienstes können wir Sie bitten, uns bestimmte persönlich identifizierbare Informationen zur Verfügung zu stellen, die zur Kontaktaufnahme oder Identifikation verwendet werden können. Persönlich identifizierbare Informationen können beinhalten, sind aber nicht beschränkt auf:</p>
+    <ul><li>E-Mail-Adresse</li>
+    <li>Nutzungsdaten</li></ul>
+    <h3>Nutzungsdaten</h3>
+    <p>Nutzungsdaten werden automatisch gesammelt, wenn Sie den Dienst nutzen.</p>
+    <p>Die Verwendung der Daten kann Informationen wie die Internetprotokolladresse Ihres Geräts (z.B. IP-Adresse), Browsertyp, Version, besuchte Seiten unseres Dienstes, Besuchszeit und -datum, auf diesen Seiten verbrachte Zeit, eindeutige Gerätekennungen und andere diagnostische Daten umfassen.</p>
+    <p>Wenn Sie auf den Dienst über ein mobiles Gerät zugreifen, können wir automatisch bestimmte Informationen sammeln, einschließlich, aber nicht beschränkt auf, den Typ des mobilen Geräts, das Sie verwenden, die eindeutige ID Ihres mobilen Geräts, die IP-Adresse Ihres mobilen Geräts, Ihr mobiles Betriebssystem, den Typ des mobilen Internetbrowsers, den Sie verwenden, eindeutige Gerätekennungen und andere diagnostische Daten.</p>
+    <p>Wir können auch Informationen sammeln, die von Ihrem Browser gesendet werden, wenn Sie unseren Dienst besuchen oder darauf über ein mobiles Gerät zugreifen.</p>
+    <h3>Tracking-Technologien und Cookies</h3>
+    <p>Wir verwenden Cookies und ähnliche Tracking-Technologien, um Aktivitäten auf unserem Dienst zu verfolgen und bestimmte Informationen zu speichern. Die eingesetzten Tracking-Technologien sind Beacons, Tags und Skripte, um Informationen zu sammeln und zu verfolgen sowie unseren Dienst zu verbessern und zu analysieren. Die von uns verwendeten Technologien können umfassen:</p>
+    <ul><li><b>Cookies oder Browser-Cookies.</b> Ein Cookie ist eine kleine Datei, die auf Ihrem Gerät platziert wird. Sie können Ihren Browser anweisen, alle Cookies abzulehnen oder anzuzeigen, wenn ein Cookie gesendet wird. Wenn Sie jedoch keine Cookies akzeptieren, können Sie möglicherweise nicht alle Teile unseres Dienstes nutzen. Sofern Sie Ihre Browsereinstellungen nicht so angepasst haben, dass Cookies abgelehnt werden, kann unser Dienst Cookies verwenden.</li>
+    <li><b>Web Beacons.</b> Einige Abschnitte unseres Dienstes und unsere E-Mails können kleine elektronische Dateien enthalten, die als Web Beacons bekannt sind (auch bezeichnet als Clear Gifs, Pixel-Tags und Single-Pixel-Gifs), die es dem Unternehmen beispielsweise ermöglichen, Nutzer zu zählen, die diese Seiten besucht oder eine E-Mail geöffnet haben, und andere verwandte Website-Statistiken (wie die Beliebtheit eines bestimmten Abschnitts und die Überprüfung der System- und Serverintegrität).</li></ul>
+    <p>Cookies können "persistent" (dauerhaft) oder "session-based" (sitzungsbasiert) sein. Persistente Cookies verbleiben auf Ihrem persönlichen Computer oder mobilen Gerät, wenn Sie offline gehen, während Sitzungscookies gelöscht werden, sobald Sie Ihren Webbrowser schließen.</p>
+    <p>Wir verwenden sowohl Sitzungs- als auch persistente Cookies zu den unten beschriebenen Zwecken:</p>
+    <ul><li><b>Notwendige/essentielle Cookies</b>Art: Sitzungscookies Verwaltet von: Uns Zweck: Diese Cookies sind wesentlich, um Ihnen die über die Website verfügbaren Dienste zu bieten und einige ihrer Funktionen zu nutzen. Sie helfen, Benutzer zu authentifizieren und betrügerische Nutzung von Benutzerkonten zu verhindern. Ohne diese Cookies können die von Ihnen angeforderten Dienste nicht bereitgestellt werden, und wir verwenden diese Cookies nur, um Ihnen diese Dienste zur Verfügung zu stellen.</li>
+    <li><b>Cookies-Richtlinie/Hinweis Akzeptanz Cookies</b> Art: Persistente Cookies Verwaltet von: Uns Zweck: Diese Cookies identifizieren, ob Benutzer die Verwendung von Cookies auf der Website akzeptiert haben.</li>
+    <li><b>Funktionalitätscookies</b> Art: Persistente Cookies Verwaltet von: Uns Zweck: Diese Cookies ermöglichen es uns, sich an Entscheidungen zu erinnern, die Sie treffen, wenn Sie die Website nutzen, wie z.B. das Speichern Ihrer Anmeldedaten oder Sprachpräferenz. Der Zweck dieser Cookies ist es, Ihnen eine persönlichere Erfahrung zu bieten und zu vermeiden, dass Sie jedes Mal, wenn Sie die Website nutzen, Ihre Präferenzen erneut eingeben müssen.</li></ul>
+    <p>Für weitere Informationen über die von uns verwendeten Cookies und Ihre Wahlmöglichkeiten bezüglich Cookies, besuchen Sie bitte unsere Cookie-Richtlinie oder den Cookie-Abschnitt unserer Datenschutzrichtlinie.</p>
+    <h2>Verwendung Ihrer persönlichen Daten</h2>
+    <p>Das Unternehmen kann personenbezogene Daten für die folgenden Zwecke verwenden:</p>
+    <ul><li><b>Um unseren Dienst bereitzustellen und zu warten,</b> einschließlich der Überwachung der Nutzung unseres Dienstes.</li>
+    <li><b>Zur Verwaltung Ihres Kontos:</b> um Ihre Registrierung als Benutzer des Dienstes zu verwalten. Die von Ihnen bereitgestellten personenbezogenen Daten können Ihnen Zugang zu verschiedenen Funktionalitäten des Dienstes gewähren, die Ihnen als registriertem Benutzer zur Verfügung stehen.</li>
+    <li><b>Zur Vertragserfüllung:</b> die Entwicklung, Einhaltung und Durchführung des Kaufvertrags für die Produkte, Artikel oder Dienstleistungen, die Sie gekauft haben, oder jedes andere Vertragsverhältnis mit uns über den Dienst.</li>
+    <li><b>Um Sie zu kontaktieren:</b> Sie per E-Mail, Telefonanrufe, SMS oder andere äquivalente Formen der elektronischen Kommunikation zu erreichen, wie z. B. Push-Benachrichtigungen von mobilen Anwendungen bezüglich Aktualisierungen oder informativer Mitteilungen im Zusammenhang mit Funktionalitäten, Produkten oder beauftragten Dienstleistungen, einschließlich notwendiger Sicherheitsupdates.</li>
+    <li><b>Um Ihre Anfragen zu verwalten:</b> Ihre Anfragen an uns zu besuchen und zu verwalten.</li>
+    <li><b>Für Geschäftsübertragungen:</b> Wir können Ihre Informationen verwenden, um eine Fusion, Veräußerung, Restrukturierung, Reorganisation, Auflösung oder einen anderen Verkauf oder Transfer einiger oder aller unserer Vermögenswerte zu bewerten oder durchzuführen, ob als laufendes Unternehmen oder als Teil eines Insolvenzverfahrens, Liquidation oder ähnlichen Verfahrens, bei dem von uns gehaltene personenbezogene Daten über unsere Dienstnutzer zu den übertragenen Vermögenswerten gehören.</li>
+    <li><b>Für andere Zwecke:</b> Wir können Ihre Informationen für andere Zwecke verwenden, wie Datenanalyse, Identifizierung von Nutzungstrends, Bestimmung der Effektivität unserer Werbekampagnen und zur Bewertung und Verbesserung unseres Dienstes, unserer Produkte, unseres Marketings und Ihrer Erfahrung.</li></ul>
+    <p>Wir können Ihre persönlichen Informationen in den folgenden Situationen teilen:</p>
+    <ul><li><b>Mit Dienstleistern:</b> Wir können Ihre persönlichen Informationen mit Dienstleistern teilen, um die Nutzung unseres Dienstes zu überwachen und zu analysieren und um mit Ihnen in Kontakt zu treten.</li>
+    <li><b>Für Geschäftsübertragungen:</b> Wir können Ihre persönlichen Informationen im Zusammenhang mit oder während der Verhandlungen einer Fusion, des Verkaufs von Unternehmensvermögen, der Finanzierung oder der Akquisition von ganz oder einem Teil unseres Geschäfts an ein anderes Unternehmen teilen oder übertragen.</li>
+    <li><b>Mit verbundenen Unternehmen:</b> Wir können Ihre Informationen mit unseren verbundenen Unternehmen teilen, in welchem Fall wir von diesen verbundenen Unternehmen verlangen, diese Datenschutzrichtlinie zu ehren. Zu den verbundenen Unternehmen gehören unser Mutterunternehmen und alle anderen Tochtergesellschaften, Joint-Venture-Partner oder andere Unternehmen, die wir kontrollieren oder die unter gemeinsamer Kontrolle mit uns stehen.</li>
+    <li><b>Mit Geschäftspartnern:</b> Wir können Ihre Informationen mit unseren Geschäftspartnern teilen, um Ihnen bestimmte Produkte, Dienstleistungen oder Werbeaktionen anzubieten.</li>
+    <li><b>Mit anderen Benutzern:</b> Wenn Sie persönliche Informationen teilen oder anderweitig in öffentlichen Bereichen mit anderen Benutzern interagieren, können solche Informationen von allen Benutzern eingesehen und möglicherweise öffentlich außerhalb verteilt werden.</li>
+    <li><b>Mit Ihrer Zustimmung:</b> Wir können Ihre persönlichen Informationen für jeden anderen Zweck mit Ihrer Zustimmung offenlegen.</li></ul>
+    <h2>Aufbewahrung Ihrer persönlichen Daten</h2>
+    <p>Das Unternehmen wird Ihre persönlichen Daten nur so lange aufbewahren, wie es für die in dieser Datenschutzrichtlinie dargelegten Zwecke notwendig ist. Wir werden Ihre persönlichen Daten in dem Maße aufbewahren und verwenden, wie es zur Erfüllung unserer rechtlichen Verpflichtungen notwendig ist (zum Beispiel, wenn wir Ihre Daten aufbewahren müssen, um geltenden Gesetzen zu entsprechen), Streitigkeiten beizulegen und unsere rechtlichen Vereinbarungen und Richtlinien durchzusetzen.</p>
+    <p>Das Unternehmen wird auch Nutzungsdaten für interne Analysezwecke aufbewahren. Nutzungsdaten werden im Allgemeinen für einen kürzeren Zeitraum aufbewahrt, es sei denn, diese Daten werden verwendet, um die Sicherheit zu stärken oder die Funktionalität unseres Dienstes zu verbessern, oder wir sind rechtlich verpflichtet, diese Daten für längere Zeiträume aufzubewahren.</p>
+    <h2>Übertragung Ihrer persönlichen Daten</h2>
+    <p>Ihre Informationen, einschließlich persönlicher Daten, werden in den Betriebsbüros des Unternehmens und an allen anderen Orten verarbeitet, an denen die an der Verarbeitung beteiligten Parteien sich befinden. Dies bedeutet, dass diese Informationen auf Computer übertragen und auf diesen aufrechterhalten werden können, die sich außerhalb Ihres Staates, Ihrer Provinz, Ihres Landes oder einer anderen staatlichen Gerichtsbarkeit befinden, in denen die Datenschutzgesetze von denen Ihrer Gerichtsbarkeit abweichen können.</p>
+    <p>Ihre Zustimmung zu dieser Datenschutzrichtlinie, gefolgt von Ihrer Übermittlung solcher Informationen, stellt Ihre Zustimmung zu dieser Übertragung dar. Das Unternehmen wird alle vernünftigerweise notwendigen Schritte unternehmen, um sicherzustellen, dass Ihre Daten sicher behandelt werden und in Übereinstimmung mit dieser Datenschutzrichtlinie, und keine Übertragung Ihrer persönlichen Daten an eine Organisation oder ein Land stattfindet, es sei denn, es sind angemessene Kontrollen einschließlich der Sicherheit Ihrer Daten und anderer persönlicher Informationen vorhanden.</p>
+    <h2>Löschung Ihrer persönlichen Daten</h2>
+    <p>Sie haben das Recht, die Löschung Ihrer persönlichen Daten zu verlangen oder unsere Unterstützung bei der Löschung der über Sie gesammelten persönlichen Daten zu erbitten.</p>
+    <p>Unser Dienst kann es Ihnen ermöglichen, bestimmte Informationen über sich selbst innerhalb des Dienstes zu löschen.</p>
+    <p>Sie können Ihre Informationen jederzeit aktualisieren, ändern oder löschen, indem Sie sich in Ihr Konto einloggen (falls vorhanden) und den Abschnitt Kontoeinstellungen aufrufen, um Ihre persönlichen Informationen zu verwalten. Sie können uns auch kontaktieren, um Zugang zu erhalten oder Korrekturen oder die Löschung jeglicher persönlicher Informationen, die Sie uns zur Verfügung gestellt haben, zu erbitten.</p>
+    <p>Bitte beachten Sie jedoch, dass wir bestimmte Informationen aufbewahren müssen, wenn wir eine rechtliche Verpflichtung oder eine rechtmäßige Grundlage dazu haben.</p>
+    <h2>Offenlegung Ihrer persönlichen Daten</h2>
+    <h3>Geschäftstransaktionen</h3>
+    <p>Wenn das Unternehmen in eine Fusion, Akquisition oder einen Vermögensverkauf verwickelt ist, können Ihre persönlichen Daten übertragen werden. Wir werden vor der Übertragung Ihrer persönlichen Daten und bevor sie einer anderen Datenschutzrichtlinie unterliegen, eine Benachrichtigung bereitstellen.</p>
+    <h3>Strafverfolgung</h3>
+    <p>Unter bestimmten Umständen kann das Unternehmen verpflichtet sein, Ihre persönlichen Daten offen zu legen, wenn dies gesetzlich erforderlich ist oder auf gültige Anfragen von öffentlichen Behörden (z.B. ein Gericht oder eine Regierungsbehörde) reagiert werden muss.</p>
+    <h3>Andere rechtliche Anforderungen</h3>
+    <p>Das Unternehmen kann Ihre persönlichen Daten in dem guten Glauben offenlegen, dass eine solche Aktion notwendig ist, um:</p>
+    <ul><li>einer rechtlichen Verpflichtung nachzukommen</li>
+    <li>die Rechte oder das Eigentum des Unternehmens zu schützen und zu verteidigen</li>
+    <li>mögliches Fehlverhalten im Zusammenhang mit dem Dienst zu verhindern oder zu untersuchen</li>
+    <li>die persönliche Sicherheit der Benutzer des Dienstes oder der Öffentlichkeit zu schützen</li>
+    <li>sich gegen rechtliche Haftung zu schützen</li></ul>
+    <h2>Sicherheit Ihrer persönlichen Daten</h2>
+    <p>Die Sicherheit Ihrer persönlichen Daten ist uns wichtig, aber denken Sie daran, dass keine Methode der Übertragung über das Internet oder Methode der elektronischen Speicherung 100% sicher ist. Während wir uns bemühen, kommerziell akzeptable Mittel zum Schutz Ihrer persönlichen Daten zu verwenden, können wir deren absolute Sicherheit nicht garantieren.</p>
+    <h1>Datenschutz für Kinder</h1>
+    <p>Unsere Dienste richten sich nicht an Personen unter 13 Jahren. Wir sammeln wissentlich keine persönlich identifizierbaren Informationen von Personen unter 13 Jahren. Wenn Sie ein Elternteil oder Erziehungsberechtigter sind und wissen, dass Ihr Kind uns persönliche Daten zur Verfügung gestellt hat, kontaktieren Sie uns bitte. Wenn wir feststellen, dass wir personenbezogene Daten von Personen unter 13 Jahren ohne Überprüfung der elterlichen Zustimmung gesammelt haben, werden wir Schritte unternehmen, um diese Informationen von unseren Servern zu löschen.</p>
+    <p>Wenn wir uns auf die Einwilligung als rechtliche Grundlage für die Verarbeitung Ihrer Informationen stützen müssen und Ihr Land die Zustimmung der Eltern erfordert, benötigen wir möglicherweise die Zustimmung Ihrer Eltern, bevor wir diese Informationen sammeln und verwenden.</p>
+    <h1>Links zu anderen Websites</h1>
+    <p>Unser Dienst kann Links zu anderen Websites enthalten, die nicht von uns betrieben werden. Wenn Sie auf einen Link eines Drittanbieters klicken, werden Sie zu dessen Website weitergeleitet. Wir empfehlen Ihnen dringend, die Datenschutzrichtlinie jeder Website, die Sie besuchen, zu überprüfen.</p>
+    <p>Wir haben keine Kontrolle über und übernehmen keine Verantwortung für den Inhalt, die Datenschutzrichtlinien oder Praktiken von Websites oder Diensten Dritter.</p>
+    <h1>Änderungen der Datenschutzrichtlinie</h1>
+    <p>Wir können unsere Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Datenschutzrichtlinie auf dieser Seite veröffentlichen.</p>
+    <p>Wir werden Sie per E-Mail und/oder durch einen auffälligen Hinweis auf unserem Dienst vor dem Inkrafttreten der Änderungen informieren und das Datum der "Letzten Aktualisierung" am Anfang dieser Datenschutzrichtlinie aktualisieren.</p>
+    <p>Es wird empfohlen, diese Datenschutzrichtlinie regelmäßig zu überprüfen, um über eventuelle Änderungen informiert zu sein. Änderungen an dieser Datenschutzrichtlinie werden wirksam, wenn sie auf dieser Seite veröffentlicht werden.</p>
+    <h1>Kontaktieren Sie uns</h1>
+    <p>Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, können Sie uns kontaktieren:</p>
+    <ul><li>Per E-Mail: <a link="aipoemgenerator{'@'}outlook.com">aipoemgenerator{'@'}outlook.com</a></li></ul>`,
+    questionAndAnswer: `<h1>Was ist der Gedichten Generator?</h1>
+<p>Der Gedichten Generator ist ein kostenloser Online-Dichtegenerator. Mit der Magie der KI ermöglicht er es jedem, schnell ein schönes, einzigartiges und bedeutungsvolles Gedicht zu schaffen. Der Gedichten Generator wird immer kostenlos sein, in der Hoffnung, dass dieses Werkzeug die Welt mit Poesie erfüllen wird.</p>
+
+<h1>Was können wir mit dem Gedichten Generator machen?</h1>
+<h2>1. Bildung & Lernen</h2>
+<p>In Schulen oder Schreibkursen können Lehrer den Gedichten Generator verwenden, um das Interesse der Schüler an Poesie zu wecken. Die Schüler können durch von der KI generierte Gedichte verschiedene Gedichtstrukturen und -stile lernen und sogar versuchen, diese Gedichte zu modifizieren oder zu verbessern, als Teil ihres Lernens und ihrer Praxis.</p>
+<h2>2. Inspiration für das Schreiben</h2>
+<p>Schriftsteller oder Dichter, die mit Schreibblockaden konfrontiert sind, können den Gedichten Generator verwenden, um Inspiration zu finden. Durch das Durchstöbern verschiedener Arten von KI-generierten Gedichten können sie neue Themen, Strukturen oder Rhythmen entdecken, um ihre kreative Inspiration zu fördern.</p>
+<h2>3. Liebe Ausdrücken</h2>
+<p>Man kann den Gedichten Generator verwenden, um romantische und elegante personalisierte Gedichte für eine geliebte Person zu erstellen. Durch die Auswahl eines bestimmten Gedichttyps und -themas kann man ein einzigartiges und emotionales Gedichtgeschenk für einen geliebten Menschen vorbereiten.</p>
+<h2>4. Schreiben von Glückwünschen für jede Veranstaltung oder Zeremonie</h2>
+<p>Bei besonderen Anlässen oder Feierlichkeiten (wie Hochzeiten, Erfolgsfeiern, Abschlussfeiern, Geburtstagsfeiern, Beerdigungen usw.) kann man den Gedichten Generator verwenden, um Gedichte zu schreiben, die zum Thema der Veranstaltung passen und die kulturelle und künstlerische Atmosphäre bereichern. Zum Beispiel ein Gedicht zum Muttertag für die Mutter, ein Trauergedicht für die Beerdigung des Großvaters, ein Gedicht zum Abschluss der Tochter oder ein Akrostichon für den Namen des Sohnes.</p>
+<h2>5. Erstellung von Inhalten für Soziale Medien</h2>
+<p>Man kann den Gedichten Generator verwenden, um originelle und auffällige Inhalte zu erstellen. Zum Beispiel ein Haiku verwenden, um schöne Momente des täglichen Lebens auszudrücken, oder freie Verse, um persönliche Gefühle und Gedanken auszudrücken, um schnell schöne tägliche Gedichte zu generieren.</p>
+<h2>6. Psychologische Heilung</h2>
+<p>Psychotherapeuten oder Berater können den Gedichten Generator verwenden, um ihren Klienten zu helfen, ihre Gefühle auszudrücken. Durch das Schreiben von Gedichten, insbesondere freien Versen, können Menschen leichter ihr Inneres erkunden und ausdrücken.</p>
+
+<h1>Welche Arten von Gedichtgeneratoren enthält der Gedichten Generator?</h1>
+<h2>1. Freie-Vers-Generator</h2>
+<p>Der freie Vers ist eine Form der Poesie, die nicht an traditionelle Reim- und Rhythmusregeln gebunden ist. Sein Merkmal ist die flexible Form, die es dem Dichter ermöglicht, Gefühle und Gedanken frei auszudrücken.</p>
+<p>Mit dem Freie-Vers-Generator kann man schnell kreative und tiefgründige freie Verse erstellen. Jeder kann schnell einzigartige Verse basierend auf seinem eigenen Thema und seinen Gefühlen schaffen, die den persönlichen Stil perfekt widerspiegeln.</p>
+<h2>2. Haiku-Generator</h2>
+<p>Haiku ist eine kurze Gedichtform, die aus Japan stammt, in der Regel bestehend aus drei Zeilen mit insgesamt 17 Silben, verteilt auf eine 5-7-5 Struktur. Haikus stellen oft natürliche Szenen dar und fangen die Schönheit von Momenten ein.</p>
+<p>Mit dem Haiku-Generator kann man schnell traditionelle Haikus basierend auf dem eingegebenen Thema generieren, wobei ihre Kürze und Tiefe erhalten bleiben. Ob natürliche Schönheit oder alltägliche Kleinigkeiten, alles kann in schöne, bedeutungsvolle Haikus umgewandelt werden.</p>
+<h2>3. Akrostichon-Generator</h2>
+<p>Ein Akrostichon ist eine spielerische Gedichtform, bei der die Anfangsbuchstaben jeder Zeile oder jedes Absatzes ein Wort oder einen Satz bilden.</p>
+<p>Mit dem Akrostichon-Generator kann man personalisierte Akrostichons erstellen. Man gibt einfach einen Namen oder ein Schlüsselwort ein, um ein Akrostichon zu generieren, das sowohl kreativ als auch persönlich ist, perfekt als Geschenk oder für besondere Anlässe.</p>
+<h2>4. Sonett-Generator</h2>
+<p>Das Sonett ist eine Gedichtform, bestehend aus 14 Zeilen, die in der Regel einem strengen Reimschema folgt. Es hat seinen Ursprung in Europa und ist eine klassische Form, um Liebe, natürliche Schönheit und tiefe Gefühle auszudrücken.</p>
+<p>Der Sonett-Generator kann Ihnen helfen, schnell Sonette im traditionellen Format zu generieren. Wählen Sie ein beliebiges Thema und generieren Sie schnell Sonette, die sowohl der traditionellen Struktur entsprechen als auch ein modernes Gefühl vermitteln, geeignet für tiefe Emotionen und philosophische Gedanken.</p>
+<h2>5. Limerick-Generator</h2>
+<p>Der Limerick ist eine humorvolle Gedichtform, die aus Großbritannien stammt, bestehend aus fünf Zeilen mit einem Reimschema von AABBA. Diese Art von Gedicht ist bekannt für seinen Humor und leichten Rhythmus.</p>
+<p>Mit dem Limerick-Generator kann man leicht witzige und humorvolle Limericks erstellen. Geben Sie einfach einige Schlüsselwörter ein, um schnell Gedichte zu generieren, die sowohl lustig als auch rhythmisch sind, und fügen Sie dem täglichen Leben Freude hinzu.</p>
+<h2>6. Liebesgedicht-Generator</h2>
+<p>Ein Liebesgedicht ist eine Form der Poesie, die speziell Liebe, Emotionen und intime Beziehungen ausdrückt. Es kann verschiedene Gedichtstrukturen annehmen, von romantisch und zart bis leidenschaftlich und intensiv, um verschiedene Aspekte der Liebe auszudrücken.</p>
+<p>Der Liebesgedicht-Generator kann Liebesgedichte verschiedener Stile basierend auf Ihren emotionalen Bedürfnissen erstellen. Ob es sich um eine tiefe Liebeserklärung handelt oder um Sehnsucht nach einem geliebten Menschen, wir können für Sie Liebesgedichte schaffen, die sowohl berührend als auch elegant sind, geeignet für besondere Gedenktage oder um Liebe auszudrücken.</p>
+
+<h1>Wie verwendet man den Gedichten Generator, um Gedichte zu erstellen?</h1>
+<p>Schritt 1: Wählen Sie den Gedichttyp</p>
+<p>Wählen Sie den Typ des Gedichts aus, das Sie erstellen möchten. Die derzeit unterstützten Gedichttypen umfassen: Freier Vers, Haiku, Akrostichon, Sonett, Limerick, Liebesgedicht.</p>
+<p>Schritt 2: Passen Sie das Thema des Gedichts an</p>
+<p>Geben Sie ein beliebiges Gedichtthema ein, klicken Sie auf "Erstellen", um sofort ein Gedicht zu generieren.</p>`
+
+
+  },
   ru: {
     poem_carousel_word: "Любовный стих,Забавный лимерик,Сонет. подобный Шекспиру,Акростих любого слова,Хайку о весне,Творческий свободный стих",
     header_title: "Генератор стихов - создайте рифму с бесплатным AI",
+    header_title_category:"Все категории стихотворений - Генератор стихов",
+    header_title_poem:"",
     Description: "Бесплатный генератор стихов на ИИ: создание рифмованных стихов в секунды. Откройте наш генератор и напишите красивое стихотворение.",
+    Description_category:"Исследуйте любое стихотворение, которое вы хотите, по категориям. Используйте магию искусственного интеллекта, чтобы бесплатно создавать уникальные рифмованные стихи!",
+    Description_poem:"",
     poemai_example: "Сгенерированные стихи",
     poemai_latest_poems: "Последние стихи",
     poemai_view_all: "Посмотреть все",
@@ -636,202 +844,15 @@ const messages = {
 
 
   },
-  de: {
 
-    poem_carousel_word: "Ein romantisches gedicht,Ein lustiger Limerick,Ein Sonett wie Shakespeare,Ein Akrostichon des Namens,Ein Haiku über die Natur,Ein erstaunlicher freier Vers",
-    header_title: "Gedichten Generator - Kostenloses KI-Magie-Tool für Reimgedichte",
-    Description: "Kostenloser AI-Gedichten Generator: Erstellen Sie Reimgedichte in Sekundenschnelle. Entdecken Sie unseren Generator und erstellen Sie Reimgedichte zu jedem Thema.",
-    poemai_example: "Generierte Gedichte",
-    poemai_latest_poems: "Neueste Gedichte",
-    poemai_view_all: "Alle ansehen",
-    poemai_category: "Heiße Kategorien",
-    poemai_more: "Mehr+",
-    poemai_all_poems: "Alle Gedichte",
-    poemai_all_categories: "Alle Gedichtkategorien",
-    poemai_related_poem: "Weitere verwandte Gedichte",
-    poemai_title_generate: "Generieren",
-    poemai_free_verse: "Freie Verse",
-    poemai_acrostic: "Akrostichon",
-    poemai_haiku: "Haiku",
-    poemai_sonnet: "Sonett Gedicht",
-    poemai_limerick: "Limerick",
-    poemai_love_poem: "Liebesgedicht",
-    poemai_fv_theme: "Worum geht es in dem Gedicht?",
-    poemai_fv_input_tips: "Herbstwind in den alten Gassen",
-    poemai_size: "Länge",
-    poem_size_m: "Mittel",
-    poem_size_s: "Kurz",
-    poem_size_l: "Lang",
-    poemai_generate_language: "Ausgabe auf %s",
-    poemai_haiku_theme: "Worum geht es in dem Gedicht?",
-    poemai_haiku_input_tips: "Herbstwind in den Wäldern",
-    poemai_acrostic_keyword: "Schlüsselwort/Phrase des Akrostichons",
-    poemai_acrostic_kw_input_tips: "Leni",
-    poemai_acrostic_theme: "Worum geht es in dem Gedicht?",
-    poemai_acrostic_input_tips: "Hochzeitsglückwünsche für Leni",
-    poemai_sonnet_theme: "Worum geht es in dem Gedicht?",
-    poemai_sonnet_input_tips: "Nacht über Berlin",
-    poemai_limerick_theme: "Worum geht es in dem Gedicht?",
-    poemai_limerick_input_tips: "Der Junge, der den Mond fangen wollte: Seine nächtlichen Expeditionen",
-    poemai_love_theme: "Worum geht es in dem Gedicht?",
-    poemai_love_input_tips: "Liebesgedicht für mein schatz",
-    poemai_title: "Gedichten Generator",
-    poemai_input_title: "Gedichten Generator",
-    poemai_input_subtitle: "Generiere ein Gedicht über...",
-    poemai_input_tips: "Herbstwind in den alten Gassen",
-    poemai_generate_btn: "Generieren",
-    poemai_powered_by_gpt: "Angetrieben von ChatGPT",
-    poemai_thinking_status: "Denken...",
-    poemai_network_err_toast: "Netzwerkfehler. Bitte versuchen Sie es erneut",
-    poemai_server_err_toast: "Serverfehler, bitte versuchen Sie es erneut",
-    poemai_generated_failed_toast: "Gedicht konnte nicht generiert werden, bitte versuchen Sie es erneut",
-    poemai_generated_poem: "Generiertes Gedicht",
-    poemai_copy_btn: "Kopieren",
-    poemai_copy_success_toast: "Erfolgreich kopiert",
-    poemai_privacy: "Datenschutzrichtlinie",
-    privacyContent: `<h1>Datenschutzrichtlinie</h1>
-    <p>Letzte Aktualisierung: 5. Januar 2024</p>
-    <p>Diese Datenschutzrichtlinie umreißt unsere Richtlinien und Verfahren zur Sammlung, Nutzung und Offenlegung Ihrer Informationen, wenn Sie den Dienst nutzen, und informiert Sie über Ihre Datenschutzrechte und wie das Gesetz Sie schützt.</p>
-    <p>Wir nutzen Ihre persönlichen Daten, um den Service bereitzustellen und zu verbessern. Durch die Nutzung des Dienstes stimmen Sie der Sammlung und Nutzung von Informationen gemäß dieser Datenschutzrichtlinie zu.</p>
-    <h1>Interpretation und Definitionen</h1>
-    <h2>Interpretation</h2>
-    <p>Wörter, deren Anfangsbuchstaben großgeschrieben sind, haben unter den folgenden Bedingungen definierte Bedeutungen. Diese Definitionen haben die gleiche Bedeutung, unabhängig davon, ob sie im Singular oder Plural erscheinen.</p>
-    <h2>Definitionen</h2>
-    <p>Zu den Zwecken dieser Datenschutzrichtlinie:</p>
-    <ul><li><b>"Konto"</b>bezieht sich auf ein einzigartiges Konto, das für Sie erstellt wurde, um auf unseren Dienst oder Teile unseres Dienstes zuzugreifen.</li>
-    <li><b>Unternehmen</b> (bezeichnet als "das Unternehmen", "Wir", "Uns" oder "Unser" in diesem Vertrag) bezieht sich auf Ai Poem Generator.</li>
-    <li><b>Cookies</b> sind kleine Dateien, die von einer Website auf Ihrem Computer, Mobilgerät oder einem anderen Gerät platziert werden und Einzelheiten zu Ihrem Browserverlauf auf dieser Website unter vielen Verwendungen enthalten.</li>
-    <li><b>Gerät</b> bedeutet jedes Gerät, das auf den Dienst zugreifen kann, wie z. B. ein Computer, ein Handy oder ein digitales Tablet.</li>
-    <li><b>Personenbezogene Daten</b>sind alle Informationen, die sich auf eine identifizierte oder identifizierbare Person beziehen.</li>
-    <li><b>Dienst</b> bezieht sich auf die Website.</li>
-    <li><b>Dienstanbieter</b> bedeutet jede natürliche oder juristische Person, die Daten im Auftrag des Unternehmens verarbeitet. Dies bezieht sich auf Drittunternehmen oder Einzelpersonen, die vom Unternehmen beschäftigt werden, um den Dienst zu erleichtern, den Dienst im Namen des Unternehmens bereitzustellen, Dienstleistungen im Zusammenhang mit dem Dienst zu erbringen oder das Unternehmen bei der Analyse der Nutzung des Dienstes zu unterstützen.</li>
-    <li><b>Nutzungsdaten</b> bezieht sich auf Daten, die automatisch gesammelt werden, entweder generiert durch die Nutzung des Dienstes oder aus der Infrastruktur des Dienstes selbst (zum Beispiel die Dauer eines Seitenbesuchs).</li>
-    <li><b>Website</b> bezieht sich auf Ai Poem Generator, zugänglich von <a link="https://poemgenerator-ai.com/">https://poemgenerator-ai.com/</a></li>
-    <li><b>Sie</b> bezieht sich auf die Einzelperson, die den Dienst nutzt oder darauf zugreift, oder das Unternehmen oder eine andere juristische Entität, in deren Auftrag die betreffende Person den Dienst nutzt oder darauf zugreift.</li></ul>
-    <h1>Erfassung und Verwendung Ihrer persönlichen Daten</h1>
-    <h2>Arten von erfassten Daten</h2>
-    <h3>Persönliche Daten</h3>
-    <p>Bei der Nutzung unseres Dienstes können wir Sie bitten, uns bestimmte persönlich identifizierbare Informationen zur Verfügung zu stellen, die zur Kontaktaufnahme oder Identifikation verwendet werden können. Persönlich identifizierbare Informationen können beinhalten, sind aber nicht beschränkt auf:</p>
-    <ul><li>E-Mail-Adresse</li>
-    <li>Nutzungsdaten</li></ul>
-    <h3>Nutzungsdaten</h3>
-    <p>Nutzungsdaten werden automatisch gesammelt, wenn Sie den Dienst nutzen.</p>
-    <p>Die Verwendung der Daten kann Informationen wie die Internetprotokolladresse Ihres Geräts (z.B. IP-Adresse), Browsertyp, Version, besuchte Seiten unseres Dienstes, Besuchszeit und -datum, auf diesen Seiten verbrachte Zeit, eindeutige Gerätekennungen und andere diagnostische Daten umfassen.</p>
-    <p>Wenn Sie auf den Dienst über ein mobiles Gerät zugreifen, können wir automatisch bestimmte Informationen sammeln, einschließlich, aber nicht beschränkt auf, den Typ des mobilen Geräts, das Sie verwenden, die eindeutige ID Ihres mobilen Geräts, die IP-Adresse Ihres mobilen Geräts, Ihr mobiles Betriebssystem, den Typ des mobilen Internetbrowsers, den Sie verwenden, eindeutige Gerätekennungen und andere diagnostische Daten.</p>
-    <p>Wir können auch Informationen sammeln, die von Ihrem Browser gesendet werden, wenn Sie unseren Dienst besuchen oder darauf über ein mobiles Gerät zugreifen.</p>
-    <h3>Tracking-Technologien und Cookies</h3>
-    <p>Wir verwenden Cookies und ähnliche Tracking-Technologien, um Aktivitäten auf unserem Dienst zu verfolgen und bestimmte Informationen zu speichern. Die eingesetzten Tracking-Technologien sind Beacons, Tags und Skripte, um Informationen zu sammeln und zu verfolgen sowie unseren Dienst zu verbessern und zu analysieren. Die von uns verwendeten Technologien können umfassen:</p>
-    <ul><li><b>Cookies oder Browser-Cookies.</b> Ein Cookie ist eine kleine Datei, die auf Ihrem Gerät platziert wird. Sie können Ihren Browser anweisen, alle Cookies abzulehnen oder anzuzeigen, wenn ein Cookie gesendet wird. Wenn Sie jedoch keine Cookies akzeptieren, können Sie möglicherweise nicht alle Teile unseres Dienstes nutzen. Sofern Sie Ihre Browsereinstellungen nicht so angepasst haben, dass Cookies abgelehnt werden, kann unser Dienst Cookies verwenden.</li>
-    <li><b>Web Beacons.</b> Einige Abschnitte unseres Dienstes und unsere E-Mails können kleine elektronische Dateien enthalten, die als Web Beacons bekannt sind (auch bezeichnet als Clear Gifs, Pixel-Tags und Single-Pixel-Gifs), die es dem Unternehmen beispielsweise ermöglichen, Nutzer zu zählen, die diese Seiten besucht oder eine E-Mail geöffnet haben, und andere verwandte Website-Statistiken (wie die Beliebtheit eines bestimmten Abschnitts und die Überprüfung der System- und Serverintegrität).</li></ul>
-    <p>Cookies können "persistent" (dauerhaft) oder "session-based" (sitzungsbasiert) sein. Persistente Cookies verbleiben auf Ihrem persönlichen Computer oder mobilen Gerät, wenn Sie offline gehen, während Sitzungscookies gelöscht werden, sobald Sie Ihren Webbrowser schließen.</p>
-    <p>Wir verwenden sowohl Sitzungs- als auch persistente Cookies zu den unten beschriebenen Zwecken:</p>
-    <ul><li><b>Notwendige/essentielle Cookies</b>Art: Sitzungscookies Verwaltet von: Uns Zweck: Diese Cookies sind wesentlich, um Ihnen die über die Website verfügbaren Dienste zu bieten und einige ihrer Funktionen zu nutzen. Sie helfen, Benutzer zu authentifizieren und betrügerische Nutzung von Benutzerkonten zu verhindern. Ohne diese Cookies können die von Ihnen angeforderten Dienste nicht bereitgestellt werden, und wir verwenden diese Cookies nur, um Ihnen diese Dienste zur Verfügung zu stellen.</li>
-    <li><b>Cookies-Richtlinie/Hinweis Akzeptanz Cookies</b> Art: Persistente Cookies Verwaltet von: Uns Zweck: Diese Cookies identifizieren, ob Benutzer die Verwendung von Cookies auf der Website akzeptiert haben.</li>
-    <li><b>Funktionalitätscookies</b> Art: Persistente Cookies Verwaltet von: Uns Zweck: Diese Cookies ermöglichen es uns, sich an Entscheidungen zu erinnern, die Sie treffen, wenn Sie die Website nutzen, wie z.B. das Speichern Ihrer Anmeldedaten oder Sprachpräferenz. Der Zweck dieser Cookies ist es, Ihnen eine persönlichere Erfahrung zu bieten und zu vermeiden, dass Sie jedes Mal, wenn Sie die Website nutzen, Ihre Präferenzen erneut eingeben müssen.</li></ul>
-    <p>Für weitere Informationen über die von uns verwendeten Cookies und Ihre Wahlmöglichkeiten bezüglich Cookies, besuchen Sie bitte unsere Cookie-Richtlinie oder den Cookie-Abschnitt unserer Datenschutzrichtlinie.</p>
-    <h2>Verwendung Ihrer persönlichen Daten</h2>
-    <p>Das Unternehmen kann personenbezogene Daten für die folgenden Zwecke verwenden:</p>
-    <ul><li><b>Um unseren Dienst bereitzustellen und zu warten,</b> einschließlich der Überwachung der Nutzung unseres Dienstes.</li>
-    <li><b>Zur Verwaltung Ihres Kontos:</b> um Ihre Registrierung als Benutzer des Dienstes zu verwalten. Die von Ihnen bereitgestellten personenbezogenen Daten können Ihnen Zugang zu verschiedenen Funktionalitäten des Dienstes gewähren, die Ihnen als registriertem Benutzer zur Verfügung stehen.</li>
-    <li><b>Zur Vertragserfüllung:</b> die Entwicklung, Einhaltung und Durchführung des Kaufvertrags für die Produkte, Artikel oder Dienstleistungen, die Sie gekauft haben, oder jedes andere Vertragsverhältnis mit uns über den Dienst.</li>
-    <li><b>Um Sie zu kontaktieren:</b> Sie per E-Mail, Telefonanrufe, SMS oder andere äquivalente Formen der elektronischen Kommunikation zu erreichen, wie z. B. Push-Benachrichtigungen von mobilen Anwendungen bezüglich Aktualisierungen oder informativer Mitteilungen im Zusammenhang mit Funktionalitäten, Produkten oder beauftragten Dienstleistungen, einschließlich notwendiger Sicherheitsupdates.</li>
-    <li><b>Um Ihre Anfragen zu verwalten:</b> Ihre Anfragen an uns zu besuchen und zu verwalten.</li>
-    <li><b>Für Geschäftsübertragungen:</b> Wir können Ihre Informationen verwenden, um eine Fusion, Veräußerung, Restrukturierung, Reorganisation, Auflösung oder einen anderen Verkauf oder Transfer einiger oder aller unserer Vermögenswerte zu bewerten oder durchzuführen, ob als laufendes Unternehmen oder als Teil eines Insolvenzverfahrens, Liquidation oder ähnlichen Verfahrens, bei dem von uns gehaltene personenbezogene Daten über unsere Dienstnutzer zu den übertragenen Vermögenswerten gehören.</li>
-    <li><b>Für andere Zwecke:</b> Wir können Ihre Informationen für andere Zwecke verwenden, wie Datenanalyse, Identifizierung von Nutzungstrends, Bestimmung der Effektivität unserer Werbekampagnen und zur Bewertung und Verbesserung unseres Dienstes, unserer Produkte, unseres Marketings und Ihrer Erfahrung.</li></ul>
-    <p>Wir können Ihre persönlichen Informationen in den folgenden Situationen teilen:</p>
-    <ul><li><b>Mit Dienstleistern:</b> Wir können Ihre persönlichen Informationen mit Dienstleistern teilen, um die Nutzung unseres Dienstes zu überwachen und zu analysieren und um mit Ihnen in Kontakt zu treten.</li>
-    <li><b>Für Geschäftsübertragungen:</b> Wir können Ihre persönlichen Informationen im Zusammenhang mit oder während der Verhandlungen einer Fusion, des Verkaufs von Unternehmensvermögen, der Finanzierung oder der Akquisition von ganz oder einem Teil unseres Geschäfts an ein anderes Unternehmen teilen oder übertragen.</li>
-    <li><b>Mit verbundenen Unternehmen:</b> Wir können Ihre Informationen mit unseren verbundenen Unternehmen teilen, in welchem Fall wir von diesen verbundenen Unternehmen verlangen, diese Datenschutzrichtlinie zu ehren. Zu den verbundenen Unternehmen gehören unser Mutterunternehmen und alle anderen Tochtergesellschaften, Joint-Venture-Partner oder andere Unternehmen, die wir kontrollieren oder die unter gemeinsamer Kontrolle mit uns stehen.</li>
-    <li><b>Mit Geschäftspartnern:</b> Wir können Ihre Informationen mit unseren Geschäftspartnern teilen, um Ihnen bestimmte Produkte, Dienstleistungen oder Werbeaktionen anzubieten.</li>
-    <li><b>Mit anderen Benutzern:</b> Wenn Sie persönliche Informationen teilen oder anderweitig in öffentlichen Bereichen mit anderen Benutzern interagieren, können solche Informationen von allen Benutzern eingesehen und möglicherweise öffentlich außerhalb verteilt werden.</li>
-    <li><b>Mit Ihrer Zustimmung:</b> Wir können Ihre persönlichen Informationen für jeden anderen Zweck mit Ihrer Zustimmung offenlegen.</li></ul>
-    <h2>Aufbewahrung Ihrer persönlichen Daten</h2>
-    <p>Das Unternehmen wird Ihre persönlichen Daten nur so lange aufbewahren, wie es für die in dieser Datenschutzrichtlinie dargelegten Zwecke notwendig ist. Wir werden Ihre persönlichen Daten in dem Maße aufbewahren und verwenden, wie es zur Erfüllung unserer rechtlichen Verpflichtungen notwendig ist (zum Beispiel, wenn wir Ihre Daten aufbewahren müssen, um geltenden Gesetzen zu entsprechen), Streitigkeiten beizulegen und unsere rechtlichen Vereinbarungen und Richtlinien durchzusetzen.</p>
-    <p>Das Unternehmen wird auch Nutzungsdaten für interne Analysezwecke aufbewahren. Nutzungsdaten werden im Allgemeinen für einen kürzeren Zeitraum aufbewahrt, es sei denn, diese Daten werden verwendet, um die Sicherheit zu stärken oder die Funktionalität unseres Dienstes zu verbessern, oder wir sind rechtlich verpflichtet, diese Daten für längere Zeiträume aufzubewahren.</p>
-    <h2>Übertragung Ihrer persönlichen Daten</h2>
-    <p>Ihre Informationen, einschließlich persönlicher Daten, werden in den Betriebsbüros des Unternehmens und an allen anderen Orten verarbeitet, an denen die an der Verarbeitung beteiligten Parteien sich befinden. Dies bedeutet, dass diese Informationen auf Computer übertragen und auf diesen aufrechterhalten werden können, die sich außerhalb Ihres Staates, Ihrer Provinz, Ihres Landes oder einer anderen staatlichen Gerichtsbarkeit befinden, in denen die Datenschutzgesetze von denen Ihrer Gerichtsbarkeit abweichen können.</p>
-    <p>Ihre Zustimmung zu dieser Datenschutzrichtlinie, gefolgt von Ihrer Übermittlung solcher Informationen, stellt Ihre Zustimmung zu dieser Übertragung dar. Das Unternehmen wird alle vernünftigerweise notwendigen Schritte unternehmen, um sicherzustellen, dass Ihre Daten sicher behandelt werden und in Übereinstimmung mit dieser Datenschutzrichtlinie, und keine Übertragung Ihrer persönlichen Daten an eine Organisation oder ein Land stattfindet, es sei denn, es sind angemessene Kontrollen einschließlich der Sicherheit Ihrer Daten und anderer persönlicher Informationen vorhanden.</p>
-    <h2>Löschung Ihrer persönlichen Daten</h2>
-    <p>Sie haben das Recht, die Löschung Ihrer persönlichen Daten zu verlangen oder unsere Unterstützung bei der Löschung der über Sie gesammelten persönlichen Daten zu erbitten.</p>
-    <p>Unser Dienst kann es Ihnen ermöglichen, bestimmte Informationen über sich selbst innerhalb des Dienstes zu löschen.</p>
-    <p>Sie können Ihre Informationen jederzeit aktualisieren, ändern oder löschen, indem Sie sich in Ihr Konto einloggen (falls vorhanden) und den Abschnitt Kontoeinstellungen aufrufen, um Ihre persönlichen Informationen zu verwalten. Sie können uns auch kontaktieren, um Zugang zu erhalten oder Korrekturen oder die Löschung jeglicher persönlicher Informationen, die Sie uns zur Verfügung gestellt haben, zu erbitten.</p>
-    <p>Bitte beachten Sie jedoch, dass wir bestimmte Informationen aufbewahren müssen, wenn wir eine rechtliche Verpflichtung oder eine rechtmäßige Grundlage dazu haben.</p>
-    <h2>Offenlegung Ihrer persönlichen Daten</h2>
-    <h3>Geschäftstransaktionen</h3>
-    <p>Wenn das Unternehmen in eine Fusion, Akquisition oder einen Vermögensverkauf verwickelt ist, können Ihre persönlichen Daten übertragen werden. Wir werden vor der Übertragung Ihrer persönlichen Daten und bevor sie einer anderen Datenschutzrichtlinie unterliegen, eine Benachrichtigung bereitstellen.</p>
-    <h3>Strafverfolgung</h3>
-    <p>Unter bestimmten Umständen kann das Unternehmen verpflichtet sein, Ihre persönlichen Daten offen zu legen, wenn dies gesetzlich erforderlich ist oder auf gültige Anfragen von öffentlichen Behörden (z.B. ein Gericht oder eine Regierungsbehörde) reagiert werden muss.</p>
-    <h3>Andere rechtliche Anforderungen</h3>
-    <p>Das Unternehmen kann Ihre persönlichen Daten in dem guten Glauben offenlegen, dass eine solche Aktion notwendig ist, um:</p>
-    <ul><li>einer rechtlichen Verpflichtung nachzukommen</li>
-    <li>die Rechte oder das Eigentum des Unternehmens zu schützen und zu verteidigen</li>
-    <li>mögliches Fehlverhalten im Zusammenhang mit dem Dienst zu verhindern oder zu untersuchen</li>
-    <li>die persönliche Sicherheit der Benutzer des Dienstes oder der Öffentlichkeit zu schützen</li>
-    <li>sich gegen rechtliche Haftung zu schützen</li></ul>
-    <h2>Sicherheit Ihrer persönlichen Daten</h2>
-    <p>Die Sicherheit Ihrer persönlichen Daten ist uns wichtig, aber denken Sie daran, dass keine Methode der Übertragung über das Internet oder Methode der elektronischen Speicherung 100% sicher ist. Während wir uns bemühen, kommerziell akzeptable Mittel zum Schutz Ihrer persönlichen Daten zu verwenden, können wir deren absolute Sicherheit nicht garantieren.</p>
-    <h1>Datenschutz für Kinder</h1>
-    <p>Unsere Dienste richten sich nicht an Personen unter 13 Jahren. Wir sammeln wissentlich keine persönlich identifizierbaren Informationen von Personen unter 13 Jahren. Wenn Sie ein Elternteil oder Erziehungsberechtigter sind und wissen, dass Ihr Kind uns persönliche Daten zur Verfügung gestellt hat, kontaktieren Sie uns bitte. Wenn wir feststellen, dass wir personenbezogene Daten von Personen unter 13 Jahren ohne Überprüfung der elterlichen Zustimmung gesammelt haben, werden wir Schritte unternehmen, um diese Informationen von unseren Servern zu löschen.</p>
-    <p>Wenn wir uns auf die Einwilligung als rechtliche Grundlage für die Verarbeitung Ihrer Informationen stützen müssen und Ihr Land die Zustimmung der Eltern erfordert, benötigen wir möglicherweise die Zustimmung Ihrer Eltern, bevor wir diese Informationen sammeln und verwenden.</p>
-    <h1>Links zu anderen Websites</h1>
-    <p>Unser Dienst kann Links zu anderen Websites enthalten, die nicht von uns betrieben werden. Wenn Sie auf einen Link eines Drittanbieters klicken, werden Sie zu dessen Website weitergeleitet. Wir empfehlen Ihnen dringend, die Datenschutzrichtlinie jeder Website, die Sie besuchen, zu überprüfen.</p>
-    <p>Wir haben keine Kontrolle über und übernehmen keine Verantwortung für den Inhalt, die Datenschutzrichtlinien oder Praktiken von Websites oder Diensten Dritter.</p>
-    <h1>Änderungen der Datenschutzrichtlinie</h1>
-    <p>Wir können unsere Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Datenschutzrichtlinie auf dieser Seite veröffentlichen.</p>
-    <p>Wir werden Sie per E-Mail und/oder durch einen auffälligen Hinweis auf unserem Dienst vor dem Inkrafttreten der Änderungen informieren und das Datum der "Letzten Aktualisierung" am Anfang dieser Datenschutzrichtlinie aktualisieren.</p>
-    <p>Es wird empfohlen, diese Datenschutzrichtlinie regelmäßig zu überprüfen, um über eventuelle Änderungen informiert zu sein. Änderungen an dieser Datenschutzrichtlinie werden wirksam, wenn sie auf dieser Seite veröffentlicht werden.</p>
-    <h1>Kontaktieren Sie uns</h1>
-    <p>Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, können Sie uns kontaktieren:</p>
-    <ul><li>Per E-Mail: <a link="aipoemgenerator{'@'}outlook.com">aipoemgenerator{'@'}outlook.com</a></li></ul>`,
-    questionAndAnswer: `<h1>Was ist der Gedichten Generator?</h1>
-<p>Der Gedichten Generator ist ein kostenloser Online-Dichtegenerator. Mit der Magie der KI ermöglicht er es jedem, schnell ein schönes, einzigartiges und bedeutungsvolles Gedicht zu schaffen. Der Gedichten Generator wird immer kostenlos sein, in der Hoffnung, dass dieses Werkzeug die Welt mit Poesie erfüllen wird.</p>
-
-<h1>Was können wir mit dem Gedichten Generator machen?</h1>
-<h2>1. Bildung & Lernen</h2>
-<p>In Schulen oder Schreibkursen können Lehrer den Gedichten Generator verwenden, um das Interesse der Schüler an Poesie zu wecken. Die Schüler können durch von der KI generierte Gedichte verschiedene Gedichtstrukturen und -stile lernen und sogar versuchen, diese Gedichte zu modifizieren oder zu verbessern, als Teil ihres Lernens und ihrer Praxis.</p>
-<h2>2. Inspiration für das Schreiben</h2>
-<p>Schriftsteller oder Dichter, die mit Schreibblockaden konfrontiert sind, können den Gedichten Generator verwenden, um Inspiration zu finden. Durch das Durchstöbern verschiedener Arten von KI-generierten Gedichten können sie neue Themen, Strukturen oder Rhythmen entdecken, um ihre kreative Inspiration zu fördern.</p>
-<h2>3. Liebe Ausdrücken</h2>
-<p>Man kann den Gedichten Generator verwenden, um romantische und elegante personalisierte Gedichte für eine geliebte Person zu erstellen. Durch die Auswahl eines bestimmten Gedichttyps und -themas kann man ein einzigartiges und emotionales Gedichtgeschenk für einen geliebten Menschen vorbereiten.</p>
-<h2>4. Schreiben von Glückwünschen für jede Veranstaltung oder Zeremonie</h2>
-<p>Bei besonderen Anlässen oder Feierlichkeiten (wie Hochzeiten, Erfolgsfeiern, Abschlussfeiern, Geburtstagsfeiern, Beerdigungen usw.) kann man den Gedichten Generator verwenden, um Gedichte zu schreiben, die zum Thema der Veranstaltung passen und die kulturelle und künstlerische Atmosphäre bereichern. Zum Beispiel ein Gedicht zum Muttertag für die Mutter, ein Trauergedicht für die Beerdigung des Großvaters, ein Gedicht zum Abschluss der Tochter oder ein Akrostichon für den Namen des Sohnes.</p>
-<h2>5. Erstellung von Inhalten für Soziale Medien</h2>
-<p>Man kann den Gedichten Generator verwenden, um originelle und auffällige Inhalte zu erstellen. Zum Beispiel ein Haiku verwenden, um schöne Momente des täglichen Lebens auszudrücken, oder freie Verse, um persönliche Gefühle und Gedanken auszudrücken, um schnell schöne tägliche Gedichte zu generieren.</p>
-<h2>6. Psychologische Heilung</h2>
-<p>Psychotherapeuten oder Berater können den Gedichten Generator verwenden, um ihren Klienten zu helfen, ihre Gefühle auszudrücken. Durch das Schreiben von Gedichten, insbesondere freien Versen, können Menschen leichter ihr Inneres erkunden und ausdrücken.</p>
-
-<h1>Welche Arten von Gedichtgeneratoren enthält der Gedichten Generator?</h1>
-<h2>1. Freie-Vers-Generator</h2>
-<p>Der freie Vers ist eine Form der Poesie, die nicht an traditionelle Reim- und Rhythmusregeln gebunden ist. Sein Merkmal ist die flexible Form, die es dem Dichter ermöglicht, Gefühle und Gedanken frei auszudrücken.</p>
-<p>Mit dem Freie-Vers-Generator kann man schnell kreative und tiefgründige freie Verse erstellen. Jeder kann schnell einzigartige Verse basierend auf seinem eigenen Thema und seinen Gefühlen schaffen, die den persönlichen Stil perfekt widerspiegeln.</p>
-<h2>2. Haiku-Generator</h2>
-<p>Haiku ist eine kurze Gedichtform, die aus Japan stammt, in der Regel bestehend aus drei Zeilen mit insgesamt 17 Silben, verteilt auf eine 5-7-5 Struktur. Haikus stellen oft natürliche Szenen dar und fangen die Schönheit von Momenten ein.</p>
-<p>Mit dem Haiku-Generator kann man schnell traditionelle Haikus basierend auf dem eingegebenen Thema generieren, wobei ihre Kürze und Tiefe erhalten bleiben. Ob natürliche Schönheit oder alltägliche Kleinigkeiten, alles kann in schöne, bedeutungsvolle Haikus umgewandelt werden.</p>
-<h2>3. Akrostichon-Generator</h2>
-<p>Ein Akrostichon ist eine spielerische Gedichtform, bei der die Anfangsbuchstaben jeder Zeile oder jedes Absatzes ein Wort oder einen Satz bilden.</p>
-<p>Mit dem Akrostichon-Generator kann man personalisierte Akrostichons erstellen. Man gibt einfach einen Namen oder ein Schlüsselwort ein, um ein Akrostichon zu generieren, das sowohl kreativ als auch persönlich ist, perfekt als Geschenk oder für besondere Anlässe.</p>
-<h2>4. Sonett-Generator</h2>
-<p>Das Sonett ist eine Gedichtform, bestehend aus 14 Zeilen, die in der Regel einem strengen Reimschema folgt. Es hat seinen Ursprung in Europa und ist eine klassische Form, um Liebe, natürliche Schönheit und tiefe Gefühle auszudrücken.</p>
-<p>Der Sonett-Generator kann Ihnen helfen, schnell Sonette im traditionellen Format zu generieren. Wählen Sie ein beliebiges Thema und generieren Sie schnell Sonette, die sowohl der traditionellen Struktur entsprechen als auch ein modernes Gefühl vermitteln, geeignet für tiefe Emotionen und philosophische Gedanken.</p>
-<h2>5. Limerick-Generator</h2>
-<p>Der Limerick ist eine humorvolle Gedichtform, die aus Großbritannien stammt, bestehend aus fünf Zeilen mit einem Reimschema von AABBA. Diese Art von Gedicht ist bekannt für seinen Humor und leichten Rhythmus.</p>
-<p>Mit dem Limerick-Generator kann man leicht witzige und humorvolle Limericks erstellen. Geben Sie einfach einige Schlüsselwörter ein, um schnell Gedichte zu generieren, die sowohl lustig als auch rhythmisch sind, und fügen Sie dem täglichen Leben Freude hinzu.</p>
-<h2>6. Liebesgedicht-Generator</h2>
-<p>Ein Liebesgedicht ist eine Form der Poesie, die speziell Liebe, Emotionen und intime Beziehungen ausdrückt. Es kann verschiedene Gedichtstrukturen annehmen, von romantisch und zart bis leidenschaftlich und intensiv, um verschiedene Aspekte der Liebe auszudrücken.</p>
-<p>Der Liebesgedicht-Generator kann Liebesgedichte verschiedener Stile basierend auf Ihren emotionalen Bedürfnissen erstellen. Ob es sich um eine tiefe Liebeserklärung handelt oder um Sehnsucht nach einem geliebten Menschen, wir können für Sie Liebesgedichte schaffen, die sowohl berührend als auch elegant sind, geeignet für besondere Gedenktage oder um Liebe auszudrücken.</p>
-
-<h1>Wie verwendet man den Gedichten Generator, um Gedichte zu erstellen?</h1>
-<p>Schritt 1: Wählen Sie den Gedichttyp</p>
-<p>Wählen Sie den Typ des Gedichts aus, das Sie erstellen möchten. Die derzeit unterstützten Gedichttypen umfassen: Freier Vers, Haiku, Akrostichon, Sonett, Limerick, Liebesgedicht.</p>
-<p>Schritt 2: Passen Sie das Thema des Gedichts an</p>
-<p>Geben Sie ein beliebiges Gedichtthema ein, klicken Sie auf "Erstellen", um sofort ein Gedicht zu generieren.</p>`
-
-
-  },
   it: {
     poem_carousel_word: "una poesia romantica,Un limerick divertente,Un sonetto come Shakespeare,Un acrostico di nome,Un Haiku sulla natura,Uno straordinario verso libero",
     header_title: "Generatore di poesie - Crea poesie in rima con l'AI gratuito",
+    header_title_category:"Tutte le categorie di poesie - Generatore di poesie",
+    header_title_poem:"",
     Description: "Un generatore gratuito di poesie AI per creare poesie in rima in pochi secondi. Esplora il nostro Generatore di Poesie AI: crea poesie personalizzate su qualsiasi tema.",
+    Description_category:"Esplora qualsiasi poesia desideri per categoria. Usa la magia dell'intelligenza artificiale per creare subito poesie in rima uniche e gratuite!",
+    Description_poem:"",
     poemai_example: "Poesie generate",
     poemai_latest_poems: "Ultime poesie",
     poemai_view_all: "Mostra tutto",
@@ -1019,7 +1040,11 @@ const messages = {
   pt: {
     poem_carousel_word: "um poema romântico,Uma limerique engraçada,Um soneto como Shakespeare,Um acróstico de nome,Um Haiku sobre a natureza,Um incrível verso gratuito",
     header_title: "Gerador de Poemas - Crie um poema rimado com a mágica AI gratuita",
+    header_title_category:"Todas as categorias de poemas - Gerador de poemas",
+    header_title_poem:"",
     Description: "Gerador de poemas AI gratuito: crie poemas rimados em segundos. Explore nosso Gerador de Poemas AI: Crie poemas rimados e personalizados sobre qualquer assunto.",
+    Description_category:"Explore qualquer poema que desejar por categoria. Use a magia da IA ​​para criar poemas rimados exclusivos gratuitamente agora!",
+    Description_poem:"",
     poemai_example: "Poemas Gerados",
     poemai_latest_poems: "Últimos Poemas",
     poemai_view_all: "Ver tudo",
@@ -1210,7 +1235,11 @@ const messages = {
   es: {
     poem_carousel_word: "un poema romantico,Una quintilla divertida,Un soneto como Shakespeare,Un acróstico de nombre,Un haiku sobre la primavera,Un verso libre increíble",
     header_title: "Generador de poemas - crea poemas que riman con AI Magic gratis",
+    header_title_category:"Todas las categorías de poemas - Generador de poemas",
+    header_title_poem:"",
     Description: "Generador de poemas AI gratuito: crea poemas rimados en segundos. Explora nuestro Generador de Poemas AI: Crea poemas rimados y personalizados sobre cualquier tema.",
+    Description_category:"Explora cualquier poema que quieras por categoría. ¡Usa la magia de la IA para crear poemas que riman únicos y gratis ahora!",
+    Description_poem:"",
     poemai_example: "Poemas generados",
     poemai_latest_poems: "Últimos poemas",
     poemai_view_all: "Ver todo",
@@ -1401,6 +1430,12 @@ const messages = {
 
 
   ja: {
+   header_title: "AI詩ジェネレーター｜無料の AI 詩ジェネレーターで韻を踏む詩を作成します",
+    header_title_category:"すべての詩カテゴリ - AI 詩ジェネレーター",
+    header_title_poem:"",
+    Description: "誰でも数秒で韻を踏む詩を作成できる無料の AI 詩ジェネレーター。 AI 詩ジェネレーターを探索してください: 詩のテーマに合わせて韻を踏むカスタムの詩を作成します。",
+    Description_category:"カテゴリー別に好きな詩を探してみましょう。 AI マジックを使用して、韻を踏むユニークな詩を今すぐ無料で作成しましょう!",
+    Description_poem:"",
     poem_carousel_word: "ロマンチックな詩,興味深いリメリック,深遠なソネット詩,アクロスティックな詩,自然についての俳句,素晴らしい自由詩",
     poemai_example: "生成された詩",
     poemai_latest_poems: "最新の詩",
@@ -1494,7 +1529,12 @@ const messages = {
     <p>詩のテーマを入力し、「生成」をクリックすると、すぐに詩が生成されます。</p>`
   },
   ko: {
-
+    header_title: "AI 시 생성기 - 무료 AI 시 생성기로 운율이 맞는 시를 만들어 보세요.",
+    header_title_category:"모든 시 카테고리 - AI 시 생성기",
+    header_title_poem:"",
+    Description: "누구나 몇 초 만에 운율이 맞는 시를 만들 수 있는 무료 AI 시 생성기입니다. AI 시 생성기 살펴보기: 모든 시 테마에 맞춰 운율이 맞는 맞춤형 시를 만들어 보세요.",
+    Description_category:"카테고리별로 원하는 시를 탐색해 보세요. 지금 무료로 AI 마법을 사용하여 독특한 운율의 시를 만들어 보세요!",
+    Description_poem:"",
     poem_carousel_word: "낭만적인 시,흥미로운 라임릭,심오한 소네트 시,삼행시,자연에 관한 하이쿠,놀라운 자유 구절",
     poemai_example: "생성된 시",
     poemai_latest_poems: "최신 시",
@@ -1587,7 +1627,12 @@ const messages = {
     <p>2단계: 시의 콘텐츠 테마 사용자 정의</p>
     <p>시 테마를 입력하고 "생성"을 클릭하면 즉시 시가 생성됩니다.</p>`
   },
-  th: {
+  th: {header_title: "ตัวสร้างบทกวี AI - สร้างบทกวีคล้องจองด้วยเครื่องสร้างบทกวี AI ฟรี",
+    header_title_category:"หมวดหมู่บทกวีทั้งหมด - ตัวสร้างบทกวี AI ",
+    header_title_poem:"",
+    Description: "เครื่องสร้างบทกวี AI ฟรีที่ใครๆ ก็สามารถสร้างบทกวีคล้องจองได้ภายในไม่กี่วินาที สำรวจเครื่องสร้างบทกวี AI ของเรา: สร้างบทกวีที่คล้องจองแบบกำหนดเองในธีมบทกวีใดก็ได้",
+    Description_category:"สำรวจบทกวีที่คุณต้องการตามหมวดหมู่ ใช้เวทมนตร์ AI เพื่อสร้างบทกวีคล้องจองที่ไม่ซ้ำใครได้ฟรีทันที!",
+    Description_poem:"",
     poem_carousel_word: "บทกวีโรแมนติก,โคลงที่น่าสนใจ,บทกวีโคลงที่ลึกซึ้ง,บทกวีโคลงเคลง,ไฮกุเกี่ยวกับธรรมชาติ,บทกวีฟรีที่น่าทึ่ง",
     poemai_example: "บทกวีที่สร้างขึ้น",
     poemai_latest_poems: "บทกวีล่าสุด",
@@ -1680,7 +1725,12 @@ const messages = {
     <p>ขั้นตอนที่ 2: ปรับแต่งธีมเนื้อหาของบทกวี</p>
     <p>ป้อนธีมบทกวี คลิก "สร้าง" และสร้างบทกวีทันที</p>`
   },
-  id: {
+  id: {header_title: "Generator Puisi AI-Buat puisi berima dengan generator puisi AI gratis",
+    header_title_category:"Semua Kategori Puisi - Generator Puisi AI",
+    header_title_poem:"",
+    Description: "Generator puisi AI gratis sehingga siapa pun dapat membuat puisi berima dalam hitungan detik. Buat puisi berima yang bagus tentang tema apa pun dengan keajaiban AI gratis",
+    Description_category:"Jelajahi puisi apa pun yang Anda inginkan berdasarkan kategori. Gunakan sihir AI untuk membuat puisi berima unik secara gratis sekarang!",
+    Description_poem:"",
     poem_carousel_word: "sebuah puisi romantis,sebuah pantun yang lucu,soneta yang mendalam,sebuah puisi akrostik,Haiku tentang alam,puisi sajak bebas",
     poemai_example: "Puisi yang Dihasilkan",
     poemai_latest_poems: "Puisi Terbaru",
@@ -1773,7 +1823,12 @@ const messages = {
     <p>Langkah 2: Sesuaikan Tema Isi Puisi</p>
     <p>Masukkan tema puisi apa pun, klik "Hasilkan", dan segera buat puisi.</p>`
   },
-  vi: {
+  vi: {header_title: "Trình Tạo Thơ AI - Tạo bài thơ có vần điệu bằng AI miễn phí",
+    header_title_category:"Tất cả danh mục bài thơ - Trình Tạo Thơ AI",
+    header_title_poem:"",
+    Description: "Một công cụ tạo bài thơ AI miễn phí mà bất kỳ ai cũng có thể tạo ra một bài thơ có vần điệu trong vài giây. Tạo miễn phí các bài thơ có vần điệu, tùy chỉnh về bất kỳ chủ đề bài thơ nào",
+    Description_category:"Khám phá bất kỳ bài thơ nào bạn muốn theo thể loại. Sử dụng phép thuật AI để tạo ra những bài thơ có vần điệu độc đáo miễn phí ngay bây giờ!",
+    Description_poem:"",
     poem_carousel_word: "một bài thơ lãng mạn,một lời nói tục ngữ,một bài sonnet sâu sắc,một bài thơ châm biếm,Haiku tuyệt vời,một bài thơ tự do",
     poemai_example: "Bài thơ được tạo",
     poemai_latest_poems: "Bài thơ mới nhất",
@@ -1866,7 +1921,12 @@ const messages = {
     <p>Bước 2: Tùy chỉnh chủ đề nội dung của bài thơ</p>
     <p>Nhập bất kỳ chủ đề thơ nào, nhấp vào "Tạo" và tạo ngay một bài thơ.</p>`
   },
-  ar: {
+  ar: {header_title: "مولد الشعر الآلي - كتابة قصائد موزونة مجانًا بالذكاء الاصطناعي",
+    header_title_category:"جميع فئات القصائد | مولد الشعر الآلي",
+    header_title_poem:"",
+    Description: "مولد الشعر الآلي المجاني الذي يمكن لأي شخص من خلاله إنشاء قصيدة موزونة في ثوانٍ. استكشف مولد الشعر الآلي لدينا: أنشئ قصائد موزونة مخصصة حول أي موضوع شعري.",
+    Description_category:"استكشاف أي قصيدة تريدها حسب الفئة. استخدم سحر الذكاء الاصطناعي لإنشاء قصائد مقافية فريدة مجانًا الآن!",
+    Description_poem:"",
     poem_carousel_word: "قصيدة حب مؤثرة,ليمريك مضحك,السوناتة مثل شكسبير,أبجدية لأي كلمة,هايكو عن الطبيعة,آية حرة مذهلة",
     poemai_example: "القصائد المولدة",
     poemai_latest_poems: "أحدث القصائد",
@@ -1959,7 +2019,12 @@ const messages = {
     <p>الخطوة 2: تخصيص موضوع محتوى القصيدة</p>
     <p>أدخل أي موضوع شعري، وانقر فوق "إنشاء"، وقم بإنشاء قصيدة على الفور.</p>`
   },
-  tr: {
+  tr: {header_title: "Yapay Zeka Şiir Üretici - Yapay zeka ile ücretsiz kafiyeli şiirler yazın",
+    header_title_category:"Tüm Şiir Kategorileri - Yapay Zeka Şiir Üretici",
+    header_title_poem:"",
+    Description: "Herkesin saniyeler içinde kafiyeli bir şiir oluşturmasına olanak tanıyan ücretsiz bir AI şiir oluşturucu. Herhangi bir şiir temasına göre kafiyeli şiirler oluşturun.",
+    Description_category:"İstediğiniz şiiri kategoriye göre keşfedin. Şimdi ücretsiz olarak benzersiz kafiyeli şiirler oluşturmak için AI büyüsünü kullanın!",
+    Description_poem:"",
     poem_carousel_word: "Dokunaklı bir aşk şiiri,Komik bir limerick,Güzel bir Sonnet,Akrostiş bir şiir,Doğa hakkında bir Haiku,Harika bir serbest ayet",
     poemai_example: "Oluşturulan Şiirler",
     poemai_latest_poems: "Son Şiirler",

@@ -6,6 +6,7 @@ import generatedPoems from '@/views/generatedPoems/index.vue';
 import generatedPoemCategory from '@/views/generatedPoemCategory/index.vue';
 import generatedPoemType from '@/views/generatedPoemType/index.vue';
 import generatedPoemId from '@/views/generatedPoemId/index.vue';
+import i18n from '@/hooks/i18n'
 
 const routes = [
   {
@@ -28,7 +29,7 @@ const routes = [
   },
   {
     path: '/:language?/poem',
-    name: 'generatedPoems',
+    name: 'poem',
     component: generatedPoems,
     props: (route: any) => ({
       language: route.params.language || 'en',
@@ -55,7 +56,7 @@ const routes = [
   },
   {
     path: '/:language?/generated-poem-category',
-    name: 'generatedPoemCategory',
+    name: 'category',
     component: generatedPoemCategory,
     props: (route: any) => ({
       language: route.params.language || 'en',
@@ -68,6 +69,54 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+// 监听路由变化
+router.beforeEach((to, from, next) => {
+  console.log(1, i18n.global);
+  console.log(2,i18n.global.t('header_title'));
+  
+  if(to.name=='poem' || to.name=='category'){
+    const pageTitle = i18n.global.t('header_title'+'_'+to.name); // 使用i18n来获取多语言标题
+    const metaDescription = i18n.global.t('Description'+'_'+to.name); // 使用i18n来获取多语言描述
+    document.title = pageTitle;
+    const metaDescriptionTag = document.querySelector('meta[name="description"]');
+    if (metaDescriptionTag) {
+        metaDescriptionTag.setAttribute('content', metaDescription);
+    } else {
+        // 如果meta标签不存在，创建并添加
+        const newMetaTag = document.createElement('meta');
+        newMetaTag.name = 'description';
+        newMetaTag.content = metaDescription;
+        document.head.appendChild(newMetaTag);
+    }
+    
+  }else{
+    console.log(222);
+    const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
+    const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
+    document.title = pageTitle;
+    const metaDescriptionTag = document.querySelector('meta[name="description"]');
+    if (metaDescriptionTag) {
+        metaDescriptionTag.setAttribute('content', metaDescription);
+    } else {
+        // 如果meta标签不存在，创建并添加
+        const newMetaTag = document.createElement('meta');
+        newMetaTag.name = 'description';
+        newMetaTag.content = metaDescription;
+        document.head.appendChild(newMetaTag);
+    }
+  }
+ 
+  console.log(3, document.title);
+
+  let linkTag = document.querySelector('link[rel="canonical"]');
+  linkTag.setAttribute('href', to.fullPath)
+
+  
+
+
+  next(); // 继续路由导航
 });
 
 router.afterEach(() => {

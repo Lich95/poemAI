@@ -41,7 +41,7 @@ const handleCurrentChange = () => {
         top: 0,
         behavior: 'smooth', // 可以添加平滑滚动效果
     });
-    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
+    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
         waterfallList.value = JSON.parse(res.data.data).data
         totals.value = JSON.parse(res.data.data).count
     })
@@ -51,22 +51,23 @@ const goTypes = (type) => {
     if (type != 'All') {
         router.push({ name: 'generatedPoemType', params: { language: i18n.global.locale || 'en', GeneratedPoemType: type } });
     } else {
-        router.push({ name: 'generatedPoemCategory', params: { language: i18n.global.locale || 'en' } });
+        router.push({ name: 'category', params: { language: i18n.global.locale || 'en' } });
 
     }
 }
 onMounted(() => {
     setTimeout(() => {
-        throttledApiRequest('/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
             types.value = JSON.parse(res.data.data).map(x => x.name)
         })
 
-        throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
+        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
             waterfallList.value = JSON.parse(res.data.data).data
             totals.value = JSON.parse(res.data.data).count
         })
 
     }, 0);
+   
 })
 
 </script>

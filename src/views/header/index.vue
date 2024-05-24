@@ -119,7 +119,7 @@ const goGenerated = () => {
     if (mobileNav.value) {
         mobileNav.value = false
     }
-    router.push({ name: 'generatedPoems', params: { language: i18n.global.locale || 'en' } });
+    router.push({ name: 'poem', params: { language: i18n.global.locale || 'en' } });
 }
 
 const logoClick = () => {
@@ -128,47 +128,29 @@ const logoClick = () => {
 }
 const handleCommand = (command) => {
 
-    localStorage.setItem('languageSave', command)
+    if(route.name=='Home'){
     if (command == 'en') {
         command = ''
     }
+}
     if (command == 'ar') {
-
         var htmlElement = document.getElementsByTagName('html')[0];
         // 修改样式
         htmlElement.style.direction = 'rtl';
-
-
     } else {
-
-
         var htmlElement = document.getElementsByTagName('html')[0];
         // 修改样式
         htmlElement.style.direction = '';
     }
-    router.push({ name: 'Home', params: { language: command } });
 
-    i18n.global.locale = command;
+ 
 
-    // 更新文档标题和meta标签
-    const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
-    const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
-    document.title = pageTitle;
+    router.push({ name: route.name, params: { language: command } }).then(() => {
+        i18n.global.locale = command;
+        localStorage.setItem('languageSave', command)
+       router.go(0)
+    });
 
-
-    const linkTag = document.querySelector('link[rel="canonical"]');
-    linkTag.setAttribute('href', 'https://poemgenerator-ai.com/' + command + (command == '' ? '' : '/'))
-
-    const metaDescriptionTag = document.querySelector('meta[name="description"]');
-    if (metaDescriptionTag) {
-        metaDescriptionTag.setAttribute('content', metaDescription);
-    } else {
-        // 如果meta标签不存在，创建并添加
-        const newMetaTag = document.createElement('meta');
-        newMetaTag.name = 'description';
-        newMetaTag.content = metaDescription;
-        document.head.appendChild(newMetaTag);
-    }
 }
 const _thislanguage = () => {
     let language = route.params.language || 'en';
@@ -180,18 +162,45 @@ const handleSelect = (e) => {
         e = ''
     }
     localStorage.setItem('languageSave', e)
-    router.push({ name: 'Home', params: { language: e } });
+    router.push({ name: route.name, params: { language: e } });
+
 
     i18n.global.locale = e;
 
     // 更新文档标题和meta标签
-    const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
-    const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
+    // const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
+    // const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
+    // document.title = pageTitle;
+
+    // const linkTag = document.querySelector('link[rel="canonical"]');
+    // linkTag.setAttribute('href', 'https://poemgenerator-ai.com/' + e + (e == '' ? '' : '/'))
+
+    // const metaDescriptionTag = document.querySelector('meta[name="description"]');
+    // if (metaDescriptionTag) {
+    //     metaDescriptionTag.setAttribute('content', metaDescription);
+    // } else {
+    //     // 如果meta标签不存在，创建并添加
+    //     const newMetaTag = document.createElement('meta');
+    //     newMetaTag.name = 'description';
+    //     newMetaTag.content = metaDescription;
+    //     document.head.appendChild(newMetaTag);
+    // }
+
+}
+const toggleMenu = (bol) => {
+    mobileNav.value = bol
+}
+
+onMounted(async () => {
+    setTimeout(() => {
+        i18n.global.locale = route.params.language
+        let to = route
+    console.log(88888,i18n.global.locale)
+    console.log(99999,i18n.global.t('header_title'));
+    if(to.name=='poem' || to.name=='category'){
+    const pageTitle = i18n.global.t('header_title'+'_'+to.name); // 使用i18n来获取多语言标题
+    const metaDescription = i18n.global.t('Description'+'_'+to.name); // 使用i18n来获取多语言描述
     document.title = pageTitle;
-
-    const linkTag = document.querySelector('link[rel="canonical"]');
-    linkTag.setAttribute('href', 'https://poemgenerator-ai.com/' + e + (e == '' ? '' : '/'))
-
     const metaDescriptionTag = document.querySelector('meta[name="description"]');
     if (metaDescriptionTag) {
         metaDescriptionTag.setAttribute('content', metaDescription);
@@ -202,27 +211,27 @@ const handleSelect = (e) => {
         newMetaTag.content = metaDescription;
         document.head.appendChild(newMetaTag);
     }
-}
-const toggleMenu = (bol) => {
-    mobileNav.value = bol
-}
-
-onMounted(async () => {
-    setTimeout(() => {
-        i18n.global.locale = route.params.language
+    
+  }else{
+    const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
+    const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
+    document.title = pageTitle;
+    const metaDescriptionTag = document.querySelector('meta[name="description"]');
+    if (metaDescriptionTag) {
+        metaDescriptionTag.setAttribute('content', metaDescription);
+    } else {
+        // 如果meta标签不存在，创建并添加
+        const newMetaTag = document.createElement('meta');
+        newMetaTag.name = 'description';
+        newMetaTag.content = metaDescription;
+        document.head.appendChild(newMetaTag);
+    }
+  }
+ 
     }, 0)
+    
+   
 
-
-    // // 获取当前页面的规范URL
-    // var canonicalURL = window.location.href
-
-    // // 动态生成canonical标签
-    // var canonicalTag = document.createElement('link');
-    // canonicalTag.rel = 'canonical';
-    // canonicalTag.href = canonicalURL;
-
-    // // 将生成的canonical标签添加到head中
-    // document.head.appendChild(canonicalTag);
 })
 watch(() => route.name, (newRoute, oldRoute) => {
     if (newRoute == 'generatedPoemId') {
