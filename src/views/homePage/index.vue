@@ -120,11 +120,11 @@
             style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;"
             @click="goviewAll">{{ $t('poemai_view_all') }}</el-button> -->
 
+        <quesAndAnsw style="margin-top: 50px;"></quesAndAnsw>
+
         <div class='footer'>
             {{ $t('poemai_powered_by_gpt') }}
         </div>
-        <quesAndAnsw style="margin-top: 50px;"></quesAndAnsw>
-
         <button @click="scrollToTop" class="toTopBtn" v-show="topBtnShow">
             <el-icon>
                 <ArrowUpBold />
@@ -229,7 +229,7 @@ const checkObj = ref({
 
 
 const loadDemo = () => {
-    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
         waterfallList.value = JSON.parse(res.data.data).data
     })
 
@@ -285,7 +285,7 @@ const handleClick = async () => {
 
 
         // http://poemgenerator-ai.com
-        throttledApiRequest(' http://poemgenerator-ai.com:8093/api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
+        throttledApiRequest(' /api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
             res = res.data
             if (res.retCode == 'C0000') {
                 respContent.value = res.data.replaceAll('(A)', '')
@@ -360,7 +360,7 @@ const handleCopy = () => {
     //     })
     //     clipboard.destroy();
     // })
-    // clipboard.on('error', () =>http://poemgenerator-ai.com:8093/api/v1 {
+    // clipboard.on('error', () =>/api/v1 {
     //     ElMessage({
     //         showClose: true,
     //         message: 'error',
@@ -462,7 +462,7 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
     // if(newRoute=='ja'||newRoute==''){
     // }
     waterfallList.value = [];
-    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 10 }).then(res => {
         console.log('change');
         waterfallList.value = JSON.parse(res.data.data).data
         console.log(waterfallList.value);

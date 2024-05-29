@@ -93,9 +93,9 @@ const dropMenuList = [
     { event: 'ko', text: '한국인' },
     { event: 'th', text: 'แบบไทย' },
     { event: 'id', text: 'bahasa Indonesia' },
-    { event: 'vi', text: 'Türk Dili' },
+    { event: 'vi', text: 'Tiếng Việt' },
     { event: 'ar', text: ' عربي' },
-    // { event: 'rt', text: 'Malay' },
+    { event: 'tr', text: 'Türk Dili' },
 
 ]
 const languages = ['en', 'fr', 'ru', 'it', 'de', 'es', 'pt']
@@ -195,8 +195,6 @@ onMounted(async () => {
     setTimeout(() => {
         i18n.global.locale = route.params.language
         let to = route
-    console.log(88888,i18n.global.locale)
-    console.log(99999,i18n.global.t('header_title'));
     if(to.name=='poem' || to.name=='category'){
     const pageTitle = i18n.global.t('header_title'+'_'+to.name); // 使用i18n来获取多语言标题
     const metaDescription = i18n.global.t('Description'+'_'+to.name); // 使用i18n来获取多语言描述

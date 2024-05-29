@@ -72,7 +72,7 @@ export default {
             this.wfl=[[],[],[]];
             this.waterfallList.map(x=>{
                 if(x.theme.includes('{"keyword":"')){
-                    x.theme = JSON.parse(x.theme).keyword
+                    x.theme = JSON.parse(x.theme).content
                 }
                 return x
             })
