@@ -12,9 +12,9 @@
 
             <div v-show="mobileNav" class="mobileMenuPop" ref="target">
                 <el-menu @select="handleSelect" :default-active="selectedKeys">
-                    <el-menu-item  @click="goGenerated"> 
+                    <!-- <el-menu-item  @click="goGenerated"> 
                     <img src="@/assets/icon/Lamp.png" alt="">
-                    <span>{{ $t('poemai_example') }}</span></el-menu-item>
+                    <span>{{ $t('poemai_example') }}</span></el-menu-item> -->
                     <el-menu-item @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>{{ $t('poemai_privacy') }}</span> </el-menu-item>
