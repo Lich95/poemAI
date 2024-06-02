@@ -148,7 +148,7 @@ const handleCommand = (command) => {
     router.push({ name: route.name, params: { language: command } }).then(() => {
         i18n.global.locale = command;
         localStorage.setItem('languageSave', command)
-       router.go(0)
+    //    router.go(0)
     });
 
 }
@@ -167,25 +167,7 @@ const handleSelect = (e) => {
 
     i18n.global.locale = e;
 
-    // 更新文档标题和meta标签
-    // const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
-    // const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
-    // document.title = pageTitle;
-
-    // const linkTag = document.querySelector('link[rel="canonical"]');
-    // linkTag.setAttribute('href', 'https://poemgenerator-ai.com/' + e + (e == '' ? '' : '/'))
-
-    // const metaDescriptionTag = document.querySelector('meta[name="description"]');
-    // if (metaDescriptionTag) {
-    //     metaDescriptionTag.setAttribute('content', metaDescription);
-    // } else {
-    //     // 如果meta标签不存在，创建并添加
-    //     const newMetaTag = document.createElement('meta');
-    //     newMetaTag.name = 'description';
-    //     newMetaTag.content = metaDescription;
-    //     document.head.appendChild(newMetaTag);
-    // }
-
+  
 }
 const toggleMenu = (bol) => {
     mobileNav.value = bol

@@ -20,13 +20,13 @@
         </div>
         <div style="margin:0 auto;text-align: center">
             <p>{{ $t('poemai_related_poem') }}</p>
-            <waterfall class="wfDv"  :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
+            <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
         </div>
     </div>
 </template>
 <script setup>
 import waterfall from "@/components/waterfall/index.vue";
-import { ref ,onMounted} from "vue";
+import { ref, onMounted } from "vue";
 import ClipboardJS from 'clipboard';
 import { ElMessage } from 'element-plus'
 import i18n from '@/hooks/i18n'
@@ -84,7 +84,7 @@ const handleCopy = () => {
     //     clipboard.destroy();
     // })
 
-    
+
     const textArea = document.createElement("textarea");
     textArea.style.position = 'fixed';
     textArea.style.top = 0;
@@ -126,12 +126,16 @@ const handleCopy = () => {
 
 onMounted(() => {
     setTimeout(() => {
-        throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', type: route.params.GeneratedPoemType ,nums:3,pages:1}).then(res => {
+        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', type: route.params.GeneratedPoemType, nums: 3, pages: 1 }).then(res => {
             waterfallList.value = JSON.parse(res.data.data).data
         })
 
-        throttledApiRequest('/api/v1/detail_by_id', 'post', { "id": route.params.id}).then(res => {
-            respTxt.value=JSON.parse(res.data.data).poem_info.poemContent
+        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/detail_by_id', 'post', { "id": route.params.id }).then(res => {
+            respTxt.value = JSON.parse(res.data.data).poem_info.poemContent
+
+
+            console.log(798,JSON.parse(res.data.data));
+
         })
 
 

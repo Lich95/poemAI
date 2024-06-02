@@ -41,7 +41,7 @@ const handleCurrentChange = () => {
         top: 0,
         behavior: 'smooth', // 可以添加平滑滚动效果
     });
-    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
+    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
         waterfallList.value = JSON.parse(res.data.data).data
         totals.value = JSON.parse(res.data.data).count
     })
@@ -57,18 +57,28 @@ const goTypes = (type) => {
 }
 onMounted(() => {
     setTimeout(() => {
-        throttledApiRequest('/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
+        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/category_by_lang', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en' }).then(res => {
             types.value = JSON.parse(res.data.data).map(x => x.name)
         })
 
-        throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
-            console.log(279,JSON.parse(res.data.data).data)
+        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
             waterfallList.value = JSON.parse(res.data.data).data
             totals.value = JSON.parse(res.data.data).count
+
+            let beforeTitle = document.title.replace('%s', totals.value)
+            const metaDescriptionTag = document.querySelector('meta[name="description"]');
+            let befroreDescp = metaDescriptionTag.getAttribute('content').replace('%s', totals.value)
+
+            document.title = beforeTitle;
+            metaDescriptionTag.setAttribute('content', befroreDescp);
+
+
+
+
         })
 
     }, 0);
-   
+
 })
 
 </script>
