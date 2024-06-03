@@ -27,7 +27,7 @@ const router = useRouter()
 const route = useRoute();
 const currentPage = ref(1)
 const totals = ref(100)
-const pageSize = ref(20)
+const pageSize = ref(2)
 const waterfallList = ref([])
 const typeNums = ref(0)
 
@@ -36,7 +36,7 @@ const handleCurrentChange = () => {
         top: 0,
         behavior: 'smooth', // 可以添加平滑滚动效果
     });
-    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 20, pages: currentPage.value }).then(res => {
+    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: pageSize.value, pages: currentPage.value, type: route.params.GeneratedPoemType }).then(res => {
         waterfallList.value = JSON.parse(res.data.data).data
         typeNums.value = JSON.parse(res.data.data).count
         totals.value = JSON.parse(res.data.data).count
@@ -48,6 +48,14 @@ onMounted(() => {
             waterfallList.value = JSON.parse(res.data.data).data
             typeNums.value = JSON.parse(res.data.data).count
             totals.value = JSON.parse(res.data.data).count
+
+            let beforeTitle = document.title.replace('%s1', totals.value).replace('%s2', route.params.GeneratedPoemType)
+            const metaDescriptionTag = document.querySelector('meta[name="description"]');
+            let befroreDescp = metaDescriptionTag.getAttribute('content').replace('%s1', totals.value).replace('%s2', route.params.GeneratedPoemType)
+
+            document.title = beforeTitle;
+            metaDescriptionTag.setAttribute('content', befroreDescp);
+
         })
 
 

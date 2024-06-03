@@ -73,36 +73,36 @@ const router = createRouter({
 // 监听路由变化
 router.beforeEach((to, from, next) => {
   setTimeout(() => {
-
+    let pageTitle='', metaDescription='';
     if (to.name == 'poem' || to.name == 'category') {
-      const pageTitle = i18n.global.t('header_title' + '_' + to.name); // 使用i18n来获取多语言标题
-      const metaDescription = i18n.global.t('Description' + '_' + to.name); // 使用i18n来获取多语言描述
-      document.title = pageTitle;
-      const metaDescriptionTag = document.querySelector('meta[name="description"]');
-      if (metaDescriptionTag) {
-        metaDescriptionTag.setAttribute('content', metaDescription);
-      } else {
-        // 如果meta标签不存在，创建并添加
-        const newMetaTag = document.createElement('meta');
-        newMetaTag.name = 'description';
-        newMetaTag.content = metaDescription;
-        document.head.appendChild(newMetaTag);
-      }
+      pageTitle = i18n.global.t('header_title' + '_' + to.name); // 使用i18n来获取多语言标题
+      metaDescription = i18n.global.t('Description' + '_' + to.name); // 使用i18n来获取多语言描述
+
+
+    } else if (to.name == 'generatedPoemId') {
+      pageTitle = i18n.global.t('header_title_poem_type'); // 使用i18n来获取多语言标题
+      metaDescription = i18n.global.t('Description_poem_type'); // 使用i18n来获取多语言描述
+
+    }else if (to.name == 'generatedPoemType') {
+      pageTitle = i18n.global.t('header_title_category_type'); // 使用i18n来获取多语言标题
+      metaDescription = i18n.global.t('Description_category_type'); // 使用i18n来获取多语言描述
 
     } else {
-      const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
-      const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
-      document.title = pageTitle;
-      const metaDescriptionTag = document.querySelector('meta[name="description"]');
-      if (metaDescriptionTag) {
-        metaDescriptionTag.setAttribute('content', metaDescription);
-      } else {
-        // 如果meta标签不存在，创建并添加
-        const newMetaTag = document.createElement('meta');
-        newMetaTag.name = 'description';
-        newMetaTag.content = metaDescription;
-        document.head.appendChild(newMetaTag);
-      }
+      pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
+      metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
+
+    }
+
+    document.title = pageTitle;
+    const metaDescriptionTag = document.querySelector('meta[name="description"]');
+    if (metaDescriptionTag) {
+      metaDescriptionTag.setAttribute('content', metaDescription);
+    } else {
+      // 如果meta标签不存在，创建并添加
+      const newMetaTag = document.createElement('meta');
+      newMetaTag.name = 'description';
+      newMetaTag.content = metaDescription;
+      document.head.appendChild(newMetaTag);
     }
 
     let linkTag = document.querySelector('link[rel="canonical"]');

@@ -26,7 +26,7 @@
 </template>
 <script setup>
 import waterfall from "@/components/waterfall/index.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import ClipboardJS from 'clipboard';
 import { ElMessage } from 'element-plus'
 import i18n from '@/hooks/i18n'
@@ -37,6 +37,40 @@ const { t } = i18n.global;
 const waterfallList = ref([])
 
 
+
+
+const initMethods = () => {
+    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', type: route.params.GeneratedPoemType, nums: 3, pages: 1 }).then(res => {
+        waterfallList.value = JSON.parse(res.data.data).data
+    })
+
+    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/detail_by_id', 'post', { "id": route.params.id }).then(res => {
+        respTxt.value = JSON.parse(res.data.data).poem_info.poemContent
+
+
+
+        let titleNow = JSON.parse(res.data.data).poem_info.poemTheme.indexOf('\"keyword\":') > -1 ? JSON.parse(JSON.parse(res.data.data).poem_info.poemTheme).content : JSON.parse(res.data.data).poem_info.poemTheme
+
+        
+        let beforeTitle = document.title.replace('%s', titleNow)
+        const metaDescriptionTag = document.querySelector('meta[name="description"]');
+        let befroreDescp = metaDescriptionTag.getAttribute('content').replace('%s1', JSON.parse(res.data.data).poem_info.typeName).replace('%s2', JSON.parse(res.data.data).poem_info.poemContent)
+
+        document.title = beforeTitle;
+        metaDescriptionTag.setAttribute('content', befroreDescp);
+
+
+    })
+
+
+}
+watch(
+    () => route.params.id,
+    (newVal, oldVal) => {
+        initMethods()
+    },
+    { immediate: true }
+);
 
 let respTxt = ref(` In summer's heat, I find no solace
                     A time for sun and fun, it's all a facade
@@ -123,22 +157,9 @@ const handleCopy = () => {
 
 }
 
-
 onMounted(() => {
     setTimeout(() => {
-        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', type: route.params.GeneratedPoemType, nums: 3, pages: 1 }).then(res => {
-            waterfallList.value = JSON.parse(res.data.data).data
-        })
-
-        throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/detail_by_id', 'post', { "id": route.params.id }).then(res => {
-            respTxt.value = JSON.parse(res.data.data).poem_info.poemContent
-
-
-            console.log(798,JSON.parse(res.data.data));
-
-        })
-
-
+        initMethods()
     }, 0);
 })
 

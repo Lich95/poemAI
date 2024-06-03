@@ -4,8 +4,9 @@
             <div v-for="item in wfl[0]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
-                <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{ $t(typeinit(item.type))
-                    }}</el-button>
+                <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{
+            $t(typeinit(item.type))
+        }}</el-button>
                 <el-button class="copyBtn" v-else @click.stop="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
@@ -13,8 +14,9 @@
             <div v-for="item in wfl[1]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
-                <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{ $t(typeinit(item.type))
-                    }}</el-button>
+                <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{
+            $t(typeinit(item.type))
+        }}</el-button>
                 <el-button class="copyBtn" v-else @click.stop="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
@@ -22,8 +24,9 @@
             <div v-for="item in wfl[2]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
                 <div>{{ item.content }}</div>
-                <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{ $t(typeinit(item.type))
-                    }}</el-button>
+                <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{
+            $t(typeinit(item.type))
+        }}</el-button>
                 <el-button class="copyBtn" v-else @click.stop="copyContent(item.content)">Copy</el-button>
             </div>
         </div>
@@ -69,14 +72,14 @@ export default {
     },
     methods: {
         init() {
-            this.wfl=[[],[],[]];
-            this.waterfallList.map(x=>{
-                if(x.theme.includes('{"keyword":"')){
+            this.wfl = [[], [], []];
+            this.waterfallList.map(x => {
+                if (x.theme.includes('{"keyword":"')) {
                     x.theme = JSON.parse(x.theme).content
                 }
                 return x
             })
-            
+
             if (this.waterfallList.length > 3) {
                 this.wfl[0].push(this.waterfallList[0])
                 this.wfl[1].push(this.waterfallList[1])
@@ -101,7 +104,6 @@ export default {
 
         },
         goDetail(id) {
-
             this.$router.push({ name: 'generatedPoemId', params: { id: id } });
         },
         copyContent(txt) {
@@ -193,7 +195,7 @@ export default {
         }
     },
     mounted() {
-        console.log(123123,this.waterfallList);
+        console.log(123123, this.waterfallList);
         this.init()
     }
 };
@@ -227,7 +229,7 @@ div.water {
 
         div {
             margin: 12px 0;
-            word-break:  break-word;
+            word-break: break-word;
             font-weight: 400;
             font-size: 16px;
             line-height: 26px;
