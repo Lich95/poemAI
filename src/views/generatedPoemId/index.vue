@@ -40,11 +40,11 @@ const waterfallList = ref([])
 
 
 const initMethods = () => {
-    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', type: route.params.GeneratedPoemType, nums: 3, pages: 1 }).then(res => {
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', type: route.params.GeneratedPoemType, nums: 3, pages: 1 }).then(res => {
         waterfallList.value = JSON.parse(res.data.data).data
     })
 
-    throttledApiRequest('http://poemgenerator-ai.com:8093/api/v1/detail_by_id', 'post', { "id": route.params.id }).then(res => {
+    throttledApiRequest('/api/v1/detail_by_id', 'post', { "id": route.params.id }).then(res => {
         respTxt.value = JSON.parse(res.data.data).poem_info.poemContent
 
 
