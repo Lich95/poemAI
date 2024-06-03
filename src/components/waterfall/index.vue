@@ -59,6 +59,7 @@ export default {
         waterfallList: {
             immediate: true,
             handler(newVal) {
+                // console.log('change?');
                 // React to changes in the prop here
                 this.init();
             }
@@ -89,7 +90,8 @@ export default {
                         let heights = [
                             this.$refs.wf1.offsetHeight,
                             this.$refs.wf2.offsetHeight,
-                            this.$refs.wf3.offsetHeight]
+                            this.$refs.wf3.offsetHeight
+                        ]
                         let numIndex = heights.findIndex(x => x == Math.min(...heights));
                         this.wfl[numIndex].push(this.waterfallList[i])
 
@@ -100,7 +102,6 @@ export default {
                     this.wfl[index] = [item]
                 })
             }
-
 
         },
         goDetail(id) {
@@ -195,8 +196,6 @@ export default {
         }
     },
     mounted() {
-        console.log(123123, this.waterfallList);
-        this.init()
     }
 };
 </script>
