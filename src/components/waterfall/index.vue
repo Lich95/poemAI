@@ -3,7 +3,7 @@
         <div class="water wf1" v-if="wfl[0].length" ref="wf1">
             <div v-for="item in wfl[0]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
-                <div>{{ item.content }}</div>
+                <div class="content">{{ item.content }}</div>
                 <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{
             $t(typeinit(item.type))
         }}</el-button>
@@ -13,7 +13,7 @@
         <div class="water wf2" v-if="wfl[1].length" ref="wf2">
             <div v-for="item in wfl[1]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
-                <div>{{ item.content }}</div>
+                <div class="content">{{ item.content }}</div>
                 <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{
             $t(typeinit(item.type))
         }}</el-button>
@@ -23,7 +23,7 @@
         <div class="water wf3" v-if="wfl[2].length" ref="wf3">
             <div v-for="item in wfl[2]" @click="goDetail(item.id)">
                 <span>{{ item.theme }}</span>
-                <div>{{ item.content }}</div>
+                <div class="content">{{ item.content }}</div>
                 <el-button :class="item.type" class="typeFont" v-if="this.$route.name == 'Home'">{{
             $t(typeinit(item.type))
         }}</el-button>
@@ -277,7 +277,9 @@ div.water {
     }
 
 }
-
+.content{
+    white-space: pre-wrap;
+}
 
 .haiku {
     background-color: #FF856B

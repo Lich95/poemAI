@@ -24,14 +24,15 @@
     </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted,watch } from "vue";
 import waterfall from "@/components/waterfall/index.vue";
-import { useRouter } from 'vue-router';
+import { useRouter,useRoute } from 'vue-router';
 import i18n from '@/hooks/i18n'
 import { throttledApiRequest } from '@/api/index.js';
 const router = useRouter()
 const waterfallList = ref([])
 const types = ref([])
+const route = useRoute();
 
 const currentPage = ref(1)
 const totals = ref(100)
@@ -71,13 +72,20 @@ onMounted(() => {
 
             document.title = beforeTitle;
             metaDescriptionTag.setAttribute('content', befroreDescp);
-
-
-
-
         })
 
     }, 0);
+
+})
+
+
+watch(() => route.params.language, (newRoute, oldRoute) => {
+    
+    waterfallList.value = [];
+    throttledApiRequest('/api/v1/demo', 'post', { "language":newRoute ? newRoute : 'en', nums: 20, pages: currentPage.value }).then(res => {
+        waterfallList.value = JSON.parse(res.data.data).data
+        totals.value = JSON.parse(res.data.data).count
+    })
 
 })
 
