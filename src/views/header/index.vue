@@ -12,12 +12,12 @@
 
             <div v-show="mobileNav" class="mobileMenuPop" ref="target">
                 <el-menu @select="handleSelect" :default-active="selectedKeys">
-                    <el-menu-item @click="goGenerated">
+                    <!-- <el-menu-item @click="goGenerated">
                         <img src="@/assets/icon/Lamp.png" alt="">
                         <span>{{ $t('poemai_example') }}</span></el-menu-item>
                     <el-menu-item @click="goPrivacy">
                         <img src="@/assets/icon/privacy_icon.png" alt="">
-                        <span>{{ $t('poemai_privacy') }}</span> </el-menu-item>
+                        <span>{{ $t('poemai_privacy') }}</span> </el-menu-item> -->
                     <el-sub-menu index="1" v-if="changeLocal">
                         <template #title>
                             <img src="@/assets/icon/language.png" alt="">
@@ -31,18 +31,17 @@
 
             <div class="logoDiv" @click="logoClick">
                 <img src="/public/logo.png" alt="" class="logo">
-                <!-- <h1 class="logoTxt"><span class="pp">AI</span> Poem Generator</h1> -->
                 <h1 class="logoTxt">{{ $t('poemai_title') }}</h1>
             </div>
             <div class="tools">
-                <div class="Generated" @click="goGenerated">
+                <!-- <div class="Generated" @click="goGenerated">
                     <img src="@/assets/icon/Lamp.png" alt="">
                     <span>{{ $t('poemai_example') }}</span>
                 </div>
                 <div class="privacy" @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>{{ $t('poemai_privacy') }}</span>
-                </div>
+                </div> -->
                 <div class="language" v-if="changeLocal">
                     <el-dropdown trigger="click" @command="handleCommand">
                         <span class="el-dropdown-link">

@@ -115,7 +115,7 @@
         </div>
 
         <div style="text-align: center;margin: 30px 0 20px;font-size: 22px;font-weight:700 ;">{{ $t('poemai_latest_poems') }}</div>
-        <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall>
+        <!-- <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall> -->
         <!-- <el-button
             style="width:422px;position: relative;left: calc(50% - 211px);margin-top: 20px;font-size:12pt;border-radius: 15px;"
             @click="goviewAll">{{ $t('poemai_view_all') }}</el-button> -->
