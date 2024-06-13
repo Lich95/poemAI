@@ -1,9 +1,9 @@
 <template>
-    <div style="    padding: 0 1em;">
+    <div style="padding: 0 1em;">
         <div style="margin:20px 0 30px">
             <div class="respBox" v-show="true" ref="respBox">
                 <div class="title">
-                    {{ $t('poemai_generated_poem') }}
+                    {{ respTitle }}
                 </div>
                 <div class="content" v-loading="respLoading">
                     {{ respTxt }}
@@ -35,6 +35,7 @@ import { throttledApiRequest } from '@/api/index.js';
 const route = useRoute();
 const { t } = i18n.global;
 const waterfallList = ref([])
+const respTitle = ref()
 
 
 
@@ -46,12 +47,18 @@ const initMethods = () => {
 
     throttledApiRequest('/api/v1/detail_by_id', 'post', { "id": route.params.id }).then(res => {
         respTxt.value = JSON.parse(res.data.data).poem_info.poemContent
+        console.log(JSON.parse(res.data.data));
+        if (JSON.parse(res.data.data).poem_info.poemTheme.includes('{"keyword":"')) {
+            respTitle.value = JSON.parse(JSON.parse(res.data.data).poem_info.poemTheme).content
+        } else {
+            respTitle.value = JSON.parse(res.data.data).poem_info.poemTheme
+        }
 
 
 
         let titleNow = JSON.parse(res.data.data).poem_info.poemTheme.indexOf('\"keyword\":') > -1 ? JSON.parse(JSON.parse(res.data.data).poem_info.poemTheme).content : JSON.parse(res.data.data).poem_info.poemTheme
 
-        
+
         let beforeTitle = document.title.replace('%s', titleNow)
         const metaDescriptionTag = document.querySelector('meta[name="description"]');
         let befroreDescp = metaDescriptionTag.getAttribute('content').replace('%s1', JSON.parse(res.data.data).poem_info.typeName).replace('%s2', JSON.parse(res.data.data).poem_info.poemContent)

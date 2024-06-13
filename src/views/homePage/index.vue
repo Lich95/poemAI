@@ -229,7 +229,7 @@ const checkObj = ref({
 
 
 const loadDemo = () => {
-    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 6 }).then(res => {
+    throttledApiRequest('/api/v1/demo', 'post', { "language": i18n.global.locale ? i18n.global.locale : 'en', nums: 3 }).then(res => {
         waterfallList.value = JSON.parse(res.data.data).data
     })
 
@@ -462,7 +462,7 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
     // if(newRoute=='ja'||newRoute==''){
     // }
     waterfallList.value = [];
-    throttledApiRequest('/api/v1/demo', 'post', { "language":newRoute ? newRoute : 'en', nums: 6 }).then(res => {
+    throttledApiRequest('/api/v1/demo', 'post', { "language":newRoute ? newRoute : 'en', nums: 3 }).then(res => {
         console.log('change');
         waterfallList.value = JSON.parse(res.data.data).data
         console.log(waterfallList.value);

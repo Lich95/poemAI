@@ -27,7 +27,7 @@ const router = useRouter()
 const route = useRoute();
 const currentPage = ref(1)
 const totals = ref(100)
-const pageSize = ref(2)
+const pageSize = ref(20)
 const waterfallList = ref([])
 const typeNums = ref(0)
 

@@ -80,6 +80,7 @@ export default {
                 }
                 return x
             })
+            console.log(123, this.waterfallList);
 
             if (this.waterfallList.length > 3) {
                 this.wfl[0].push(this.waterfallList[0])

@@ -86,6 +86,10 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
         waterfallList.value = JSON.parse(res.data.data).data
         totals.value = JSON.parse(res.data.data).count
     })
+    
+    throttledApiRequest('/api/v1/category_by_lang', 'post', { "language":newRoute ?newRoute : 'en' }).then(res => {
+            types.value = JSON.parse(res.data.data).map(x => x.name)
+        })
 
 })
 

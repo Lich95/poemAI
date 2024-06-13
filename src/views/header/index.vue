@@ -164,10 +164,11 @@ const handleSelect = (e) => {
     localStorage.setItem('languageSave', e)
     router.push({ name: route.name, params: { language: e } });
 
-
     i18n.global.locale = e;
 
-  
+    if(mobileNav){
+        mobileNav.value=false;
+    }
 }
 const toggleMenu = (bol) => {
     mobileNav.value = bol
