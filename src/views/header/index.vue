@@ -14,10 +14,10 @@
                 <el-menu @select="handleSelect" :default-active="selectedKeys">
                     <!-- <el-menu-item @click="goGenerated">
                         <img src="@/assets/icon/Lamp.png" alt="">
-                        <span>{{ $t('poemai_example') }}</span></el-menu-item>
+                        <span>{{ $t('poemai_example') }}</span></el-menu-item>-->
                     <el-menu-item @click="goPrivacy">
                         <img src="@/assets/icon/privacy_icon.png" alt="">
-                        <span>{{ $t('poemai_privacy') }}</span> </el-menu-item> -->
+                        <span>{{ $t('poemai_privacy') }}</span> </el-menu-item> 
                     <el-sub-menu index="1" v-if="changeLocal">
                         <template #title>
                             <img src="@/assets/icon/language.png" alt="">
@@ -37,11 +37,11 @@
                 <!-- <div class="Generated" @click="goGenerated">
                     <img src="@/assets/icon/Lamp.png" alt="">
                     <span>{{ $t('poemai_example') }}</span>
-                </div>
+                </div>-->
                 <div class="privacy" @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>{{ $t('poemai_privacy') }}</span>
-                </div> -->
+                </div> 
                 <div class="language" v-if="changeLocal">
                     <el-dropdown trigger="click" @command="handleCommand">
                         <span class="el-dropdown-link">

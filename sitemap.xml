@@ -56,34 +56,7 @@
     <loc>https://poemgenerator-ai.com/tr/</loc>
     <lastmod>2023-12-24</lastmod>
   </url>
-   <url>
-    <loc>https://poemgenerator-ai.com/en/poem</loc>
-    <lastmod>2023-12-24</lastmod>
-  </url>
   <url>
-    <loc>https://poemgenerator-ai.com/fr/poem</loc>
-    <lastmod>2023-12-24</lastmod>
-  </url>
-  <url>
-    <loc>https://poemgenerator-ai.com/ru/poem</loc>
-    <lastmod>2023-12-24</lastmod>
-  </url>
-  <url>
-    <loc>https://poemgenerator-ai.com/de/poem</loc>
-    <lastmod>2023-12-24</lastmod>
-  </url>
-  <url>
-    <loc>https://poemgenerator-ai.com/es/poem</loc>
-    <lastmod>2023-12-24</lastmod>
-  </url>
-  <url>
-    <loc>https://poemgenerator-ai.com/pt/poem</loc>
-    <lastmod>2023-12-24</lastmod>
-  </url>
-  <url>
-    <loc>https://poemgenerator-ai.com/it/poem</loc>
-    <lastmod>2023-12-24</lastmod>
-  </url> <url>
     <loc>https://poemgenerator-ai.com/privacy</loc>
     <lastmod>2023-12-24</lastmod>
   </url>
@@ -109,6 +82,35 @@
   </url>
   <url>
     <loc>https://poemgenerator-ai.com/it/privacy</loc>
+    <lastmod>2023-12-24</lastmod>
+  </url>
+
+  <url>
+    <loc>https://poemgenerator-ai.com/id/privacy</loc>
+    <lastmod>2023-12-24</lastmod>
+  </url>
+  <url>
+    <loc>https://poemgenerator-ai.com/vi/privacy</loc>
+    <lastmod>2023-12-24</lastmod>
+  </url>
+  <url>
+    <loc>https://poemgenerator-ai.com/ja/privacy</loc>
+    <lastmod>2023-12-24</lastmod>
+  </url>
+  <url>
+    <loc>https://poemgenerator-ai.com/ko/privacy</loc>
+    <lastmod>2023-12-24</lastmod>
+  </url>
+  <url>
+    <loc>https://poemgenerator-ai.com/th/privacy</loc>
+    <lastmod>2023-12-24</lastmod>
+  </url>
+  <url>
+    <loc>https://poemgenerator-ai.com/ar/privacy</loc>
+    <lastmod>2023-12-24</lastmod>
+  </url>
+  <url>
+    <loc>https://poemgenerator-ai.com/tr/privacy</loc>
     <lastmod>2023-12-24</lastmod>
   </url>
 </urlset>

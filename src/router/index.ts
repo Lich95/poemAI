@@ -106,8 +106,12 @@ router.beforeEach((to, from, next) => {
       document.head.appendChild(newMetaTag);
     }
 
+    
+
     let linkTag = document.querySelector('link[rel="canonical"]');
-    linkTag.setAttribute('href', to.fullPath)
+    
+      let flp = to.fullPath.split('?ref=')[0].split('?via=')[0];
+    linkTag!.setAttribute('href',"https://poemgenerator-ai.com"+flp)
 
 
 
