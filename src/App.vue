@@ -7,8 +7,9 @@ import AdSense from './components/AdSense.vue'
   <div>
     <headerStyle></headerStyle>
     <router-view></router-view>
-    <AdSense class="ad-left" />
-    <AdSense class="ad-right" />
+    <AdSense class="ad-left" ad-slot="9524179685"/>
+    <AdSense class="ad-right" ad-slot="9524179685"/>
+    <AdSense class="ad-bottom" ad-slot="9520839519"/>
   </div>
 </template>
 

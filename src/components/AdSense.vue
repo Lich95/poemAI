@@ -4,7 +4,7 @@
       class="adsbygoogle"
       style="display: block"
       data-ad-client="ca-pub-9781574167315838"
-      data-ad-slot="9524179685"
+      :data-ad-slot="adSlot"
       data-ad-format="auto"
       data-full-width-responsive="true"
     ></ins>
@@ -14,6 +14,12 @@
 <script>
 export default {
   name: "AdSense",
+  props: {
+    adSlot: {
+      type: String,
+      required: true
+    }
+  },
   mounted() {
     if (window.adsbygoogle) {
       window.adsbygoogle.push({});

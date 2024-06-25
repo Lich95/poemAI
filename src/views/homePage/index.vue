@@ -113,6 +113,8 @@
                     </el-icon></el-button>
             </div>
         </div>
+
+        <AdSense ad-slot="1778579273" class="adsenseInPage"/>
 <!-- 
         <div style="text-align: center;margin: 30px 0 20px;font-size: 22px;font-weight:700 ;">{{ $t('poemai_latest_poems') }}</div> -->
         <!-- <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall> -->
@@ -134,6 +136,7 @@
 </template>
 <script setup>
 
+import AdSense from '@/components/AdSense.vue'
 
 import { ref, onMounted, onBeforeUnmount, watch } from "vue";
 import { throttledApiRequest } from '@/api/index.js';
