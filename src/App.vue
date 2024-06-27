@@ -28,15 +28,15 @@ import AdSense from './components/AdSense.vue'
 }
 
 .ad-left, .ad-right {
-  width: 300px;
+  width: 280px;
   height: 600px; /* 你可以根据需要调整宽度 */
   position: fixed;
   top: 80px; /* 使广告在页面滚动时保持在视口中 */
 }
 .ad-left {
-  left:20px;
+  left:10px;
 }
 .ad-right {
-  right:20px;
+  right:10px;
 }
 </style>

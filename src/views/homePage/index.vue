@@ -114,7 +114,7 @@
             </div>
         </div>
 
-        <AdSense ad-slot="1778579273" class="adsenseInPage"/>
+        <AdSense ad-slot="1778579273" style="width: 760px;margin:0 auto" class="adsenseInPage"/>
 <!-- 
         <div style="text-align: center;margin: 30px 0 20px;font-size: 22px;font-weight:700 ;">{{ $t('poemai_latest_poems') }}</div> -->
         <!-- <waterfall class="wfDv" :waterfallList="waterfallList" v-if="waterfallList.length"></waterfall> -->
