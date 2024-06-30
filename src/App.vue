@@ -3,9 +3,9 @@ import headerStyle from "@/views/header/index.vue";
 import AdSense from "./components/AdSense.vue";
 import { onMounted, onBeforeUnmount } from 'vue';
 onMounted(() => {
-//   console.log('bangidng');
-//   document.addEventListener('visibilitychange', handleVisibilityChange);
-handleVisibilityChange()
+  //   console.log('bangidng');
+  //   document.addEventListener('visibilitychange', handleVisibilityChange);
+  handleVisibilityChange()
 });
 
 // onBeforeUnmount(() => {
@@ -51,8 +51,6 @@ const handleVisibilityChange = () => {
 
 .ad-left,
 .ad-right {
-  width: 280px;
-  height: 600px;
   /* 你可以根据需要调整宽度 */
   position: fixed;
   top: 80px;
@@ -67,7 +65,17 @@ const handleVisibilityChange = () => {
   right: 10px;
 }
 
+.ad-bottom {
+  margin: 0 auto;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 .ad-bottom-mobile {
+  margin: 0 auto;
+  text-align: center;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -83,7 +91,7 @@ const handleVisibilityChange = () => {
   }
 
   .ad-bottom-mobile {
-    // display: block;
+    display: inline-block;
   }
 }
 </style>
