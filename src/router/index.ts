@@ -62,11 +62,11 @@ const routes = [
       language: route.params.language || 'en',
     }),
   },
-  {
-    path: '/testAdsenseForSelf',
-    name: 'test',
-    component: testAdsense,
-  },
+  // {
+  //   path: '/testAdsenseForSelf',
+  //   name: 'test',
+  //   component: testAdsense,
+  // },
 
   // 添加其他路由
 ];
