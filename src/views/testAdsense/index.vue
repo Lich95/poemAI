@@ -1,16 +1,16 @@
 <script setup>
 import headerStyle from "@/views/header/index.vue";
-import AdSense from "./components/AdSense.vue";
+import AdSense from "@/components/AdSense.vue";
+import Home from '@/views/homePage/index.vue';
 </script>
 
 <template>
   <div>
-    <headerStyle></headerStyle>
-    <router-view></router-view>
+    <Home/>
     <AdSense class="ad-left" ad-slot="9524179685" />
     <AdSense class="ad-right" ad-slot="9524179685" />
-    <!-- <AdSense class="ad-bottom" ad-slot="9520839519" /> -->
-    <!-- <AdSense class="ad-bottom-mobile" ad-slot="7827954630" /> -->
+    <AdSense class="ad-bottom" ad-slot="9520839519" />
+    <AdSense class="ad-bottom-mobile" ad-slot="7827954630" />
   </div>
 </template>
 
@@ -41,12 +41,12 @@ import AdSense from "./components/AdSense.vue";
 .ad-right {
   right: 10px;
 }
-// .ad-bottom-mobile{
-//   position: fixed;
-//   bottom: 0;
-//   width: 100%;
-//   display: none;
-// }
+.ad-bottom-mobile{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: none;
+}
 
 @media only screen and (max-width: 767px) {
   .ad-left,
@@ -54,8 +54,8 @@ import AdSense from "./components/AdSense.vue";
   .ad-bottom {
     display: none;
   }
-  // .ad-bottom-mobile{
-  //   // display: block;
-  // }
+  .ad-bottom-mobile{
+    display: block;
+  }
 }
 </style>

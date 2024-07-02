@@ -40,5 +40,7 @@ export default {
 .adsense-container {
   margin: 20px 0;
 }
-
+.adsbygoogle{
+  text-align: center;
+}
 </style>

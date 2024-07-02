@@ -6,6 +6,7 @@ import generatedPoems from '@/views/generatedPoems/index.vue';
 import generatedPoemCategory from '@/views/generatedPoemCategory/index.vue';
 import generatedPoemType from '@/views/generatedPoemType/index.vue';
 import generatedPoemId from '@/views/generatedPoemId/index.vue';
+import testAdsense from '@/views/testAdsense/index.vue';
 import i18n from '@/hooks/i18n'
 
 const routes = [
@@ -60,6 +61,11 @@ const routes = [
     props: (route: any) => ({
       language: route.params.language || 'en',
     }),
+  },
+  {
+    path: '/testAdsenseForSelf',
+    name: 'test',
+    component: testAdsense,
   },
 
   // 添加其他路由
