@@ -1,6 +1,26 @@
 <script setup>
 import headerStyle from "@/views/header/index.vue";
 import AdSense from "./components/AdSense.vue";
+import { onMounted, onBeforeUnmount } from 'vue';
+onMounted(() => {
+  //   console.log('bangidng');
+  //   document.addEventListener('visibilitychange', handleVisibilityChange);
+  handleVisibilityChange()
+});
+
+// onBeforeUnmount(() => {
+//   console.log('jiebang');
+//   document.removeEventListener('visibilitychange', handleVisibilityChange);
+// });
+const handleVisibilityChange = () => {
+  setInterval(() => {
+    if (document.visibilityState === 'visible') {
+      console.log('refresh');
+      googletag.pubads().refresh()
+    }
+  }, 30000);
+};
+
 </script>
 
 <template>
@@ -23,6 +43,7 @@ import AdSense from "./components/AdSense.vue";
   float: right;
   text-align: right;
   padding-right: 20px;
+
   &::before {
     right: 0;
   }
@@ -30,14 +51,16 @@ import AdSense from "./components/AdSense.vue";
 
 .ad-left,
 .ad-right {
-  width: 280px;
-  height: 600px; /* 你可以根据需要调整宽度 */
+  /* 你可以根据需要调整宽度 */
   position: fixed;
-  top: 80px; /* 使广告在页面滚动时保持在视口中 */
+  top: 80px;
+  /* 使广告在页面滚动时保持在视口中 */
 }
+
 .ad-left {
   left: 10px;
 }
+
 .ad-right {
   right: 10px;
 }
@@ -49,6 +72,7 @@ import AdSense from "./components/AdSense.vue";
 // }
 
 @media only screen and (max-width: 767px) {
+
   .ad-left,
   .ad-right,
   .ad-bottom {
