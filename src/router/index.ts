@@ -62,11 +62,11 @@ const routes = [
       language: route.params.language || 'en',
     }),
   },
-  // {
-  //   path: '/testAdsenseForSelf',
-  //   name: 'test',
-  //   component: testAdsense,
-  // },
+  {
+    path: '/testAdsenseForSelf',
+    name: 'test',
+    component: testAdsense,
+  },
 
   // 添加其他路由
 ];
@@ -117,6 +117,8 @@ router.beforeEach((to, from, next) => {
     let linkTag = document.querySelector('link[rel="canonical"]');
     
       let flp = to.fullPath.split('?ref=')[0].split('?via=')[0];
+      console.log(769,flp);
+      
     linkTag!.setAttribute('href',"https://poemgenerator-ai.com"+flp)
 
 
