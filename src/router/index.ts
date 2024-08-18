@@ -20,7 +20,7 @@ const routes = [
 
   },
   {
-    path: '/:language?/privacy',
+    path: '/:language?/privacy/',
     name: 'privacy',
     component: privacy,
     props: (route: any) => ({
@@ -28,7 +28,7 @@ const routes = [
     })
   },
   {
-    path: '/:language?/poem',
+    path: '/:language?/poem/',
     name: 'poem',
     component: generatedPoems,
     props: (route: any) => ({
@@ -55,18 +55,18 @@ const routes = [
 
   },
   {
-    path: '/:language?/generated-poem-category',
+    path: '/:language?/generated-poem-category/',
     name: 'category',
     component: generatedPoemCategory,
     props: (route: any) => ({
       language: route.params.language || 'en',
     }),
   },
-  {
-    path: '/testAdsenseForSelf',
-    name: 'test',
-    component: testAdsense,
-  },
+  // {
+  //   path: '/testAdsenseForSelf',
+  //   name: 'test',
+  //   component: testAdsense,
+  // },
 
   // 添加其他路由
 ];
