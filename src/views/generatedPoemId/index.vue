@@ -79,25 +79,7 @@ watch(
     { immediate: true }
 );
 
-let respTxt = ref(` In summer's heat, I find no solace
-                    A time for sun and fun, it's all a facade
-                    The warmth that's supposed to bring us joy
-                    Only brings me chills, and makes me annoyed
-
-                    The days are long, the nights are short
-                    I crave the coolness of the morning dew
-                    But even then, the sun rises high
-                    And steals away my peaceful mood anew
-
-                    The world is bright, but not so warm
-                    I yearn for shade, where I can rest
-                    From the harsh rays that burn like storms
-                    And make my heart feel oppressed
-
-                    Oh, how I wish for autumn's breeze
-                    To bring some relief from summer's sway
-                    When leaves will fall, and skies will gray
-                    And bring back balance to each day`)
+let respTxt = ref(``)
 
 
 const handleCopy = () => {

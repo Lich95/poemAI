@@ -20,7 +20,7 @@ const routes = [
 
   },
   {
-    path: '/:language?/privacy',
+    path: '/:language?/privacy/',
     name: 'privacy',
     component: privacy,
     props: (route: any) => ({
@@ -28,7 +28,7 @@ const routes = [
     })
   },
   {
-    path: '/:language?/poem',
+    path: '/:language?/poem/',
     name: 'poem',
     component: generatedPoems,
     props: (route: any) => ({
@@ -55,7 +55,7 @@ const routes = [
 
   },
   {
-    path: '/:language?/generated-poem-category',
+    path: '/:language?/generated-poem-category/',
     name: 'category',
     component: generatedPoemCategory,
     props: (route: any) => ({
@@ -117,6 +117,8 @@ router.beforeEach((to, from, next) => {
     let linkTag = document.querySelector('link[rel="canonical"]');
     
       let flp = to.fullPath.split('?ref=')[0].split('?via=')[0];
+      console.log(769,flp);
+      
     linkTag!.setAttribute('href',"https://poemgenerator-ai.com"+flp)
 
 

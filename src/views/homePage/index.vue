@@ -549,6 +549,7 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
         color: #1D2331;
         font-size: 18px;
         padding: 10px 13px;
+        height: 80px;
 
         &:focus {
             box-shadow: 0 0 0 1px #1D2331;
@@ -591,7 +592,9 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
 }
 
 .h2Title {
-    padding-top: 20px;
+    line-height: 40px;
+    padding-top: 4px;
+    vertical-align: top;
     font-size: 44px;
     color: #1D2331;
     margin: 0;

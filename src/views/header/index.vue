@@ -34,10 +34,10 @@
                 <h1 class="logoTxt">{{ $t('poemai_title') }}</h1>
             </div>
             <div class="tools">
-                <!-- <div class="Generated" @click="goGenerated">
+                <div class="Generated" @click="goGenerated">
                     <img src="@/assets/icon/Lamp.png" alt="">
                     <span>{{ $t('poemai_example') }}</span>
-                </div>-->
+                </div>
                 <div class="privacy" @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>{{ $t('poemai_privacy') }}</span>
