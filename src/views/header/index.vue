@@ -17,7 +17,7 @@
                         <span>{{ $t('poemai_example') }}</span></el-menu-item>-->
                     <el-menu-item @click="goPrivacy">
                         <img src="@/assets/icon/privacy_icon.png" alt="">
-                        <span>{{ $t('poemai_privacy') }}</span> </el-menu-item> 
+                        <span>{{ $t('poemai_privacy') }}</span> </el-menu-item>
                     <el-sub-menu index="1" v-if="changeLocal">
                         <template #title>
                             <img src="@/assets/icon/language.png" alt="">
@@ -41,7 +41,7 @@
                 <div class="privacy" @click="goPrivacy">
                     <img src="@/assets/icon/privacy_icon.png" alt="">
                     <span>{{ $t('poemai_privacy') }}</span>
-                </div> 
+                </div>
                 <div class="language" v-if="changeLocal">
                     <el-dropdown trigger="click" @command="handleCommand">
                         <span class="el-dropdown-link">
@@ -127,11 +127,13 @@ const logoClick = () => {
 }
 const handleCommand = (command) => {
 
-    if(route.name=='Home'){
-    if (command == 'en') {
-        command = ''
+    if (route.name == 'Home') {
+        if (command == 'en') {
+            command = ''
+        }
     }
-}
+    var htmlElement = document.getElementsByTagName('html')[0];
+    htmlElement.setAttribute('lang',command==''?'en':command)
     if (command == 'ar') {
         var htmlElement = document.getElementsByTagName('html')[0];
         // 修改样式
@@ -142,13 +144,15 @@ const handleCommand = (command) => {
         htmlElement.style.direction = '';
     }
 
- 
+
 
     router.push({ name: route.name, params: { language: command } }).then(() => {
         i18n.global.locale = command;
         localStorage.setItem('languageSave', command)
-    //    router.go(0)
+        //    router.go(0)
     });
+
+    
 
 }
 const _thislanguage = () => {
@@ -165,8 +169,8 @@ const handleSelect = (e) => {
 
     i18n.global.locale = e;
 
-    if(mobileNav){
-        mobileNav.value=false;
+    if (mobileNav) {
+        mobileNav.value = false;
     }
 }
 const toggleMenu = (bol) => {
@@ -177,40 +181,42 @@ onMounted(async () => {
     setTimeout(() => {
         i18n.global.locale = route.params.language
         let to = route
-    if(to.name=='poem' || to.name=='category'){
-    const pageTitle = i18n.global.t('header_title'+'_'+to.name); // 使用i18n来获取多语言标题
-    const metaDescription = i18n.global.t('Description'+'_'+to.name); // 使用i18n来获取多语言描述
-    document.title = pageTitle;
-    const metaDescriptionTag = document.querySelector('meta[name="description"]');
-    if (metaDescriptionTag) {
-        metaDescriptionTag.setAttribute('content', metaDescription);
-    } else {
-        // 如果meta标签不存在，创建并添加
-        const newMetaTag = document.createElement('meta');
-        newMetaTag.name = 'description';
-        newMetaTag.content = metaDescription;
-        document.head.appendChild(newMetaTag);
-    }
-    
-  }else{
-    const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
-    const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
-    document.title = pageTitle;
-    const metaDescriptionTag = document.querySelector('meta[name="description"]');
-    if (metaDescriptionTag) {
-        metaDescriptionTag.setAttribute('content', metaDescription);
-    } else {
-        // 如果meta标签不存在，创建并添加
-        const newMetaTag = document.createElement('meta');
-        newMetaTag.name = 'description';
-        newMetaTag.content = metaDescription;
-        document.head.appendChild(newMetaTag);
-    }
-  }
- 
+        if (to.name == 'poem' || to.name == 'category') {
+            const pageTitle = i18n.global.t('header_title' + '_' + to.name); // 使用i18n来获取多语言标题
+            const metaDescription = i18n.global.t('Description' + '_' + to.name); // 使用i18n来获取多语言描述
+            document.title = pageTitle;
+            const metaDescriptionTag = document.querySelector('meta[name="description"]');
+            if (metaDescriptionTag) {
+                metaDescriptionTag.setAttribute('content', metaDescription);
+            } else {
+                // 如果meta标签不存在，创建并添加
+                const newMetaTag = document.createElement('meta');
+                newMetaTag.name = 'description';
+                newMetaTag.content = metaDescription;
+                document.head.appendChild(newMetaTag);
+            }
+
+        } else {
+            const pageTitle = i18n.global.t('header_title'); // 使用i18n来获取多语言标题
+            const metaDescription = i18n.global.t('Description'); // 使用i18n来获取多语言描述
+            document.title = pageTitle;
+            const metaDescriptionTag = document.querySelector('meta[name="description"]');
+            if (metaDescriptionTag) {
+                metaDescriptionTag.setAttribute('content', metaDescription);
+            } else {
+                // 如果meta标签不存在，创建并添加
+                const newMetaTag = document.createElement('meta');
+                newMetaTag.name = 'description';
+                newMetaTag.content = metaDescription;
+                document.head.appendChild(newMetaTag);
+            }
+        }
+        
+    var htmlElement = document.getElementsByTagName('html')[0];
+    htmlElement.setAttribute('lang',i18n.global.locale==''?'en':i18n.global.locale)
     }, 0)
-    
-   
+
+
 
 })
 watch(() => route.name, (newRoute, oldRoute) => {
