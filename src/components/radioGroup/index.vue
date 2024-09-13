@@ -132,9 +132,11 @@ export default {
 
   ::v-deep .el-radio-button__inner {
     white-space: pre-wrap;
-    width: 100px !important;
     text-align: center;
     padding: 10px;
+    justify-content: space-evenly;
+    width: 106px!important;
+    height: 48px!important;
   }
 }
 </style>

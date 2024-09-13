@@ -18,7 +18,7 @@
     </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted,watch } from "vue";
 import i18n from '@/hooks/i18n'
 import { useRoute, useRouter } from 'vue-router';
 import waterfall from "@/components/waterfall/index.vue";

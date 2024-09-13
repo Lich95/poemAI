@@ -3,7 +3,7 @@
     <AdSense class="ad-right" ad-slot="9524179685" />
     <AdSense class="ad-bottom" ad-slot="9520839519" />
     <AdSense class="ad-bottom-mobile" ad-slot="7827954630" />
-    <div style="padding:1em;padding-top: 20px;">
+    <div class="overAll">
         <div style="text-align: center;">
             <h2 class="h2Title" :class="i18n.global.locale">{{ $t('poemai_title_generate') }}</h2>
             <!-- {{ $t('poemai_title_generate') }} -->
@@ -291,7 +291,7 @@ const handleClick = async () => {
         }
 
 
-        // http://poemgenerator-ai.com
+        // https://poemgenerator-ai.com
         throttledApiRequest(' /api/v1', 'post', { "theme": checkObj.value.styleCheck, "content": inputStr || placeholderText, size: checkObj.value.sizeCheck, language: checkObj.value.languageCheck }).then(res => {
             res = res.data
             if (res.retCode == 'C0000') {
@@ -484,6 +484,10 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
 
 </script>
 <style scoped lang="scss">
+.overAll{
+    padding:1em;padding-top: 20px;
+}
+
 .header {
     height: 64px;
     display: flex;
@@ -726,8 +730,17 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
 
 
 @media only screen and (max-width: 767px) {
+    .secTitle{
+        font-size:14px;
+        &::before {
+        display: none;
+    }}
     .handleBtn {
+        height: 56px !important;
         width: 100% !important;
+    }
+    .overAll{
+        padding-top: 16px!important;
     }
 
     .inputBox .desc {
@@ -802,11 +815,15 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
   right: 10px;
 }
 
-.ad-bottom-mobile {
+.ad-bottom-mobile,.ad-bottom {
   position: fixed;
   bottom: 0;
   width: 100%;
-  display: none;
+  margin-bottom: 0 !important;
+  z-index:99;
+}
+.ad-bottom-mobile{
+  display: none !important;
 }
 
 @media only screen and (max-width: 767px) {
@@ -814,11 +831,11 @@ watch(() => route.params.language, (newRoute, oldRoute) => {
   .ad-left,
   .ad-right,
   .ad-bottom {
-    display: none;
+    display: none !important;
   }
 
   .ad-bottom-mobile {
-    display: block;
+    display: block!important;
   }
 }
 </style>

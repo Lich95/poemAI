@@ -30,9 +30,10 @@ import { ref, onMounted, watch } from "vue";
 import ClipboardJS from 'clipboard';
 import { ElMessage } from 'element-plus'
 import i18n from '@/hooks/i18n'
-import { useRoute } from 'vue-router';
+import { useRoute,useRouter } from 'vue-router';
 import { throttledApiRequest } from '@/api/index.js';
 const route = useRoute();
+const router = useRouter();
 const { t } = i18n.global;
 const waterfallList = ref([])
 const respTitle = ref()

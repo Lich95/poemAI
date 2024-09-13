@@ -83,9 +83,6 @@ router.beforeEach((to, from, next) => {
     if (to.name == 'poem' || to.name == 'category') {
       pageTitle = i18n.global.t('header_title' + '_' + to.name); // 使用i18n来获取多语言标题
       metaDescription = i18n.global.t('Description' + '_' + to.name); // 使用i18n来获取多语言描述
-
-
-
     } else if (to.name == 'generatedPoemId') {
       pageTitle = i18n.global.t('header_title_poem_type'); // 使用i18n来获取多语言标题
       metaDescription = i18n.global.t('Description_poem_type'); // 使用i18n来获取多语言描述

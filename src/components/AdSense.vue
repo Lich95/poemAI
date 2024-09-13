@@ -1,5 +1,5 @@
 <template>
-  <div class="adsense-container">
+  <div class="adsense-container" :style="getStyle(adSlot)">
     <ins
       class="adsbygoogle"
       :style="getStyle(adSlot)"
@@ -21,11 +21,11 @@ export default {
   methods:{
     getStyle(adSlot){
       if(adSlot=='9520839519'){
-        return 'display: inline-block;width:1200px;height:82px'
+        return 'display: inline-block;width:100%!important;height:82px!important;'
       }else if (adSlot=='9524179685'){
-        return 'display: inline-block;width:300px;height:600px'
+        return 'display: inline-block;width:300px!important;height:600px!important;'
       }else if (adSlot=='7827954630'){
-        return 'display: inline-block;width:430px;height:50px'
+        return 'display: inline-block;width:100%!important;height:50px!important;'
       }
     }
   },  
